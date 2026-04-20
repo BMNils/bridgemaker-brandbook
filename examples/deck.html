@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bridgemaker — Sample Deck</title>
+<link rel="stylesheet" href="../tokens/tokens.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  body { background: #000; }
+  section { background: var(--off-white); color: var(--charcoal); padding: 96px 112px; display: flex; flex-direction: column; justify-content: center; }
+  .eyebrow { font: var(--text-eyebrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--light); margin-bottom: 32px; }
+  .display { font: var(--text-display); letter-spacing: var(--track-display); margin: 0; }
+  .h1 { font: var(--text-h1); letter-spacing: var(--track-h1); margin: 0; }
+  .h2 { font: var(--text-h2); letter-spacing: var(--track-h2); margin: 0; }
+  .h3 { font: var(--text-h3); letter-spacing: var(--track-h3); margin: 0; }
+  .body { font: 400 22px/1.5 var(--font-body); color: var(--mid); }
+  .quote { font: 500 56px/1.15 var(--font-display); letter-spacing: -1.2px; }
+  .accent-bar { display: inline-block; width: 64px; height: 4px; background: var(--bm-purple); border-radius: 2px; }
+  .noise {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  @keyframes k1 { 0%,100% { transform: translate(0,0) scale(1.1); } 50% { transform: translate(3%,2%) scale(1.13); } }
+  .kasane-dark { background: #1C1C1E; color: #fff; position: relative; overflow: hidden; }
+  .kasane-dark .layers {
+    position: absolute; inset: 0; filter: blur(40px); animation: k1 20s ease-in-out infinite;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 80%, rgba(138,48,80,0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 80% at 75% 20%, rgba(107,74,148,0.6) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 70% at 10% 30%, rgba(74,45,107,0.7) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 60% at 90% 70%, rgba(58,158,151,0.4) 0%, transparent 50%);
+  }
+  .kasane-vibrant { background: linear-gradient(135deg, #4A2D6B 0%, #6B4A94 30%, #B84A6F 60%, #3A9E97 100%); color: #fff; position: relative; overflow: hidden; }
+  .kasane-vibrant .layers {
+    position: absolute; inset: 0; filter: blur(30px); animation: k1 16s ease-in-out infinite;
+    background:
+      radial-gradient(ellipse 70% 70% at 25% 75%, rgba(184,74,111,0.7) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 60% at 70% 25%, rgba(107,74,148,0.8) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 50% at 85% 70%, rgba(58,158,151,0.65) 0%, transparent 50%);
+  }
+  .content { position: relative; z-index: 1; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; margin-top: 64px; }
+  .stat-num { font: 600 88px/1 var(--font-display); letter-spacing: -2.5px; color: var(--charcoal); }
+  .stat-label { font: var(--text-small); color: var(--mid); margin-top: 12px; }
+  .section-color { background: var(--surface-mauve); }
+  .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+  .card { background: #fff; border-radius: 20px; padding: 40px; }
+  .card .eyebrow { margin-bottom: 16px; }
+  .split { display: grid; grid-template-columns: 2fr 1fr; gap: 64px; align-items: center; }
+  .placeholder {
+    aspect-ratio: 3/4; border-radius: 20px;
+    background: repeating-linear-gradient(135deg, #E8E5DF 0 14px, #DDD9D2 14px 28px);
+    display: flex; align-items: center; justify-content: center;
+    font: 500 14px/1.4 "JetBrains Mono", Menlo, monospace; color: #6B6B65;
+    text-align: center; padding: 24px;
+  }
+</style>
+</head>
+<body>
+
+<script type="application/json" id="speaker-notes">
+["Willkommen. Wir bauen Ventures — hier unser Ansatz.",
+ "Der Markt ist überfüllt mit Innovationsberatung. Wir sind anders.",
+ "Drei Phasen: Validate, Build, Scale. Handwerk statt Theater.",
+ "Zahlen, die zählen. Seit 2018.",
+ "Zitat eines Partners zur Zusammenarbeit.",
+ "Lass uns bauen."]
+</script>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- 01 Cover · Kasane Dark -->
+  <section class="kasane-dark" data-label="Cover">
+    <div class="layers"></div>
+    <div class="noise" style="opacity: .03"></div>
+    <div class="content">
+      <div class="eyebrow" style="color: rgba(175,148,210,0.9);">Bridgemaker · Credentials 2026</div>
+      <h1 class="display" style="color: #fff; max-width: 1400px;">
+        We build ventures<br/>that matter.
+      </h1>
+      <div style="margin-top: 48px; font: var(--text-small); color: rgba(255,255,255,0.5);">
+        Berlin · April 2026
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Section divider · Mauve surface -->
+  <section class="section-color" data-label="Section · Ansatz">
+    <div class="eyebrow" style="color: var(--bm-purple);">Kapitel 01</div>
+    <h2 class="h1" style="margin-top: 24px; max-width: 1400px;">
+      Innovation braucht<br/>Umsetzung.
+    </h2>
+    <span class="accent-bar" style="margin-top: 48px;"></span>
+  </section>
+
+  <!-- 03 Content · Feature trio -->
+  <section data-label="Ansatz">
+    <div class="eyebrow">Unser Handwerk</div>
+    <h2 class="h2" style="margin-top: 16px;">Drei Phasen. Ein Prinzip.</h2>
+    <div class="cards-3">
+      <div class="card" style="background: var(--surface-mauve);">
+        <div class="eyebrow" style="color: var(--bm-purple);">01 · Validate</div>
+        <h3 class="h3">Thesen, die halten.</h3>
+        <p class="body" style="font-size: 18px; margin-top: 16px;">
+          Wir testen Nachfrage, nicht Pitch-Decks.
+        </p>
+      </div>
+      <div class="card" style="background: var(--surface-sand);">
+        <div class="eyebrow" style="color: var(--bm-deep-berry);">02 · Build</div>
+        <h3 class="h3">Produkte, die liefern.</h3>
+        <p class="body" style="font-size: 18px; margin-top: 16px;">
+          MVP in 8 Wochen, echte Nutzer in Woche 1.
+        </p>
+      </div>
+      <div class="card" style="background: var(--surface-sage);">
+        <div class="eyebrow" style="color: var(--bm-deep-teal);">03 · Scale</div>
+        <h3 class="h3">Geschäfte, die wachsen.</h3>
+        <p class="body" style="font-size: 18px; margin-top: 16px;">
+          Von Traction zu Skalierung — wir bleiben.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Stats -->
+  <section data-label="Stats">
+    <div class="eyebrow">Seit 2018</div>
+    <h2 class="h2" style="margin-top: 16px; max-width: 1200px;">Zahlen, die zählen.</h2>
+    <div class="stats">
+      <div><div class="stat-num">40+</div><div class="stat-label">Ventures gebaut</div></div>
+      <div><div class="stat-num" style="color: var(--bm-purple);">€180M</div><div class="stat-label">Follow-on Funding</div></div>
+      <div><div class="stat-num" style="color: var(--bm-deep-berry);">12</div><div class="stat-label">Märkte</div></div>
+      <div><div class="stat-num" style="color: var(--bm-deep-teal);">3</div><div class="stat-label">Exits</div></div>
+    </div>
+  </section>
+
+  <!-- 05 Quote -->
+  <section data-label="Quote" style="background: var(--surface-stone);">
+    <div class="split">
+      <div>
+        <div class="eyebrow" style="color: var(--bm-purple);">Partner · E.ON Future Lab</div>
+        <p class="quote" style="margin-top: 32px;">
+          „Bridgemaker baut nicht für uns — sie bauen mit uns. Das ist der Unterschied."
+        </p>
+      </div>
+      <div class="placeholder">Partner portrait<br/>natural light<br/>documentary</div>
+    </div>
+  </section>
+
+  <!-- 06 End · Kasane Vibrant -->
+  <section class="kasane-vibrant" data-label="End">
+    <div class="layers"></div>
+    <div class="noise" style="opacity: .04"></div>
+    <div class="content">
+      <h2 class="display" style="color: #fff;">Let's build together.</h2>
+      <p class="body" style="color: rgba(255,255,255,0.8); margin-top: 32px; font-size: 24px;">
+        team@bridgemaker.com · bridgemaker.com
+      </p>
+    </div>
+  </section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+</body>
+</html>

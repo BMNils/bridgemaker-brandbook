@@ -1,0 +1,282 @@
+/* ============================================================
+   Bridgemaker Design Tokens — v1.0 · 2026
+   Single source of truth. Load this first in every project.
+   ============================================================ */
+
+:root {
+  /* ---------- Typography ---------- */
+  --font-display: "Inter Display", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "Menlo", "Monaco", monospace;
+
+  /* Display scale — grösser = leichter (bewusst) */
+  --text-display-xl: 400 128px/1.00 var(--font-display);
+  --text-display-l:  500 96px/1.05 var(--font-display);
+  --text-display:    600 64px/1.10 var(--font-display);
+
+  /* UI / editorial scale */
+  --text-h1:      600 48px/1.15 var(--font-display);
+  --text-h2:      600 32px/1.25 var(--font-display);
+  --text-h3:      500 24px/1.30 var(--font-display);
+  --text-h4:      500 20px/1.40 var(--font-display);
+  --text-body:    400 16px/1.60 var(--font-body);
+  --text-small:   400 14px/1.50 var(--font-body);
+  --text-caption: 400 12px/1.40 var(--font-body);
+  --text-eyebrow: 500 12px/1.40 var(--font-body); /* UPPERCASE + letter-spacing 0.08em */
+
+  --track-display-xl: -3.8px;
+  --track-display-l:  -2.9px;
+  --track-display:    -1.9px;
+  --track-h1:         -1.2px;
+  --track-h2:         -0.8px;
+  --track-h3:         -0.5px;
+  --track-h4:         -0.3px;
+
+  /* ---------- Brand Colors ---------- */
+  --bm-purple:       #6B4A94; /* Primary */
+  --bm-deep-plum:    #4A2D6B;
+  --bm-lavender:     #9070B8;
+  --bm-soft-purple:  #C4B1DC;
+  --bm-purple-tint:  #EDE3F5;
+  --bm-lavender-on-dark: #AF94D2; /* für Links/CTAs auf Charcoal */
+
+  --bm-berry:        #B84A6F; /* Accent */
+  --bm-deep-berry:   #8A3050;
+  --bm-dusty-rose:   #D4809A;
+  --bm-rose-tint:    #F5E0E8;
+
+  --bm-teal:         #3A9E97; /* Secondary — Charts, Tech */
+  --bm-deep-teal:    #1D6B66;
+  --bm-soft-teal:    #7EC4BE;
+  --bm-teal-tint:    #E0F2F0;
+
+  --bm-sage:         #7A8B6A; /* Support — Charts */
+  --bm-deep-sage:    #4A5A3C;
+  --bm-soft-sage:    #A8B89A;
+  --bm-sage-tint:    #E2E8DC;
+
+  /* ---------- Neutrals ---------- */
+  --charcoal:    #1C1C1E; /* Foreground Primary */
+  --dark:        #3D3D3A;
+  --mid:         #6B6B65; /* Body secondary */
+  --soft:        #A8A69E;
+  --light:       #918F87; /* Eyebrow color */
+  --off-white:   #F5F1EB; /* ⚠️ DEFAULT BACKGROUND — NEVER use #FFFFFF */
+  --white:       #FFFFFF;
+
+  /* ---------- Surfaces ---------- */
+  --surface-stone:    #E8E5DF; /* Default cards, dividers */
+  --surface-mauve:    #E3E0E8; /* Purple-DNA sections */
+  --surface-sage:     #DDE4E0; /* Tech / Security context */
+  --surface-sand:     #E5E0D8; /* Ventures context */
+  --surface-mid-stone: #C5C0B8;
+  --surface-mid-mauve: #B8B4C0;
+  --surface-mid-sage:  #B0BCB5;
+  --surface-dark:     #333330; /* Dark-section contrast */
+
+  /* ---------- Spacing (4pt scale) ---------- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-30: 120px;
+
+  /* ---------- Radii ---------- */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-2xl:  28px;
+  --radius-pill: 999px; /* ⚠️ Buttons, pills, chips — ALWAYS pill-shape */
+
+  /* ---------- Buttons ---------- */
+  --btn-radius: var(--radius-pill);
+  --btn-h:      44px;
+  --btn-h-sm:   36px;
+  --btn-h-lg:   52px;
+  --btn-px:     28px;
+  --btn-px-sm:  20px;
+  --btn-px-lg:  36px;
+  --btn-weight: 500;
+
+  /* ---------- Shadows (use sparingly) ---------- */
+  --shadow-xs: 0 1px 2px rgba(28,28,30,0.04);
+  --shadow-sm: 0 2px 8px rgba(28,28,30,0.05);
+  --shadow-md: 0 6px 24px rgba(28,28,30,0.08);
+  --shadow-lg: 0 16px 48px rgba(28,28,30,0.12);
+
+  /* ---------- Borders ----------
+     --border-subtle is the default for dividers, outline boxes, table lines.
+     --border-hairline only for very soft inner splits on calm backgrounds.
+     --border-strong for focus rings / active outlines. */
+  --border-hairline: 1px solid rgba(28,28,30,0.06);
+  --border-subtle:   1px solid #C5C0B8;
+  --border-strong:   1.5px solid var(--bm-purple);
+
+  /* ---------- Motion ---------- */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);     /* snappy exits */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);     /* balanced */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);  /* light bounce */
+  --dur-fast:    150ms;
+  --dur-base:    240ms;
+  --dur-slow:    400ms;
+  --dur-atmos:   18s; /* Kasane drift */
+
+  /* ---------- Layout ---------- */
+  --container-max: 1200px;
+  --container-pad: 48px;
+  --grid-gutter:   24px;
+}
+
+/* ============================================================
+   Base reset — conservative; only what's essential.
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0;
+  font: var(--text-body);
+  color: var(--charcoal);
+  background: var(--off-white);
+  text-wrap: pretty;
+}
+a { color: var(--bm-purple); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ============================================================
+   Utility classes — opt-in helpers, not a framework.
+   ============================================================ */
+.bm-container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
+.bm-eyebrow {
+  font: var(--text-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--light);
+}
+.bm-stack > * + * { margin-top: var(--space-4); }
+
+/* ============================================================
+   Buttons — Pill shape. Always.
+   Usage:  <button class="bm-btn bm-btn-primary">Label</button>
+   ============================================================ */
+.bm-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: var(--btn-h); padding: 0 var(--btn-px);
+  border-radius: var(--btn-radius);
+  border: none;
+  font-family: var(--font-body);
+  font-size: 15px; font-weight: var(--btn-weight);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
+  white-space: nowrap;
+}
+.bm-btn:active { transform: translateY(1px); }
+.bm-btn-sm { height: var(--btn-h-sm); padding: 0 var(--btn-px-sm); font-size: 13px; }
+.bm-btn-lg { height: var(--btn-h-lg); padding: 0 var(--btn-px-lg); font-size: 16px; }
+
+.bm-btn-primary { background: var(--charcoal); color: var(--off-white); }
+.bm-btn-primary:hover { background: #000; }
+
+.bm-btn-secondary {
+  background: transparent; color: var(--bm-purple);
+  box-shadow: inset 0 0 0 1.5px var(--bm-purple);
+}
+.bm-btn-secondary:hover { background: var(--bm-purple-tint); }
+
+.bm-btn-ghost { background: transparent; color: var(--charcoal); }
+.bm-btn-ghost:hover { background: var(--surface-stone); }
+
+/* On-dark variants */
+.bm-on-dark .bm-btn-primary { background: var(--off-white); color: var(--charcoal); }
+.bm-on-dark .bm-btn-secondary {
+  color: var(--bm-lavender-on-dark);
+  box-shadow: inset 0 0 0 1.5px var(--bm-lavender-on-dark);
+  background: transparent;
+}
+
+/* Text link */
+.bm-link {
+  color: var(--bm-purple); font-weight: 500; cursor: pointer;
+}
+.bm-on-dark .bm-link { color: var(--bm-lavender-on-dark); }
+
+/* ============================================================
+   Cards
+   ============================================================ */
+.bm-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+}
+.bm-card-surface { background: var(--surface-stone); border: none; box-shadow: none; }
+.bm-card-mauve   { background: var(--surface-mauve); border: none; box-shadow: none; }
+.bm-card-sage    { background: var(--surface-sage); border: none; box-shadow: none; }
+.bm-card-sand    { background: var(--surface-sand); border: none; box-shadow: none; }
+.bm-card-dark    { background: var(--charcoal); color: var(--off-white); border: none; box-shadow: none; }
+
+/* Inline utility: weiße Box mit dezentem Lift (kein hartes Border) */
+.bm-lift {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 1px 2px rgba(28,28,30,0.04), 0 0 0 1px rgba(28,28,30,0.03);
+}
+
+/* ============================================================
+   Badges / Tags — small pills
+   ============================================================ */
+.bm-badge {
+  display: inline-flex; align-items: center;
+  height: 24px; padding: 0 10px;
+  border-radius: var(--radius-pill);
+  font: var(--text-caption); font-weight: 500;
+  background: var(--surface-stone); color: var(--charcoal);
+}
+.bm-badge-purple { background: var(--bm-purple-tint); color: var(--bm-purple); }
+.bm-badge-berry  { background: var(--bm-rose-tint);   color: var(--bm-deep-berry); }
+.bm-badge-teal   { background: var(--bm-teal-tint);   color: var(--bm-deep-teal); }
+.bm-badge-sage   { background: var(--bm-sage-tint);   color: var(--bm-deep-sage); }
+
+/* ============================================================
+   Form inputs
+   ============================================================ */
+.bm-input, .bm-textarea, .bm-select {
+  width: 100%;
+  height: var(--btn-h);
+  padding: 0 var(--space-4);
+  border: var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  font: var(--text-body);
+  color: var(--charcoal);
+  transition: border-color var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+.bm-textarea { height: auto; padding: 12px var(--space-4); min-height: 120px; }
+.bm-input:focus, .bm-textarea:focus, .bm-select:focus {
+  outline: none;
+  border-color: var(--bm-purple);
+  box-shadow: 0 0 0 3px rgba(107,74,148,0.12);
+}
+.bm-label { font: var(--text-small); font-weight: 500; color: var(--charcoal); display: block; margin-bottom: 6px; }
+.bm-help  { font: var(--text-caption); color: var(--mid); margin-top: 6px; }
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

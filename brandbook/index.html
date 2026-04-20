@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bridgemaker — Brandbook v1.0</title>
+<link rel="stylesheet" href="../tokens/tokens.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  body { background: var(--off-white); }
+  @keyframes kasane1 { 0%,100% { transform: translate(0,0) scale(1.1); } 33% { transform: translate(3%,2%) scale(1.12); } 66% { transform: translate(-2%,-1%) scale(1.08); } }
+  @keyframes kasane2 { 0%,100% { transform: translate(0,0) scale(1.1); } 50% { transform: translate(-3%,3%) scale(1.13); } }
+  @keyframes kasane3 { 0%,100% { transform: translate(0,0) scale(1.05); } 40% { transform: translate(2%,-2%) scale(1.07); } 80% { transform: translate(-1%,2%) scale(1.04); } }
+  @media (prefers-reduced-motion: reduce) { .kasane-drift { animation: none !important; } }
+  code { font-family: "JetBrains Mono", Menlo, monospace; }
+</style>
+</head>
+<body>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="data.jsx"></script>
+<script type="text/babel" src="shell.jsx"></script>
+<script type="text/babel" src="section-logo.jsx"></script>
+<script type="text/babel" src="section-type.jsx"></script>
+<script type="text/babel" src="section-colors.jsx"></script>
+<script type="text/babel" src="section-kasane.jsx"></script>
+<script type="text/babel" src="section-components.jsx"></script>
+<script type="text/babel" src="section-patterns.jsx"></script>
+<script type="text/babel" src="section-rules.jsx"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+function Brandbook() {
+  const sections = [
+    { id: "logo", label: "Logo" },
+    { id: "story", label: "Story" },
+    { id: "type", label: "Type" },
+    { id: "display", label: "Display" },
+    { id: "colors", label: "Colors" },
+    { id: "kasane", label: "Kasane" },
+    { id: "components", label: "Components" },
+    { id: "imagery", label: "Imagery" },
+    { id: "slides", label: "Slides" },
+    { id: "landing", label: "Landing" },
+    { id: "voice", label: "Voice" },
+    { id: "spacing", label: "Spacing" },
+    { id: "tokens", label: "Tokens" },
+    { id: "claude", label: "Claude" },
+  ];
+  const [active, setActive] = useState("logo");
+  const jump = (id) => {
+    setActive(id);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  useEffect(() => {
+    const obs = new IntersectionObserver((entries) => {
+      for (const e of entries) if (e.isIntersecting) setActive(e.target.id);
+    }, { rootMargin: "-30% 0px -60% 0px" });
+    sections.forEach(s => { const el = document.getElementById(s.id); if (el) obs.observe(el); });
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <>
+      <BbNav sections={sections} active={active} onJump={jump} />
+      <BbHero />
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px 120px" }}>
+        <BbLogoSection />
+        <BbStorySection />
+        <BbTypeSection />
+        <BbDisplaySection />
+        <BbColorsSection />
+        <BbKasaneSection />
+        <BbComponentsSection />
+        <BbImagerySection />
+        <BbSlidesSection />
+        <BbLandingSection />
+        <BbVoiceSection />
+        <BbSpacingSection />
+        <BbTokensSection />
+        <BbClaudeSection />
+
+        <div style={{ borderTop: "1px solid #C5C0B8", paddingTop: 40, marginTop: 40, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+          <div style={{ font: "var(--text-small)", color: "#918F87" }}>Bridgemaker GmbH · 2026</div>
+          <div style={{ font: "var(--text-small)", color: "#918F87" }}>Brandbook v1.0 · Inter + Inter Display · Pill Buttons · Kasane Gradients</div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<Brandbook />);
+</script>
+</body>
+</html>
