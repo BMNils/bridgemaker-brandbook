@@ -179,7 +179,7 @@ export default function ComponentsPage() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start">
                   <DropdownMenuLabel>Signed in as</DropdownMenuLabel>
-                  <DropdownMenuItem>alex@bridgemaker.com</DropdownMenuItem>
+                  <DropdownMenuItem>name@bridgemaker.com</DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>Profile</DropdownMenuItem>
                   <DropdownMenuItem>Settings</DropdownMenuItem>

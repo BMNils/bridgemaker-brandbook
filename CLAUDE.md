@@ -236,13 +236,13 @@ Negative space is a brand asset. When in doubt, add more.
 
 ---
 
-## 7. Imagery — "Alex"
+## 7. Imagery
 
-Our image concept is called **"Alex"**. Three principles:
+Our image concept rests on three principles:
 
 1. **Character people** — real people with presence and conviction. Not models, not stock-smile. Substance over surface.
-2. **Surprising perspectives** — unusual angles, tight crops, off-center compositions. Never frontal and polite.
-3. **Bold color presence** — "Black & white, but bold in colors." One decisive color accent per image — via styling, light, or grading. The image is otherwise calm.
+2. **Discovering moments even in the ordinary** — the telling detail in an everyday scene. Not staged, not heroic. The image earns attention by what it notices, not by what it arranges.
+3. **Surprising perspectives to achieve the unmatched** — unusual angles, tight crops, off-center compositions. Never frontal and polite.
 
 Execution style: **editorial photography** — documentary, natural light, real working contexts. No stock-photo handshakes, no 3D abstract shapes, no AI-generated illustrations.
 

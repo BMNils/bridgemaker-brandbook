@@ -92,7 +92,7 @@
 - Review-Checkliste für den Creative Director vor Go-Live
 
 **4.3 Imagery-Bibliothek**
-- Kuratierte Alex-Imagery für interne Nutzung
+- Kuratierte Imagery für interne Nutzung
 - Platzhalter-Patterns, wenn noch kein Bild existiert
 
 ---

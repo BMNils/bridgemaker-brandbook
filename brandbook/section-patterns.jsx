@@ -3,15 +3,15 @@
 
 function BbImagerySection() {
   return (
-    <BbSection id="imagery" num="08" title='Imagery — "Alex"'
-      desc='Unser Bildkonzept heißt „Alex". Drei Prinzipien: Character people · Surprising perspectives · Bold color presence. Editorial, documentary, natürliches Licht — kein Stock, keine AI-Illus, keine 3D-Abstractions.'>
+    <BbSection id="imagery" num="08" title="Imagery"
+      desc="Drei Prinzipien: Character people · Discovering moments even in the ordinary · Surprising perspectives to achieve the unmatched. Editorial, documentary, natürliches Licht — kein Stock, keine AI-Illus, keine 3D-Abstractions.">
 
       {/* Three principles */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 32 }}>
         {[
           { t: "Character people", d: "Echte Menschen mit Haltung — keine Stock-Lächler, keine Models. Substanz vor Oberfläche." },
+          { t: "Discovering moments", d: "Das erzählerische Detail im Alltäglichen. Nicht inszeniert, nicht heroisch — aufmerksam." },
           { t: "Surprising perspectives", d: "Ungewöhnliche Winkel, nahe Ausschnitte, off-center Kompositionen. Nie frontal und brav." },
-          { t: "Bold color presence", d: "Black & white, but bold in colors. Ein mutiger Farbakzent pro Bild — über Styling, Licht oder Grading." },
         ].map(p => (
           <div key={p.t} style={{ background: "#fff", borderRadius: 16, padding: 24 }}>
             <div style={{ font: "600 15px/1.3 Inter, sans-serif", letterSpacing: "-0.2px" }}>{p.t}</div>

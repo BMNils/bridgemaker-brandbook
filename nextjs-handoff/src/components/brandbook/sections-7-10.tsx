@@ -66,15 +66,15 @@ export function Section07Components() {
 }
 
 /* ============================================================
-   §08 IMAGERY — "Alex"
+   §08 IMAGERY
    ============================================================ */
 export function Section08Imagery() {
   return (
     <BookSection
       id="imagery"
       num="08"
-      title='Imagery — "Alex"'
-      desc={'Bildkonzept „Alex“. Drei Prinzipien: Character people · Surprising perspectives · Bold color presence. Editorial, documentary, natürliches Licht. Kein Stock, keine AI-Illustrations.'}
+      title="Imagery"
+      desc={'Drei Prinzipien: Character people · Discovering moments even in the ordinary · Surprising perspectives to achieve the unmatched. Editorial, documentary, natürliches Licht. Kein Stock, keine AI-Illustrations.'}
     >
       <div className="grid md:grid-cols-3 gap-4">
         <ImagePlaceholder ratio="3/4" caption="Portrait — off-center, natural light, -10% desat" />

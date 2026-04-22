@@ -210,13 +210,13 @@ Negative space is a brand asset. When in doubt, add more.
 
 ---
 
-## 7. Imagery — "Alex"
+## 7. Imagery
 
 Three principles:
 
 1. **Character people** — real presence, conviction. Not models.
-2. **Surprising perspectives** — unusual angles, tight crops.
-3. **Bold color presence** — one decisive color per image, otherwise calm.
+2. **Discovering moments even in the ordinary** — the telling detail in everyday scenes. Not staged.
+3. **Surprising perspectives to achieve the unmatched** — unusual angles, tight crops, off-center.
 
 ### 7.1 When you don't have the asset
 
