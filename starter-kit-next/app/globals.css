@@ -1,0 +1,28 @@
+/* Brand tokens — single source of truth */
+@import "../../tokens/tokens.css";
+
+/* shadcn semantic bridge — sets --primary, --muted, --border etc. */
+@import "../../tokens/shadcn.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Apply brand canvas + typography */
+  html {
+    font-family: var(--font-body);
+    color: var(--charcoal);
+    background: var(--off-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    text-wrap: pretty;
+  }
+  /* Default display typography above 24px */
+  h1, h2, h3, h4,
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
