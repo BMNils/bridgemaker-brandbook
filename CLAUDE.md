@@ -9,100 +9,11 @@
 
 Every time you begin a Bridgemaker project:
 
-1. **Stack.** Interactive products and internal web apps **must** use **Next.js (App Router) + TypeScript + Tailwind + shadcn/ui** — bootstrap from `starter-kit-next/`. Brandbook examples, slide decks, and static one-pagers may stay vanilla (consume `tokens.css` directly). See the "Stack" section below.
-2. **Load tokens first.** Reference `tokens/tokens.css` (or `tokens/tokens.json` for pure data). Never redefine colors, font sizes, radii, or spacing inline — pull from the tokens.
-3. **Default background is `--off-white` (#F5F1EB)**. Never use pure `#FFFFFF` for a main canvas. Cards and inputs may use white; the page itself must not.
-4. **Inter + Inter Display**. Import from Google Fonts. No other font families without explicit approval.
-5. **Pill buttons only.** `border-radius: 999px`. No rectangles, no `4px` corners.
-6. **If anything is ambiguous — ASK.** Do not improvise brand-critical decisions (tone, headline copy, venture positioning, imagery choice).
-
----
-
-## Stack · Defaults for new interactive projects
-
-Every internal product Bridgemaker builds for itself runs on the same foundation. Consistency of stack = consistency of look & feel + speed to ship.
-
-### Required for every new interactive project
-
-- **Next.js** (App Router, latest stable) — the default framework
-- **TypeScript** (`strict: true`) — no JavaScript in new products
-- **Tailwind CSS** — layout + styling utility layer
-- **shadcn/ui** — component layer
-- **pnpm** — package manager
-- **Node 20+** — runtime
-
-### Token bridges — how the brand reaches the stack
-
-The canonical source of truth is `tokens/tokens.css`. Two thin bridges let Tailwind and shadcn consume it without duplicating values:
-
-- **`tokens/tailwind.preset.ts`** — Tailwind preset that re-exports brand colors, spacing, radii, typography, shadows, and easings as Tailwind theme extensions. Also maps shadcn's semantic colors (`primary`, `secondary`, `muted`, `accent`, `destructive`, `border`, `ring`) to Bridgemaker tokens via HSL triplets, so `bg-primary/50` opacity modifiers work.
-- **`tokens/shadcn.css`** — CSS-variable bridge that sets shadcn's expected variables (`--primary`, `--radius`, etc.) from Bridgemaker tokens. Include once in your app's `globals.css`. Ships with `.bm-on-dark` overrides for dark sections.
-
-In every new project:
-
-```ts
-// tailwind.config.ts
-import preset from "../../tokens/tailwind.preset";
-export default { presets: [preset], content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"] };
-```
-
-```css
-/* app/globals.css */
-@import "../../tokens/tokens.css";
-@import "../../tokens/shadcn.css";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
-**Never define brand colors, spacing, or radii in Tailwind config directly.** If a value is missing, add it to `tokens.css` first — the bridges pick it up automatically.
-
-### shadcn/ui rules
-
-- Run `npx shadcn@latest add <component>` to install a component. `starter-kit-next/` ships with `Button`, `Card`, `Badge`, `Input`, `Label` pre-wired.
-- **The `Button` component in the starter is already pill-shaped** (`rounded-full`) and sized to brand spec (`h-11` default, `h-9` sm, `h-[52px]` lg). Don't override with `rounded-md` etc. unless the user explicitly asks.
-- Button variants map 1:1 to the brand pattern:
-  - `variant="default"` → bm-btn-primary (charcoal on off-white)
-  - `variant="outline"` → bm-btn-secondary (transparent with purple stroke)
-  - `variant="ghost"` → bm-btn-ghost
-- Use `className="bm-on-dark"` on any section with `--charcoal` background. It flips all shadcn semantic colors (primary inverts, muted darkens, ring switches to lavender-on-dark) so nested shadcn components render correctly without per-component overrides.
-
-### Kasane gradients
-
-Ported to `starter-kit-next/components/kasane.tsx` as a typed React component. Signature: `<Kasane variant="dark" | "vibrant" | "light" />`. Respects `prefers-reduced-motion`. Do not regenerate the gradient CSS; use the component.
-
-### When vanilla CSS is acceptable (no Tailwind/shadcn required)
-
-- Brandbook itself (`examples/*.html`, `starter-kit/*.jsx` legacy)
-- Slide decks rendered from `deck.html`
-- Static one-pagers hosted on Cloudflare Pages with no real interactivity
-- Any Figma plugin or tool that runs outside a Next.js build
-
-These artifacts still consume `tokens/tokens.css` directly and use the `bm-btn` / `bm-card` / `bm-badge` utility classes it provides.
-
-### Bootstrap command
-
-```bash
-cp -r starter-kit-next my-new-product
-cd my-new-product
-pnpm install
-pnpm dev
-```
-
-Replace the demo page in `app/page.tsx` with the actual product. The token imports in `globals.css` and `tailwind.config.ts` reference `../../tokens/` relative to the sibling project location — adjust if you move the project outside the brandbook repo (typically to a dedicated repo with the tokens copied in or installed as a local npm package).
-
-### Linting / formatting
-
-Use `eslint-config-next` (already in the starter) and Prettier with default Tailwind plugin ordering. Non-negotiable.
-
-### What not to introduce without an explicit conversation
-
-- Other React frameworks (Remix, Vite+React, Astro)
-- Other styling systems (styled-components, emotion, CSS Modules beyond shadcn's internal use)
-- Other component libraries (MUI, Chakra, Radix naked — shadcn already wraps Radix)
-- Other state libraries unless the app genuinely needs them (prefer server components + URL state first)
-
-If a project has a good reason to deviate (e.g., a pure-static marketing site), bring it up and we'll document the exception.
+1. **Load tokens first.** Reference `tokens/tokens.css` (or `tokens/tokens.json` for pure data). Never redefine colors, font sizes, radii, or spacing inline — pull from the tokens.
+2. **Default background is `--off-white` (#F5F1EB)**. Never use pure `#FFFFFF` for a main canvas. Cards and inputs may use white; the page itself must not.
+3. **Inter + Inter Display**. Import from Google Fonts. No other font families without explicit approval.
+4. **Pill buttons only.** `border-radius: 999px`. No rectangles, no `4px` corners.
+5. **If anything is ambiguous — ASK.** Do not improvise brand-critical decisions (tone, headline copy, venture positioning, imagery choice).
 
 ---
 
