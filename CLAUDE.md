@@ -32,7 +32,7 @@ The Bridgemaker logo is **B—M**. The dash between B and M IS the logo. It repr
 
 > "We are matter-of-fact, but know how to express our emotions. Calm and wise, yet fierce and brave. We go deep — but we are crystal clear."
 
-- **Direct & precise** — no buzzwords, no "synergy", no "leverage", no AI-Geschwätz
+- **Direct & precise** — no buzzwords, no "synergy", no "leverage", **no AI slop** — kein KI-Jargon, keine generierten Floskeln, kein Text der nach Prompt-Output klingt. Sprache muss sich anfühlen, als hätte ein Mensch mit Haltung geschrieben.
 - **Ambitious & visionary** — we're here to build the future, not tweak the present
 - **Pragmatic & craft-oriented** — "we build" is the operative verb
 - **Confident, never arrogant** — state-of-fact, not chest-pounding
@@ -42,13 +42,15 @@ The Bridgemaker logo is **B—M**. The dash between B and M IS the logo. It repr
 
 Primary languages: **German and English, equally weighted.** Pick based on audience; don't mix mid-sentence.
 
+**Operational reference:** For all text work — writing rules, tone levels (Standard / Empathetic / Visionary), risk-word lists, forbidden phrases, side-by-side examples — see [`voice/BM_Voice_Style_Guide_v1.md`](voice/BM_Voice_Style_Guide_v1.md). The brandbook keeps the polarities and dimensions; the Voice Guide carries the operational depth.
+
 ### 1.4 B—M Principles (how we work)
 
 1. **Wirkung vor Aufwand** — Wir rechnen in Ergebnissen. Stunden, Slides und Meetings sind keine Währung für Erfolg.
 2. **Product ist Business** — Eine gute Idee ohne Produkt bleibt Wunschdenken. Business, Produkt und Technologie gehören an einen Tisch.
 3. **Mensch und Maschine** — Was sich wiederholt, wird automatisiert, damit Menschen Zeit für das haben, was nur sie können: Urteilen, Beziehungen aufbauen, Entscheidungen treffen.
 4. **Build–Measure–Learn** — Bauen und Messen schlägt Vermutungen. Unfertig ist akzeptiert. Ungetestet nicht.
-5. **Klarheit** — Kein Jargon, keine Fassade, kein KI-Geschwätz. Unklare Sprache zeigt unklares Denken.
+5. **Klarheit** — Kein Jargon, keine Fassade, kein AI slop. Unklare Sprache zeigt unklares Denken.
 6. **Dein Venture** — Handle wie ein Eigentümer. Entscheiden, umsetzen, Verantwortung für das Ergebnis übernehmen.
 
 Use these principles to guide copy, CTAs, and prioritisation decisions. They are not decorative — they should show up in what we say and how we say it.
@@ -244,7 +246,7 @@ Our image concept rests on three principles:
 2. **Discovering moments even in the ordinary** — the telling detail in an everyday scene. Not staged, not heroic. The image earns attention by what it notices, not by what it arranges.
 3. **Surprising perspectives to achieve the unmatched** — unusual angles, tight crops, off-center compositions. Never frontal and polite.
 
-Execution style: **editorial photography** — documentary, natural light, real working contexts. No stock-photo handshakes, no 3D abstract shapes, no AI-generated illustrations.
+Execution style: **editorial photography** — documentary, natural light, real working contexts. No stock-photo handshakes, no 3D abstract shapes, no AI slop.
 
 ### 7.1 When you don't have the asset
 
@@ -265,9 +267,11 @@ See the brandbook for the exact placeholder pattern.
 ### 7.3 What to avoid
 
 - ❌ Stock photography with visible people pointing at screens
-- ❌ AI-generated illustrations
+- ❌ **AI Slop** — generische AI-Ästhetik, Default-Outputs, AI als Ersatz für kreatives Konzept und Creative Direction
 - ❌ Flat vector characters
 - ❌ Emoji as imagery
+
+✅ **AI-generierte Bilder sind erlaubt**, wenn sie den editorialen Qualitätsstandard erfüllen und vom Creative Director freigegeben wurden. Der Maßstab ist nicht "wurde es von AI gemacht?" — sondern "fühlt es sich an wie Bridgemaker?"
 
 ---
 
@@ -327,6 +331,7 @@ Standard landing-page rhythm (top to bottom):
 - ❌ Use Kasane gradients as generic backgrounds
 - ❌ Invent SVG illustrations
 - ❌ Use emoji as imagery or in headlines
+- ❌ Ship AI slop — default AI aesthetics, generic outputs, AI used to skip the concept work
 - ❌ Use `--bm-purple` text on dark (use `--bm-lavender-on-dark`)
 - ❌ Mix three brand colors at equal weight in one section
 - ❌ Improvise brand tone or headline copy — ask
@@ -348,7 +353,8 @@ Ask before:
 - Choosing an alternative font
 - Adding a new brand color
 - Writing headline copy for external-facing material (nav, hero, CTA)
-- Using imagery (stock, AI, or illustration)
+- Using AI-generated imagery (always needs Creative Director sign-off)
+- Using stock photography or illustration
 - Deviating from pill-button shape
 - Applying Kasane to anything other than a hero/moment section
 - Building for a venture

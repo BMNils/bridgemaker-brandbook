@@ -66,57 +66,103 @@ function BbStorySection() {
 }
 
 function BbVoiceSection() {
+  const polarities = [
+    ["Matter-of-fact", "Emotional"],
+    ["Calm & wise", "Fierce & brave"],
+    ["Black & white", "Bold in colors"],
+    ["Deep", "Crystal clear"],
+  ];
+
+  const dimensions = [
+    { title: "Direkt & präzise", body: "Klarer Satz, klares Verb, klares Subjekt. Kein Jargon, kein KI-Geschwätz." },
+    { title: "Ambitioniert & visionär, mit Substanz", body: "Wir bauen Zukunft. Headlines dürfen groß denken — aber das Versprechen muss tragen." },
+    { title: "Pragmatisch & handwerklich", body: '„Wir bauen" ist das Verb. Substanz vor Oberfläche.' },
+    { title: "Selbstbewusst, nicht arrogant", body: "Matter-of-fact-Ton. Selbstbewusst, nie laut." },
+  ];
+
+  const notWeAre = [
+    { title: "Nicht buzzwordy", body: "Keine austauschbaren Marketingwörter." },
+    { title: "Nicht naiv", body: "Wir kennen die Realität in etablierten Unternehmen." },
+    { title: "Nicht techie", body: "Business kommt zuerst, Technik dient. Wir sind keine Dev-Shop, kein KI-Lab." },
+    { title: "Nicht unverbindlich", body: "Klare Aussagen, keine Konjunktive." },
+    { title: "Nicht reine Umsetzung", body: "Wir verbinden Strategie und Umsetzung." },
+    { title: "Nicht laut", body: "Lautstärke kompensiert fehlende Substanz." },
+  ];
+
   return (
     <BbSection id="voice" num="11" title="Voice & Tone"
       desc='„We are matter-of-fact, but know how to express our emotions. Calm and wise, yet fierce and brave. We go deep — but we are crystal clear."'>
 
-      {/* Duality cards */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 48 }}>
-        {[
-          ["Matter-of-fact", "Emotional"],
-          ["Calm & wise", "Fierce & brave"],
-          ["Black & white", "Bold in colors"],
-          ["Deep", "Crystal clear"],
-        ].map(([a, b]) => (
-          <div key={a} style={{ background: "#fff", borderRadius: 16, padding: 24, textAlign: "center" }}>
-            <div style={{ font: "600 17px/1.3 Inter, sans-serif", color: "#1C1C1E", letterSpacing: "-0.3px" }}>{a}</div>
-            <div style={{ font: "500 11px/1 Inter, sans-serif", color: "#918F87", margin: "10px 0", textTransform: "uppercase", letterSpacing: "0.1em" }}>+</div>
-            <div style={{ font: "600 17px/1.3 Inter, sans-serif", color: "#6B4A94", letterSpacing: "-0.3px" }}>{b}</div>
+      {/* Block 1 — Polaritäten */}
+      <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", color: "#1C1C1E", margin: "0 0 8px" }}>Vier Polaritäten</h3>
+      <p style={{ font: "var(--text-small)", color: "#6B6B65", margin: "0 0 28px", maxWidth: 620, lineHeight: 1.6 }}>
+        Bridgemaker steht nicht an einem Ende eines Spektrums. Wir leben in Spannungen. Jede Polarität hat zwei Pole, die wir gleichzeitig halten.
+      </p>
+      <div style={{ background: "#fff", borderRadius: 20, padding: 40, marginBottom: 56, display: "grid", gap: 18 }}>
+        {polarities.map(([a, b]) => (
+          <div key={a} style={{
+            display: "grid",
+            gridTemplateColumns: "1fr auto 1fr",
+            alignItems: "center",
+            gap: 24,
+          }}>
+            <div style={{ font: "600 22px/1.2 Inter, sans-serif", letterSpacing: "-0.4px", color: "#1C1C1E", textAlign: "right" }}>{a}</div>
+            <div aria-hidden="true" style={{ width: 56, height: 1, background: "#C5C0B8" }} />
+            <div style={{ font: "600 22px/1.2 Inter, sans-serif", letterSpacing: "-0.4px", color: "#1C1C1E", textAlign: "left" }}>{b}</div>
           </div>
         ))}
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 32 }}>
-        {[
-          { title: "Direct & precise", body: "Klarer Satz, klares Verb, klares Subjekt. Kein Jargon, keine Fassade, kein KI-Geschwätz." },
-          { title: "Ambitious & visionary", body: "Wir bauen die Zukunft, nicht das Präsent. Headlines dürfen groß denken." },
-          { title: "Pragmatic & craft-oriented", body: '„We build" ist das operative Verb. Substanz statt Oberfläche.' },
-          { title: "Confident, never arrogant", body: "Statement-of-fact-Ton. Selbstbewusst, nie laut." },
-        ].map(v => (
+      {/* Block 2 — Dimensionen */}
+      <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", color: "#1C1C1E", margin: "0 0 20px" }}>Vier Dimensionen</h3>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 56 }}>
+        {dimensions.map(v => (
           <div key={v.title} style={{ background: "#fff", borderRadius: 16, padding: 28 }}>
-            <div style={{ font: "600 17px/1.3 Inter, sans-serif", letterSpacing: "-0.3px" }}>{v.title}</div>
+            <div style={{ font: "600 17px/1.3 Inter, sans-serif", letterSpacing: "-0.3px", color: "#1C1C1E" }}>{v.title}</div>
             <p style={{ font: "var(--text-small)", color: "#3D3D3A", marginTop: 10, lineHeight: 1.6 }}>{v.body}</p>
           </div>
         ))}
       </div>
 
+      {/* Block 3 — Was wir nicht sind */}
+      <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", color: "#1C1C1E", margin: "0 0 8px" }}>Was wir nicht sind</h3>
+      <p style={{ font: "var(--text-small)", color: "#6B6B65", margin: "0 0 24px", maxWidth: 620, lineHeight: 1.6 }}>
+        Sechs Sätze, die unsere Stimme durch Ausschluss schärfen.
+      </p>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px 28px", marginBottom: 56 }}>
+        {notWeAre.map(n => (
+          <div key={n.title} style={{ paddingTop: 14, borderTop: "1px solid #C5C0B8" }}>
+            <div style={{ font: "600 15px/1.3 Inter, sans-serif", letterSpacing: "-0.2px", color: "#1C1C1E" }}>{n.title}</div>
+            <p style={{ font: "var(--text-small)", color: "#6B6B65", margin: "6px 0 0", lineHeight: 1.55 }}>{n.body}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Block 4 — Do / Don't */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
         <div style={{ background: "#E8E5DF", borderRadius: 16, padding: 32 }}>
-          <div style={{ font: "500 12px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "#4A5A3C" }}>Good</div>
-          <ul style={{ font: "var(--text-small)", color: "#1C1C1E", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.9 }}>
-            <li>„We build ventures that matter."</li>
-            <li>„We go deep — but we are crystal clear."</li>
-            <li>„MVP in 8 Wochen, echte Nutzer in Woche 1."</li>
-            <li>„Wir bauen nicht für, wir bauen mit."</li>
+          <span className="bm-badge bm-badge-teal">Do</span>
+          <ul style={{ font: "var(--text-small)", color: "#1C1C1E", margin: "16px 0 0", paddingLeft: 20, lineHeight: 1.9 }}>
+            <li>„Wir bauen Ventures, die im Markt bestehen."</li>
+            <li>„Vom ersten Workshop bis zum Tag, an dem die Zahlen stimmen."</li>
+            <li>„Faster than traditional consulting."</li>
+            <li>„Innovation ist unser Geschäft."</li>
           </ul>
         </div>
         <div style={{ background: "#F5E0E8", borderRadius: 16, padding: 32 }}>
-          <div style={{ font: "500 12px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "#8A3050" }}>Avoid</div>
-          <ul style={{ font: "var(--text-small)", color: "#1C1C1E", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.9 }}>
-            <li>„We leverage synergies to unlock value."</li>
-            <li>„Disruptive innovation for a better tomorrow."</li>
-            <li>„Unleash your potential with our solutions."</li>
-            <li>„Next-gen AI-powered venture studio 🚀"</li>
+          <span className="bm-badge bm-badge-berry">Don't</span>
+          <ul style={{ font: "var(--text-small)", color: "#1C1C1E", margin: "16px 0 0", paddingLeft: 20, lineHeight: 1.9 }}>
+            <li>„Synergies leveragen"</li>
+            <li>„Disruptive Innovation unlocken"</li>
+            <li>„AI-powered Transformation"</li>
+            <li>
+              „MVP in 8 Wochen"
+              <span style={{ color: "#918F87", font: "400 12px/1.4 Inter, sans-serif", marginLeft: 6 }}>(erfundene Zeitangaben)</span>
+            </li>
+            <li>
+              „Eine innovative Lösung für die Zukunft"
+              <span style={{ color: "#918F87", font: "400 12px/1.4 Inter, sans-serif", marginLeft: 6 }}>(Schmuck-Adjektiv ohne Substanz)</span>
+            </li>
           </ul>
         </div>
       </div>
