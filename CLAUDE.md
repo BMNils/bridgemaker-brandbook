@@ -158,6 +158,10 @@
   wie Bridgemaker?"
 - **Decks:** 1920×1080, min. 24px Text. Cover = Kasane + Display-Titel;
   Layouts s. `guidelines/07 §7.8`.
+- **Print (DIN A4):** `tokens/print-tokens.css` als Layer NACH tokens.css
+  laden. mm/pt statt px · Baseline-Grid 14pt · Großziffer→Headline 18mm,
+  Eyebrow→Headline 12mm · Hairlines 0.4pt statt 1px · Print-Kasane mit
+  +15 % Sättigung (Naturpapier). Regeln: `guidelines/07 §7.9`.
 - **Ventures haben eigene Marken** — Bridgemaker-Identität nie ohne
   CD-Freigabe für Ventures nutzen.
 

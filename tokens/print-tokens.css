@@ -1,0 +1,524 @@
+/* ============================================================
+   Bridgemaker Print Tokens — v1.0 · 2026
+   Layer auf tokens.css (v2.0). Lädt NACH tokens.css.
+
+   Gilt für: DIN A4 Hochformat (Broschüren, Bookazines, Reports).
+   Einheiten: Format & Spacing in mm. Typografie in pt.
+   Validiert am Bookazine v1 (Druck: Pinguin Druck Berlin, 2026).
+   Regeln: guidelines/07-product-patterns.md §7.9.
+
+   Ladefolge:
+     <link rel="stylesheet" href="tokens.css" />
+     <link rel="stylesheet" href="print-tokens.css" />
+
+   Die zwei wichtigsten Regeln, weil sie das häufigste Problem
+   im Print sind:
+     1. Großziffer → Headline:   --pp-gap-numeral-head (18mm)
+     2. Eyebrow → Headline:      --pp-gap-eyebrow-head (12mm)
+   ============================================================ */
+
+:root {
+  /* ---------- Format · DIN A4 portrait ---------- */
+  --pp-page-w: 210mm;
+  --pp-page-h: 297mm;
+  --pp-bleed:  3mm;     /* Beschnitt rundum */
+
+  /* Satzspiegel — symmetrisch (modern, Magazin) */
+  --pp-margin-x:      16mm;   /* links = rechts */
+  --pp-margin-top:    14mm;   /* Running Header sitzt hier */
+  --pp-margin-bottom: 18mm;   /* Folio + Footer-Atem */
+
+  /* Effektive Satzbreite/-höhe */
+  --pp-live-w: 178mm;   /* 210 - 2×16 */
+  --pp-live-h: 265mm;   /* 297 - 14 - 18 */
+
+  /* ---------- Spaltenraster · 12 columns ---------- */
+  --pp-cols:      12;
+  --pp-gutter:    4mm;
+  --pp-col-w:     11.16mm;   /* (178 - 11×4) / 12 — informativ */
+
+  /* ---------- Baseline-Grid ----------
+     14pt vertikaler Takt. Body 10/14 sitzt exakt.
+     Headlines dürfen pragmatisch brechen.            */
+  --pp-baseline: 14pt;       /* ≈ 4.94mm */
+
+  /* ---------- Print-Type-Scale (pt) ---------- */
+
+  /* Großziffer · die "I/II/III/01/02/03" auf Openern.
+     Eigener Block — KEIN Teil des Headline-Stacks.  */
+  --pp-text-numeral: 400 220pt/0.9 var(--font-display);
+
+  /* Cover · einmalig pro Werk */
+  --pp-text-display-xl: 400 96pt/0.95 var(--font-display);
+
+  /* Opener-Titel · Teil/Modell */
+  --pp-text-display-l:  500 72pt/0.95 var(--font-display);
+
+  /* Großer Modul-Titel */
+  --pp-text-display:    500 56pt/1.02 var(--font-display);
+
+  /* Editorial-Hierarchie */
+  --pp-text-h1:         600 36pt/1.12 var(--font-display);
+  --pp-text-h2:         600 24pt/1.20 var(--font-display);
+  --pp-text-h3:         500 16pt/1.30 var(--font-display);
+  --pp-text-h4:         500 12pt/1.35 var(--font-display);
+
+  /* Body & UI */
+  --pp-text-lead:       400 13pt/18pt var(--font-sans);
+  --pp-text-body:       400 10pt/14pt var(--font-sans);
+  --pp-text-small:      400 9pt/14pt var(--font-sans);
+  --pp-text-caption:    400 8pt/12pt var(--font-sans);
+
+  /* Eyebrow · UPPERCASE · Tracking */
+  --pp-text-eyebrow:    500 8pt/12pt var(--font-sans);
+  --pp-track-eyebrow:   0.12em;
+
+  /* Folio / Running header */
+  --pp-text-folio:      500 9pt/14pt var(--font-mono);
+
+  /* KPI-Zahl (große Stat-Werte in Tiles) */
+  --pp-text-stat:       500 32pt/1.0 var(--font-display);
+
+  /* Tracking-Korrekturen für Großgrade */
+  --pp-track-numeral:   -8pt;
+  --pp-track-display-xl: -4pt;
+  --pp-track-display-l:  -3pt;
+  --pp-track-display:    -2pt;
+  --pp-track-h1:         -1.2pt;
+  --pp-track-h2:         -0.7pt;
+
+  /* ---------- Spacing-Scale (mm) ---------- */
+  --pp-1: 2mm;
+  --pp-2: 4mm;
+  --pp-3: 6mm;
+  --pp-4: 8mm;
+  --pp-5: 12mm;
+  --pp-6: 16mm;
+  --pp-7: 22mm;
+  --pp-8: 28mm;
+  --pp-9: 36mm;
+
+  /* ---------- Relationale Gap-Tokens ----------
+     Wichtig genug, eigene Namen zu bekommen.       */
+  --pp-gap-eyebrow-head:  12mm;   /* Eyebrow → Headline */
+  --pp-gap-head-body:      7mm;   /* Headline → Body/Lead */
+  --pp-gap-numeral-head:  18mm;   /* Großziffer → Headline ⚠ */
+  --pp-gap-module:        14mm;   /* Modul → Modul */
+  --pp-gap-section:       22mm;   /* Sektion → Sektion */
+
+  /* ---------- Borders für Print ----------
+     Im Print ruhiger als auf Bildschirm. Hairline-Wert
+     ist physisch 0.4pt, nicht 1px.                 */
+  --pp-rule-hair:    0.4pt solid #C5C0B8;
+  --pp-rule-default: 0.6pt solid #C5C0B8;
+  --pp-rule-strong:  1pt solid var(--bm-purple);
+  --pp-rule-charcoal: 0.6pt solid var(--charcoal);
+}
+
+/* ============================================================
+   Print-Setup · @page + Body-Verhalten
+   ============================================================ */
+@page {
+  size: A4;
+  margin: 0;          /* Margins sitzen am .pp-page-Element */
+}
+
+@media print {
+  html, body {
+    background: var(--white);
+    margin: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .pp-page {
+    box-shadow: none !important;
+    margin: 0 !important;
+    page-break-after: always;
+    break-after: page;
+  }
+  .pp-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+}
+
+/* ============================================================
+   Basis-Klassen · Seitenkonstruktion
+   ============================================================ */
+
+/* Eine A4-Seite mit Satzspiegel */
+.pp-page {
+  width: var(--pp-page-w);
+  height: var(--pp-page-h);
+  padding: var(--pp-margin-top) var(--pp-margin-x) var(--pp-margin-bottom);
+  background: var(--off-white);
+  position: relative;
+  overflow: hidden;
+  color: var(--charcoal);
+  font: var(--pp-text-body);
+  letter-spacing: 0;
+}
+
+/* Vollflächige Seite (Cover, Section-Opener, Pull-Quote) — kein Padding */
+.pp-page-bleed {
+  padding: 0;
+}
+
+/* Dunkle Seite */
+.pp-page-dark {
+  background: var(--charcoal);
+  color: var(--off-white);
+}
+
+/* Inhaltsbereich innerhalb Bleed-Seite — mit Margins */
+.pp-bleed-inset {
+  position: absolute;
+  inset: var(--pp-margin-top) var(--pp-margin-x) var(--pp-margin-bottom);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Running Header & Folio ---------- */
+.pp-runhead {
+  position: absolute;
+  top: var(--pp-margin-top);
+  left: var(--pp-margin-x);
+  right: var(--pp-margin-x);
+  font: var(--pp-text-folio);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mid);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8mm;
+  white-space: nowrap;
+}
+.pp-runhead > * { white-space: nowrap; }
+.pp-page-dark .pp-runhead { color: var(--soft); }
+.pp-runhead-left  { display: flex; gap: 12mm; align-items: baseline; }
+.pp-runhead-mark img { display: block; height: 3mm; width: auto; }
+.pp-runhead-rule {
+  position: absolute;
+  top: calc(var(--pp-margin-top) + 8mm);
+  left: var(--pp-margin-x);
+  right: var(--pp-margin-x);
+  height: 0;
+  border-top: var(--pp-rule-hair);
+}
+
+/* Hauptinhalt — startet UNTER Running Header */
+.pp-body {
+  margin-top: 14mm;       /* Abstand zur Header-Linie */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ---------- Grid · 12-col ---------- */
+.pp-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--pp-cols), 1fr);
+  column-gap: var(--pp-gutter);
+}
+/* Span via grid-column-end damit ein Inline `grid-column-start: N`
+   das Span nicht überschreibt. */
+.pp-col-2  { grid-column-end: span 2; }
+.pp-col-3  { grid-column-end: span 3; }
+.pp-col-4  { grid-column-end: span 4; }
+.pp-col-5  { grid-column-end: span 5; }
+.pp-col-6  { grid-column-end: span 6; }
+.pp-col-7  { grid-column-end: span 7; }
+.pp-col-8  { grid-column-end: span 8; }
+.pp-col-9  { grid-column-end: span 9; }
+.pp-col-10 { grid-column-end: span 10; }
+.pp-col-12 { grid-column-end: span 12; }
+
+/* ============================================================
+   Typografische Klassen
+   ============================================================ */
+.pp-eyebrow {
+  font: var(--pp-text-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--pp-track-eyebrow);
+  color: var(--light);
+  margin: 0;
+}
+.pp-page-dark .pp-eyebrow { color: var(--soft); }
+
+.pp-numeral {
+  font: var(--pp-text-numeral);
+  letter-spacing: var(--pp-track-numeral);
+  margin: 0;
+  display: block;
+}
+
+.pp-display-xl { font: var(--pp-text-display-xl); letter-spacing: var(--pp-track-display-xl); margin: 0; }
+.pp-display-l  { font: var(--pp-text-display-l);  letter-spacing: var(--pp-track-display-l);  margin: 0; }
+.pp-display    { font: var(--pp-text-display);    letter-spacing: var(--pp-track-display);    margin: 0; }
+.pp-h1         { font: var(--pp-text-h1); letter-spacing: var(--pp-track-h1); margin: 0; }
+.pp-h2         { font: var(--pp-text-h2); letter-spacing: var(--pp-track-h2); margin: 0; }
+.pp-h3         { font: var(--pp-text-h3); margin: 0; }
+.pp-h4         { font: var(--pp-text-h4); margin: 0; }
+.pp-lead       { font: var(--pp-text-lead);    color: var(--charcoal); margin: 0; text-wrap: pretty; max-width: 120mm; }
+.pp-page-dark .pp-lead { color: var(--off-white); }
+.pp-body-p     { font: var(--pp-text-body);    color: var(--charcoal); margin: 0; hyphens: auto; -webkit-hyphens: auto; text-wrap: pretty; }
+.pp-body-p + .pp-body-p { margin-top: var(--pp-baseline); }   /* exakt 1 Baseline-Schritt */
+.pp-body-p a, .pp-body-p .nohyphen,
+.pp-body-p code, .pp-body-p span[class*="nohyphen"] {
+  hyphens: none; -webkit-hyphens: none; word-break: keep-all;
+}
+.pp-small      { font: var(--pp-text-small);   color: var(--mid); margin: 0; }
+.pp-caption    { font: var(--pp-text-caption); color: var(--mid); margin: 0; }
+
+/* Optical Drop-Cap-Klasse (optional, z.B. Vorwort) */
+.pp-dropcap::first-letter {
+  font-family: var(--font-display);
+  font-weight: 500;
+  float: left;
+  font-size: 56pt;
+  line-height: 0.85;
+  margin: 4pt 8pt 0 0;
+}
+
+/* ============================================================
+   Module
+   ============================================================ */
+
+/* ---------- Großziffer-Block ----------
+   Ziffer steht für sich. Darunter Atem. Erst dann Headline. */
+.pp-numeral-block {
+  display: block;
+}
+.pp-numeral-block + .pp-eyebrow,
+.pp-numeral-block + .pp-display-l,
+.pp-numeral-block + .pp-display {
+  margin-top: var(--pp-gap-numeral-head);
+}
+
+/* Eyebrow → Headline gap (universell) */
+.pp-eyebrow + .pp-h1,
+.pp-eyebrow + .pp-h2,
+.pp-eyebrow + .pp-display,
+.pp-eyebrow + .pp-display-l,
+.pp-eyebrow + .pp-display-xl {
+  margin-top: var(--pp-gap-eyebrow-head);
+}
+
+/* Headline → Lead/Body gap */
+.pp-h1 + .pp-lead,
+.pp-h2 + .pp-lead,
+.pp-display + .pp-lead,
+.pp-display-l + .pp-lead,
+.pp-h1 + .pp-body-p,
+.pp-h2 + .pp-body-p {
+  margin-top: var(--pp-gap-head-body);
+}
+
+/* ---------- TOC ---------- */
+.pp-toc-section {
+  margin-top: var(--pp-4);          /* Atem vor Teil — 8mm */
+  padding-bottom: var(--pp-2);
+  border-bottom: var(--pp-rule-default);
+}
+.pp-toc-section:first-of-type { margin-top: var(--pp-3); }
+.pp-toc-section .pp-eyebrow { color: var(--bm-purple); }
+.pp-toc-row {
+  display: grid;
+  grid-template-columns: 38mm 1fr 14mm;
+  align-items: baseline;
+  column-gap: var(--pp-gutter);
+  padding: 3mm 0;                   /* ~8mm Reihenhöhe — sitzt sauber */
+  border-bottom: var(--pp-rule-hair);
+}
+.pp-toc-row:last-child { border-bottom: none; }
+.pp-toc-kap   { font: var(--pp-text-small); font-family: var(--font-mono); color: var(--mid); text-transform: none; }
+.pp-toc-title { font: 500 12pt/1.3 var(--font-display); color: var(--charcoal); letter-spacing: -0.2pt; }
+.pp-toc-pg    { font: var(--pp-text-folio); color: var(--mid); text-align: right; letter-spacing: 0.05em; }
+
+/* ---------- Business Model Canvas ---------- */
+.pp-bmc {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: minmax(38mm, auto);
+  gap: 3mm;
+}
+.pp-bmc-cell {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 5mm 6mm;
+  display: flex;
+  flex-direction: column;
+  gap: 3mm;
+}
+.pp-bmc-cell .pp-eyebrow { color: var(--bm-purple); }
+.pp-bmc-cell .pp-body-p { font-size: 9pt; line-height: 13pt; }
+.pp-bmc-vp     { grid-column: span 3; grid-row: span 2; background: var(--surface-mauve); }
+.pp-bmc-customer { grid-column: span 3; }
+.pp-bmc-channels { grid-column: span 3; }
+.pp-bmc-revenue  { grid-column: span 3; }
+.pp-bmc-cost     { grid-column: span 3; }
+.pp-bmc-key      { grid-column: span 6; background: var(--surface-stone); }
+
+/* ---------- KPI-Tile ----------
+   Bewusst zwei visuelle Blöcke:
+   1) Große Stat-Zahl
+   2) Label + Desc als enge Einheit
+   Konsistenter fester Abstand dazwischen, egal wie viel Desc.   */
+.pp-kpi {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 5mm 6mm;
+  display: flex;
+  flex-direction: column;
+}
+.pp-kpi-stat { font: var(--pp-text-stat); letter-spacing: -1pt; color: var(--bm-purple); margin: 0 0 7mm; }
+.pp-kpi-label { font: 500 9pt/13pt var(--font-display); color: var(--charcoal); text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 2mm; }
+.pp-kpi-desc  { font: var(--pp-text-caption); color: var(--mid); margin: 0; }
+
+/* ---------- Starter-Tabelle (4 Wochen) ---------- */
+.pp-starter-row {
+  display: grid;
+  grid-template-columns: 56mm 1fr;
+  column-gap: var(--pp-gutter);
+  padding: 3mm 0;
+  border-top: var(--pp-rule-default);
+}
+.pp-starter-row:last-child { border-bottom: var(--pp-rule-default); }
+.pp-starter-week .pp-eyebrow { color: var(--bm-purple); display: block; margin-bottom: 2mm; }
+.pp-starter-week-num { font: 500 18pt/1.05 var(--font-display); letter-spacing: -0.5pt; color: var(--charcoal); max-width: 50mm; }
+.pp-starter-body h4 { font: var(--pp-text-h4); margin: 0 0 2.5mm; color: var(--charcoal); }
+.pp-starter-body ul { margin: 0; padding: 0; list-style: none; }
+.pp-starter-body li { font: var(--pp-text-body); color: var(--charcoal); padding-left: 6mm; text-indent: -6mm; }
+.pp-starter-body li + li { margin-top: 1mm; }
+.pp-li-mark {
+  color: var(--bm-purple);
+  font-weight: 400;
+  display: inline-block;
+  width: 6mm;
+  text-indent: 0;
+}
+
+/* ---------- Hinweis-Kasten (Faustregel, KPI-Logik) ---------- */
+.pp-callout {
+  margin-top: var(--pp-5);
+  padding: 6mm 7mm;
+  border-radius: var(--radius-lg);
+  background: var(--surface-mauve);
+}
+.pp-callout .pp-eyebrow { color: var(--bm-purple); margin-bottom: 3mm; }
+.pp-callout p { font: var(--pp-text-body); color: var(--charcoal); margin: 0; }
+
+/* ---------- Bild-/Visual-Platzhalter ---------- */
+.pp-placeholder {
+  position: relative;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      var(--surface-stone) 0 6mm,
+      var(--surface-mid-stone) 6mm 12mm
+    );
+  border-radius: 0;
+  overflow: hidden;
+}
+.pp-placeholder::after {
+  content: attr(data-caption);
+  position: absolute;
+  left: 5mm; bottom: 5mm;
+  font: 500 9pt/14pt var(--font-mono);
+  color: var(--charcoal);
+  background: var(--off-white);
+  padding: 2mm 4mm;
+  letter-spacing: 0;
+}
+
+/* ============================================================
+   Kasane (Print-Varianten — kompatibel zum Brandbook)
+   ============================================================ */
+.pp-kasane-dark {
+  /* Sättigung +15% gegen Naturpapier-Dämpfung */
+  background:
+    radial-gradient(ellipse 90% 70% at 25% 30%, rgba(125, 80, 180, 0.68), transparent 60%),
+    radial-gradient(ellipse 70% 60% at 80% 70%, rgba(210, 55, 115, 0.58), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 50% 90%, rgba( 25, 180, 165, 0.52), transparent 60%),
+    var(--charcoal);
+  color: var(--off-white);
+}
+.pp-kasane-vibrant {
+  /* Sättigung +15% gegen Naturpapier-Dämpfung */
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 25%, rgba( 14, 180, 168, 0.68), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 25% 80%, rgba(210,  40, 108, 0.58), transparent 60%),
+    linear-gradient(135deg, #2F1B5A 0%, #5E3D9B 35%, #C82D6B 65%, #14B5A6 100%);
+  color: var(--off-white);
+}
+.pp-kasane-light {
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 30%, rgba(107,74,148,0.18), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(184,74,111,0.14), transparent 60%),
+    var(--off-white);
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+.pp-stack-2 > * + * { margin-top: var(--pp-2); }
+.pp-stack-3 > * + * { margin-top: var(--pp-3); }
+.pp-stack-4 > * + * { margin-top: var(--pp-4); }
+.pp-stack-5 > * + * { margin-top: var(--pp-5); }
+.pp-stack-6 > * + * { margin-top: var(--pp-6); }
+.pp-rule { border: 0; border-top: var(--pp-rule-default); height: 0; margin: 0; }
+.pp-rule-hair { border: 0; border-top: var(--pp-rule-hair); height: 0; margin: 0; }
+.pp-spacer-2 { height: var(--pp-2); }
+.pp-spacer-4 { height: var(--pp-4); }
+.pp-spacer-6 { height: var(--pp-6); }
+.pp-flex-1 { flex: 1; }
+.pp-center { text-align: center; }
+.pp-mt-0 { margin-top: 0 !important; }
+
+/* ============================================================
+   BLEED-MODUS · 2mm Anschnitt rundum (Pinguin Druck Berlin)
+   ------------------------------------------------------------
+   Aktiv durch <html class="bleed"> — wird vom PDF-Builder gesetzt.
+   - MediaBox  214 × 301mm  (.pp-page wird größer)
+   - TrimBox   210 × 297mm  (wird vom Builder per pdf-lib gesetzt)
+   - Backgrounds auf .pp-page (Charcoal, Kasane, Gradients) bluten
+     dadurch automatisch in den Anschnitt.
+   - Alle absolut positionierten Elemente (Runhead, Folio, Bleed-Inset)
+     werden um 2mm nach innen gerückt, damit der Satzspiegel relativ
+     zum Endformat unverändert bleibt.
+   ============================================================ */
+:root.bleed {
+  --pp-bleed-edge: 2mm;
+}
+:root.bleed .pp-page {
+  width:  calc(var(--pp-page-w) + 2 * var(--pp-bleed-edge));
+  height: calc(var(--pp-page-h) + 2 * var(--pp-bleed-edge));
+  padding:
+    calc(var(--pp-margin-top)    + var(--pp-bleed-edge))
+    calc(var(--pp-margin-x)      + var(--pp-bleed-edge))
+    calc(var(--pp-margin-bottom) + var(--pp-bleed-edge));
+}
+:root.bleed .pp-page-bleed { padding: 0; }
+:root.bleed .pp-bleed-inset {
+  inset:
+    calc(var(--pp-margin-top)    + var(--pp-bleed-edge))
+    calc(var(--pp-margin-x)      + var(--pp-bleed-edge))
+    calc(var(--pp-margin-bottom) + var(--pp-bleed-edge));
+}
+:root.bleed .pp-runhead {
+  top:   calc(var(--pp-margin-top) + var(--pp-bleed-edge));
+  left:  calc(var(--pp-margin-x)   + var(--pp-bleed-edge));
+  right: calc(var(--pp-margin-x)   + var(--pp-bleed-edge));
+}
+:root.bleed .pp-runhead-rule {
+  top:   calc(var(--pp-margin-top) + 8mm + var(--pp-bleed-edge));
+  left:  calc(var(--pp-margin-x)   + var(--pp-bleed-edge));
+  right: calc(var(--pp-margin-x)   + var(--pp-bleed-edge));
+}
+:root.bleed .pp-folio {
+  bottom: calc(8mm + var(--pp-bleed-edge));
+  left:   calc(var(--pp-margin-x) + var(--pp-bleed-edge));
+  right:  calc(var(--pp-margin-x) + var(--pp-bleed-edge));
+}

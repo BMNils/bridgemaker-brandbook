@@ -139,7 +139,44 @@ Heroes und Cover-Slides.
   Visual oder 1/2-Split) · **Zitat** (großes kursives Zitat, Attribution
   im Eyebrow-Stil) · **Schluss-Slide** (Claim + Kontakt, dunkles Kasane).
 
-## 7.9 Venture-Projekte
+## 7.9 Print-Publikationen (DIN A4)
+
+Für gedruckte Broschüren, Bookazines und Reports gilt ein eigener
+Token-Layer: **`tokens/print-tokens.css`**, geladen NACH `tokens.css`.
+Validiert am Bookazine v1 (Druck: Pinguin Druck Berlin, 2026).
+
+- **Format:** DIN A4 Hochformat (210×297mm). Einheiten: Format und
+  Spacing in **mm**, Typografie in **pt** — nie px im Print.
+- **Satzspiegel:** symmetrisch, 16mm links/rechts, 14mm oben (Running
+  Header), 18mm unten (Folio). Satzbreite 178mm, 12-Spalten-Raster mit
+  4mm Gutter (`.pp-grid` + `.pp-col-*`).
+- **Baseline-Grid:** 14pt vertikaler Takt; Body 10pt/14pt sitzt exakt
+  darauf, Absatzabstand = genau eine Baseline. Headlines dürfen
+  pragmatisch brechen.
+- **Print-Type-Scale** in pt (`--pp-text-*`): Numeral 220pt (Großziffer
+  auf Openern, eigener Block) · Display-XL 96pt (Cover, einmal pro
+  Werk) · Display-L 72pt · Display 56pt · H1 36pt · H2 24pt · H3 16pt ·
+  H4 12pt · Lead 13pt · Body 10pt · Small 9pt · Caption 8pt · Eyebrow
+  8pt Versalien. Tracking-Korrekturen für Großgrade in pt.
+- **Die zwei wichtigsten Abstände** (häufigster Print-Fehler):
+  Großziffer → Headline **18mm** (`--pp-gap-numeral-head`) und
+  Eyebrow → Headline **12mm** (`--pp-gap-eyebrow-head`).
+- **Linien sind physisch:** Hairline = **0.4pt**, Standard 0.6pt —
+  nicht 1px. Im Print ruhiger als am Bildschirm.
+- **Kasane im Druck:** eigene Print-Varianten (`.pp-kasane-dark/
+  -vibrant/-light`) mit **+15 % Sättigung** gegen die Dämpfung von
+  Naturpapier. Nicht die Bildschirm-Rezepte unverändert drucken.
+- **Beschnitt:** 2mm Anschnitt rundum über den Bleed-Modus
+  (`<html class="bleed">`, gesetzt vom PDF-Builder; MediaBox 214×301mm,
+  TrimBox 210×297mm). Hintergründe auf `.pp-page` bluten automatisch;
+  der Satzspiegel bleibt relativ zum Endformat unverändert.
+- **Seitenkonstruktion:** jede Seite ist ein `.pp-page`-Element
+  (`@page { size: A4; margin: 0 }`); Varianten `.pp-page-bleed`
+  (vollflächig, z. B. Cover/Opener) und `.pp-page-dark`. Running
+  Header + Folio in Mono-Versalien, Platzhalter wie am Bildschirm
+  gestreift mit Monospace-Caption.
+
+## 7.10 Venture-Projekte
 
 **Venture-Marken sind eigenständig definiert.** Bridgemakers visuelle
 Identität nicht ohne ausdrückliche Freigabe des Creative Directors für
