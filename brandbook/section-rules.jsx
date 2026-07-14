@@ -65,7 +65,7 @@ function BbStorySection() {
         <div style={{ font: "500 11px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.1em", color: "#918F87", marginBottom: 16 }}>
           Das Logo als Idee
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 32, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 96, flexWrap: "wrap" }}>
           <div style={{ font: "600 88px/0.9 Inter, sans-serif", letterSpacing: "-3px", color: "#1C1C1E" }}>B—M</div>
           <div style={{ flex: 1, minWidth: 280 }}>
             <p style={{ font: "400 17px/1.55 Inter, sans-serif", color: "#1C1C1E", margin: 0, maxWidth: 580 }}>
