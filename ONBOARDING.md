@@ -52,6 +52,14 @@ npm run dev        # → http://localhost:3000
 - Marketing-Flächen (Landingpages, Decks) sind Bridgemaker-Eigenbau —
   kein MD3.
 
+## Anleitungen für konkrete Anwendungsfälle
+
+Schritt für Schritt, mit fertigem Start-Prompt zum Copy-pasten:
+
+- **[Slides bauen (HTML-Präsentationen)](howto/slides.md)** — vom
+  Klonen bis zur fertigen Präsentation im Bridgemaker-Look.
+- Dashboards · Apps · Interfaces · Landingpages — Anleitungen folgen.
+
 ---
 
 ## Was gerade Work in progress ist
@@ -68,6 +76,7 @@ npm run dev        # → http://localhost:3000
 ```
 guidelines/      ← KANON — jede Regel lebt genau einmal hier
 tokens/          ← alle Werte: tokens.css, tokens.json, print-tokens.css
+howto/           ← Schritt-für-Schritt-Anleitungen mit Start-Prompts
 CLAUDE.md        ← Destillat für KI-Arbeit
 brandbook/       ← das visuelle Brandbook (HTML-Ansicht)
 starter-kit/     ← Next.js + MD3 Referenz-Code
