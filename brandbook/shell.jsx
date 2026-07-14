@@ -31,7 +31,9 @@ function BbNav({ sections, active, onJump }) {
     }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" style={{ height: 20, display: "block" }} />
+          <a href="../index.html" aria-label="Zur Brand-System-Übersicht">
+            <img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" style={{ height: 20, display: "block" }} />
+          </a>
         </div>
 
         <div data-bb-nav style={{ position: "relative" }}>
