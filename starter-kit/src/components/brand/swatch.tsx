@@ -35,7 +35,7 @@ export function Swatch({
     <button
       onClick={handleCopy}
       className={cn(
-        "group relative flex flex-col items-stretch text-left rounded-[16px] overflow-hidden cursor-pointer transition-transform duration-150 hover:-translate-y-0.5",
+        "group relative flex flex-col items-stretch text-left rounded-lg overflow-hidden cursor-pointer transition-transform duration-150 hover:-translate-y-0.5",
         className,
       )}
       aria-label={`Copy ${hex}`}
@@ -54,7 +54,7 @@ export function Swatch({
           {copied ? "Copied" : hex}
         </span>
       </div>
-      <div className="bg-white p-4 border border-t-0 border-[rgba(28,28,30,0.06)] rounded-b-[16px]">
+      <div className="bg-white p-4 border border-t-0 border-border-hairline rounded-b-lg">
         <div className="text-[15px] font-medium text-charcoal">{name}</div>
         <div className="font-mono text-[12px] text-mid mt-0.5">{hex}</div>
         {token && (

@@ -3,11 +3,12 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Wordmark } from "@/components/brand/wordmark";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 /**
- * Sticky top-nav — 60px tall, 55% off-white, 16px backdrop blur (§5.5 CLAUDE.md).
+ * Header — fix, 64px, transparent → blur-solid beim Scrollen
+ * (guidelines/07 §7.5). Wortmarke 20px; Nav-CTA als Charcoal-Pill.
+ * Frost über Tailwind-Utilities am Element (Handwerks-Falle 1).
  */
 export function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -22,34 +23,34 @@ export function SiteNav() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 h-[60px] flex items-center transition-[background,border] duration-200",
+        "fixed inset-x-0 top-0 z-40 flex h-16 items-center transition-[background-color,border-color] duration-200",
         scrolled
-          ? "bg-off-white/80 backdrop-blur-[16px] border-b border-[rgba(28,28,30,0.06)]"
-          : "bg-transparent border-b border-transparent",
+          ? "border-b border-border-hairline bg-white/30 backdrop-blur-xl backdrop-saturate-150"
+          : "border-b border-transparent bg-transparent",
       )}
     >
-      <div className="w-full max-w-[1200px] mx-auto px-12 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
-          <Wordmark size="sm" />
+      <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between px-4 md:px-8">
+        <Link href="/" className="flex items-center" aria-label="Startseite">
+          <Wordmark height={20} />
         </Link>
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden items-center gap-8 md:flex">
           {[
-            { href: "/", label: "Brandbook" },
-            { href: "/components", label: "Components" },
-            { href: "/landing-demo", label: "Landing Demo" },
+            { href: "/", label: "Start" },
+            { href: "/components", label: "Komponenten" },
+            { href: "/landing-demo", label: "Landing-Demo" },
           ].map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-[14px] text-charcoal hover:text-bm-purple transition-colors"
+              className="type-nav text-charcoal transition-colors hover:text-bm-purple"
             >
               {item.label}
             </Link>
           ))}
         </nav>
-        <Button asChild size="sm" variant="primary">
-          <Link href="/">Zum Brandbook</Link>
-        </Button>
+        <Link href="/components" className="bm-btn bm-btn-primary bm-btn-sm">
+          Komponenten ansehen
+        </Link>
       </div>
     </header>
   );

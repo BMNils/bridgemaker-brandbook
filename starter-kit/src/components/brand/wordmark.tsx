@@ -1,73 +1,56 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Bridgemaker Wordmark — "B—M".
- * The em-dash IS the logo. It represents the direct connection between
- * two worlds (Corporate ↔ Startup). See CLAUDE.md §1.2.
+ * Bridgemaker Wortmarke — als SVG-Asset, nie handgecodet.
+ * Der Gedankenstrich in der Wortmarke IST das Logo: die direkte
+ * Verbindung zweier Welten (Corporate ↔ Startup). guidelines/01.
  *
- * size: xs (16px) · sm (20px) · md (28px, default) · lg (44px) · xl (72px)
+ * Header-Regel: Wortmarke immer, 20px hoch im 64px-Header;
+ * weiße Variante auf Dunkel.
  */
 export function Wordmark({
-  size = "md",
-  className,
+  height = 20,
   onDark = false,
+  className,
 }: {
-  size?: "xs" | "sm" | "md" | "lg" | "xl";
-  className?: string;
+  /** Höhe in px — 20 im Header, größer nur in Hero-/Deck-Kontexten. */
+  height?: number;
   onDark?: boolean;
+  className?: string;
 }) {
-  const sizes = {
-    xs: "text-[16px]",
-    sm: "text-[20px]",
-    md: "text-[28px]",
-    lg: "text-[44px]",
-    xl: "text-[72px]",
-  } as const;
-
   return (
-    <span
-      className={cn(
-        "inline-flex items-center font-display font-semibold tracking-[-0.04em] select-none",
-        sizes[size],
-        onDark ? "text-off-white" : "text-charcoal",
-        className,
-      )}
-      aria-label="Bridgemaker"
-    >
-      B
-      <span aria-hidden className="mx-[0.12em] inline-block h-[0.08em] w-[0.45em] bg-current rounded-full align-middle" />
-      M
-    </span>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={onDark ? "/logos/wordmark-white.svg" : "/logos/wordmark-black.svg"}
+      alt="Bridgemaker"
+      style={{ height, width: "auto" }}
+      className={cn("select-none", className)}
+      draggable={false}
+    />
   );
 }
 
 /**
- * Monogram — for avatars, app icons, favicons. Square with radius.
+ * B—M-Monogramm — NUR für Favicon, App-Icon, Avatar, Foto-Stempel.
+ * Nie im Header, nie als Logo-Ersatz (guidelines/01).
  */
 export function Monogram({
   size = 40,
+  variant = "blackbox",
   className,
-  onDark = false,
 }: {
   size?: number;
+  variant?: "black" | "white" | "blackbox" | "whitebox";
   className?: string;
-  onDark?: boolean;
 }) {
   return (
-    <span
-      style={{ width: size, height: size, borderRadius: Math.round(size * 0.22) }}
-      className={cn(
-        "inline-grid place-items-center font-display font-semibold tracking-[-0.05em]",
-        onDark ? "bg-off-white text-charcoal" : "bg-charcoal text-off-white",
-        className,
-      )}
-      aria-label="Bridgemaker"
-    >
-      <span style={{ fontSize: Math.round(size * 0.42) }} className="inline-flex items-center">
-        B
-        <span aria-hidden className="mx-[0.1em] inline-block h-[0.08em] w-[0.4em] bg-current rounded-full" />
-        M
-      </span>
-    </span>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={`/logos/monogram-${variant}.svg`}
+      alt="Bridgemaker Monogramm"
+      style={{ width: size, height: size }}
+      className={cn("select-none", className)}
+      draggable={false}
+    />
   );
 }
