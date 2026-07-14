@@ -62,6 +62,13 @@
      (Buttons, Felder, Menüs) erben die Referenz-Typefaces.     */
   --md-ref-typeface-brand: var(--font-sans);
   --md-ref-typeface-plain: var(--font-sans);
+
+  /* ---------- Komponenten-Feinheiten ----------
+     Inputs/Felder: radius-md (12px), NIE Pill (9.4) — MD3s Default
+     wäre corner-extra-small (hier 8px).                          */
+  --md-outlined-text-field-container-shape: var(--radius-md);
+  --md-filled-text-field-container-shape: var(--radius-md) var(--radius-md) 0 0;
+  --md-outlined-select-text-field-container-shape: var(--radius-md);
 }
 
 /* ---------- Dark Scheme (9.2) ----------

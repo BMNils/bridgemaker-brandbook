@@ -5,6 +5,15 @@
 /* Custom variant: `bm-on-dark:*` — greift, wenn ein Vorfahr .bm-on-dark trägt */
 @custom-variant bm-on-dark (&:where(.bm-on-dark, .bm-on-dark *));
 
+/* next/font liefert Inter + JetBrains Mono selbst gehostet (layout.tsx).
+   Die Font-Stacks aus tokens.css werden hier auf die next/font-Variablen
+   umgebogen — einzige beabsichtigte Abweichung von der Kanon-Kopie. */
+:root {
+  --font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", "Menlo", monospace;
+}
+
 /* ==========================================================================
    Bridgemaker Starter-Kit v2 — Tailwind-v4-Verdrahtung
 
