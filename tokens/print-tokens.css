@@ -18,6 +18,16 @@
    ============================================================ */
 
 :root {
+  /* ---------- Print-Schriften ----------
+     Im Print zeigt --font-display auf Inter Display — die Schrift
+     ist für große Grade gemacht (Entscheidung Nils, 2026-07-14;
+     Print-Ausnahme zur Bildschirm-Regel „nur Inter", s. Kapitel 03).
+     "InterDisplay" = Webfont-Name im offiziellen Inter-CSS
+     (https://rsms.me/inter/inter.css), "Inter Display" = lokale
+     Installation. Fallback bleibt Inter.                          */
+  --font-display: "Inter Display", "InterDisplay", "Inter",
+                  -apple-system, BlinkMacSystemFont, sans-serif;
+
   /* ---------- Format · DIN A4 portrait ---------- */
   --pp-page-w: 210mm;
   --pp-page-h: 297mm;

@@ -147,6 +147,9 @@ Validiert am Bookazine v1 (Druck: Pinguin Druck Berlin, 2026).
 
 - **Format:** DIN A4 Hochformat (210×297mm). Einheiten: Format und
   Spacing in **mm**, Typografie in **pt** — nie px im Print.
+- **Schrift:** Display-Grade laufen im Print in **Inter Display**
+  (`--font-display`-Override im Print-Layer; Ausnahme-Regel in
+  Kapitel 03 §3.1). Body/UI bleiben Inter, Mono bleibt JetBrains Mono.
 - **Satzspiegel:** symmetrisch, 16mm links/rechts, 14mm oben (Running
   Header), 18mm unten (Folio). Satzbreite 178mm, 12-Spalten-Raster mit
   4mm Gutter (`.pp-grid` + `.pp-col-*`).

@@ -6,6 +6,13 @@
   Inter; die Website lädt kein separates „Inter Display" —
   *ersetzt die v1-Regel „Inter Display oberhalb 24px"*).
 - **JetBrains Mono** für Code, Daten und technische Captions.
+- **Print-Ausnahme** *(Nils, 2026-07-14)*: In Print-Publikationen
+  (DIN-A4-Layer, `tokens/print-tokens.css`) zeigt `--font-display` auf
+  **Inter Display** — die Schrift ist für große Grade gezeichnet und
+  gehört dort hin. Laden über das offizielle Inter-CSS
+  (`https://rsms.me/inter/inter.css`, Familienname `InterDisplay`)
+  oder die lokale Installation („Inter Display"); Fallback Inter.
+  Am Bildschirm bleibt es bei Inter.
 - Keine anderen Schriftfamilien ohne ausdrückliche Freigabe.
 
 Laden: In Next.js-Projekten via `next/font/google` (so macht es die

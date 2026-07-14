@@ -19,6 +19,8 @@
    im Wechsel (Weiß ↔ Off-White ↔ Surfaces), nie der Ganzseiten-Grund.
 3. **Inter + JetBrains Mono.** In Next.js via `next/font`; Google-Fonts-
    Link nur für statische Artefakte. Keine anderen Fonts ohne Freigabe.
+   Einzige Ausnahme: Print-Display-Grade laufen in **Inter Display**
+   (Override im Print-Layer, s. Punkt „Print" in Abschnitt 7).
 4. **Nur `type-*`-Klassen für Text.** Nie ad-hoc Größen/Gewichte/Tracking.
 5. **Pill-Buttons, immer** (`border-radius: 999px`).
 6. **Header-Logo = Wortmarke, immer** (20px hoch im 64px-Header; weiße
@@ -161,7 +163,9 @@
 - **Print (DIN A4):** `tokens/print-tokens.css` als Layer NACH tokens.css
   laden. mm/pt statt px · Baseline-Grid 14pt · Großziffer→Headline 18mm,
   Eyebrow→Headline 12mm · Hairlines 0.4pt statt 1px · Print-Kasane mit
-  +15 % Sättigung (Naturpapier). Regeln: `guidelines/07 §7.9`.
+  +15 % Sättigung (Naturpapier) · Display-Grade in Inter Display
+  (Override im Layer; Laden via rsms.me/inter). Regeln:
+  `guidelines/07 §7.9`.
 - **Ventures haben eigene Marken** — Bridgemaker-Identität nie ohne
   CD-Freigabe für Ventures nutzen.
 
