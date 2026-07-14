@@ -31,7 +31,7 @@ installieren.
 
 ## Weg 2 — Mit KI gestalten (Claude Code, Langdock & Co.)
 
-1. Repo klonen (öffentlich, kein Zugriff nötig):
+1. Repo klonen:
    ```bash
    git clone https://github.com/BMNils/bridgemaker-brandbook.git
    ```
