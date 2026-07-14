@@ -1,318 +1,236 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { SiteNav } from "@/components/brand/site-nav";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger,
-} from "@/components/ui/sheet";
-import {
-  DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
-  DropdownMenuSeparator, DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
-} from "@/components/ui/select";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Accordion, AccordionContent, AccordionItem, AccordionTrigger,
-} from "@/components/ui/accordion";
-import {
-  Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator,
-} from "@/components/ui/command";
-import { ArrowRight, Settings, User, Download } from "lucide-react";
+import { ImagePlaceholder } from "@/components/brand/image-placeholder";
 
-function Block({ title, children, span = false }: { title: string; children: React.ReactNode; span?: boolean }) {
+/**
+ * Komponenten-Showcase — MD3 (@material/web) im Bridgemaker-Theming
+ * plus die Bridgemaker-eigenen Bausteine (Karten, Badges, Buttons).
+ */
+
+function Section({
+  eyebrow,
+  title,
+  lead,
+  children,
+}: {
+  eyebrow: string;
+  title: string;
+  lead?: string;
+  children: React.ReactNode;
+}) {
   return (
-    <section className={span ? "col-span-full" : ""}>
-      <h3 className="text-h3 mb-6">{title}</h3>
-      <div className="bg-white border border-[rgba(28,28,30,0.06)] rounded-[20px] p-10 space-y-6">
-        {children}
+    <section className="border-t border-surface-stone py-24 first:border-t-0">
+      <div className="mx-auto max-w-[1200px] px-4 md:px-8">
+        <p className="type-eyebrow text-light">{eyebrow}</p>
+        <h2 className="type-h3 mt-4 max-w-xl">{title}</h2>
+        {lead && <p className="type-body mt-3 max-w-2xl text-mid">{lead}</p>}
+        <div className="mt-10">{children}</div>
       </div>
     </section>
   );
 }
 
-function Row({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="grid grid-cols-[120px_1fr] gap-6 items-start">
-      <div className="text-[12px] uppercase tracking-[0.08em] font-medium text-light pt-2">{label}</div>
-      <div className="flex flex-wrap gap-3 items-center">{children}</div>
-    </div>
-  );
-}
-
 export default function ComponentsPage() {
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const dialogRef = useRef<HTMLElement | null>(null);
+
+  // md-dialog schließt auch selbst (ESC, Scrim) — State synchron halten
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    const onClosed = () => setDialogOpen(false);
+    dialog.addEventListener("closed", onClosed);
+    return () => dialog.removeEventListener("closed", onClosed);
+  }, []);
+
   return (
     <>
       <SiteNav />
+      <main className="pt-16">
+        <div className="mx-auto max-w-[1200px] px-4 pt-16 md:px-8">
+          <p className="type-eyebrow text-light">Starter-Kit</p>
+          <h1 className="type-h1 mt-6 max-w-xl">Komponenten</h1>
+          <p className="type-body-l mt-4 max-w-2xl text-mid">
+            Produkt-UI läuft auf Material Design 3, gebrandet über das
+            Token-Mapping. Marketing-Bausteine bleiben Bridgemaker-Handwerk.
+          </p>
+        </div>
 
-      <section className="max-w-[1200px] mx-auto px-12 pt-20 pb-16">
-        <span className="text-eyebrow">Starter Kit</span>
-        <h1 className="text-h1 mt-4">Components</h1>
-        <p className="mt-6 text-[17px] leading-[1.55] text-mid max-w-[620px]">
-          shadcn/ui — vollständig auf Bridgemaker-Tokens gepatcht. Pill-Buttons, 12px-Inputs, Purple
-          als Focus-Ring, Kasane als Hero-Background.
-        </p>
-      </section>
-
-      <div className="max-w-[1200px] mx-auto px-12 pb-[120px] space-y-12">
-
-        {/* Buttons */}
-        <Block title="Button">
-          <Row label="Variants">
-            <Button variant="primary">Primary</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="ghost">Ghost</Button>
-            <Button variant="link">Text link</Button>
-            <Button variant="destructive">Destructive</Button>
-          </Row>
-          <Row label="Sizes">
-            <Button size="sm">Small</Button>
-            <Button>Default</Button>
-            <Button size="lg">Large</Button>
-            <Button size="icon" aria-label="Settings"><Settings /></Button>
-          </Row>
-          <Row label="With icon">
-            <Button>Let&rsquo;s build <ArrowRight /></Button>
-            <Button variant="secondary"><Download /> Download</Button>
-          </Row>
-          <Row label="On dark">
-            <div className="bm-on-dark bg-charcoal rounded-[16px] p-6 flex gap-3 flex-wrap">
-              <Button variant="primary">Primary</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="ghost">Ghost</Button>
-            </div>
-          </Row>
-        </Block>
-
-        {/* Badges */}
-        <Block title="Badge">
-          <Row label="Tints">
-            <Badge>Default</Badge>
-            <Badge tint="purple">Purple</Badge>
-            <Badge tint="berry">Berry</Badge>
-            <Badge tint="teal">Teal</Badge>
-            <Badge tint="sage">Sage</Badge>
-            <Badge tint="outline">Outline</Badge>
-          </Row>
-        </Block>
-
-        {/* Cards */}
-        <Block title="Card" span>
-          <div className="grid md:grid-cols-3 gap-6 not-prose">
-            {(["default", "stone", "mauve", "sand"] as const).map((surface) => (
-              <Card key={surface} surface={surface}>
-                <CardHeader>
-                  <Badge tint={surface === "default" ? "purple" : "outline"}>{surface}</Badge>
-                  <CardTitle className="mt-4">Venture Title</CardTitle>
-                  <CardDescription>
-                    Kurzbeschreibung in einem Satz — matter-of-fact, kein Jargon.
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter>
-                  <Button variant="link">Mehr erfahren →</Button>
-                </CardFooter>
-              </Card>
-            ))}
+        <Section
+          eyebrow="Produkt-UI · MD3"
+          title="Buttons"
+          lead="MD3-Buttons erben das Farb-Mapping: primary ist bm-purple, Form ist Pill (MD3 full radius)."
+        >
+          <div className="flex flex-wrap items-center gap-4">
+            <md-filled-button>Jetzt starten</md-filled-button>
+            <md-filled-tonal-button>Mehr erfahren</md-filled-tonal-button>
+            <md-outlined-button>Details ansehen</md-outlined-button>
+            <md-text-button>Abbrechen</md-text-button>
+            <md-filled-button disabled>Deaktiviert</md-filled-button>
           </div>
+        </Section>
 
-          <Card surface="dark" className="mt-6">
-            <CardHeader>
-              <CardTitle>Dark Card</CardTitle>
-              <CardDescription className="text-soft">
-                On-dark context — Text flips automatisch auf off-white.
-              </CardDescription>
-            </CardHeader>
-            <CardFooter>
-              <Button variant="primary">Let&rsquo;s go</Button>
-              <Button variant="secondary">Mehr erfahren</Button>
-            </CardFooter>
-          </Card>
-        </Block>
-
-        {/* Form */}
-        <Block title="Input · Label · Textarea">
-          <div className="grid md:grid-cols-2 gap-6 max-w-[640px]">
-            <div>
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" placeholder="Dein Name" />
-            </div>
-            <div>
-              <Label htmlFor="email">E-Mail</Label>
-              <Input id="email" type="email" placeholder="you@company.com" />
-            </div>
-            <div className="col-span-full">
-              <Label htmlFor="msg">Nachricht</Label>
-              <Textarea id="msg" placeholder="Worum geht&rsquo;s?" />
-            </div>
+        <Section
+          eyebrow="Marketing · Bridgemaker"
+          title="Marketing-Buttons"
+          lead="Für Website, Landingpages und Decks: die bm-btn-Familie. Hover wechselt die Füllung innerhalb der Markenfamilie — nie nach Schwarz."
+        >
+          <div className="flex flex-wrap items-center gap-4">
+            <button className="bm-btn bm-btn-primary">Jetzt starten</button>
+            <button className="bm-btn bm-btn-secondary">Mehr erfahren</button>
+            <button className="bm-btn bm-btn-ghost">Details ansehen</button>
+            <button className="bm-btn bm-btn-glow">Featured-Aktion</button>
           </div>
-        </Block>
+        </Section>
 
-        {/* Select + Dropdown + Dialog + Sheet */}
-        <Block title="Select · Dropdown · Dialog · Sheet" span>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <Label>Select</Label>
-              <Select>
-                <SelectTrigger><SelectValue placeholder="Team wählen" /></SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="build">Build</SelectItem>
-                  <SelectItem value="design">Design</SelectItem>
-                  <SelectItem value="data">Data</SelectItem>
-                </SelectContent>
-              </Select>
+        <Section
+          eyebrow="Produkt-UI · MD3"
+          title="Formularfelder"
+          lead="Inputs tragen radius-md (12px) — nie Pill. Labels leben im Feld, MD3 übernimmt Fokus- und Fehlerverhalten."
+        >
+          <div className="grid max-w-2xl gap-6">
+            <md-outlined-text-field label="Name" placeholder="Ada Lovelace" />
+            <md-outlined-text-field
+              label="E-Mail"
+              type="email"
+              supporting-text="Wir melden uns innerhalb von zwei Werktagen."
+            />
+            <md-outlined-select label="Thema">
+              <md-select-option value="produkt" selected>
+                <div slot="headline">Produktentwicklung</div>
+              </md-select-option>
+              <md-select-option value="ki">
+                <div slot="headline">KI an der Kundenschnittstelle</div>
+              </md-select-option>
+              <md-select-option value="venture">
+                <div slot="headline">Venture Building</div>
+              </md-select-option>
+            </md-outlined-select>
+            <div className="flex flex-wrap items-center gap-8">
+              <label className="flex items-center gap-3 type-body">
+                <md-checkbox checked />
+                Checkbox
+              </label>
+              <label className="flex items-center gap-3 type-body">
+                <md-switch selected />
+                Switch
+              </label>
+              <label className="flex items-center gap-3 type-body">
+                <md-radio name="demo-radio" checked />
+                Radio
+              </label>
             </div>
+            <md-slider min={0} max={100} value={60} labeled />
+          </div>
+        </Section>
 
-            <div>
-              <Label>Dropdown</Label>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="secondary"><User /> Account</Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start">
-                  <DropdownMenuLabel>Signed in as</DropdownMenuLabel>
-                  <DropdownMenuItem>name@bridgemaker.com</DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>Profile</DropdownMenuItem>
-                  <DropdownMenuItem>Settings</DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>Sign out</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+        <Section
+          eyebrow="Produkt-UI · MD3"
+          title="Tabs und Chips"
+        >
+          <md-tabs>
+            <md-primary-tab active>Übersicht</md-primary-tab>
+            <md-primary-tab>Auswertung</md-primary-tab>
+            <md-primary-tab>Einstellungen</md-primary-tab>
+          </md-tabs>
+          <md-chip-set className="mt-8">
+            <md-assist-chip label="Assist-Chip" />
+            <md-filter-chip label="Filter-Chip" selected />
+            <md-filter-chip label="Zweiter Filter" />
+          </md-chip-set>
+        </Section>
 
-            <div>
-              <Label>Dialog</Label>
-              <Dialog>
-                <DialogTrigger asChild><Button variant="secondary">Open dialog</Button></DialogTrigger>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>Venture starten</DialogTitle>
-                    <DialogDescription>
-                      Kurzer Check — wir melden uns binnen 48 Stunden.
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="d-name">Name</Label>
-                      <Input id="d-name" />
-                    </div>
-                    <div>
-                      <Label htmlFor="d-hypo">Hypothese</Label>
-                      <Textarea id="d-hypo" rows={3} />
-                    </div>
-                  </div>
-                  <DialogFooter>
-                    <Button variant="ghost">Abbrechen</Button>
-                    <Button>Senden</Button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
-            </div>
-
-            <div>
-              <Label>Sheet</Label>
-              <Sheet>
-                <SheetTrigger asChild><Button variant="secondary">Open sheet</Button></SheetTrigger>
-                <SheetContent>
-                  <SheetHeader>
-                    <SheetTitle>Menu</SheetTitle>
-                    <SheetDescription>
-                      Side-panel mit Mobile-Navigation oder Einstellungen.
-                    </SheetDescription>
-                  </SheetHeader>
-                </SheetContent>
-              </Sheet>
+        <Section
+          eyebrow="Produkt-UI · MD3"
+          title="Dialog und Fortschritt"
+          lead="Schwebende Ebenen dürfen Elevation tragen — Tonal-Tints sind abgeschaltet, Flächen wechseln per Token."
+        >
+          <div className="flex flex-wrap items-center gap-8">
+            <md-filled-button onClick={() => setDialogOpen(true)}>
+              Dialog öffnen
+            </md-filled-button>
+            <md-circular-progress indeterminate />
+            <div className="w-64">
+              <md-linear-progress value={0.6} max={1} />
             </div>
           </div>
-        </Block>
-
-        {/* Tabs + Accordion */}
-        <Block title="Tabs · Accordion" span>
-          <div className="grid md:grid-cols-2 gap-10">
-            <div>
-              <Label>Tabs</Label>
-              <Tabs defaultValue="build" className="mt-2">
-                <TabsList>
-                  <TabsTrigger value="build">Build</TabsTrigger>
-                  <TabsTrigger value="measure">Measure</TabsTrigger>
-                  <TabsTrigger value="learn">Learn</TabsTrigger>
-                </TabsList>
-                <TabsContent value="build">
-                  <p className="text-[15px] text-mid leading-relaxed">
-                    Bauen. Unfertig ist akzeptiert — ungetestet nicht.
-                  </p>
-                </TabsContent>
-                <TabsContent value="measure">
-                  <p className="text-[15px] text-mid leading-relaxed">
-                    Messen. Zahlen statt Vermutungen.
-                  </p>
-                </TabsContent>
-                <TabsContent value="learn">
-                  <p className="text-[15px] text-mid leading-relaxed">
-                    Lernen. Und wieder bauen.
-                  </p>
-                </TabsContent>
-              </Tabs>
+          <md-dialog ref={dialogRef} open={dialogOpen || undefined}>
+            <div slot="headline">Entwurf verwerfen?</div>
+            <div slot="content" className="type-body text-mid">
+              Deine Änderungen gehen verloren. Das lässt sich nicht rückgängig
+              machen.
             </div>
+            <div slot="actions">
+              <md-text-button onClick={() => setDialogOpen(false)}>
+                Behalten
+              </md-text-button>
+              <md-filled-button onClick={() => setDialogOpen(false)}>
+                Verwerfen
+              </md-filled-button>
+            </div>
+          </md-dialog>
+        </Section>
 
-            <div>
-              <Label>Accordion</Label>
-              <Accordion type="single" collapsible className="mt-2">
-                <AccordionItem value="1">
-                  <AccordionTrigger>Wie starten wir gemeinsam?</AccordionTrigger>
-                  <AccordionContent>
-                    Kickoff in 48h, Hypothese in 2 Wochen, erster Prototyp in 6 Wochen.
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="2">
-                  <AccordionTrigger>Was kostet ein Venture?</AccordionTrigger>
-                  <AccordionContent>
-                    Fixes Setup für Validierung. Darüber hinaus outcome-basiert — wir rechnen in
-                    Ergebnissen, nicht in Stunden.
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="3">
-                  <AccordionTrigger>Wem gehört das Venture?</AccordionTrigger>
-                  <AccordionContent>
-                    Abhängig vom Modell — Joint Venture, Carve-Out oder Spin-Off.
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+        <Section
+          eyebrow="Marketing · Bridgemaker"
+          title="Karten-Familie"
+          lead="Karten sitzen, sie fliegen nicht: Inset-Haarlinie plus nahe Elevation. Füllungen variieren — nie dreimal dieselbe Surface in einer Reihe."
+        >
+          <div className="grid gap-6 md:grid-cols-3">
+            <div className="card-clean rounded-xl bg-white p-8">
+              <h3 className="type-card-title">card-clean</h3>
+              <p className="type-body mt-3 text-mid">
+                Weiße matte Karte — der Default auf Off-White-Grund.
+              </p>
+            </div>
+            <div className="bm-card-stone rounded-xl p-8">
+              <h3 className="type-card-title">Stone</h3>
+              <p className="type-body mt-3 text-mid">
+                Getönte Karte für ruhige Nachbarschaften.
+              </p>
+            </div>
+            <div className="bm-card-sand rounded-xl p-8">
+              <h3 className="type-card-title">Sand</h3>
+              <p className="type-body mt-3 text-mid">
+                Warme Fläche — z. B. für Ventures-Kontexte.
+              </p>
             </div>
           </div>
-        </Block>
+        </Section>
 
-        {/* Command */}
-        <Block title="Command — CMD+K palette">
-          <div className="max-w-[520px] rounded-[16px] border border-[rgba(28,28,30,0.06)] overflow-hidden">
-            <Command>
-              <CommandInput placeholder="Suchen oder Befehl eingeben…" />
-              <CommandList>
-                <CommandEmpty>Keine Ergebnisse.</CommandEmpty>
-                <CommandGroup heading="Ventures">
-                  <CommandItem>Venture starten</CommandItem>
-                  <CommandItem>Portfolio ansehen</CommandItem>
-                </CommandGroup>
-                <CommandSeparator />
-                <CommandGroup heading="Navigation">
-                  <CommandItem>Brandbook</CommandItem>
-                  <CommandItem>Components</CommandItem>
-                </CommandGroup>
-              </CommandList>
-            </Command>
+        <Section
+          eyebrow="Marketing · Bridgemaker"
+          title="Badges und Platzhalter"
+          lead="Badges: Tint-Hintergrund plus Deep-Text, mehr als drei pro View sind ein Layout-Problem. Fehlt ein Bild, kommt der gestreifte Platzhalter — nie eine erfundene Illustration."
+        >
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="bm-badge bm-badge-purple">Produkt</span>
+            <span className="bm-badge bm-badge-teal">Tech</span>
+            <span className="bm-badge bm-badge-berry">Neu</span>
           </div>
-        </Block>
+          <div className="mt-10 max-w-md">
+            <ImagePlaceholder caption="team-portrait_04.jpg" ratio="16/9" />
+          </div>
+        </Section>
 
-      </div>
+        <Section
+          eyebrow="System"
+          title="Typo-Skala"
+          lead="Nur type-*-Klassen — fluide über clamp(), größer heißt leichter."
+        >
+          <div className="space-y-6">
+            <p className="type-display-l">Display L</p>
+            <p className="type-h1">Headline 1</p>
+            <p className="type-h3">Headline 3</p>
+            <p className="type-body-l max-w-2xl text-mid">
+              Body Large — der Lead-Stil unter Headlines.
+            </p>
+            <p className="type-eyebrow text-light">Eyebrow · Versalien</p>
+          </div>
+        </Section>
+      </main>
     </>
   );
 }
