@@ -1,0 +1,102 @@
+/* ============================================================
+   Bridgemaker → Material Design 3 — Theme-Mapping
+   Quelle: guidelines/09-md3-mapping.md (§9.2–9.5)
+
+   Explizites Mapping der MD3-System-Tokens auf die Bridgemaker-
+   Token-Familien. NIEMALS seed-generieren — MD3s HCT-Palette
+   verschiebt #6B4A94 in Töne, die kein Bridgemaker-Purple mehr
+   sind. Lädt NACH tokens.css.
+   ============================================================ */
+
+:root {
+  /* ---------- Farbrollen (9.2) ---------- */
+  --md-sys-color-primary: var(--bm-purple);
+  --md-sys-color-on-primary: var(--off-white);
+  --md-sys-color-primary-container: var(--bm-purple-tint);
+  --md-sys-color-on-primary-container: var(--bm-deep-plum);
+
+  --md-sys-color-secondary: var(--bm-teal);
+  --md-sys-color-on-secondary: var(--off-white);
+  --md-sys-color-secondary-container: var(--bm-teal-tint);
+  --md-sys-color-on-secondary-container: var(--bm-deep-teal);
+
+  --md-sys-color-tertiary: var(--bm-berry);
+  --md-sys-color-on-tertiary: var(--off-white);
+  --md-sys-color-tertiary-container: var(--bm-rose-tint);
+  --md-sys-color-on-tertiary-container: var(--bm-deep-berry);
+
+  --md-sys-color-surface: var(--off-white);
+  --md-sys-color-surface-container-lowest: var(--white);
+  --md-sys-color-surface-container-low: var(--surface-stone);
+  --md-sys-color-surface-container: var(--surface-sand);
+  --md-sys-color-surface-container-high: var(--surface-mauve);
+  --md-sys-color-surface-container-highest: var(--surface-mauve);
+  --md-sys-color-surface-variant: var(--surface-stone);
+  --md-sys-color-on-surface: var(--charcoal);
+  --md-sys-color-on-surface-variant: var(--mid);
+
+  --md-sys-color-outline: var(--surface-mid-stone);
+  --md-sys-color-outline-variant: rgba(28, 28, 30, 0.06);
+
+  --md-sys-color-inverse-surface: var(--charcoal);
+  --md-sys-color-inverse-on-surface: var(--off-white);
+  --md-sys-color-inverse-primary: var(--bm-lavender-dark);
+
+  /* error-Rollen: MD3-Default behalten (9.2) — nicht überschreiben. */
+
+  /* Keine Tonal-Elevation (9.5): Flächen wechseln per Token,
+     nicht per Tint-Mathematik. */
+  --md-sys-color-surface-tint: transparent;
+
+  /* ---------- Shape (9.4) ---------- */
+  --md-sys-shape-corner-extra-small: var(--radius-sm);
+  --md-sys-shape-corner-small: var(--radius-md);
+  --md-sys-shape-corner-medium: var(--radius-lg);
+  --md-sys-shape-corner-large: var(--radius-xl);
+  --md-sys-shape-corner-extra-large: var(--radius-2xl);
+  --md-sys-shape-corner-full: var(--radius-pill);
+
+  /* ---------- Typeface (9.3) ----------
+     Inter überall — Roboto wird nie geladen. Die App-Typografie
+     läuft über die type-*-Klassen; Komponenten-interne Texte
+     (Buttons, Felder, Menüs) erben die Referenz-Typefaces.     */
+  --md-ref-typeface-brand: var(--font-sans);
+  --md-ref-typeface-plain: var(--font-sans);
+}
+
+/* ---------- Dark Scheme (9.2) ----------
+   Basis Charcoal; primary wird lavender-dark — rohes Purple fällt
+   auf Dunkel durch den Kontrast (02-colors §2.5).               */
+.bm-on-dark {
+  --md-sys-color-primary: var(--bm-lavender-dark);
+  --md-sys-color-on-primary: var(--charcoal);
+  --md-sys-color-primary-container: var(--bm-deep-plum);
+  --md-sys-color-on-primary-container: var(--bm-purple-tint);
+
+  --md-sys-color-secondary: var(--bm-soft-teal);
+  --md-sys-color-on-secondary: var(--charcoal);
+  --md-sys-color-secondary-container: var(--bm-deep-teal);
+  --md-sys-color-on-secondary-container: var(--bm-teal-tint);
+
+  --md-sys-color-tertiary: var(--bm-dusty-rose);
+  --md-sys-color-on-tertiary: var(--charcoal);
+  --md-sys-color-tertiary-container: var(--bm-deep-berry);
+  --md-sys-color-on-tertiary-container: var(--bm-rose-tint);
+
+  --md-sys-color-surface: var(--charcoal);
+  --md-sys-color-surface-container-lowest: var(--charcoal);
+  --md-sys-color-surface-container-low: var(--surface-dark);
+  --md-sys-color-surface-container: var(--surface-dark);
+  --md-sys-color-surface-container-high: var(--dark);
+  --md-sys-color-surface-container-highest: var(--dark);
+  --md-sys-color-surface-variant: var(--surface-dark);
+  --md-sys-color-on-surface: var(--off-white);
+  --md-sys-color-on-surface-variant: var(--soft);
+
+  --md-sys-color-outline: rgba(245, 241, 235, 0.28);
+  --md-sys-color-outline-variant: rgba(245, 241, 235, 0.12);
+
+  --md-sys-color-inverse-surface: var(--off-white);
+  --md-sys-color-inverse-on-surface: var(--charcoal);
+  --md-sys-color-inverse-primary: var(--bm-purple);
+}
