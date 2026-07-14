@@ -108,7 +108,7 @@ function BbVoiceSection() {
 
       <div style={{ background: "#EDE3F5", borderRadius: 16, padding: "20px 28px", marginBottom: 40, font: "var(--text-small)", color: "#4A2D6B", lineHeight: 1.6 }}>
         <strong>Verbindlich für jede Textarbeit:</strong> der Voice & Style Guide v1.0 —{" "}
-        <a href="../guidelines/08-voice.md" style={{ color: "#6B4A94", textDecoration: "underline", textUnderlineOffset: 3 }}>guidelines/08-voice.md</a>.
+        <a href="../md.html?file=guidelines%2F08-voice.md" style={{ color: "#6B4A94", textDecoration: "underline", textUnderlineOffset: 3 }}>guidelines/08-voice.md</a>.
         Er trägt Tone-Level (Standard / Empathisch / Visionär), Wortlisten, verbotene Phrasen und die Selbst-Checks.
         Diese Sektion zeigt nur die Polaritäten und Dimensionen.
       </div>
@@ -285,7 +285,7 @@ function BbTokensSection() {
       <div style={{ display: "flex", gap: 12, marginBottom: 24, flexWrap: "wrap" }}>
         <a href="../tokens/tokens.css" className="bm-btn bm-btn-primary" style={{ textDecoration: "none" }}>tokens.css</a>
         <a href="../tokens/tokens.json" className="bm-btn bm-btn-secondary" style={{ textDecoration: "none" }}>tokens.json</a>
-        <a href="../guidelines/README.md" className="bm-btn bm-btn-ghost" style={{ textDecoration: "none" }}>Guidelines (Kanon) →</a>
+        <a href="../md.html?file=guidelines%2FREADME.md" className="bm-btn bm-btn-ghost" style={{ textDecoration: "none" }}>Guidelines (Kanon) →</a>
       </div>
       <div style={{
         background: "#1C1C1E", borderRadius: 16, padding: "32px 36px",
@@ -323,8 +323,8 @@ function BbClaudeSection() {
           <li>Wenn etwas unklar ist — <strong>fragen</strong>, nicht improvisieren.</li>
         </ul>
         <div style={{ display: "flex", gap: 12, marginTop: 32, flexWrap: "wrap" }}>
-          <a href="../CLAUDE.md" className="bm-btn" style={{ textDecoration: "none", background: "#F5F1EB", color: "#1C1C1E" }}>CLAUDE.md öffnen</a>
-          <a href="../guidelines/README.md" className="bm-btn bm-btn-secondary" style={{ textDecoration: "none", color: "#AF94D2", boxShadow: "inset 0 0 0 1.5px #AF94D2" }}>Guidelines (Kanon) →</a>
+          <a href="../md.html?file=CLAUDE.md" className="bm-btn" style={{ textDecoration: "none", background: "#F5F1EB", color: "#1C1C1E" }}>CLAUDE.md öffnen</a>
+          <a href="../md.html?file=guidelines%2FREADME.md" className="bm-btn bm-btn-secondary" style={{ textDecoration: "none", color: "#AF94D2", boxShadow: "inset 0 0 0 1.5px #AF94D2" }}>Guidelines (Kanon) →</a>
         </div>
       </div>
     </BbSection>

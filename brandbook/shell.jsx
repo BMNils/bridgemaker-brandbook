@@ -110,8 +110,8 @@ function BbHero() {
         Design-System der Website: Glass & Karten, fluide Typografie, Gradient-Katalog, Motion, MD3 für Produkt-UIs.
       </p>
       <div style={{ display: "flex", gap: 16, marginTop: 48, flexWrap: "wrap" }}>
-        <a href="../CLAUDE.md" className="bm-btn bm-btn-primary" style={{ textDecoration: "none" }}>CLAUDE.md öffnen</a>
-        <a href="../guidelines/README.md" className="bm-btn bm-btn-secondary" style={{ textDecoration: "none" }}>Guidelines (Kanon)</a>
+        <a href="../md.html?file=CLAUDE.md" className="bm-btn bm-btn-primary" style={{ textDecoration: "none" }}>CLAUDE.md öffnen</a>
+        <a href="../md.html?file=guidelines%2FREADME.md" className="bm-btn bm-btn-secondary" style={{ textDecoration: "none" }}>Guidelines (Kanon)</a>
         <a href="../tokens/tokens.css" className="bm-btn bm-btn-ghost" style={{ textDecoration: "none" }}>tokens.css →</a>
       </div>
     </section>

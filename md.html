@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bridgemaker Brand System</title>
+<link rel="stylesheet" href="tokens/tokens.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  body { background: var(--off-white); color: var(--charcoal); }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 64px 24px 120px; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 56px; }
+  .topbar img { height: 20px; display: block; }
+  .topbar a.back { font: 500 14px/1 Inter, sans-serif; color: var(--bm-purple); text-decoration: none; }
+  .md { font: 400 16px/1.65 Inter, sans-serif; }
+  .md h1 { font: 600 clamp(28px, 4vw, 40px)/1.15 Inter, sans-serif; letter-spacing: -0.02em; margin: 0 0 24px; max-width: 576px; }
+  .md h2 { font: 600 clamp(22px, 2.6vw, 26px)/1.25 Inter, sans-serif; letter-spacing: -0.015em; margin: 56px 0 16px; max-width: 576px; }
+  .md h3 { font: 600 18px/1.35 Inter, sans-serif; margin: 40px 0 12px; }
+  .md p, .md li { color: var(--dark); }
+  .md ul, .md ol { padding-left: 24px; }
+  .md li { margin: 6px 0; }
+  .md a { color: var(--bm-purple); text-decoration: underline; text-underline-offset: 3px; }
+  .md code { font: 400 0.9em/1.5 "JetBrains Mono", Menlo, monospace; background: var(--surface-stone); padding: 1px 6px; border-radius: 6px; }
+  .md pre { background: var(--surface-stone); border-radius: 12px; padding: 20px 24px; overflow-x: auto; }
+  .md pre code { background: none; padding: 0; }
+  .md table { border-collapse: collapse; width: 100%; margin: 24px 0; font-size: 14px; }
+  .md th, .md td { border: 1px solid var(--border-subtle); padding: 10px 14px; text-align: left; vertical-align: top; }
+  .md th { font-weight: 600; background: var(--surface-stone); }
+  .md blockquote { margin: 24px 0; padding: 20px 28px; background: var(--surface-mauve); border-radius: 12px; }
+  .md blockquote p { margin: 0; color: var(--charcoal); }
+  .md hr { border: 0; border-top: 1px solid var(--surface-stone); margin: 48px 0; }
+  .md strong { color: var(--charcoal); }
+  .error { font: 400 16px/1.6 Inter, sans-serif; color: var(--mid); }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="topbar">
+    <a href="index.html"><img src="assets/logos/wordmark-black.svg" alt="Bridgemaker" /></a>
+    <a class="back" href="index.html">Zur Übersicht →</a>
+  </div>
+  <article id="content" class="md"><p class="error">Lade …</p></article>
+</main>
+<script src="https://unpkg.com/marked@12.0.2/marked.min.js"></script>
+<script>
+  (async () => {
+    const el = document.getElementById("content");
+    const file = new URLSearchParams(location.search).get("file") || "";
+    // Nur Kanon-Dokumente aus diesem Repo rendern
+    const ok = /^(CLAUDE\.md|guidelines\/[A-Za-z0-9._-]+\.md|starter-kit\/(README|CLAUDE)\.md)$/.test(file);
+    if (!ok) { el.innerHTML = '<p class="error">Dokument nicht gefunden.</p>'; return; }
+    try {
+      const res = await fetch(file);
+      if (!res.ok) throw new Error(res.status);
+      const text = await res.text();
+      el.innerHTML = marked.parse(text);
+      const h1 = el.querySelector("h1");
+      if (h1) document.title = h1.textContent + " — Bridgemaker";
+      // Relative .md-Links im Dokument ebenfalls durch den Viewer leiten
+      const base = file.includes("/") ? file.slice(0, file.lastIndexOf("/") + 1) : "";
+      el.querySelectorAll('a[href$=".md"]').forEach(a => {
+        const href = a.getAttribute("href");
+        if (!/^(https?:)?\/\//.test(href)) {
+          const path = href.startsWith("../") ? href.slice(3) : base + href;
+          a.setAttribute("href", "md.html?file=" + encodeURIComponent(path.replace(/^\.\//, "")));
+        }
+      });
+    } catch {
+      el.innerHTML = '<p class="error">Dokument konnte nicht geladen werden.</p>';
+    }
+  })();
+</script>
+</body>
+</html>
