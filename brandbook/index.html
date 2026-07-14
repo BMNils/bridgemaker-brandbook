@@ -56,12 +56,13 @@ function Brandbook() {
     { header: "D · Anwendung" },
     { id: "components", label: "Components" },
     { id: "landing", label: "Seitenrhythmus" },
-    { id: "imagery", label: "Imagery" },
-    { id: "slides", label: "Slides" },
     { id: "md3", label: "MD3 (Produkt-UIs)" },
     { header: "E · System" },
     { id: "tokens", label: "Tokens" },
     { id: "claude", label: "Claude" },
+    { header: "F · Work in progress" },
+    { id: "imagery", label: "Imagery" },
+    { id: "slides", label: "Slides" },
   ];
   const flat = sections.filter(s => s.id);
   const [active, setActive] = useState("story");
@@ -98,12 +99,13 @@ function Brandbook() {
         <BbGroupHeader letter="D" label="Anwendung" />
         <BbComponentsSection />
         <BbLandingSection />
-        <BbImagerySection />
-        <BbSlidesSection />
         <BbMd3Section />
         <BbGroupHeader letter="E" label="System" />
         <BbTokensSection />
         <BbClaudeSection />
+        <BbGroupHeader letter="F" label="Work in progress" />
+        <BbImagerySection />
+        <BbSlidesSection />
 
         <div style={{ borderTop: "1px solid #C5C0B8", paddingTop: 40, marginTop: 40, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
           <div style={{ font: "var(--text-small)", color: "#918F87" }}>Bridgemaker GmbH · 2026</div>

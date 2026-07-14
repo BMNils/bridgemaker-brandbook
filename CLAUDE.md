@@ -154,12 +154,11 @@
   (purple-tint+deep-plum etc.); >3 pro View = Layout-Problem.
 - **Formulare:** Outline-Inputs (`radius-md`, nie Pill), Ruhezustand
   transparent — **weiß erst bei Fokus**; Labels über dem Feld.
-- **Bildsprache:** Editorial-Fotografie — Charakterköpfe, Momente im
-  Gewöhnlichen, überraschende Perspektiven. Leichte Entsättigung, warme
-  Abstimmung, `radius-xl`, optional `grain-photo`. Fehlendes Asset →
-  gestreifter Platzhalter mit Monospace-Caption, NIE SVG-Illustration
-  erfinden. KI-Bilder nur mit CD-Freigabe — Maßstab: „fühlt es sich an
-  wie Bridgemaker?"
+- **Bildsprache: WORK IN PROGRESS.** Das alte Editorial-Foto-Konzept
+  gilt nicht mehr; die Website arbeitet heute ohne Fotografie (feine
+  topografische Linien auf Gradients, konstruierte Vektor-Icons). Bis
+  das neue Konzept steht: KEINE Bildentscheidungen ohne CD-Freigabe.
+  Fehlendes Asset → gestreifter Platzhalter mit Monospace-Caption.
 - **Decks:** 1920×1080, min. 24px Text. Cover = Kasane + Display-Titel;
   Layouts s. `guidelines/07 §7.8`.
 - **Print (DIN A4):** `tokens/print-tokens.css` als Layer NACH tokens.css

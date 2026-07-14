@@ -4,106 +4,39 @@
 function BbImagerySection() {
   return (
     <BbSection id="imagery" num="12" title="Imagery"
-      desc="Drei Prinzipien: Character people · Discovering moments even in the ordinary · Surprising perspectives. Editorial, dokumentarisch, natürliches Licht.">
-
-      {/* Three principles */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 32 }}>
-        {[
-          { t: "Character people", d: "Echte Menschen mit Haltung — keine Stock-Lächler, keine Models. Substanz vor Oberfläche." },
-          { t: "Discovering moments", d: "Das erzählerische Detail im Alltäglichen. Nicht inszeniert, nicht heroisch — aufmerksam." },
-          { t: "Surprising perspectives", d: "Ungewöhnliche Winkel, nahe Ausschnitte, off-center Kompositionen. Nie frontal und brav." },
-        ].map(p => (
-          <div key={p.t} className="card-clean" style={{ background: "#fff", borderRadius: 16, padding: 24 }}>
-            <div style={{ font: "600 15px/1.3 Inter, sans-serif", letterSpacing: "-0.2px" }}>{p.t}</div>
-            <p style={{ font: "var(--text-caption)", color: "#6B6B65", margin: "8px 0 0", lineHeight: 1.5 }}>{p.d}</p>
-          </div>
-        ))}
-      </div>
-
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 48 }}>
-        {[
-          { ratio: "4/3", cap: "Character · off-center · bold accent" },
-          { ratio: "3/4", cap: "Portrait · surprising angle · warm grade" },
-          { ratio: "4/3", cap: "Venture in situ · real context · color moment" },
-        ].map((p, i) => (
-          <div key={i} className="bg-stripes-diagonal" style={{
-            aspectRatio: p.ratio, borderRadius: 20,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            color: "#6B6B65", font: "500 12px/1.5 'JetBrains Mono', Menlo, monospace",
-            padding: 20, textAlign: "center",
-          }}>{p.cap}</div>
-        ))}
-      </div>
-
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-        <div style={{ background: "#E8E5DF", borderRadius: 16, padding: 32 }}>
-          <div style={{ font: "500 12px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "#4A5A3C" }}>Do</div>
-          <ul style={{ font: "var(--text-small)", color: "#1C1C1E", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.8 }}>
-            <li>Dokumentarisch, natürliches Licht</li>
-            <li>Leicht entsättigt (~−10%), warme Abstimmung</li>
-            <li>Radius-XL (20px) · optional grain-photo-Finish</li>
-            <li>Gestreifter Platzhalter mit Mono-Caption, wenn das Asset fehlt</li>
-            <li>KI-Bilder erlaubt — mit CD-Freigabe. Maßstab: „fühlt es sich an wie Bridgemaker?"</li>
-          </ul>
-        </div>
-        <div style={{ background: "#F5E0E8", borderRadius: 16, padding: 32 }}>
-          <div style={{ font: "500 12px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "#8A3050" }}>Don't</div>
-          <ul style={{ font: "var(--text-small)", color: "#1C1C1E", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.8 }}>
-            <li>Keine Stock-Handshakes, niemand zeigt auf Screens</li>
-            <li>Kein AI slop — Default-Ästhetik ersetzt kein Konzept</li>
-            <li>Keine Flat-Vector-Charaktere, keine erfundenen SVG-Illus</li>
-            <li>Keine Emoji als Bildersatz</li>
-          </ul>
-        </div>
+      desc="Das Bildkonzept wird neu gedacht — die alten Editorial-Foto-Regeln gelten nicht mehr.">
+      <div style={{ border: "1px solid #C5C0B8", borderRadius: 20, padding: 48, maxWidth: 720 }}>
+        <span className="bm-badge bm-badge-purple">Work in progress</span>
+        <p style={{ font: "400 17px/1.6 Inter, sans-serif", color: "#1C1C1E", margin: "24px 0 0", maxWidth: 620 }}>
+          Die Website arbeitet heute ohne Fotografie: feine Linien im
+          topografischen Stil auf Gradients und konstruierte Vektor-Icons.
+          Wie das Bildkonzept daraus entsteht, ist in Klärung.
+        </p>
+        <p style={{ font: "var(--text-small)", color: "#6B6B65", margin: "12px 0 0", maxWidth: 620, lineHeight: 1.6 }}>
+          Bis dahin: keine Bildentscheidungen ohne Creative-Director-Freigabe.
+          Fehlt ein Asset, bleibt der gestreifte Platzhalter mit
+          Monospace-Caption das Mittel der Wahl.
+        </p>
       </div>
     </BbSection>
   );
 }
 
 function BbSlidesSection() {
-  const slides = [
-    { label: "Cover", bg: "kasane-dark", desc: "Dunkles Kasane · Display-Headline · Eyebrow tiny · kein Body" },
-    { label: "Section", bg: "surface-mauve", desc: "Surface-Farbe full-bleed · zentrierte H1 · Kapitel-Zähler" },
-    { label: "Content", bg: "white", desc: "2/3 Text + 1/3 Visual · oder 3er-Card-Grid" },
-    { label: "Quote", bg: "surface-stone", desc: "Kursive H2-Quote · Attribution im Eyebrow-Stil" },
-    { label: "Stats", bg: "white", desc: "Große Zahlen (type-stat-Logik) · Akzentfarbe sparsam" },
-    { label: "End", bg: "kasane-vibrant", desc: "Claim + Kontakt · dunkles Kasane" },
-  ];
   return (
-    <BbSection id="slides" num="13" title="Slide Templates" desc="1920×1080. Mindestens 24px Text — keine Ausnahmen. Kasane nur auf Cover und End.">
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
-        {slides.map(s => {
-          const bgMap = {
-            "kasane-dark": { background: "linear-gradient(135deg, #1C1C1E, #4A2D6B 40%, #8A3050)", color: "#fff" },
-            "kasane-vibrant": { background: "linear-gradient(135deg, #4A2D6B, #6B4A94, #B84A6F, #3A9E97)", color: "#fff" },
-            "surface-mauve": { background: "#E3E0E8", color: "#1C1C1E" },
-            "surface-stone": { background: "#E8E5DF", color: "#1C1C1E" },
-            "white": { background: "#fff", color: "#1C1C1E" },
-          };
-          return (
-            <div key={s.label}>
-              <div style={{
-                aspectRatio: "16/9", borderRadius: 16, padding: 24,
-                display: "flex", flexDirection: "column", justifyContent: "flex-end",
-                ...bgMap[s.bg],
-              }}>
-                <div style={{ font: "500 10px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", opacity: 0.6 }}>{s.label}</div>
-                <div style={{ font: "600 22px/1.15 Inter, sans-serif", letterSpacing: "-0.5px", marginTop: 8 }}>
-                  {s.label === "Cover" ? "Ergebnis. KI-nativ. Umgesetzt." :
-                   s.label === "Section" ? "Innovation braucht Umsetzung." :
-                   s.label === "Quote" ? '„Bridgemaker baut mit uns."' :
-                   s.label === "Stats" ? "40+ · €180M · 12" :
-                   s.label === "End" ? "Let's build." :
-                   "Drei Phasen. Ein Handwerk."}
-                </div>
-              </div>
-              <p style={{ font: "var(--text-caption)", color: "#6B6B65", marginTop: 10, lineHeight: 1.5 }}>{s.desc}</p>
-            </div>
-          );
-        })}
-      </div>
-      <div style={{ marginTop: 40 }}>
-        <a href="../examples/deck.html" className="bm-btn bm-btn-secondary" style={{ textDecoration: "none" }}>Beispiel-Deck ansehen →</a>
+    <BbSection id="slides" num="13" title="Slide Templates"
+      desc="1920×1080. Mindestens 24px Text — keine Ausnahmen. Kasane nur auf Cover und End.">
+      <div style={{ border: "1px solid #C5C0B8", borderRadius: 20, padding: 48, maxWidth: 720 }}>
+        <span className="bm-badge bm-badge-purple">Work in progress</span>
+        <p style={{ font: "400 17px/1.6 Inter, sans-serif", color: "#1C1C1E", margin: "24px 0 0", maxWidth: 620 }}>
+          Die Bridgemaker-Slide-Templates gibt es noch nicht — sie sind der
+          nächste Schritt am Brand-System.
+        </p>
+        <p style={{ font: "var(--text-small)", color: "#6B6B65", margin: "12px 0 0", maxWidth: 620, lineHeight: 1.6 }}>
+          Bis sie stehen, gelten für Decks nur die Grundregeln oben und
+          Kapitel 07 der Guidelines. Keine improvisierten Layouts als
+          Vorlage weiterreichen.
+        </p>
       </div>
     </BbSection>
   );

@@ -104,6 +104,14 @@ einem View sind meist ein Layout-Problem.
 
 ## 7.7 Bildsprache
 
+> ⚠️ **Work in progress** *(Nils, 2026-07-14)*: Das Editorial-Foto-Konzept
+> dieses Abschnitts ist überholt — die Website arbeitet heute ohne
+> Fotografie: feine Linien im topografischen Stil auf Gradients und
+> konstruierte Vektor-Icons. Das neue Bildkonzept ist in Klärung.
+> Bis dahin: keine Bildentscheidungen ohne CD-Freigabe; der gestreifte
+> Platzhalter mit Monospace-Caption bleibt der Standard für fehlende
+> Assets. Der folgende Alt-Stand dient nur noch als Referenz.
+
 Drei Prinzipien:
 
 1. **Charakterköpfe** — echte Menschen mit Präsenz und Haltung. Keine
