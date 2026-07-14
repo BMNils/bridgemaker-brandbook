@@ -24,6 +24,7 @@ const bbTypeScale = [
   { name: "Caption", size: 12, weight: 400, tracking: "0", lh: "140%", usage: "Labels, timestamps" },
   { name: "Small", size: 14, weight: 400, tracking: "0", lh: "150%", usage: "Navigation, meta" },
   { name: "Body", size: 16, weight: 400, tracking: "0", lh: "160%", usage: "Fließtext" },
+  { name: "Body L", size: 18, weight: 400, tracking: "0", lh: "155%", usage: "Lead-Absätze (p.large)" },
   { name: "H4", size: 20, weight: 500, tracking: "-0.3px", lh: "140%", usage: "Card-Titel" },
   { name: "H3", size: 24, weight: 500, tracking: "-0.5px", lh: "130%", usage: "Section Sub" },
   { name: "H2", size: 32, weight: 600, tracking: "-0.8px", lh: "125%", usage: "Section Headlines" },

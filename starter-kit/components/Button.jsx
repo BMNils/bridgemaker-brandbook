@@ -2,11 +2,13 @@
 // Bridgemaker Starter Kit — Buttons
 const { forwardRef } = React;
 
+// Hover-Prinzip: Lift statt Verdunkeln. Primary: translateY(-1px) + 0 4px 14px rgba(0,0,0,0.30);
+// Secondary: Füllung #EDE3F5 (purple-tint); Ghost: Füllung #E8E5DF (stone). Nie auf Schwarz springen.
 const _bmBtnBase = {
   display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8,
   borderRadius: 999, border: "none", fontFamily: "Inter, sans-serif",
   fontWeight: 500, cursor: "pointer", whiteSpace: "nowrap",
-  transition: "background 150ms cubic-bezier(0.22,1,0.36,1), color 150ms, transform 150ms",
+  transition: "background 150ms cubic-bezier(0.22,1,0.36,1), color 150ms, transform 150ms, box-shadow 150ms",
 };
 const _bmSize = {
   sm: { height: 36, padding: "0 20px", fontSize: 13 },

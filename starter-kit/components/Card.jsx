@@ -1,8 +1,11 @@
 /* global React */
 // Bridgemaker Starter Kit — Cards, Badges
 
+// Cards sind randlos — kein Border, kein Default-Schatten. Für dezente Abgrenzung
+// auf hellen Flächen die "lift"-Surface nutzen. Farbige Akzent-Kanten (border-left) sind verboten.
 const _bmCardSurfaces = {
-  white:   { background: "#FFFFFF", color: "#1C1C1E", border: "1px solid #E8E5DF" },
+  white:   { background: "#FFFFFF", color: "#1C1C1E" },
+  lift:    { background: "#FFFFFF", color: "#1C1C1E", boxShadow: "0 1px 2px rgba(28,28,30,0.04), 0 0 0 1px rgba(28,28,30,0.03)" },
   stone:   { background: "#E8E5DF", color: "#1C1C1E" },
   mauve:   { background: "#E3E0E8", color: "#1C1C1E" },
   sage:    { background: "#DDE4E0", color: "#1C1C1E" },

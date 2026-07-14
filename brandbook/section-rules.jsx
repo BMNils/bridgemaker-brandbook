@@ -261,7 +261,10 @@ function BbClaudeSection() {
         <ul style={{ margin: 0, paddingLeft: 20, font: "400 15px/1.8 Inter, sans-serif", color: "#F5F1EB" }}>
           <li>Load <code style={{ color: "#AF94D2" }}>tokens/tokens.css</code> first. Never hardcode colors or sizes.</li>
           <li>Default background: <code style={{ color: "#AF94D2" }}>--off-white (#F5F1EB)</code>. Never pure white.</li>
+          <li>Header logo: <strong>wordmark, 16px tall</strong>. The B—M monogram never goes in the header.</li>
           <li>Buttons: pill shape only. <code style={{ color: "#AF94D2" }}>border-radius: 999px</code>.</li>
+          <li>Hover lifts (<code style={{ color: "#AF94D2" }}>translateY(-1px)</code> + soft shadow) — never darken to black.</li>
+          <li>Cards are borderless. No colored accent edges (<code style={{ color: "#AF94D2" }}>border-left</code> callout brackets are banned).</li>
           <li>Kasane gradients only for hero/moment sections. Never as generic backgrounds.</li>
           <li>Never hand-draw SVG illustrations. Use striped placeholders.</li>
           <li>Voice: matter-of-fact + emotional, calm + fierce, deep + crystal clear. No jargon, no AI-Geschwätz.</li>

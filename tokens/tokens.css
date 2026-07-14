@@ -20,6 +20,7 @@
   --text-h3:      500 24px/1.30 var(--font-display);
   --text-h4:      500 20px/1.40 var(--font-display);
   --text-body:    400 16px/1.60 var(--font-body);
+  --text-body-l:  400 18px/1.55 var(--font-body); /* p.large — Lead-Absätze */
   --text-small:   400 14px/1.50 var(--font-body);
   --text-caption: 400 12px/1.40 var(--font-body);
   --text-eyebrow: 500 12px/1.40 var(--font-body); /* UPPERCASE + letter-spacing 0.08em */
@@ -149,7 +150,7 @@ body {
   text-wrap: pretty;
 }
 a { color: var(--bm-purple); text-decoration: none; }
-a:hover { text-decoration: underline; text-underline-offset: 3px; }
+a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ============================================================
    Utility classes — opt-in helpers, not a framework.
@@ -177,7 +178,8 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   cursor: pointer;
   transition: transform var(--dur-fast) var(--ease-out),
               background var(--dur-fast) var(--ease-out),
-              color var(--dur-fast) var(--ease-out);
+              color var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
   white-space: nowrap;
 }
 .bm-btn:active { transform: translateY(1px); }
@@ -185,7 +187,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .bm-btn-lg { height: var(--btn-h-lg); padding: 0 var(--btn-px-lg); font-size: 16px; }
 
 .bm-btn-primary { background: var(--charcoal); color: var(--off-white); }
-.bm-btn-primary:hover { background: #000; }
+.bm-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,0.30); }
 
 .bm-btn-secondary {
   background: transparent; color: var(--bm-purple);

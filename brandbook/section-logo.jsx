@@ -149,7 +149,8 @@ function BbLogoSection() {
         <div style={{ background: "#E8E5DF", borderRadius: 16, padding: 32 }}>
           <div style={{ font: "500 12px/1.4 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "#4A5A3C" }}>Do</div>
           <ul style={{ font: "var(--text-small)", color: "#1C1C1E", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.8 }}>
-            <li>Wordmark als primäre Anwendung — Monogram nur, wenn Quadrat erzwungen ist</li>
+            <li>Wordmark als primäre Anwendung — im Website-Header immer die Wordmark, 16px hoch</li>
+            <li>Monogram nur, wenn das Format ein Quadrat erzwingt (Favicon, App-Icon, Avatar, Foto-Stempel)</li>
             <li>Charcoal auf Off-White, Off-White auf Charcoal</li>
             <li>Schutzzone = Höhe des „B" rundherum</li>
             <li>Box-Variante des Monograms auf unruhigem Foto-Untergrund</li>

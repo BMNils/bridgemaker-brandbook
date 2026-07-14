@@ -13,7 +13,9 @@ Every time you begin a Bridgemaker project:
 2. **Default background is `--off-white` (#F5F1EB)**. Never use pure `#FFFFFF` for a main canvas. Cards and inputs may use white; the page itself must not.
 3. **Inter + Inter Display**. Import from Google Fonts. No other font families without explicit approval.
 4. **Pill buttons only.** `border-radius: 999px`. No rectangles, no `4px` corners.
-5. **If anything is ambiguous — ASK.** Do not improvise brand-critical decisions (tone, headline copy, venture positioning, imagery choice).
+5. **Header logo = wordmark. Always.** The sticky header carries the **wordmark** (`assets/logos/wordmark-black.svg`, 16px tall in the 60px header) — same for footer and every main brand presence. The B—M monogram is **never** the header logo (see 1.2).
+6. **Writing or reviewing any copy? Read [`voice/BM_Voice_Style_Guide_v1.md`](voice/BM_Voice_Style_Guide_v1.md) first.** It carries the tone levels, word lists, and hard writing constraints. Do not write Bridgemaker text from these brand notes alone.
+7. **If anything is ambiguous — ASK.** Do not improvise brand-critical decisions (tone, headline copy, venture positioning, imagery choice).
 
 ---
 
@@ -26,7 +28,16 @@ Every time you begin a Bridgemaker project:
 
 ### 1.2 The logo as an idea — "Bindestrich"
 
-The Bridgemaker logo is **B—M**. The dash between B and M IS the logo. It represents a direct, uncomplicated connection between two worlds (Corporate ↔ Startup) — straight to the point, der direkteste Weg. Whenever you render the wordmark, the dash must feel deliberate, strong, and central.
+The **primary logo is the wordmark** ("Bridgemaker" with the em-dash worked into the letterforms). The dash is the *idea* behind the mark: a direct, uncomplicated connection between two worlds (Corporate ↔ Startup) — straight to the point, der direkteste Weg.
+
+**B—M is the monogram (Signet), not the logo.** It exists for square applications only: favicon, app icon, social avatar, small photo stamps.
+
+| Application | Use |
+|---|---|
+| Header, footer, slide covers, business cards, any main brand presence | **Wordmark** (in the 60px header: 16px tall) |
+| Favicon, app icon, social avatar, photo stamp | **Monogram B—M** (box variant on busy backgrounds) |
+
+Never substitute the monogram for the wordmark in a main brand presence — this is the single most common mistake when generating Bridgemaker layouts.
 
 ### 1.3 Voice — Duality
 
@@ -42,7 +53,7 @@ The Bridgemaker logo is **B—M**. The dash between B and M IS the logo. It repr
 
 Primary languages: **German and English, equally weighted.** Pick based on audience; don't mix mid-sentence.
 
-**Operational reference:** For all text work — writing rules, tone levels (Standard / Empathetic / Visionary), risk-word lists, forbidden phrases, side-by-side examples — see [`voice/BM_Voice_Style_Guide_v1.md`](voice/BM_Voice_Style_Guide_v1.md). The brandbook keeps the polarities and dimensions; the Voice Guide carries the operational depth.
+**Operational reference:** For all text work — writing rules, tone levels (Standard / Empathetic / Visionary), risk-word lists, forbidden phrases, side-by-side examples — read [`voice/BM_Voice_Style_Guide_v1.md`](voice/BM_Voice_Style_Guide_v1.md) **before** writing, and self-check against its hard constraints (no forbidden phrases, no decorative adjectives without substance, max. one reframe per text, no invented speed-claim numbers). The brandbook keeps the polarities and dimensions; the Voice Guide carries the operational depth.
 
 ### 1.4 B—M Principles (how we work)
 
@@ -102,7 +113,7 @@ When placing content on `--charcoal` backgrounds:
 
 ### 2.6 Borders & dividers
 
-Outline boxes, dividers, table lines, card outlines → use **`--border-subtle`** (`1px solid #C5C0B8`). This is the default; it carries enough weight on off-white to read clearly without feeling heavy.
+Outline boxes, dividers, table lines → use **`--border-subtle`** (`1px solid #C5C0B8`). This is the default; it carries enough weight on off-white to read clearly without feeling heavy. Cards are **borderless** — see 5.2.
 
 - `--border-hairline` — only for very soft inner splits on calm backgrounds (e.g. inside a card)
 - `--border-strong` — `1.5px solid --bm-purple` for focus rings, active outlines, secondary button stroke
@@ -134,6 +145,7 @@ Always use tokens; never hard-code font sizes.
 | `--text-h2`         | 32px  | 600 | Section headlines |
 | `--text-h3`         | 24px  | 500 | Section subheads |
 | `--text-h4`         | 20px  | 500 | Card titles |
+| `--text-body-l`     | 18px  | 400 | Lead paragraphs (`p.large`), line-height 1.55 |
 | `--text-body`       | 16px  | 400 | Body text |
 | `--text-small`      | 14px  | 400 | Nav, meta |
 | `--text-caption`    | 12px  | 400 | Labels, timestamps |
@@ -152,6 +164,7 @@ Umlauts (ä, ö, ü) in Display-size headlines are **welcome** when the copy gen
 ### 3.5 Copy rules
 
 - Headlines: no full stops unless there are multiple sentences
+- Long German compounds in headlines: allow the word to break (`overflow-wrap: break-word`) instead of shrinking the type size
 - Body: sentence-case, not Title Case
 - Numbers: use figures (3, not "three") from 10 upwards; below 10, spell out in body copy
 - No exclamation marks outside of explicit UI affirmations
@@ -202,13 +215,18 @@ Kasane can drift slowly (18–24s loops) via the `kasane1/2/3` keyframes. Respec
 
 **Sizes:** `bm-btn-sm` (36px), default (44px), `bm-btn-lg` (52px).
 
+**Hover — lift, never darken:** primary buttons rise on hover (`transform: translateY(-1px)` + `box-shadow: 0 4px 14px rgba(0,0,0,0.30)`). Secondary fills with `--bm-purple-tint`, ghost with `--surface-stone`. Never switch a hover background to black or a darker fill — interactive elements **lift**.
+
 **Label voice:** Verb-first. "Let's build together", "Jetzt starten", "Mehr erfahren", "Ventures entdecken". Never "Click here", "Submit", "Learn more" in isolation without a subject.
 
 ### 5.2 Cards
 
-- Default: white background, `--border-subtle`, `radius-xl` (20px), `space-8` padding.
+- Default: white background, **borderless**, `radius-xl` (20px), `space-8` padding. No border, no default shadow.
+- If a white card needs separation on a near-white area, use the `bm-lift` treatment (soft shadow ring: `0 1px 2px rgba(28,28,30,0.04), 0 0 0 1px rgba(28,28,30,0.03)`) — not a border.
+- Linked cards lift on hover: `translateY(-1px to -2px)` + `--shadow-md`. Never darken the fill.
 - Surface variants: `bm-card-surface/mauve/sage/sand/dark` — use these to group content thematically.
 - Never stack three cards of the same surface color in a row — vary the fill or break to neutrals.
+- **Absolutely no colored accent edges.** Never decorate a card or callout with a colored left border / bracket-style edge (`border-left: 4px solid …` and friends). This pattern is banned outright — if content needs emphasis, use a surface fill, a badge, or an eyebrow.
 
 ### 5.3 Badges / Tags
 
@@ -222,8 +240,13 @@ Small pills, 24px tall, `radius-pill`. Tint variants match the brand triad (purp
 
 ### 5.5 Navigation
 
-- Sticky header: 60px tall, off-white at 55% opacity, 16px backdrop blur.
+- Sticky header: 60px tall, off-white at 55% opacity, 16px backdrop blur, **wordmark left at 16px height** (see 1.2 — never the monogram).
 - Active-state nav items: pill background in charcoal.
+
+### 5.6 Links
+
+- Hover underline (`text-underline-offset: 3px`) applies to **plain text links only** (unclassed `<a>` and `.bm-link`).
+- Buttons, card links, and nav pills never underline — they lift or change fill on hover (see 5.1/5.2).
 
 ---
 
@@ -319,7 +342,10 @@ Standard landing-page rhythm (top to bottom):
 
 - ✅ Load `tokens.css` first
 - ✅ Default to `--off-white` background
+- ✅ Wordmark in the header (16px) — monogram only for favicon/avatar/app-icon
 - ✅ Use pill buttons everywhere
+- ✅ Lift on hover — `translateY(-1px)` + soft shadow
+- ✅ Read `voice/BM_Voice_Style_Guide_v1.md` before writing or reviewing any copy
 - ✅ Ask when unsure
 - ✅ Use placeholders when assets are missing
 - ✅ Let negative space breathe
@@ -327,7 +353,11 @@ Standard landing-page rhythm (top to bottom):
 ### Don't
 
 - ❌ Use `#FFFFFF` for page backgrounds
+- ❌ Put the B—M monogram in the header — the header logo is the wordmark
 - ❌ Put rectangles where pills belong
+- ❌ Colored accent edges on boxes (`border-left: 4px solid …` callout brackets) — banned outright
+- ❌ Darken hover backgrounds (to black or otherwise) — interactive elements lift
+- ❌ Borders around cards — cards are borderless (use `bm-lift` if separation is needed)
 - ❌ Use Kasane gradients as generic backgrounds
 - ❌ Invent SVG illustrations
 - ❌ Use emoji as imagery or in headlines
@@ -363,4 +393,5 @@ Everything else: build confidently from the tokens.
 
 ---
 
-*Bridgemaker Brand v1.0 — April 2026*
+*Bridgemaker Brand v1.1 — Juli 2026*
+*Änderungen v1.1: Logo-Anwendungsregel (Wordmark im Header, Monogram nur als Signet), Hover-Prinzip „Lift statt Verdunkeln", Cards randlos, Verbot farbiger Akzent-Kanten, `--text-body-l` (18px Lead), Link-Unterstreichungsregel, Umbruch langer deutscher Komposita, Voice & Style Guide (`voice/`) als verbindlicher Einstieg für alle Textarbeit. Geschärft aus den Learnings des Website-Projekts.*

@@ -9,6 +9,7 @@ function BbComponentsSection() {
       <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", color: "#1C1C1E", margin: "0 0 8px" }}>Buttons — Pill Shape</h3>
       <p style={{ font: "var(--text-small)", color: "#6B6B65", margin: "0 0 32px", maxWidth: 560 }}>
         Full-Rounded. Immer. <code style={{ font: "400 12.5px/1 'JetBrains Mono', Menlo, monospace", color: "#6B4A94" }}>border-radius: 999px</code>. Drei Varianten, drei Größen.
+        Hover: <strong>Lift statt Verdunkeln</strong> — Primary hebt sich (−1px + weicher Schatten), Secondary füllt mit Purple-Tint, Ghost mit Stone. Nie auf Schwarz oder dunkler springen.
       </p>
 
       <div style={{ background: "#fff", borderRadius: 20, padding: 40, marginBottom: 16 }}>
@@ -38,7 +39,9 @@ function BbComponentsSection() {
       {/* Cards */}
       <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", color: "#1C1C1E", margin: "0 0 8px" }}>Cards & Surfaces</h3>
       <p style={{ font: "var(--text-small)", color: "#6B6B65", margin: "0 0 24px", maxWidth: 560 }}>
-        Surface-Varianten gruppieren Content thematisch. Nicht drei gleiche in einer Reihe.
+        <strong>Randlos</strong> — kein Border, kein Default-Schatten; für dezente Abgrenzung auf hellen Flächen den <code style={{ font: "400 12.5px/1 'JetBrains Mono', Menlo, monospace", color: "#6B4A94" }}>bm-lift</code>-Schattenring nutzen.
+        Verlinkte Cards heben auf Hover (Lift, nie dunkler). Surface-Varianten gruppieren Content thematisch — nicht drei gleiche in einer Reihe.
+        <strong> Verboten:</strong> farbige Akzent-Kanten (border-left-„Klammern") an Boxen und Callouts — Betonung über Surface-Füllung, Badge oder Eyebrow.
       </p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 64 }}>
         {[
