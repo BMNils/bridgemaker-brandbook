@@ -144,9 +144,9 @@
 
 - **Sektions-Anatomie** (Reihenfolge fix): Eyebrow → Headline (h2) →
   Lead (body-l, `--mid`) → Inhalt → optional EIN CTA (verb-first-Label).
-- **Buttons:** Pill; Primär = Charcoal→Deep-Plum-Hover; Featured =
-  Verlaufs-Pill (`bm-btn-glow`); Größen 36/44/48/52px. Labels
-  verb-first („Jetzt starten"), nie „Hier klicken"/„Absenden" nackt.
+- **Buttons:** Pill; Primär = Charcoal→Deep-Plum-Hover; Größen
+  36/44/48/52px. Labels verb-first („Jetzt starten"), nie „Hier
+  klicken"/„Absenden" nackt.
 - **Header:** fix, 64px, transparent → blur-solid beim Scrollen
   (`backdrop-blur-xl bg-white/30`), Dark-Inversion auf dunklen
   Sektionen; Nav-CTA als Charcoal-Pill; Links `type-nav`.

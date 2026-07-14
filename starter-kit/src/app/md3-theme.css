@@ -71,6 +71,15 @@
   --md-outlined-select-text-field-container-shape: var(--radius-md);
 }
 
+:root {
+  /* Chips sind kleine Pills (Badge-Regel, guidelines/07 §7.6) —
+     MD3s Default wäre corner-small. */
+  --md-assist-chip-container-shape: var(--radius-pill);
+  --md-filter-chip-container-shape: var(--radius-pill);
+  --md-input-chip-container-shape: var(--radius-pill);
+  --md-suggestion-chip-container-shape: var(--radius-pill);
+}
+
 /* Formular-Regel (guidelines/07 §7.4): Outline-only im Ruhezustand,
    weiß füllt das Feld erst bei Fokus.                              */
 md-outlined-text-field:focus-within,

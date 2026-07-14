@@ -36,7 +36,6 @@ function BbComponentsSection() {
           <div style={{ font: "500 11px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "rgba(255,255,255,0.6)", marginBottom: 20 }}>Auf dunklem Grund</div>
           <div style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
             <button className="bm-btn bm-btn-primary">Let's build together</button>
-            <button className="bm-btn bm-btn-glow">Featured-CTA (Glow)</button>
             <button className="bm-btn bm-btn-secondary">Mehr erfahren</button>
           </div>
         </div>

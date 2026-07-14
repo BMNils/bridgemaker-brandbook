@@ -2,17 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Wordmark } from "@/components/brand/wordmark";
-import { ImagePlaceholder } from "@/components/brand/image-placeholder";
 
 /**
- * Starter-Kit — Komponenten-Referenz.
+ * Starter-Kit — MD3-Integrations-Referenz.
  *
- * Vorrang-Regel (guidelines/09 §9.1): Wo Bridgemaker ein eigenes Rezept
- * hat (type-*, bm-btn, bm-input, Karten, Badges), gilt das Rezept —
- * auch in Produkt-UIs. MD3 (@material/web) füllt NUR die Lücken:
- * Dialoge, Tabs, Loader, Slider, Switches und ähnliche nicht
- * definierte Elemente. Typo und Farben stehen im Brandbook — hier
- * lebt nur der Code.
+ * Zweck (guidelines/09 §9.1, Vorrang-Regel): MD3 (@material/web) ist
+ * die Komponenten-Library für alles, was das Bridgemaker-Design-System
+ * NICHT selbst definiert — Dialoge, Loader, Tabs, Chips, Auswahl,
+ * Regler. Alles Definierte (Typo, Buttons, Formulare, Karten, Badges)
+ * kommt aus dem Design-System und ist im Brandbook dokumentiert,
+ * nicht hier.
  */
 
 function Section({
@@ -38,7 +37,7 @@ function Section({
   );
 }
 
-export default function ComponentsReference() {
+export default function Md3Reference() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const dialogRef = useRef<HTMLElement | null>(null);
 
@@ -73,123 +72,20 @@ export default function ComponentsReference() {
       <main className="pt-16">
         <div className="mx-auto max-w-[1200px] px-4 pt-16 md:px-8">
           <p className="type-eyebrow text-light">Starter-Kit</p>
-          <h1 className="type-h1 mt-6 max-w-xl">Komponenten-Referenz</h1>
+          <h1 className="type-h1 mt-6 max-w-xl">MD3-Integration</h1>
           <p className="type-body-l mt-4 max-w-2xl text-mid">
-            Bridgemaker-Rezepte zuerst — MD3 füllt nur die Lücken. Der Code
-            dieser Seite ist die Gebrauchsanweisung; die visuelle Herleitung
+            Material Design 3 füllt die Lücken des Design-Systems: Dialoge,
+            Loader, Tabs und Co. — gebrandet über das Token-Mapping aus
+            Kapitel 09, nie über Library-Defaults. Alles andere (Typo,
+            Buttons, Formulare, Karten) kommt aus dem Design-System und
             steht im Brandbook.
           </p>
         </div>
 
-        {/* ================= Bridgemaker-Rezepte ================= */}
-
         <Section
-          eyebrow="Bridgemaker"
-          title="Buttons"
-          lead="Die bm-btn-Familie gilt überall — auch in Produkt-UIs. Pill, immer. Hover wechselt die Füllung innerhalb der Markenfamilie, nie nach Schwarz."
-        >
-          <div className="flex flex-wrap items-center gap-4">
-            <button className="bm-btn bm-btn-primary">Jetzt starten</button>
-            <button className="bm-btn bm-btn-secondary">Mehr erfahren</button>
-            <button className="bm-btn bm-btn-ghost">Details ansehen</button>
-          </div>
-          <div className="bm-on-dark mt-6 flex flex-wrap items-center gap-4 rounded-xl bg-charcoal p-8">
-            <button className="bm-btn bm-btn-primary">Jetzt starten</button>
-            <button className="bm-btn bm-btn-secondary">Mehr erfahren</button>
-            <button className="bm-btn bm-btn-glow">Featured-Aktion</button>
-            <p className="type-caption w-full text-soft">
-              Auf Dunkel: Primary invertiert, Secondary in Lavender — die
-              Glow-Verlaufs-Pill gehört NUR auf dunkle CTA-Flächen.
-            </p>
-          </div>
-        </Section>
-
-        <Section
-          eyebrow="Bridgemaker"
-          title="Formulare"
-          lead="Outline-only: Ruhezustand transparent, weiß füllt erst bei Fokus. radius-md (12px), nie Pill. Labels über dem Feld."
-        >
-          <div className="grid max-w-xl gap-6">
-            <div>
-              <label className="bm-label" htmlFor="demo-name">
-                Name
-              </label>
-              <input
-                id="demo-name"
-                className="bm-input"
-                placeholder="Ada Lovelace"
-              />
-            </div>
-            <div>
-              <label className="bm-label" htmlFor="demo-mail">
-                E-Mail
-              </label>
-              <input id="demo-mail" type="email" className="bm-input" />
-              <p className="bm-help">
-                Wir melden uns innerhalb von zwei Werktagen.
-              </p>
-            </div>
-            <div>
-              <label className="bm-label" htmlFor="demo-msg">
-                Was möchtest du bauen?
-              </label>
-              <textarea
-                id="demo-msg"
-                className="bm-textarea"
-                placeholder="Eine kurze Beschreibung …"
-              />
-            </div>
-          </div>
-        </Section>
-
-        <Section
-          eyebrow="Bridgemaker"
-          title="Karten-Familie"
-          lead="Karten sitzen, sie fliegen nicht: Inset-Haarlinie plus nahe Elevation. Füllungen variieren — nie dreimal dieselbe Surface in einer Reihe."
-        >
-          <div className="grid gap-6 md:grid-cols-3">
-            <div className="card-clean rounded-xl bg-white p-8">
-              <h3 className="type-card-title">card-clean</h3>
-              <p className="type-body mt-3 text-mid">
-                Weiße matte Karte — der Default auf Off-White-Grund.
-              </p>
-            </div>
-            <div className="bm-card-stone rounded-xl p-8">
-              <h3 className="type-card-title">Stone</h3>
-              <p className="type-body mt-3 text-mid">
-                Getönte Karte für ruhige Nachbarschaften.
-              </p>
-            </div>
-            <div className="bm-card-sand rounded-xl p-8">
-              <h3 className="type-card-title">Sand</h3>
-              <p className="type-body mt-3 text-mid">
-                Warme Fläche — z. B. für Ventures-Kontexte.
-              </p>
-            </div>
-          </div>
-        </Section>
-
-        <Section
-          eyebrow="Bridgemaker"
-          title="Badges und Platzhalter"
-          lead="Badges: Tint-Hintergrund plus Deep-Text, mehr als drei pro View sind ein Layout-Problem. Fehlt ein Bild: gestreifter Platzhalter, nie eine erfundene Illustration."
-        >
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="bm-badge bm-badge-purple">Produkt</span>
-            <span className="bm-badge bm-badge-teal">Tech</span>
-            <span className="bm-badge bm-badge-berry">Neu</span>
-          </div>
-          <div className="mt-10 max-w-md">
-            <ImagePlaceholder caption="team-portrait_04.jpg" ratio="16/9" />
-          </div>
-        </Section>
-
-        {/* ================= MD3 — nur die Lücken ================= */}
-
-        <Section
-          eyebrow="MD3 · Lückenfüller"
+          eyebrow="MD3"
           title="Dialog und Loader"
-          lead="Für alles ohne Bridgemaker-Rezept liefert @material/web die Anatomie — gebrandet über das Token-Mapping aus Kapitel 09, nie über Library-Defaults."
+          lead="Anatomie, Fokus-Handling und A11y von MD3 — die Dialog-Aktionen sind unsere Pill-Buttons (Vorrang-Regel)."
         >
           <div className="flex flex-wrap items-center gap-8">
             <button
@@ -209,22 +105,32 @@ export default function ComponentsReference() {
               Deine Änderungen gehen verloren. Das lässt sich nicht rückgängig
               machen.
             </div>
-            <div slot="actions">
-              <md-text-button onClick={() => setDialogOpen(false)}>
+            <div slot="actions" className="flex gap-3">
+              <button
+                className="bm-btn bm-btn-ghost bm-btn-sm"
+                onClick={() => setDialogOpen(false)}
+              >
                 Behalten
-              </md-text-button>
-              <md-filled-button onClick={() => setDialogOpen(false)}>
+              </button>
+              <button
+                className="bm-btn bm-btn-primary bm-btn-sm"
+                onClick={() => setDialogOpen(false)}
+              >
                 Verwerfen
-              </md-filled-button>
+              </button>
             </div>
           </md-dialog>
         </Section>
 
-        <Section eyebrow="MD3 · Lückenfüller" title="Tabs und Chips">
+        <Section
+          eyebrow="MD3"
+          title="Tabs und Chips"
+          lead="Tabs mit Vollbreiten-Indikator (md-secondary-tab); Chips als kleine Pills, wie Badges."
+        >
           <md-tabs>
-            <md-primary-tab active>Übersicht</md-primary-tab>
-            <md-primary-tab>Auswertung</md-primary-tab>
-            <md-primary-tab>Einstellungen</md-primary-tab>
+            <md-secondary-tab active>Übersicht</md-secondary-tab>
+            <md-secondary-tab>Auswertung</md-secondary-tab>
+            <md-secondary-tab>Einstellungen</md-secondary-tab>
           </md-tabs>
           <md-chip-set className="mt-8">
             <md-assist-chip label="Assist-Chip" />
@@ -234,7 +140,7 @@ export default function ComponentsReference() {
         </Section>
 
         <Section
-          eyebrow="MD3 · Lückenfüller"
+          eyebrow="MD3"
           title="Auswahl und Regler"
           lead="Checkboxen, Switches, Radios und Slider haben kein Bridgemaker-Rezept — MD3 übernimmt, primary ist bm-purple."
         >
@@ -261,7 +167,8 @@ export default function ComponentsReference() {
           <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-6 px-4 py-12 md:px-8">
             <Wordmark height={16} />
             <p className="type-small text-mid">
-              Bridgemaker Starter-Kit — Kanon und Herleitung im Brandbook
+              Bridgemaker Starter-Kit — Design-System und Herleitung im
+              Brandbook
             </p>
           </div>
         </footer>

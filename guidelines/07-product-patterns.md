@@ -52,9 +52,6 @@ der Flächenrhythmus gliedert die Seite, nicht Trennlinien allein.
   - **Primär:** Charcoal-Pill mit Off-White-Text; Hover →
     `bg-bm-deep-plum`. Auf Dunkel invertiert: Off-White-Pill, Hover →
     `bg-bm-soft-purple`.
-  - **Featured/Glow:** Verlaufs-Pill `from-off-white to-bm-purple-tint`
-    mit Inset-Lichtkante, Hover → `to-bm-soft-purple` (für dunkle
-    CTA-Flächen).
   - **Sekundär** *(Systemvariante, auf der Website derzeit ungenutzt)*:
     transparent mit 1.5px Purple-Kontur (Lavender auf Dunkel).
   - **Ghost** *(Systemvariante, auf der Website derzeit ungenutzt)*:

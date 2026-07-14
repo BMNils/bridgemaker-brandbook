@@ -560,16 +560,6 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
 .bm-btn-ghost { background: transparent; color: var(--charcoal); }
 .bm-btn-ghost:hover { background: var(--surface-stone); }
 
-/* Featured/Glow — Verlaufs-Pill für dunkle CTA-Flächen */
-.bm-btn-glow {
-  background: linear-gradient(180deg, var(--off-white), var(--bm-purple-tint));
-  color: var(--charcoal);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
-}
-.bm-btn-glow:hover {
-  background: linear-gradient(180deg, var(--off-white), var(--bm-soft-purple));
-}
-
 /* On-Dark-Varianten */
 .bm-on-dark .bm-btn-primary { background: var(--off-white); color: var(--charcoal); }
 .bm-on-dark .bm-btn-primary:hover { background: var(--bm-soft-purple); }
