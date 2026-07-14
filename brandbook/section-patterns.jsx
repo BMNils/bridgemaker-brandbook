@@ -44,14 +44,14 @@ function BbSlidesSection() {
 
 function BbLandingSection() {
   const sections = [
-    { n: "01", label: "Fixe Nav", desc: "64px · transparent → blur-solid beim Scrollen · Wortmarke 20px links · type-nav-Links · CTA-Pill rechts" },
-    { n: "02", label: "Hero", desc: "Kasane-Fläche · Display-Headline · Lead in --mid · 1–2 CTAs · optional Glas-Kartenstapel" },
+    { n: "01", label: "Fixe Nav", desc: "64px, transparent → blur-solid beim Scrollen, Wortmarke 20px links, type-nav-Links, CTA-Pill rechts" },
+    { n: "02", label: "Hero", desc: "Kasane-Fläche, Display-Headline, Lead in --mid, 1–2 CTAs, optional Glas-Kartenstapel" },
     { n: "03", label: "Proof-Band", desc: "Kundenlogos (Marquee) oder Stats auf ruhiger Fläche" },
-    { n: "04", label: "Themen-Sektionen", desc: "Karten mit variierenden Surfaces · ein Thema = eine Farbwelt" },
+    { n: "04", label: "Themen-Sektionen", desc: "Karten mit variierenden Surfaces, ein Thema = eine Farbwelt" },
     { n: "05", label: "Cases", desc: "Grid oder Scheiben mit case-glass-Ergebnisleisten" },
     { n: "06", label: "Stimmen", desc: "Satte Verlaufs-Karten (bg-stimme-*) mit Zitaten" },
-    { n: "07", label: "Abschluss-CTA", desc: "Dunkle Kasane-Fläche · eine Headline · ein Button" },
-    { n: "08", label: "Footer", desc: "Off-White · border-t surface-stone · Wortmarke + 3 Linkspalten mit Eyebrow-Titeln" },
+    { n: "07", label: "Abschluss-CTA", desc: "Dunkle Kasane-Fläche, eine Headline, ein Button" },
+    { n: "08", label: "Footer", desc: "Off-White, border-t surface-stone, Wortmarke + 3 Linkspalten mit Eyebrow-Titeln" },
   ];
   return (
     <BbSection id="landing" num="11" title="Seitenrhythmus"

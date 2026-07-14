@@ -23,9 +23,9 @@ function BbComponentsSection() {
           <a className="bm-link" href="#" style={{ color: "#6B4A94" }}>Alle Cases →</a>
         </div>
         <div style={{ display: "flex", gap: 16, alignItems: "center", marginTop: 24 }}>
-          <button className="bm-btn bm-btn-primary bm-btn-sm">Small · 36</button>
-          <button className="bm-btn bm-btn-primary">Default · 44</button>
-          <button className="bm-btn bm-btn-primary bm-btn-lg">Large · 52</button>
+          <button className="bm-btn bm-btn-primary bm-btn-sm">Small, 36</button>
+          <button className="bm-btn bm-btn-primary">Default, 44</button>
+          <button className="bm-btn bm-btn-primary bm-btn-lg">Large, 52</button>
         </div>
       </div>
 

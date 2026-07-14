@@ -1,6 +1,6 @@
 # 01 — Markenkern
 
-> Bridgemaker Brand Guidelines v2 · kanonische Quelle. HTML-Brandbook,
+> Bridgemaker Brand Guidelines v2, kanonische Quelle. HTML-Brandbook,
 > `CLAUDE.md` und Starter-Kit werden aus diesen Kapiteln abgeleitet.
 
 ## 1.1 Positionierung, Mission & Vision

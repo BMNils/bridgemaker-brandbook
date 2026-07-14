@@ -78,7 +78,7 @@ function BbMd3Section() {
       </div>
 
       <p style={{ font: "var(--text-small)", color: "#6B6B65", maxWidth: 720, lineHeight: 1.7 }}>
-        Shape: Pill = MD3 full radius · Karten <code>radius-xl</code> · Inputs <code>radius-md</code>.
+        Shape: Pill = MD3 full radius, Karten <code>radius-xl</code>, Inputs <code>radius-md</code>.
         Elevation: <code>card-clean</code>/<code>card-elevated</code> für Ruhezustände, keine Surface-Tint-Overlays.
         Motion: Bridgemaker-Dauern & -Easings, ein Motion-Moment pro View. Vollständiges Mapping inkl.
         Library-Empfehlung: <a href="../guidelines/09-md3-mapping.md" style={{ color: "#6B4A94", textDecoration: "underline", textUnderlineOffset: 3 }}>guidelines/09-md3-mapping.md</a>.

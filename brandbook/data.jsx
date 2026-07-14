@@ -24,18 +24,18 @@ const bbColors = {
 // Fluide + fixe Stufen — Werte 1:1 aus tokens.css (.type-*)
 const bbTypeScale = [
   { name: "Micro", cls: "type-micro", size: "10px", weight: 400, tracking: "0", lh: "1.40", usage: "Kleinstinformationen" },
-  { name: "Eyebrow", cls: "type-eyebrow", size: "12px", weight: 500, tracking: "+0.08em · VERSALIEN", lh: "1.40", usage: "Kicker über Headlines" },
+  { name: "Eyebrow", cls: "type-eyebrow", size: "12px", weight: 500, tracking: "+0.08em, VERSALIEN", lh: "1.40", usage: "Kicker über Headlines" },
   { name: "Caption", cls: "type-caption", size: "12px", weight: 400, tracking: "0", lh: "1.40", usage: "Labels, Zeitstempel" },
   { name: "Small", cls: "type-small", size: "14px", weight: 400, tracking: "0", lh: "1.50", usage: "Meta, sekundäre UI" },
   { name: "Nav", cls: "type-nav", size: "15px", weight: 500, tracking: "0", lh: "1.40", usage: "Nav-Links & Nav-CTA" },
   { name: "Body", cls: "type-body", size: "16px", weight: 400, tracking: "0", lh: "1.60", usage: "Fließtext" },
-  { name: "Body L", cls: "type-body-l", size: "18px", weight: 400, tracking: "0", lh: "1.55", usage: "Lead-Absätze · max-w-2xl" },
+  { name: "Body L", cls: "type-body-l", size: "18px", weight: 400, tracking: "0", lh: "1.55", usage: "Lead-Absätze, max-w-2xl" },
   { name: "H5", cls: "type-h5", size: "16px", weight: 500, tracking: "-0.2px", lh: "1.45", usage: "Kleine Überschriften" },
   { name: "Card Title", cls: "type-card-title", size: "18px", weight: 600, tracking: "-0.3px", lh: "1.45", usage: "Kleine Karten-Headlines" },
   { name: "H4", cls: "type-h4", size: "20px", weight: 500, tracking: "-0.3px", lh: "1.40", usage: "Karten-Titel" },
   { name: "H3", cls: "type-h3", size: "24px", weight: 500, tracking: "-0.5px", lh: "1.30", usage: "Zwischenüberschriften" },
   { name: "Stat", cls: "type-stat", size: "clamp(28px, 3vw, 36px)", weight: 500, tracking: "-0.025em", lh: "1.10", usage: "Kennzahlen", fluid: true },
-  { name: "H2", cls: "type-h2", size: "clamp(26px, 3vw, 32px)", weight: 600, tracking: "-0.025em", lh: "1.25", usage: "Sektions-Headlines · max-w-xl", fluid: true },
+  { name: "H2", cls: "type-h2", size: "clamp(26px, 3vw, 32px)", weight: 600, tracking: "-0.025em", lh: "1.25", usage: "Sektions-Headlines, max-w-xl", fluid: true },
   { name: "H1", cls: "type-h1", size: "clamp(32px, 4.2vw, 48px)", weight: 600, tracking: "-0.025em", lh: "1.15", usage: "Seitentitel", fluid: true },
 ];
 

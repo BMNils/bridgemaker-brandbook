@@ -210,9 +210,9 @@ function BbLayoutSection() {
         <div className="card-clean" style={{ background: "#fff", borderRadius: 16, padding: 28 }}>
           <div style={{ font: "500 12px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "#918F87" }}>Container & Maße</div>
           <ul style={{ font: "var(--text-small)", color: "#3D3D3A", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.8 }}>
-            <li>Container max <strong>1200px</strong> · Padding 16px mobil / 32px ab md</li>
-            <li>Sektionen <code>py-24</code> (96px) · Grid-Gutter 24px</li>
-            <li>Headlines <code>max-w-xl</code> · Leads <code>max-w-2xl</code> — nie volle Breite</li>
+            <li>Container max <strong>1200px</strong>, Padding 16px mobil / 32px ab md</li>
+            <li>Sektionen <code>py-24</code> (96px), Grid-Gutter 24px</li>
+            <li>Headlines <code>max-w-xl</code>, Leads <code>max-w-2xl</code> — nie volle Breite</li>
             <li>Negativraum ist ein Marken-Asset — im Zweifel: mehr</li>
           </ul>
         </div>
@@ -221,7 +221,7 @@ function BbLayoutSection() {
           <ul style={{ font: "var(--text-small)", color: "#3D3D3A", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.8 }}>
             <li>Karten <strong>liften</strong>: −4px + shadow-md (200ms)</li>
             <li>Buttons wechseln die Füllung in der Familie — nie nach Schwarz</li>
-            <li>Pfeile nudgen (translate-x 2px) · Thumbs skalieren 1.02</li>
+            <li>Pfeile nudgen (translate-x 2px), Thumbs skalieren 1.02</li>
             <li>Unterstreichung nur bei reinen Textlinks</li>
           </ul>
         </div>
@@ -245,7 +245,7 @@ function BbLayoutSection() {
         <span className="bm-badge bm-badge-purple">--duration-fast 150ms</span>
         <span className="bm-badge bm-badge-purple">--duration-base 240ms</span>
         <span className="bm-badge bm-badge-purple">--duration-slow 400ms</span>
-        <span className="bm-badge bm-badge-purple">kasane-drift 14s · bold 9s</span>
+        <span className="bm-badge bm-badge-purple">kasane-drift 14s, bold 9s</span>
       </div>
       <p style={{ font: "var(--text-small)", color: "#6B6B65", marginTop: 24, maxWidth: 620, lineHeight: 1.6 }}>
         <strong>prefers-reduced-motion ist Pflicht</strong> — jede Animation fällt auf einen ruhigen statischen Zustand
@@ -261,10 +261,10 @@ function BbTokensSection() {
     ["--font-sans", '"Inter", sans-serif'],
     ["--font-mono", '"JetBrains Mono", monospace'],
     { sp: 12 },
-    [".type-display", "clamp(40px, 5.5vw, 64px) · 600 · -0.03em"],
-    [".type-h1", "clamp(32px, 4.2vw, 48px) · 600"],
-    [".type-h2", "clamp(26px, 3vw, 32px) · 600"],
-    [".type-body", "16px · 400 · 1.60"],
+    [".type-display", "clamp(40px, 5.5vw, 64px), 600, -0.03em"],
+    [".type-h1", "clamp(32px, 4.2vw, 48px), 600"],
+    [".type-h2", "clamp(26px, 3vw, 32px), 600"],
+    [".type-body", "16px, 400, 1.60"],
     { sp: 18 },
     { k: "/* Farben — Familien */", c: "#6B6B65" },
     ["--charcoal", "#1C1C1E"],

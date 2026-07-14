@@ -140,10 +140,10 @@ Heroes und Cover-Slides.
 
 - Format **1920×1080**, Mindest-Textgröße **24px**. Keine Ausnahmen.
 - Layouts: **Cover** (dunkles/vibrantes Kasane, Display-Titel, kleines
-  Eyebrow, kein Fließtext) · **Kapiteltrenner** (Surface-Farbe
-  full-bleed, zentrierte einzeilige H1) · **Content** (2/3 Text + 1/3
-  Visual oder 1/2-Split) · **Zitat** (großes kursives Zitat, Attribution
-  im Eyebrow-Stil) · **Schluss-Slide** (Claim + Kontakt, dunkles Kasane).
+  Eyebrow, kein Fließtext), **Kapiteltrenner** (Surface-Farbe
+  full-bleed, zentrierte einzeilige H1), **Content** (2/3 Text + 1/3
+  Visual oder 1/2-Split), **Zitat** (großes kursives Zitat, Attribution
+  im Eyebrow-Stil), **Schluss-Slide** (Claim + Kontakt, dunkles Kasane).
 
 ## 7.9 Print-Publikationen (DIN A4)
 
@@ -163,9 +163,9 @@ Validiert am Bookazine v1 (Druck: Pinguin Druck Berlin, 2026).
   darauf, Absatzabstand = genau eine Baseline. Headlines dürfen
   pragmatisch brechen.
 - **Print-Type-Scale** in pt (`--pp-text-*`): Numeral 220pt (Großziffer
-  auf Openern, eigener Block) · Display-XL 96pt (Cover, einmal pro
-  Werk) · Display-L 72pt · Display 56pt · H1 36pt · H2 24pt · H3 16pt ·
-  H4 12pt · Lead 13pt · Body 10pt · Small 9pt · Caption 8pt · Eyebrow
+  auf Openern, eigener Block), Display-XL 96pt (Cover, einmal pro
+  Werk), Display-L 72pt, Display 56pt, H1 36pt, H2 24pt, H3 16pt,
+  H4 12pt, Lead 13pt, Body 10pt, Small 9pt, Caption 8pt, Eyebrow
   8pt Versalien. Tracking-Korrekturen für Großgrade in pt.
 - **Die zwei wichtigsten Abstände** (häufigster Print-Fehler):
   Großziffer → Headline **18mm** (`--pp-gap-numeral-head`) und

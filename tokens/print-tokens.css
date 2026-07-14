@@ -1,5 +1,5 @@
 /* ============================================================
-   Bridgemaker Print Tokens — v1.0 · 2026
+   Bridgemaker Print Tokens — v1.0, 2026
    Layer auf tokens.css (v2.0). Lädt NACH tokens.css.
 
    Gilt für: DIN A4 Hochformat (Broschüren, Bookazines, Reports).
@@ -28,7 +28,7 @@
   --font-display: "Inter Display", "InterDisplay", "Inter",
                   -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* ---------- Format · DIN A4 portrait ---------- */
+  /* ---------- Format, DIN A4 portrait ---------- */
   --pp-page-w: 210mm;
   --pp-page-h: 297mm;
   --pp-bleed:  3mm;     /* Beschnitt rundum */
@@ -42,7 +42,7 @@
   --pp-live-w: 178mm;   /* 210 - 2×16 */
   --pp-live-h: 265mm;   /* 297 - 14 - 18 */
 
-  /* ---------- Spaltenraster · 12 columns ---------- */
+  /* ---------- Spaltenraster, 12 columns ---------- */
   --pp-cols:      12;
   --pp-gutter:    4mm;
   --pp-col-w:     11.16mm;   /* (178 - 11×4) / 12 — informativ */
@@ -54,14 +54,14 @@
 
   /* ---------- Print-Type-Scale (pt) ---------- */
 
-  /* Großziffer · die "I/II/III/01/02/03" auf Openern.
+  /* Großziffer, die "I/II/III/01/02/03" auf Openern.
      Eigener Block — KEIN Teil des Headline-Stacks.  */
   --pp-text-numeral: 400 220pt/0.9 var(--font-display);
 
-  /* Cover · einmalig pro Werk */
+  /* Cover, einmalig pro Werk */
   --pp-text-display-xl: 400 96pt/0.95 var(--font-display);
 
-  /* Opener-Titel · Teil/Modell */
+  /* Opener-Titel, Teil/Modell */
   --pp-text-display-l:  500 72pt/0.95 var(--font-display);
 
   /* Großer Modul-Titel */
@@ -79,7 +79,7 @@
   --pp-text-small:      400 9pt/14pt var(--font-sans);
   --pp-text-caption:    400 8pt/12pt var(--font-sans);
 
-  /* Eyebrow · UPPERCASE · Tracking */
+  /* Eyebrow, UPPERCASE, Tracking */
   --pp-text-eyebrow:    500 8pt/12pt var(--font-sans);
   --pp-track-eyebrow:   0.12em;
 
@@ -126,7 +126,7 @@
 }
 
 /* ============================================================
-   Print-Setup · @page + Body-Verhalten
+   Print-Setup, @page + Body-Verhalten
    ============================================================ */
 @page {
   size: A4;
@@ -153,7 +153,7 @@
 }
 
 /* ============================================================
-   Basis-Klassen · Seitenkonstruktion
+   Basis-Klassen, Seitenkonstruktion
    ============================================================ */
 
 /* Eine A4-Seite mit Satzspiegel */
@@ -226,7 +226,7 @@
   min-height: 0;
 }
 
-/* ---------- Grid · 12-col ---------- */
+/* ---------- Grid, 12-col ---------- */
 .pp-grid {
   display: grid;
   grid-template-columns: repeat(var(--pp-cols), 1fr);
@@ -488,7 +488,7 @@
 .pp-mt-0 { margin-top: 0 !important; }
 
 /* ============================================================
-   BLEED-MODUS · 2mm Anschnitt rundum (Pinguin Druck Berlin)
+   BLEED-MODUS, 2mm Anschnitt rundum (Pinguin Druck Berlin)
    ------------------------------------------------------------
    Aktiv durch <html class="bleed"> — wird vom PDF-Builder gesetzt.
    - MediaBox  214 × 301mm  (.pp-page wird größer)

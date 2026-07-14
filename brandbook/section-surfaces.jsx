@@ -67,10 +67,10 @@ function BbSurfacesSection() {
       </p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 64 }}>
         {[
-          { cls: "grain", bg: "#EDE3F5", dark: false, sub: "multiply · helle Flächen" },
-          { cls: "grain-screen", bg: "#4A2D6B", dark: true, sub: "screen · dunkle Flächen" },
-          { cls: "grain-photo", bg: "#C4B1DC", dark: false, sub: "ohne Blend-Mode · unter Glas" },
-          { cls: "grain-photo-screen", bg: "#1E5E58", dark: true, sub: "screen · dunkel, ohne Glas" },
+          { cls: "grain", bg: "#EDE3F5", dark: false, sub: "multiply, helle Flächen" },
+          { cls: "grain-screen", bg: "#4A2D6B", dark: true, sub: "screen, dunkle Flächen" },
+          { cls: "grain-photo", bg: "#C4B1DC", dark: false, sub: "ohne Blend-Mode, unter Glas" },
+          { cls: "grain-photo-screen", bg: "#1E5E58", dark: true, sub: "screen, dunkel, ohne Glas" },
         ].map(g => (
           <div key={g.cls}>
             <div style={{ position: "relative", background: g.bg, borderRadius: 16, height: 120, overflow: "hidden" }}>

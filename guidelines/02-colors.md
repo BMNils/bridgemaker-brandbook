@@ -26,7 +26,7 @@ Familie nutzen statt Zwischentöne zu erfinden.
 
 | Familie | Base | Deep | Soft | Tint | Extra |
 |---|---|---|---|---|---|
-| Purple | `#6B4A94` | `--bm-deep-plum` `#4A2D6B` | `--bm-soft-purple` `#C4B1DC` | `--bm-purple-tint` `#EDE3F5` | `--bm-lavender` `#9070B8` · `--bm-lavender-dark` `#AF94D2` (on-dark) |
+| Purple | `#6B4A94` | `--bm-deep-plum` `#4A2D6B` | `--bm-soft-purple` `#C4B1DC` | `--bm-purple-tint` `#EDE3F5` | `--bm-lavender` `#9070B8`, `--bm-lavender-dark` `#AF94D2` (on-dark) |
 | Berry | `#B84A6F` | `--bm-deep-berry` `#8A3050` | `--bm-dusty-rose` `#D4809A` | `--bm-rose-tint` `#F5E0E8` | |
 | Teal | `#3A9E97` | `--bm-deep-teal` `#1D6B66` | `--bm-soft-teal` `#7EC4BE` | `--bm-teal-tint` `#E0F2F0` | |
 

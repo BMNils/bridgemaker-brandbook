@@ -1,7 +1,7 @@
 # 08 — Voice & Style
 
 > Dieses Kapitel trägt den freigegebenen **Bridgemaker Voice & Style Guide
-> v1.0** wortgleich (inhaltliche Änderungen verlangen Leadership-Review;
+> v1.1** wortgleich (inhaltliche Änderungen verlangen Leadership-Review;
 > er ist auf Englisch verfasst und gilt für deutsche wie englische Texte),
 > gefolgt von den Copy-Mikroregeln im Anhang. Vor JEDER Textarbeit lesen.
 
@@ -9,7 +9,7 @@
 
 # Bridgemaker Voice & Style Guide
 
-**Version:** 1.0 — May 7, 2026
+**Version:** 1.1 — July 14, 2026
 **Scope:** All Bridgemaker external and internal text — website, decks, sales material, newsletters, blog, social, job postings. Both German and English.
 **Status:** Approved. Living document — updates require leadership review.
 
@@ -232,6 +232,10 @@ Humans don't write in evenly balanced blocks. Uneven paragraph lengths are fine.
 
 Exactly one deliberate stylistic exception per text is allowed: a three-word staccato as a claim, a doubled-half line as a key sentence, a rhetorical question as a section headline. More than one, and the break becomes the pattern.
 
+### 3.1.12 Enumerations flow as sentences
+
+Enumerations are ordinary sentences with commas and "and" ("und") — never chains stitched together with the middot character. The middot does not appear in Bridgemaker text at all: not in running text, not in word lists, not in metadata lines. This applies internally as much as externally. Em dashes are rationed: at most one per paragraph, and never as a substitute for a list or a comma.
+
 ## 3.2 Word lists
 
 ### 3.2.1 Protected domain language (allowed, expected, sometimes required)
@@ -239,33 +243,33 @@ Exactly one deliberate stylistic exception per text is allowed: a three-word sta
 These words are domain language in Bridgemaker's discipline. They must not be dismissed as consultant-speak, and they must not be replaced with bland everyday alternatives:
 
 **Strategy and business:**
-business model · business field · value creation · growth · revenue · pipeline · pilot · MVP · roadmap · business case · market entry · top line · bottom line
+business model, business field, value creation, growth, revenue, pipeline, pilot, MVP, roadmap, business case, market entry, top line, bottom line
 
-(German: Geschäftsmodell · Geschäftsfeld · Wertschöpfung · Wachstum · Umsatz · Pipeline · Pilot · MVP · Roadmap · Business Case · Markteintritt · Top-Line · Bottom-Line)
+(German: Geschäftsmodell, Geschäftsfeld, Wertschöpfung, Wachstum, Umsatz, Pipeline, Pilot, MVP, Roadmap, Business Case, Markteintritt, Top-Line, Bottom-Line)
 
 **Innovation and transformation:**
-innovation · transformation · transform · venture · venture building · build company · business building · build, measure, learn
+innovation, transformation, transform, venture, venture building, build company, business building, "build, measure, learn"
 
-(German: Innovation · Transformation · transformieren · Venture · Venture Building · Build Company · Business Building · Build, Measure, Learn)
+(German: Innovation, Transformation, transformieren, Venture, Venture Building, Build Company, Business Building, „Build, Measure, Learn")
 
 **AI and technology:**
-AI · AI-native · AI-first · algorithm · automation · pipeline · interface
+AI, AI-native, AI-first, algorithm, automation, pipeline, interface
 
-(German: KI · KI-nativ · KI-first · Algorithmus · Automatisierung · Pipeline · Schnittstelle)
+(German: KI, KI-nativ, KI-first, Algorithmus, Automatisierung, Pipeline, Schnittstelle)
 
 **Bridgemaker brand vocabulary:**
-Architect and Builder · Four Levers · Dashboard · Wargame · Skin in the Game · Rebuild Analysis · Commercial Scanner · Studio Planner · Tautiom Sprint
+Architect and Builder, Four Levers, Dashboard, Wargame, Skin in the Game, Rebuild Analysis, Commercial Scanner, Studio Planner, Tautiom Sprint
 
-(German: Architekt und Bauleiter · Vier Hebel · Dashboard · Wargame · Skin in the Game)
+(German: Architekt und Bauleiter, Vier Hebel, Dashboard, Wargame, Skin in the Game)
 
 ### 3.2.2 Risk words — adjectives prone to substance gaps
 
 These words are allowed only when concretely backed by content. As decorative adjectives without substance, they are out.
 
 **Decorative adjectives:**
-robust · comprehensive · holistic · sustainable · innovative · synergetic · transformative · future-proof · multifaceted · pivotal · nuanced · vibrant · intricate
+robust, comprehensive, holistic, sustainable, innovative, synergetic, transformative, future-proof, multifaceted, pivotal, nuanced, vibrant, intricate
 
-(German: robust · umfassend · ganzheitlich · nachhaltig · innovativ · synergetisch · transformativ · zukunftsfähig · facettenreich)
+(German: robust, umfassend, ganzheitlich, nachhaltig, innovativ, synergetisch, transformativ, zukunftsfähig, facettenreich)
 
 **Rule of thumb:** Would the sentence be weaker without this adjective — or exactly the same? If the same: cut it.
 
@@ -414,6 +418,8 @@ Six questions every text must pass:
 
 **v1.0 — May 7, 2026** — First approved version. Consolidates §11 of the brand styleguide with `style_menschlich.md` and findings from the partner survey of April 2026. Replaces both source documents.
 
+**v1.1 — July 14, 2026** — Added 3.1.12 (enumerations flow as sentences: no middot chains anywhere, em dashes rationed) plus the matching copy micro-rules. Middots purged from all canon documents. Approved by Nils Sanders.
+
 ---
 
 # Closing methodological note
@@ -437,3 +443,6 @@ When the older sources conflict with this guide, this guide takes precedence.
 - Numbers: use figures (3, not "three") from 10 upwards; below 10, spell
   out in body copy
 - No exclamation marks outside of explicit UI affirmations
+- Enumerations: commas and "and" — the middot character appears
+  nowhere, internally or externally
+- Em dashes: at most one per paragraph, never as list substitute

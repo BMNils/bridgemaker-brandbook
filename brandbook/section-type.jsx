@@ -34,7 +34,7 @@ function BbTypeSection() {
           borderBottom: i < arr.length - 1 ? "1px solid #C5C0B8" : "none", gap: 24,
         }}>
           <div>
-            <div style={{ font: "500 11px/1 Inter, sans-serif", color: "#6B6B65" }}>{t.name}{t.fluid ? " · fluide" : ""}</div>
+            <div style={{ font: "500 11px/1 Inter, sans-serif", color: "#6B6B65" }}>{t.name}{t.fluid ? ", fluide" : ""}</div>
             <div style={{ font: "400 10px/1.3 'JetBrains Mono', Menlo, monospace", color: "#918F87", marginTop: 4 }}>.{t.cls}</div>
           </div>
           <div className={t.cls} style={{ color: "#1C1C1E", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: "100%" }}>
@@ -42,7 +42,7 @@ function BbTypeSection() {
           </div>
           <div style={{ textAlign: "right", minWidth: 200 }}>
             <div style={{ font: "400 11px/1.4 'JetBrains Mono', Menlo, monospace", color: "#6B6B65" }}>{t.size}</div>
-            <div style={{ font: "400 11px/1.4 'JetBrains Mono', Menlo, monospace", color: "#918F87" }}>{t.weight} · {t.tracking} · {t.lh}</div>
+            <div style={{ font: "400 11px/1.4 'JetBrains Mono', Menlo, monospace", color: "#918F87" }}>{t.weight}, {t.tracking}, {t.lh}</div>
             <div style={{ font: "400 11px/1.4 Inter, sans-serif", color: "#918F87", marginTop: 2 }}>{t.usage}</div>
           </div>
         </div>
@@ -81,7 +81,7 @@ function BbDisplaySection() {
             <span className="bm-badge bm-badge-purple">{d.name}</span>
             <code style={{ font: "400 12px/1 'JetBrains Mono', Menlo, monospace", color: "#6B6B65" }}>{d.size}</code>
             <span style={{ font: "var(--text-caption)", color: "#6B6B65" }}>
-              {d.weight === 600 ? "SemiBold" : d.weight === 500 ? "Medium" : "Regular"} ({d.weight}) · {d.tracking} · {d.lh}
+              {d.weight === 600 ? "SemiBold" : d.weight === 500 ? "Medium" : "Regular"} ({d.weight}), {d.tracking}, {d.lh}
             </span>
           </div>
           <p style={{ font: "var(--text-small)", color: "#6B6B65", marginTop: 12 }}>{d.desc}</p>

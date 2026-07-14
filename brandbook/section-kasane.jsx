@@ -16,10 +16,10 @@ function BbKasaneSection() {
     { cls: "bg-commercial-os", use: "Featured-Band für weiße Typo", dark: true },
     { cls: "bg-kasane-band-sage", use: "Kapitelband — läuft in Off-White aus" },
     { cls: "bg-kasane-band-mauve", use: "Kapitelband — Purple-Welt" },
-    { cls: "bg-hebel-kundenschnittstelle", use: "Themen-Karte · Purple/Mauve" },
-    { cls: "bg-hebel-vertrieb", use: "Themen-Karte · Teal auf surface-sage" },
-    { cls: "bg-hebel-neue-felder", use: "Themen-Karte · Berry/Sand" },
-    { cls: "bg-hebel-ventures", use: "Themen-Karte · Stone" },
+    { cls: "bg-hebel-kundenschnittstelle", use: "Themen-Karte, Purple/Mauve" },
+    { cls: "bg-hebel-vertrieb", use: "Themen-Karte, Teal auf surface-sage" },
+    { cls: "bg-hebel-neue-felder", use: "Themen-Karte, Berry/Sand" },
+    { cls: "bg-hebel-ventures", use: "Themen-Karte, Stone" },
     { cls: "bg-stimme-plum", use: "Zitat-Karte (mit grain-photo-screen)", dark: true },
     { cls: "bg-stimme-teal", use: "Zitat-Karte, kühle Variante", dark: true },
     { cls: "bg-case-visual-1", use: "Case-Grid-Visual (1 von 6 Rotationen)" },
@@ -51,8 +51,8 @@ function BbKasaneSection() {
       <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", color: "#1C1C1E", margin: "0 0 8px" }}>Gradient-Katalog</h3>
       <p style={{ font: "var(--text-small)", color: "#6B6B65", margin: "0 0 24px", maxWidth: 620 }}>
         Die auf der Website entstandenen Flächen gehören zum Kanon und dürfen in Publikationen eingesetzt werden.
-        Alle Rezepte in <code>tokens/tokens.css</code>. Farbwelten: Kundenschnittstelle → Purple/Mauve · Vertrieb →
-        Teal auf surface-sage · Neue Felder → Berry/Sand · Ventures → Stone. Grüntöne in Rezepten sind namenlose
+        Alle Rezepte in <code>tokens/tokens.css</code>. Farbwelten: Kundenschnittstelle → Purple/Mauve, Vertrieb →
+        Teal auf surface-sage, Neue Felder → Berry/Sand, Ventures → Stone. Grüntöne in Rezepten sind namenlose
         Bestandteile — Sage ist keine benannte Farbe mehr.
       </p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 48 }}>
@@ -71,7 +71,7 @@ function BbKasaneSection() {
           <ul style={{ font: "var(--text-small)", color: "#1C1C1E", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.8 }}>
             <li>Hero (EIN Hero-Kasane pro Seite), Kapitelbänder, Moment-Sektionen, Cover-Slides, CTAs</li>
             <li>Mehrere Gradient-Felder pro Seite — im Wechsel mit ruhigen Flächen</li>
-            <li>Drift dezent: <code>kasane-drift</code> 14s / <code>-bold</code> 9s · reduced-motion respektieren</li>
+            <li>Drift dezent: <code>kasane-drift</code> 14s / <code>-bold</code> 9s, reduced-motion respektieren</li>
             <li>Farben als eigene Farbräume lesbar halten — kein homogener Lila-Matsch</li>
           </ul>
         </div>

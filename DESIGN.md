@@ -1,6 +1,6 @@
 # Brandbook v2 — Design-Dokument
 
-Stand: 2026-07-14 · beschlossen mit Nils · ersetzt `ROADMAP.md` (v1.0)
+Stand: 2026-07-14, beschlossen mit Nils, ersetzt `ROADMAP.md` (v1.0)
 
 ## Kontext & Ziel
 

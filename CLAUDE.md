@@ -41,19 +41,19 @@
   Signet, nicht Logo.
 - **Mission:** Wir entwerfen Geschäftsmodelle und führen sie zum
   Ergebnis. Wir bleiben, bis es trägt.
-- **Voice-Polarität:** sachlich + emotional · ruhig + entschieden ·
-  schwarz-weiß + mutig in Farbe · tief + glasklar. „Wir bauen" ist das
+- **Voice-Polarität:** sachlich + emotional, ruhig + entschieden,
+  schwarz-weiß + mutig in Farbe, tief + glasklar. „Wir bauen" ist das
   operative Verb. Kein Buzzword, kein AI slop.
 - **Sprachen:** Deutsch und Englisch, gleichgewichtet; nie im Satz
   mischen. Publikationen grundsätzlich zweisprachig.
-- **Die sechs Principles** (Wortlaut = Website): Wirkung vor Aufwand ·
-  Produkt ist Business · Mensch und Maschine · Build–Measure–Learn ·
-  Klarheit · Dein Venture.
+- **Die sechs Principles** (Wortlaut = Website): Wirkung vor Aufwand,
+  Produkt ist Business, Mensch und Maschine, Build–Measure–Learn,
+  Klarheit, Dein Venture.
 
 ## 2. Farben
 
-- **Triade:** `--bm-purple` #6B4A94 (primär) · `--bm-berry` #B84A6F
-  (Akzent, sparsam) · `--bm-teal` #3A9E97 (Charts/Tech). Sage ist
+- **Triade:** `--bm-purple` #6B4A94 (primär), `--bm-berry` #B84A6F
+  (Akzent, sparsam), `--bm-teal` #3A9E97 (Charts/Tech). Sage ist
   gestrichen — Grüntöne nur noch in Gradient-Rezepten und `surface-sage`.
 - Jede Farbe als **Familie** nutzen (Base/Deep/Soft/Tint) — keine
   Zwischentöne erfinden, keine neuen Farben.
@@ -69,9 +69,9 @@
 
 - Fluide Skala via `clamp()` — fixe px brechen auf Mobile. Stufen (alle
   als Klassen in tokens.css):
-  `type-display-xl/-l/display` (64–128px, größer = LEICHTER) ·
-  `type-h1…h5` · `type-stat` · `type-card-title` · `type-body-l/body` ·
-  `type-nav` · `type-small/caption/micro` · `type-eyebrow`
+  `type-display-xl/-l/display` (64–128px, größer = LEICHTER),
+  `type-h1…h5`, `type-stat`, `type-card-title`, `type-body-l/body`,
+  `type-nav`, `type-small/caption/micro`, `type-eyebrow`
   (12px, Versalien, +0.08em — einzige positive Spationierung).
 - Negatives Tracking auf Headlines (fluide Stufen in `em`).
 - Umlaute in Display-Headlines sind willkommen; lange Komposita brechen
@@ -96,8 +96,8 @@
 - **Glass nur, wo etwas zu frosten ist** (Gradient/Bild dahinter) —
   sonst Paper. Rezepte: `card-glass`, `hero-card-glass`+`hero-card-veil`,
   `case-glass` in tokens.css. `shadow-pop` = max. eine Featured-Box.
-- **Grain-Finish** als Overlay: `.grain` (hell) · `.grain-screen`
-  (dunkel) · `.grain-photo` (unter Glas — ohne Blend-Mode!) ·
+- **Grain-Finish** als Overlay: `.grain` (hell), `.grain-screen`
+  (dunkel), `.grain-photo` (unter Glas — ohne Blend-Mode!),
   `.grain-photo-screen`.
 - **Kasane-Gradients** (Familienfarben als radiale Ellipsen über Basis):
   ein Hero-Kasane pro Seite; mehrere Gradient-Felder okay, aber im
@@ -122,12 +122,12 @@
 
 - **Höchstens EIN Motion-Moment pro Sektion.** `prefers-reduced-motion`
   ist Pflicht. Kein Scroll-Jacking.
-- **Hover:** Karten liften (`-translate-y-1` + shadow-md) · Buttons
+- **Hover:** Karten liften (`-translate-y-1` + shadow-md), Buttons
   wechseln die Füllung innerhalb der Markenfamilie (Charcoal→Deep-Plum,
-  hell→Soft-Purple) — nie nach Schwarz · Pfeile nudgen
-  (`translate-x-0.5`) · Textlinks: Farbwechsel; Unterstreichung nur bei
+  hell→Soft-Purple) — nie nach Schwarz, Pfeile nudgen
+  (`translate-x-0.5`), Textlinks: Farbwechsel; Unterstreichung nur bei
   reinen Textlinks.
-- **Dauern:** 150ms Mikro · 240ms Standard · 400ms Seitenebene.
+- **Dauern:** 150ms Mikro, 240ms Standard, 400ms Seitenebene.
   `--ease-out` für Eintritte, `ease-in-out` für Loops, Spring nur
   verspielt.
 - **Kasane-Drift:** `.kasane-drift` 14s / `.kasane-drift-bold` 9s
@@ -162,9 +162,9 @@
 - **Decks:** 1920×1080, min. 24px Text. Cover = Kasane + Display-Titel;
   Layouts s. `guidelines/07 §7.8`.
 - **Print (DIN A4):** `tokens/print-tokens.css` als Layer NACH tokens.css
-  laden. mm/pt statt px · Baseline-Grid 14pt · Großziffer→Headline 18mm,
-  Eyebrow→Headline 12mm · Hairlines 0.4pt statt 1px · Print-Kasane mit
-  +15 % Sättigung (Naturpapier) · Display-Grade in Inter Display
+  laden. mm/pt statt px, Baseline-Grid 14pt, Großziffer→Headline 18mm,
+  Eyebrow→Headline 12mm, Hairlines 0.4pt statt 1px, Print-Kasane mit
+  +15 % Sättigung (Naturpapier), Display-Grade in Inter Display
   (Override im Layer; Laden via rsms.me/inter). Regeln:
   `guidelines/07 §7.9`.
 - **Ventures haben eigene Marken** — Bridgemaker-Identität nie ohne
@@ -172,14 +172,16 @@
 
 ## 8. Texte
 
-Vor jeder Textarbeit `guidelines/08-voice.md` (Voice-Guide v1.0,
-verbindlich). Kurzfassung der härtesten Regeln: Per Du / „you" ·
-aktive Verben, kein Konjunktiv · konkret vor abstrakt · belastbare
-Zahlen oder keine · Schmuck-Adjektive raus · max. ein Reframe
-(„nicht X, sondern Y") pro Text · ein Stilbruch pro Text · verbotene
-Phrasen (leverage, unlock, next-gen, game-changer, 🚀 …) tabu ·
+Vor jeder Textarbeit `guidelines/08-voice.md` (Voice-Guide v1.1,
+verbindlich). Kurzfassung der härtesten Regeln: Per Du / „you";
+aktive Verben, kein Konjunktiv; konkret vor abstrakt; belastbare
+Zahlen oder keine; Schmuck-Adjektive raus; max. ein Reframe
+(„nicht X, sondern Y") pro Text; ein Stilbruch pro Text; verbotene
+Phrasen (leverage, unlock, next-gen, game-changer, 🚀 …) tabu;
 Headlines ohne Schlusspunkt, sentence-case, keine Ausrufezeichen
-außerhalb expliziter UI-Bestätigungen.
+außerhalb expliziter UI-Bestätigungen; Aufzählungen als normaler
+Satz mit Komma und „und" — das Middot-Zeichen kommt nirgends vor,
+Gedankenstriche sparsam (max. einer pro Absatz).
 
 ## 9. Produkt-/App-UIs — Material Design 3
 
@@ -213,10 +215,10 @@ Illustrationen erfinden ❌ Emoji als Bildersatz/in Headlines ❌ AI slop
 
 ## 11. Wann stoppen und fragen
 
-Vor: anderer Schriftwahl · neuer Markenfarbe · Headline-Copy für
-Außenauftritte (Nav, Hero, CTA) · KI-Bildern (immer CD-Freigabe) ·
-Stock-Fotos oder Illustrationen · Abweichung von der Pill-Form ·
-Kasane außerhalb von Hero-/Moment-Flächen · Venture-Projekten.
+Vor: anderer Schriftwahl, neuer Markenfarbe, Headline-Copy für
+Außenauftritte (Nav, Hero, CTA), KI-Bildern (immer CD-Freigabe),
+Stock-Fotos oder Illustrationen, Abweichung von der Pill-Form,
+Kasane außerhalb von Hero-/Moment-Flächen, Venture-Projekten.
 
 Alles andere: selbstbewusst aus den Tokens bauen.
 

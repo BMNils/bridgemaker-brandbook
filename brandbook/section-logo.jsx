@@ -52,8 +52,8 @@ function BbLogoSection() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 56 }}>
         {[
-          { l: "Open · Black", u: "Standard für helle Flächen" },
-          { l: "Open · White", u: "Standard für dunkle Flächen" },
+          { l: "Open Black", u: "Standard für helle Flächen" },
+          { l: "Open White", u: "Standard für dunkle Flächen" },
           { l: "Blackbox", u: "App-Icon, Favicon, Garantie auf hellem Foto-Untergrund" },
           { l: "Whitebox", u: "Stempel auf dunklen Fotos, wo das Schwarz wegliefe" },
         ].map(c => (
@@ -118,15 +118,15 @@ function BbLogoSection() {
             <div style={{ marginTop: 20, display: "grid", gap: 14 }}>
               <div>
                 <div style={{ font: "500 13px/1.3 Inter, sans-serif", color: "#1C1C1E" }}>Wordmark</div>
-                <div style={{ font: "400 12px/1.4 'JetBrains Mono', Menlo, monospace", color: "#6B6B65", marginTop: 2 }}>Digital · 120px Breite · Print · 24mm</div>
+                <div style={{ font: "400 12px/1.4 'JetBrains Mono', Menlo, monospace", color: "#6B6B65", marginTop: 2 }}>Digital 120px Breite, Print 24mm</div>
               </div>
               <div>
                 <div style={{ font: "500 13px/1.3 Inter, sans-serif", color: "#1C1C1E" }}>Monogram (open)</div>
-                <div style={{ font: "400 12px/1.4 'JetBrains Mono', Menlo, monospace", color: "#6B6B65", marginTop: 2 }}>Digital · 24px · Print · 8mm</div>
+                <div style={{ font: "400 12px/1.4 'JetBrains Mono', Menlo, monospace", color: "#6B6B65", marginTop: 2 }}>Digital 24px, Print 8mm</div>
               </div>
               <div>
                 <div style={{ font: "500 13px/1.3 Inter, sans-serif", color: "#1C1C1E" }}>Monogram (box)</div>
-                <div style={{ font: "400 12px/1.4 'JetBrains Mono', Menlo, monospace", color: "#6B6B65", marginTop: 2 }}>Digital · 32px · Print · 10mm</div>
+                <div style={{ font: "400 12px/1.4 'JetBrains Mono', Menlo, monospace", color: "#6B6B65", marginTop: 2 }}>Digital 32px, Print 10mm</div>
               </div>
             </div>
           </div>
