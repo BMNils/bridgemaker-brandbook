@@ -1,8 +1,8 @@
 # Slides bauen mit Claude Code
 
 Diese Anleitung führt dich in vier Schritten zu einer HTML-Slide-
-Präsentation im Bridgemaker-Look. Du brauchst nur Claude Code und
-Zugriff auf dieses Repo (fehlt der Zugriff: Nils fragen).
+Präsentation im Bridgemaker-Look. Du brauchst nur Claude Code — das
+Repo ist öffentlich, jeder kann es klonen.
 
 Der Kern der Anleitung ist ein Start-Prompt, der eine Rangordnung
 festschreibt: Skills liefern das Handwerk, das Brandbook liefert das
@@ -113,5 +113,3 @@ allem, was das Aussehen betrifft, den Zusatz anhängen:
 - **Anschauen:** HTML-Datei im Browser öffnen (Doppelklick),
   Navigation mit den Pfeiltasten.
 - **Als PDF:** Im Browser Drucken → „Als PDF sichern".
-
-Fragen? → Nils Sanders (nils.sanders@bridgemaker.com)

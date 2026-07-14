@@ -31,7 +31,7 @@ installieren.
 
 ## Weg 2 — Mit KI gestalten (Claude Code, Langdock & Co.)
 
-1. Repo klonen (Zugriff nötig — frag Nils):
+1. Repo klonen (öffentlich, kein Zugriff nötig):
    ```bash
    git clone https://github.com/BMNils/bridgemaker-brandbook.git
    ```
@@ -70,7 +70,7 @@ npm run dev        # → http://localhost:3000
 - **Bildsprache:** Das alte Foto-Konzept gilt nicht mehr; das neue
   Konzept (topografische Linien auf Gradients, konstruierte
   Vektor-Icons) ist in Klärung. Bis dahin: keine Bildentscheidungen
-  ohne Freigabe von Nils.
+  ohne CD-Freigabe.
 - **Slide-Templates:** existieren noch nicht — für Decks gelten die
   Grundregeln aus Kapitel 07 der Guidelines.
 
@@ -85,5 +85,3 @@ brandbook/       ← das visuelle Brandbook (HTML-Ansicht)
 starter-kit/     ← Next.js + MD3 Referenz-Code
 assets/logos/    ← Wortmarke + Monogramm als SVG
 ```
-
-Fragen? → Nils Sanders (nils.sanders@bridgemaker.com)
