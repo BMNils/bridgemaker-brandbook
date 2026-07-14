@@ -152,6 +152,8 @@
   Sektionen; Nav-CTA als Charcoal-Pill; Links `type-nav`.
 - **Badges:** kleine Pills, Tint-Hintergrund + Deep-Text
   (purple-tint+deep-plum etc.); >3 pro View = Layout-Problem.
+- **Formulare:** Outline-Inputs (`radius-md`, nie Pill), Ruhezustand
+  transparent — **weiß erst bei Fokus**; Labels über dem Feld.
 - **Bildsprache:** Editorial-Fotografie — Charakterköpfe, Momente im
   Gewöhnlichen, überraschende Perspektiven. Leichte Entsättigung, warme
   Abstimmung, `radius-xl`, optional `grain-photo`. Fehlendes Asset →
@@ -212,9 +214,7 @@ Illustrationen erfinden ❌ Emoji als Bildersatz/in Headlines ❌ AI slop
 Vor: anderer Schriftwahl · neuer Markenfarbe · Headline-Copy für
 Außenauftritte (Nav, Hero, CTA) · KI-Bildern (immer CD-Freigabe) ·
 Stock-Fotos oder Illustrationen · Abweichung von der Pill-Form ·
-Kasane außerhalb von Hero-/Moment-Flächen · Venture-Projekten ·
-einem ersten Formular-Design (Regeln in `guidelines/07 §7.4` sind
-bisher unvalidierte Vorgabe).
+Kasane außerhalb von Hero-/Moment-Flächen · Venture-Projekten.
 
 Alles andere: selbstbewusst aus den Tokens bauen.
 

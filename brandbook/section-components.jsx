@@ -83,8 +83,9 @@ function BbComponentsSection() {
       {/* Forms */}
       <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", color: "#1C1C1E", margin: "0 0 8px" }}>Forms</h3>
       <p style={{ font: "var(--text-small)", color: "#6B6B65", margin: "0 0 24px", maxWidth: 620 }}>
-        Inputs sind <code>radius-md</code> (12px), <strong>nicht Pill</strong> — nur Buttons sind Pill. Labels immer über
-        dem Feld. <em>(Vorgabe aus v1.1 — die Website hat derzeit kein Formular; beim ersten echten Einsatz validieren.)</em>
+        <strong>Outline-only:</strong> Inputs sind reine Umriss-Felder — im Ruhezustand transparent,
+        <strong> weiß füllt erst bei Fokus</strong> (klick rein und probier es). <code>radius-md</code> (12px),
+        <strong>nicht Pill</strong> — nur Buttons sind Pill. Labels immer über dem Feld.
       </p>
       <div style={{ maxWidth: 440, display: "grid", gap: 16, marginBottom: 24 }}>
         <div>

@@ -604,15 +604,17 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
   padding: 0 var(--space-4);
   border: var(--border-subtle);
   border-radius: var(--radius-md);
-  background: var(--white);
+  background: transparent; /* Outline-only im Ruhezustand (Nils, 2026-07-14) */
   font: 400 16px/1.6 var(--font-sans);
   color: var(--charcoal);
   transition: border-color var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out),
               box-shadow var(--duration-fast) var(--ease-out);
 }
 .bm-textarea { height: auto; padding: 12px var(--space-4); min-height: 120px; }
 .bm-input:focus, .bm-textarea:focus, .bm-select:focus {
   outline: none;
+  background: var(--white); /* füllt erst bei Fokus */
   border-color: var(--bm-purple);
   box-shadow: 0 0 0 3px rgba(107,74,148,0.12);
 }

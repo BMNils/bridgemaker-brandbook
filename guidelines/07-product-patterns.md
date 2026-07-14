@@ -69,11 +69,12 @@ der Flächenrhythmus gliedert die Seite, nicht Trennlinien allein.
 
 ## 7.4 Formulare
 
-*(Vorgabe aus v1.1 — die Website hat derzeit kein Formular; beim ersten
-echten Formular-Einsatz validieren.)*
-
+- **Outline-only** *(Nils, 2026-07-14)*: Inputs sind reine
+  Umriss-Felder — Ruhezustand transparent auf der Fläche, **weiß füllt
+  das Feld erst bei Fokus**.
 - Inputs sind `radius-md` (12px), **nicht** Pill — nur Buttons sind Pill.
-- Fokus: Purple-Rand + weicher Purple-Ring (`--border-strong` + Tint).
+- Fokus: weiße Füllung + Purple-Rand + weicher Purple-Ring
+  (`--border-strong` + Tint).
 - Labels über den Feldern, nie Placeholder-als-Label.
 
 ## 7.5 Navigation & Links

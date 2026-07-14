@@ -71,6 +71,14 @@
   --md-outlined-select-text-field-container-shape: var(--radius-md);
 }
 
+/* Formular-Regel (guidelines/07 §7.4): Outline-only im Ruhezustand,
+   weiß füllt das Feld erst bei Fokus.                              */
+md-outlined-text-field:focus-within,
+md-outlined-select:focus-within {
+  background: var(--white);
+  border-radius: var(--radius-md);
+}
+
 /* ---------- Dark Scheme (9.2) ----------
    Basis Charcoal; primary wird lavender-dark — rohes Purple fällt
    auf Dunkel durch den Kontrast (02-colors §2.5).               */
