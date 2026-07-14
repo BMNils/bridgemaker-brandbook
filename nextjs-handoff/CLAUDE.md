@@ -1,3 +1,9 @@
+> ⚠️ **VERALTET (v1.1)** — Dieses File wird in Phase 5 (Starter-Kit-Umbau
+
+> auf MD3) ersetzt. Verbindlich ist ../CLAUDE.md (v2) + ../guidelines/.
+
+---
+
 # Bridgemaker Brand — CLAUDE.md
 
 > **Read this file before generating anything for Bridgemaker.**
