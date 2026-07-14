@@ -6,9 +6,11 @@
 ## Architektur
 
 - **Next.js 15 + React 19 + Tailwind v4 + `@material/web` (MD3).**
-- **Zwei Welten, klare Grenze:** Produkt-UI (Formulare, Dialoge, Tabs …)
-  läuft auf MD3-Komponenten. Marketing-Flächen (Hero, Sektionen, CTAs)
-  sind Bridgemaker-Eigenbau aus `tokens.css`-Klassen. Nie mischen.
+- **Vorrang-Regel (guidelines/09 §9.1):** Bridgemaker-Rezepte gelten
+  überall — Typo (`type-*`), Buttons (`bm-btn`), Formulare (`bm-input`,
+  outline-only), Karten, Badges, Header. **MD3 füllt nur die Lücken:**
+  Dialoge, Menüs, Tabs, Loader, Slider, Switches/Checkboxen, Chips.
+  Nie ein MD3-Element nehmen, wo ein Bridgemaker-Rezept existiert.
 - **Tokens:** `src/app/tokens.css` ist die Kanon-Kopie (Quelle:
   `../tokens/tokens.css`) — bei Updates neu kopieren, nie hier editieren.
   Einzige beabsichtigte Abweichung: `--font-sans`/`--font-mono` zeigen in
@@ -27,6 +29,19 @@
 - Web Components brauchen den Browser: Seiten mit Interaktion
   (Dialog-State etc.) als Client Components.
 - Inputs tragen `radius-md` (12px) via Theme — nicht pro Element stylen.
+
+## ⚠ Handwerks-Fallen
+
+1. **Tailwind-Preflight bricht MD3-Hosts:** Seiten-Regeln überschreiben
+   per CSS-Spec immer die `:host`-Styles von Web Components — Tailwinds
+   Universal-Reset (`* { padding: 0 }`) nimmt den `md-*`-Elementen ihr
+   Box-Modell (Buttons ohne Innen-Padding). Deshalb lädt `globals.css`
+   Tailwind in Einzelteilen mit **`preflight-md3.css`** (Kopie mit
+   `:where(:not(md-*)`-Ausnahme). Neue MD3-Komponente registrieren =
+   Tag in `register.ts`, `md3.d.ts` UND `preflight-md3.css` ergänzen.
+2. **Hydration-Warnungen am `<html>`:** Browser-Extensions stempeln
+   Attribute vor der Hydration — `suppressHydrationWarning` im Layout
+   fängt genau das ab, nichts anderes.
 
 ## Bausteine
 

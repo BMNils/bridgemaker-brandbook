@@ -20,6 +20,13 @@ Website, Landingpages, Decks — behalten das Bridgemaker-Handwerk aus
   Kontrast-Maschinerie)
 - Layout-Adaptivität (Window Size Classes, Panes)
 
+**Vorrang-Regel** *(Nils, 2026-07-14)*: Hat Bridgemaker ein eigenes
+Rezept — Typo (`type-*`), Buttons (`bm-btn`-Familie), Formulare
+(`bm-input`, outline-only), Karten, Badges, Header —, dann gilt das
+Rezept auch in Produkt-UIs. **MD3 füllt nur die Lücken:** Dialoge,
+Menüs, Tabs, Progress/Loader, Slider, Switches/Checkboxen, Sheets,
+Chips und ähnliche nicht definierte Elemente.
+
 **Bridgemaker übersteuert (immer):**
 
 - **Farbe** — explizites Token-Mapping (9.2)
@@ -110,3 +117,11 @@ MD3-Web-Components; React 19 rendert Custom Elements nativ), Alternative
 MUI, falls SSR-Ergonomie schwerer wiegt als MD3-Treue. Unabhängig von der
 Library: ausschließlich über das obige Mapping themen — keine
 Library-Defaults durchsickern lassen.
+
+**⚠ Handwerks-Falle (hart erarbeitet):** CSS-Reset-Regeln der Seite
+(z. B. Tailwind-Preflight `* { padding: 0 }`) überschreiben per
+CSS-Spec immer die `:host`-Styles von Web Components — die
+MD3-Komponenten verlieren dann ihr Box-Modell (Buttons ohne
+Innen-Padding). Lösung im Starter-Kit: Preflight-Kopie, die alle
+`md-*`-Tags per `:where(:not(…))` vom Universal-Reset ausnimmt
+(`starter-kit/src/app/preflight-md3.css`).

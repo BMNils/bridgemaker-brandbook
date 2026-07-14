@@ -26,7 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    // suppressHydrationWarning: Browser-Extensions (z. B. GA-Opt-out) stempeln
+    // Attribute aufs <html>, bevor React hydriert — nur dieses Element betroffen.
+    <html
+      lang="de"
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         <Md3Provider>{children}</Md3Provider>
       </body>

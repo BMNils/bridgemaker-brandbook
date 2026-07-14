@@ -193,6 +193,9 @@ Digitale Produkte bauen auf **MD3** mit Bridgemaker-Theming
 - Bridgemaker-Elevation statt MD3-Tonal-Elevation; Motion gedeckelt.
 - MD3 liefert Anatomie, States, A11y — Bridgemaker liefert Farbe, Typo,
   Shape, Zurückhaltung.
+- **Vorrang-Regel:** Bridgemaker-Rezepte (type-*, bm-btn, bm-input,
+  Karten, Badges) gelten auch in Produkt-UIs — MD3 füllt NUR die
+  Lücken (Dialoge, Menüs, Tabs, Loader, Slider, Switches …).
 
 ## 10. Do's & Don'ts
 

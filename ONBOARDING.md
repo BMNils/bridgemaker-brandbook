@@ -45,11 +45,12 @@ npm install
 npm run dev        # → http://localhost:3000
 ```
 
-- `/components` zeigt alle MD3-Komponenten im Bridgemaker-Look plus die
-  Marketing-Bausteine.
+- Die Startseite ist die Komponenten-Referenz: alle MD3-Komponenten im
+  Bridgemaker-Look plus die Marketing-Bausteine — der Code der Seite
+  ist die Gebrauchsanweisung.
 - Kit-spezifische Regeln stehen in `starter-kit/CLAUDE.md`.
 - Marketing-Flächen (Landingpages, Decks) sind Bridgemaker-Eigenbau —
-  kein MD3. Die Landing-Demo unter `/landing-demo` zeigt das Muster.
+  kein MD3.
 
 ---
 

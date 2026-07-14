@@ -34,11 +34,7 @@ export function SiteNav() {
           <Wordmark height={20} />
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
-          {[
-            { href: "/", label: "Start" },
-            { href: "/components", label: "Komponenten" },
-            { href: "/landing-demo", label: "Landing-Demo" },
-          ].map((item) => (
+          {[{ href: "/", label: "Komponenten" }].map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -48,9 +44,12 @@ export function SiteNav() {
             </Link>
           ))}
         </nav>
-        <Link href="/components" className="bm-btn bm-btn-primary bm-btn-sm">
-          Komponenten ansehen
-        </Link>
+        <a
+          href="https://bridgemaker-brandbook.vercel.app"
+          className="bm-btn bm-btn-primary bm-btn-sm"
+        >
+          Zum Brand-System
+        </a>
       </div>
     </header>
   );

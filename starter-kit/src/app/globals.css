@@ -1,4 +1,11 @@
-@import "tailwindcss";
+/* Tailwind in Einzelteilen statt @import "tailwindcss": Preflight läuft
+   über eine Kopie, die die md-*-Hosts vom Universal-Reset ausnimmt —
+   sonst verlieren die MD3-Komponenten ihr Box-Modell (s. Datei-Header). */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "./preflight-md3.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
 @import "./tokens.css";     /* Kanon v2 — Kopie von ../tokens/tokens.css */
 @import "./md3-theme.css";  /* MD3-Mapping — guidelines/09 */
 

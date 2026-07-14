@@ -11,9 +11,9 @@ npm install
 npm run dev        # http://localhost:3000
 ```
 
-- `/` — Überblick
-- `/components` — MD3-Komponenten im Bridgemaker-Theming + Marketing-Bausteine
-- `/landing-demo` — Flächenrhythmus einer Marketing-Seite
+Die Startseite ist die **Komponenten-Referenz**: MD3-Produkt-UI im
+Bridgemaker-Theming plus die Marketing-Bausteine — der Code der Seite
+ist die Gebrauchsanweisung. Die visuelle Herleitung steht im Brandbook.
 
 ## Aufbau
 
