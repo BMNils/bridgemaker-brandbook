@@ -10,79 +10,87 @@
   body { background: var(--off-white); }
   .wrap { max-width: 1200px; margin: 0 auto; padding: 80px 48px 120px; }
   .hero { padding: 40px 0 80px; border-bottom: 1px solid var(--surface-stone); margin-bottom: 64px; }
-  .eyebrow { font: 500 12px/1.4 Inter, sans-serif; text-transform: uppercase; letter-spacing: 0.08em; color: var(--light); margin-bottom: 24px; }
-  h1 { font: 600 88px/1.05 Inter, sans-serif; letter-spacing: -2.8px; color: var(--charcoal); margin: 0; max-width: 900px; }
-  .lead { font: 400 19px/1.55 Inter, sans-serif; color: var(--dark); margin-top: 28px; max-width: 580px; }
   .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .card {
-    background: #fff; border: 1px solid var(--surface-stone); border-radius: 20px;
+    background: #fff; border-radius: 20px;
     padding: 40px; text-decoration: none; color: inherit;
-    transition: transform 150ms var(--ease-out), box-shadow 150ms;
+    transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
     display: block;
+    box-shadow: inset 0 0 0 1px rgba(28,28,30,0.06),
+                0 1px 2px rgba(28,28,30,0.03),
+                0 10px 24px -18px rgba(28,28,30,0.10);
   }
-  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
   .card .tag { font: 500 11px/1 Inter, sans-serif; text-transform: uppercase; letter-spacing: 0.08em; color: var(--bm-purple); }
   .card h3 { font: 600 24px/1.3 Inter, sans-serif; letter-spacing: -0.5px; color: var(--charcoal); margin: 16px 0 0; }
   .card p { font: 400 15px/1.55 Inter, sans-serif; color: var(--mid); margin: 10px 0 0; }
   .card .arrow { font: 500 14px/1 Inter, sans-serif; color: var(--bm-purple); margin-top: 24px; display: inline-block; }
-  .card.dark { background: var(--charcoal); border: none; }
-  .card.dark h3, .card.dark .tag { color: var(--off-white); }
-  .card.dark .tag { color: var(--bm-lavender-on-dark); }
+  .card.dark { background: var(--charcoal); box-shadow: none; }
+  .card.dark h3 { color: var(--off-white); }
+  .card.dark .tag, .card.dark .arrow { color: var(--bm-lavender-dark); }
   .card.dark p { color: var(--soft); }
-  .card.dark .arrow { color: var(--bm-lavender-on-dark); }
 </style>
 </head>
 <body>
 <main class="wrap">
   <section class="hero">
     <img src="assets/logos/wordmark-black.svg" alt="Bridgemaker" style="height:28px;display:block;margin-bottom:32px" />
-    <div class="eyebrow">Brand System · v1.0 — 2026</div>
-    <h1>We build ventures<br/>that matter.</h1>
-    <p class="lead">Das vollständige Brand-System für Bridgemaker — inklusive einer <code>CLAUDE.md</code>, damit Claude bei jedem Projekt automatisch konsistent baut.</p>
+    <div class="bm-eyebrow" style="margin-bottom:24px">Brand System · v2.0 — Juli 2026</div>
+    <h1 class="type-display-l" style="color:var(--charcoal);margin:0;max-width:980px">Ergebnis. KI-nativ.<br/>Umgesetzt.</h1>
+    <p class="lead" style="font:400 19px/1.55 Inter,sans-serif;color:var(--dark);margin-top:28px;max-width:640px">
+      Das Brand-System der Bridgemaker GmbH. Kanon in <code>guidelines/</code>, Werte in <code>tokens/</code>,
+      maschinenlesbar über die <code>CLAUDE.md</code> — Quelle ist das gelebte Design-System der Website.
+    </p>
   </section>
 
   <div class="grid">
-    <a href="brandbook/index.html" class="card">
-      <div class="tag">01 · Brandbook</div>
-      <h3>Das komplette Brandbook</h3>
-      <p>Logo, Typografie, Farbe, Kasane, Components, Bildsprache, Slide-Templates, Landingpage-Patterns, Voice, Spacing, Tokens.</p>
-      <span class="arrow">Öffnen →</span>
-    </a>
-    <a href="CLAUDE.md" class="card dark">
-      <div class="tag">02 · Claude Skill</div>
-      <h3>CLAUDE.md</h3>
-      <p>Maschinenlesbare Instructions für Claude. Wird bei jedem Projekt als Grundlage geladen. Hard rules, Tokens, Don'ts.</p>
+    <a href="guidelines/README.md" class="card dark">
+      <div class="tag">01 · Kanon</div>
+      <h3>Guidelines</h3>
+      <p>Das Regelwerk in neun Kapiteln: Markenkern, Farben, Typografie, Cards & Glass, Motion, Layout, Produkt-Patterns, Voice, MD3-Mapping. Jede Regel lebt genau einmal — hier.</p>
       <span class="arrow">Lesen →</span>
     </a>
-    <a href="starter-kit/index.html" class="card">
-      <div class="tag">03 · Starter Kit</div>
-      <h3>React-Komponenten</h3>
-      <p>Wiederverwendbare JSX-Komponenten: BmButton, BmCard, BmBadge, BmKasane, BmNav, BmInput, BmTextarea.</p>
-      <span class="arrow">Showcase →</span>
+    <a href="brandbook/index.html" class="card">
+      <div class="tag">02 · Brandbook</div>
+      <h3>Das visuelle Brandbook</h3>
+      <p>Die Guidelines als erlebbare Referenz: Logo, fluide Typo, Farbfamilien, Cards & Glass, Gradient-Katalog, Components, Seitenrhythmus, MD3.</p>
+      <span class="arrow">Öffnen →</span>
+    </a>
+    <a href="CLAUDE.md" class="card">
+      <div class="tag">03 · Claude Instructions</div>
+      <h3>CLAUDE.md (v2)</h3>
+      <p>Das Destillat für KI-Arbeit — wird bei jedem Projekt als Grundlage geladen. Start-Checkliste, Hard Rules, Handwerks-Fallen, Do's & Don'ts.</p>
+      <span class="arrow">Lesen →</span>
     </a>
     <a href="tokens/tokens.css" class="card">
       <div class="tag">04 · Design Tokens</div>
-      <h3>tokens.css + tokens.json</h3>
-      <p>Single source of truth. CSS-Variablen und JSON für Code-Projekte. Colors, Type, Spacing, Radii, Motion.</p>
+      <h3>tokens.css + tokens.json v2</h3>
+      <p>Alle Werte, portabel: Farbfamilien, type-*-Klassen, Karten- und Grain-Rezepte, der komplette Gradient-Katalog, Motion.</p>
       <span class="arrow">Öffnen →</span>
     </a>
     <a href="examples/landing-page.html" class="card">
       <div class="tag">05 · Beispiel</div>
       <h3>Landing Page</h3>
-      <p>Das komplette System in Anwendung: Hero mit Kasane, Proof-Band, Feature-Trio, Deep-Dive, Ventures, CTA, Footer.</p>
+      <p>Das System in Anwendung — Hero mit Kasane, Proof-Band, Feature-Trio, CTA, Footer. (Stand v1 — wird mit dem Starter-Kit aufgefrischt.)</p>
       <span class="arrow">Ansehen →</span>
     </a>
     <a href="examples/deck.html" class="card">
       <div class="tag">06 · Beispiel</div>
       <h3>Credentials Deck</h3>
-      <p>Sechs Slide-Templates in Anwendung: Cover, Section, Content, Stats, Quote, End — mit Speaker Notes.</p>
+      <p>Sechs Slide-Templates in Anwendung: Cover, Section, Content, Stats, Quote, End. (Stand v1 — wird mit dem Starter-Kit aufgefrischt.)</p>
       <span class="arrow">Ansehen →</span>
     </a>
-    <a href="voice/BM_Voice_Style_Guide_v1.md" class="card">
+    <a href="guidelines/08-voice.md" class="card">
       <div class="tag">07 · Voice & Style</div>
-      <h3>Voice & Style Guide v1</h3>
-      <p>Operative Tiefe für alle Texte: Polaritäten, Dimensionen, Tone-Stufen (Standard/Empathisch/Visionär), Schreibregeln, Risikowörter, verbotene Floskeln, Beispiele.</p>
+      <h3>Voice & Style Guide v1.0</h3>
+      <p>Verbindlich für alle Texte: Polaritäten, Tone-Stufen (Standard/Empathisch/Visionär), Schreibregeln, Risikowörter, verbotene Floskeln, Beispiele.</p>
       <span class="arrow">Lesen →</span>
+    </a>
+    <a href="starter-kit/index.html" class="card">
+      <div class="tag">08 · Starter Kit</div>
+      <h3>Komponenten-Showcase</h3>
+      <p>JSX-Referenzkomponenten. Achtung: Stand v1 (shadcn-Ära) — wird in Phase 5 auf MD3 mit Bridgemaker-Mapping umgestellt.</p>
+      <span class="arrow">Showcase →</span>
     </a>
   </div>
 </main>

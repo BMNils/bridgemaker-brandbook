@@ -1,5 +1,5 @@
 /* global React */
-// Brandbook — data tables
+// Brandbook — Datentabellen (Quelle: tokens/tokens.css v2 = Website-Stand)
 
 const bbColors = {
   neutrals: [
@@ -12,29 +12,37 @@ const bbColors = {
     { name: "White", hex: "#FFFFFF", light: true, token: "--white" },
   ],
   surfaces: [
-    { name: "Stone", hex: "#E8E5DF", usage: "Default cards", token: "--surface-stone" },
+    { name: "Stone", hex: "#E8E5DF", usage: "Default", token: "--surface-stone" },
     { name: "Mauve", hex: "#E3E0E8", usage: "Purple-DNA", token: "--surface-mauve" },
     { name: "Sage", hex: "#DDE4E0", usage: "Tech / Security", token: "--surface-sage" },
     { name: "Sand", hex: "#E5E0D8", usage: "Ventures", token: "--surface-sand" },
-    { name: "Dark Surface", hex: "#333330", usage: "Contrast", token: "--surface-dark", light: false },
+    { name: "Mid-Stone", hex: "#C5C0B8", usage: "Rand-/Trennlinien-Wert", token: "--surface-mid-stone" },
+    { name: "Dark Surface", hex: "#333330", usage: "Kontrast", token: "--surface-dark", light: false },
   ],
 };
 
+// Fluide + fixe Stufen — Werte 1:1 aus tokens.css (.type-*)
 const bbTypeScale = [
-  { name: "Caption", size: 12, weight: 400, tracking: "0", lh: "140%", usage: "Labels, timestamps" },
-  { name: "Small", size: 14, weight: 400, tracking: "0", lh: "150%", usage: "Navigation, meta" },
-  { name: "Body", size: 16, weight: 400, tracking: "0", lh: "160%", usage: "Fließtext" },
-  { name: "Body L", size: 18, weight: 400, tracking: "0", lh: "155%", usage: "Lead-Absätze (p.large)" },
-  { name: "H4", size: 20, weight: 500, tracking: "-0.3px", lh: "140%", usage: "Card-Titel" },
-  { name: "H3", size: 24, weight: 500, tracking: "-0.5px", lh: "130%", usage: "Section Sub" },
-  { name: "H2", size: 32, weight: 600, tracking: "-0.8px", lh: "125%", usage: "Section Headlines" },
-  { name: "H1", size: 48, weight: 600, tracking: "-1.2px", lh: "115%", usage: "Page-Titel" },
+  { name: "Micro", cls: "type-micro", size: "10px", weight: 400, tracking: "0", lh: "1.40", usage: "Kleinstinformationen" },
+  { name: "Eyebrow", cls: "type-eyebrow", size: "12px", weight: 500, tracking: "+0.08em · VERSALIEN", lh: "1.40", usage: "Kicker über Headlines" },
+  { name: "Caption", cls: "type-caption", size: "12px", weight: 400, tracking: "0", lh: "1.40", usage: "Labels, Zeitstempel" },
+  { name: "Small", cls: "type-small", size: "14px", weight: 400, tracking: "0", lh: "1.50", usage: "Meta, sekundäre UI" },
+  { name: "Nav", cls: "type-nav", size: "15px", weight: 500, tracking: "0", lh: "1.40", usage: "Nav-Links & Nav-CTA" },
+  { name: "Body", cls: "type-body", size: "16px", weight: 400, tracking: "0", lh: "1.60", usage: "Fließtext" },
+  { name: "Body L", cls: "type-body-l", size: "18px", weight: 400, tracking: "0", lh: "1.55", usage: "Lead-Absätze · max-w-2xl" },
+  { name: "H5", cls: "type-h5", size: "16px", weight: 500, tracking: "-0.2px", lh: "1.45", usage: "Kleine Überschriften" },
+  { name: "Card Title", cls: "type-card-title", size: "18px", weight: 600, tracking: "-0.3px", lh: "1.45", usage: "Kleine Karten-Headlines" },
+  { name: "H4", cls: "type-h4", size: "20px", weight: 500, tracking: "-0.3px", lh: "1.40", usage: "Karten-Titel" },
+  { name: "H3", cls: "type-h3", size: "24px", weight: 500, tracking: "-0.5px", lh: "1.30", usage: "Zwischenüberschriften" },
+  { name: "Stat", cls: "type-stat", size: "clamp(28px, 3vw, 36px)", weight: 500, tracking: "-0.025em", lh: "1.10", usage: "Kennzahlen", fluid: true },
+  { name: "H2", cls: "type-h2", size: "clamp(26px, 3vw, 32px)", weight: 600, tracking: "-0.025em", lh: "1.25", usage: "Sektions-Headlines · max-w-xl", fluid: true },
+  { name: "H1", cls: "type-h1", size: "clamp(32px, 4.2vw, 48px)", weight: 600, tracking: "-0.025em", lh: "1.15", usage: "Seitentitel", fluid: true },
 ];
 
 const bbDisplayScale = [
-  { name: "Display", size: 64, weight: 600, tracking: "-1.9px", lh: "110%", desc: "Standard Hero. SemiBold — kraftvoll." },
-  { name: "Display L", size: 96, weight: 500, tracking: "-2.9px", lh: "105%", desc: "Mutige Statements. Medium — elegant." },
-  { name: "Display XL", size: 128, weight: 400, tracking: "-3.8px", lh: "100%", desc: "Maximaler Impact. Regular — monumental." },
+  { name: "Display", cls: "type-display", size: "clamp(40px, 5.5vw, 64px)", weight: 600, tracking: "-0.03em", lh: "1.10", desc: "Standard-Hero. SemiBold — kraftvoll." },
+  { name: "Display L", cls: "type-display-l", size: "clamp(52px, 7.5vw, 96px)", weight: 500, tracking: "-0.03em", lh: "1.05", desc: "Mutige Statements. Medium — elegant." },
+  { name: "Display XL", cls: "type-display-xl", size: "clamp(64px, 9vw, 128px)", weight: 400, tracking: "-0.03em", lh: "1.00", desc: "Maximaler Impact. Regular — monumental. Selten." },
 ];
 
 Object.assign(window, { bbColors, bbTypeScale, bbDisplayScale });

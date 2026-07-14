@@ -1,10 +1,10 @@
 /* global React */
-// Brandbook — Sections: Imagery, Slide Templates, Landingpage Patterns
+// Brandbook — Sections: Imagery, Slide Templates, Seitenrhythmus
 
 function BbImagerySection() {
   return (
-    <BbSection id="imagery" num="08" title="Imagery"
-      desc="Drei Prinzipien: Character people · Discovering moments even in the ordinary · Surprising perspectives to achieve the unmatched. Editorial, documentary, natürliches Licht — kein Stock, keine AI-Illus, keine 3D-Abstractions.">
+    <BbSection id="imagery" num="12" title="Imagery"
+      desc="Drei Prinzipien: Character people · Discovering moments even in the ordinary · Surprising perspectives. Editorial, dokumentarisch, natürliches Licht.">
 
       {/* Three principles */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 32 }}>
@@ -13,7 +13,7 @@ function BbImagerySection() {
           { t: "Discovering moments", d: "Das erzählerische Detail im Alltäglichen. Nicht inszeniert, nicht heroisch — aufmerksam." },
           { t: "Surprising perspectives", d: "Ungewöhnliche Winkel, nahe Ausschnitte, off-center Kompositionen. Nie frontal und brav." },
         ].map(p => (
-          <div key={p.t} style={{ background: "#fff", borderRadius: 16, padding: 24 }}>
+          <div key={p.t} className="card-clean" style={{ background: "#fff", borderRadius: 16, padding: 24 }}>
             <div style={{ font: "600 15px/1.3 Inter, sans-serif", letterSpacing: "-0.2px" }}>{p.t}</div>
             <p style={{ font: "var(--text-caption)", color: "#6B6B65", margin: "8px 0 0", lineHeight: 1.5 }}>{p.d}</p>
           </div>
@@ -26,9 +26,8 @@ function BbImagerySection() {
           { ratio: "3/4", cap: "Portrait · surprising angle · warm grade" },
           { ratio: "4/3", cap: "Venture in situ · real context · color moment" },
         ].map((p, i) => (
-          <div key={i} style={{
+          <div key={i} className="bg-stripes-diagonal" style={{
             aspectRatio: p.ratio, borderRadius: 20,
-            background: `repeating-linear-gradient(135deg, #E8E5DF 0 12px, #DDD9D2 12px 24px)`,
             display: "flex", alignItems: "center", justifyContent: "center",
             color: "#6B6B65", font: "500 12px/1.5 'JetBrains Mono', Menlo, monospace",
             padding: 20, textAlign: "center",
@@ -41,18 +40,19 @@ function BbImagerySection() {
           <div style={{ font: "500 12px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "#4A5A3C" }}>Do</div>
           <ul style={{ font: "var(--text-small)", color: "#1C1C1E", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.8 }}>
             <li>Dokumentarisch, natürliches Licht</li>
-            <li>Leicht entsättigt (~-10%), warme Grading</li>
-            <li>Radius-XL (20px) auf eingebetteten Bildern</li>
-            <li>Platzhalter nutzen, wenn Asset fehlt</li>
+            <li>Leicht entsättigt (~−10%), warme Abstimmung</li>
+            <li>Radius-XL (20px) · optional grain-photo-Finish</li>
+            <li>Gestreifter Platzhalter mit Mono-Caption, wenn das Asset fehlt</li>
+            <li>KI-Bilder erlaubt — mit CD-Freigabe. Maßstab: „fühlt es sich an wie Bridgemaker?"</li>
           </ul>
         </div>
         <div style={{ background: "#F5E0E8", borderRadius: 16, padding: 32 }}>
           <div style={{ font: "500 12px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "#8A3050" }}>Don't</div>
           <ul style={{ font: "var(--text-small)", color: "#1C1C1E", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.8 }}>
-            <li>Keine Stock-Fotos mit Menschen am Whiteboard</li>
-            <li>Keine AI-generierten Illustrationen</li>
-            <li>Keine Flat-Vector-Charaktere</li>
-            <li>Keine Emoji als Imagery</li>
+            <li>Keine Stock-Handshakes, niemand zeigt auf Screens</li>
+            <li>Kein AI slop — Default-Ästhetik ersetzt kein Konzept</li>
+            <li>Keine Flat-Vector-Charaktere, keine erfundenen SVG-Illus</li>
+            <li>Keine Emoji als Bildersatz</li>
           </ul>
         </div>
       </div>
@@ -62,15 +62,15 @@ function BbImagerySection() {
 
 function BbSlidesSection() {
   const slides = [
-    { label: "Cover", bg: "kasane-dark", desc: "Kasane Dark · Display-Headline · Eyebrow tiny · kein Body" },
-    { label: "Section", bg: "surface-mauve", desc: "Surface-Color full-bleed · H1 · Kapitel-Zähler" },
+    { label: "Cover", bg: "kasane-dark", desc: "Dunkles Kasane · Display-Headline · Eyebrow tiny · kein Body" },
+    { label: "Section", bg: "surface-mauve", desc: "Surface-Farbe full-bleed · zentrierte H1 · Kapitel-Zähler" },
     { label: "Content", bg: "white", desc: "2/3 Text + 1/3 Visual · oder 3er-Card-Grid" },
-    { label: "Quote", bg: "surface-stone", desc: "Italic H2 Quote · Attribution im Eyebrow-Style" },
-    { label: "Stats", bg: "white", desc: "4 grosse Zahlen · Akzent-Farbe sparsam" },
-    { label: "End", bg: "kasane-vibrant", desc: "Display-Headline · Kontakt · Kasane Vibrant" },
+    { label: "Quote", bg: "surface-stone", desc: "Kursive H2-Quote · Attribution im Eyebrow-Stil" },
+    { label: "Stats", bg: "white", desc: "Große Zahlen (type-stat-Logik) · Akzentfarbe sparsam" },
+    { label: "End", bg: "kasane-vibrant", desc: "Claim + Kontakt · dunkles Kasane" },
   ];
   return (
-    <BbSection id="slides" num="09" title="Slide Templates" desc="1920×1080. Min. 24px Body. Kasane nur auf Cover und End.">
+    <BbSection id="slides" num="13" title="Slide Templates" desc="1920×1080. Mindestens 24px Text — keine Ausnahmen. Kasane nur auf Cover und End.">
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
         {slides.map(s => {
           const bgMap = {
@@ -89,7 +89,7 @@ function BbSlidesSection() {
               }}>
                 <div style={{ font: "500 10px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", opacity: 0.6 }}>{s.label}</div>
                 <div style={{ font: "600 22px/1.15 Inter, sans-serif", letterSpacing: "-0.5px", marginTop: 8 }}>
-                  {s.label === "Cover" ? "We build ventures." :
+                  {s.label === "Cover" ? "Ergebnis. KI-nativ. Umgesetzt." :
                    s.label === "Section" ? "Innovation braucht Umsetzung." :
                    s.label === "Quote" ? '„Bridgemaker baut mit uns."' :
                    s.label === "Stats" ? "40+ · €180M · 12" :
@@ -111,20 +111,21 @@ function BbSlidesSection() {
 
 function BbLandingSection() {
   const sections = [
-    { n: "01", label: "Sticky Nav", desc: "Logo links · 3–5 Links mittig · 1 CTA rechts" },
-    { n: "02", label: "Hero", desc: "Kasane-Background · Display-Headline · 2 Buttons" },
-    { n: "03", label: "Proof-Band", desc: "Logos oder Stats · surface-stone" },
-    { n: "04", label: "Feature-Trio", desc: "3 Cards · gemischte Surface-Farben" },
-    { n: "05", label: "Deep-Dive", desc: "2/3 Editorial-Text + 1/3 Visual" },
-    { n: "06", label: "Ventures", desc: "Showcase · Horizontal-Scroll oder 3er-Grid" },
-    { n: "07", label: "CTA-Block", desc: "Charcoal-Card · Kasane-Akzent · 1 Button" },
-    { n: "08", label: "Footer", desc: "Off-White · 3 Spalten · powered by baseline" },
+    { n: "01", label: "Fixe Nav", desc: "64px · transparent → blur-solid beim Scrollen · Wortmarke 20px links · type-nav-Links · CTA-Pill rechts" },
+    { n: "02", label: "Hero", desc: "Kasane-Fläche · Display-Headline · Lead in --mid · 1–2 CTAs · optional Glas-Kartenstapel" },
+    { n: "03", label: "Proof-Band", desc: "Kundenlogos (Marquee) oder Stats auf ruhiger Fläche" },
+    { n: "04", label: "Themen-Sektionen", desc: "Karten mit variierenden Surfaces · ein Thema = eine Farbwelt" },
+    { n: "05", label: "Cases", desc: "Grid oder Scheiben mit case-glass-Ergebnisleisten" },
+    { n: "06", label: "Stimmen", desc: "Satte Verlaufs-Karten (bg-stimme-*) mit Zitaten" },
+    { n: "07", label: "Abschluss-CTA", desc: "Dunkle Kasane-Fläche · eine Headline · ein Button" },
+    { n: "08", label: "Footer", desc: "Off-White · border-t surface-stone · Wortmarke + 3 Linkspalten mit Eyebrow-Titeln" },
   ];
   return (
-    <BbSection id="landing" num="10" title="Landingpage Patterns" desc="Der Bridgemaker-Rhythmus: 8 Sections, in dieser Reihenfolge.">
+    <BbSection id="landing" num="11" title="Seitenrhythmus"
+      desc="Der Bridgemaker-Rhythmus (verallgemeinert von der Website). Sektionen wechseln die Fläche — Weiß ↔ Off-White ↔ Surface/Farbband. Jede Sektion folgt der Anatomie: Eyebrow → Headline (max-w-xl) → Lead (max-w-2xl) → Inhalt → optional EIN CTA.">
       <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12 }}>
         {sections.map(s => (
-          <div key={s.n} style={{
+          <div key={s.n} className="card-clean" style={{
             background: "#fff", borderRadius: 16,
             padding: 24, display: "flex", gap: 20, alignItems: "flex-start",
           }}>

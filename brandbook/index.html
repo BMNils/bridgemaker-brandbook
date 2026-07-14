@@ -3,15 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Bridgemaker — Brandbook v1.0</title>
+<title>Bridgemaker — Brandbook v2.0</title>
 <link rel="stylesheet" href="../tokens/tokens.css" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   body { background: var(--off-white); }
-  @keyframes kasane1 { 0%,100% { transform: translate(0,0) scale(1.1); } 33% { transform: translate(3%,2%) scale(1.12); } 66% { transform: translate(-2%,-1%) scale(1.08); } }
-  @keyframes kasane2 { 0%,100% { transform: translate(0,0) scale(1.1); } 50% { transform: translate(-3%,3%) scale(1.13); } }
-  @keyframes kasane3 { 0%,100% { transform: translate(0,0) scale(1.05); } 40% { transform: translate(2%,-2%) scale(1.07); } 80% { transform: translate(-1%,2%) scale(1.04); } }
-  @media (prefers-reduced-motion: reduce) { .kasane-drift { animation: none !important; } }
   code { font-family: "JetBrains Mono", Menlo, monospace; }
 </style>
 </head>
@@ -26,9 +22,11 @@
 <script type="text/babel" src="section-logo.jsx"></script>
 <script type="text/babel" src="section-type.jsx"></script>
 <script type="text/babel" src="section-colors.jsx"></script>
+<script type="text/babel" src="section-surfaces.jsx"></script>
 <script type="text/babel" src="section-kasane.jsx"></script>
 <script type="text/babel" src="section-components.jsx"></script>
 <script type="text/babel" src="section-patterns.jsx"></script>
+<script type="text/babel" src="section-md3.jsx"></script>
 <script type="text/babel" src="section-rules.jsx"></script>
 
 <div id="root"></div>
@@ -38,22 +36,30 @@ const { useState, useEffect } = React;
 
 function Brandbook() {
   const sections = [
-    { id: "logo", label: "Logo" },
+    { header: "A · Marke" },
     { id: "story", label: "Story" },
-    { id: "type", label: "Type" },
+    { id: "logo", label: "Logo" },
+    { id: "voice", label: "Voice" },
+    { header: "B · Fundament" },
+    { id: "colors", label: "Farben" },
+    { id: "type", label: "Typografie" },
     { id: "display", label: "Display" },
-    { id: "colors", label: "Colors" },
-    { id: "kasane", label: "Kasane" },
+    { id: "layout", label: "Layout & Motion" },
+    { header: "C · Flächen" },
+    { id: "surfaces", label: "Cards & Glass" },
+    { id: "kasane", label: "Kasane & Gradients" },
+    { header: "D · Anwendung" },
     { id: "components", label: "Components" },
+    { id: "landing", label: "Seitenrhythmus" },
     { id: "imagery", label: "Imagery" },
     { id: "slides", label: "Slides" },
-    { id: "landing", label: "Landing" },
-    { id: "voice", label: "Voice" },
-    { id: "spacing", label: "Spacing" },
+    { id: "md3", label: "MD3 (Produkt-UIs)" },
+    { header: "E · System" },
     { id: "tokens", label: "Tokens" },
     { id: "claude", label: "Claude" },
   ];
-  const [active, setActive] = useState("logo");
+  const flat = sections.filter(s => s.id);
+  const [active, setActive] = useState("story");
   const jump = (id) => {
     setActive(id);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -63,7 +69,7 @@ function Brandbook() {
     const obs = new IntersectionObserver((entries) => {
       for (const e of entries) if (e.isIntersecting) setActive(e.target.id);
     }, { rootMargin: "-30% 0px -60% 0px" });
-    sections.forEach(s => { const el = document.getElementById(s.id); if (el) obs.observe(el); });
+    flat.forEach(s => { const el = document.getElementById(s.id); if (el) obs.observe(el); });
     return () => obs.disconnect();
   }, []);
 
@@ -72,24 +78,31 @@ function Brandbook() {
       <BbNav sections={sections} active={active} onJump={jump} />
       <BbHero />
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px 120px" }}>
-        <BbLogoSection />
+        <BbGroupHeader letter="A" label="Marke" />
         <BbStorySection />
+        <BbLogoSection />
+        <BbVoiceSection />
+        <BbGroupHeader letter="B" label="Fundament" />
+        <BbColorsSection />
         <BbTypeSection />
         <BbDisplaySection />
-        <BbColorsSection />
+        <BbLayoutSection />
+        <BbGroupHeader letter="C" label="Flächen" />
+        <BbSurfacesSection />
         <BbKasaneSection />
+        <BbGroupHeader letter="D" label="Anwendung" />
         <BbComponentsSection />
+        <BbLandingSection />
         <BbImagerySection />
         <BbSlidesSection />
-        <BbLandingSection />
-        <BbVoiceSection />
-        <BbSpacingSection />
+        <BbMd3Section />
+        <BbGroupHeader letter="E" label="System" />
         <BbTokensSection />
         <BbClaudeSection />
 
         <div style={{ borderTop: "1px solid #C5C0B8", paddingTop: 40, marginTop: 40, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
           <div style={{ font: "var(--text-small)", color: "#918F87" }}>Bridgemaker GmbH · 2026</div>
-          <div style={{ font: "var(--text-small)", color: "#918F87" }}>Brandbook v1.0 · Inter + Inter Display · Pill Buttons · Kasane Gradients</div>
+          <div style={{ font: "var(--text-small)", color: "#918F87" }}>Brandbook v2.0 · Kanon: guidelines/ · Quelle: Website-Design-System</div>
         </div>
       </div>
     </>

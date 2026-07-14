@@ -1,43 +1,56 @@
 /* global React */
-// Brandbook — Sections: Story (Purpose/Mission/Themes/Principles), Voice, Spacing, Tokens, Claude
+// Brandbook — Sections: Story, Voice, Layout, Tokens, Claude (v2 — Stand Website)
 
 function BbStorySection() {
   const principles = [
     { t: "Wirkung vor Aufwand", d: "Wir rechnen in Ergebnissen. Stunden, Slides und Meetings sind keine Währung für Erfolg." },
-    { t: "Product ist Business", d: "Eine gute Idee ohne Produkt bleibt Wunschdenken. Business, Produkt und Technologie gehören an einen Tisch." },
-    { t: "Mensch und Maschine", d: "Was sich wiederholt, wird automatisiert — damit Menschen Zeit für das haben, was nur sie können: Urteilen, Beziehungen, Entscheidungen." },
+    { t: "Produkt ist Business", d: "Eine gute Idee ohne Produkt bleibt Wunschdenken. Business, Produkt und Technologie gehören an einen Tisch." },
+    { t: "Mensch und Maschine", d: "Was sich wiederholt, automatisieren wir. Damit Menschen tun, was nur Menschen können: urteilen, Beziehungen pflegen, entscheiden." },
     { t: "Build–Measure–Learn", d: "Bauen und Messen schlägt Vermutungen. Unfertig ist akzeptiert. Ungetestet nicht." },
     { t: "Klarheit", d: "Kein Jargon, keine Fassade, kein KI-Geschwätz. Unklare Sprache zeigt unklares Denken." },
     { t: "Dein Venture", d: "Handle wie ein Eigentümer. Entscheiden, umsetzen, Verantwortung für das Ergebnis übernehmen." },
   ];
   return (
-    <BbSection id="story" num="02" title="Purpose · Mission · Principles"
-      desc='Die Bridgemaker-DNA in Worten. Das Logo ist der „Bindestrich" — die direkteste Brücke zwischen zwei Welten.'>
+    <BbSection id="story" num="01" title="Positionierung · Mission · Principles"
+      desc='Die Bridgemaker-DNA in Worten — Wortlaut der Website. Das Logo ist der „Bindestrich": die direkteste Brücke zwischen zwei Welten.'>
 
-      {/* Purpose + Mission */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 56 }}>
-        <div style={{ background: "#1C1C1E", color: "#F5F1EB", borderRadius: 20, padding: 40 }}>
-          <div style={{ font: "500 11px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.1em", color: "#AF94D2" }}>Purpose</div>
-          <div style={{ font: "600 32px/1.2 Inter, sans-serif", letterSpacing: "-0.8px", marginTop: 20 }}>
-            We are driven by the desire to make our German and European economies future-proof.
-          </div>
+      {/* Positionierung */}
+      <div className="bm-on-dark" style={{ background: "#1C1C1E", borderRadius: 20, padding: 48, marginBottom: 16 }}>
+        <div style={{ font: "500 11px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.1em", color: "#AF94D2" }}>Positionierung</div>
+        <div style={{ font: "600 34px/1.2 Inter, sans-serif", letterSpacing: "-0.8px", marginTop: 20, color: "#F5F1EB", maxWidth: 900 }}>
+          Die Digitalberatung für KI-Transformation — inhabergeführt, mit der Umsetzungskraft eines Venture Builders.
         </div>
+        <p style={{ font: "400 16px/1.6 Inter, sans-serif", color: "#A8A69E", marginTop: 16, marginBottom: 0 }}>
+          Seit 2016. Verantwortlich bis zum Ergebnis.
+        </p>
+      </div>
+
+      {/* Mission + Vision */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 56 }}>
         <div style={{ background: "#E3E0E8", borderRadius: 20, padding: 40 }}>
           <div style={{ font: "500 11px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.1em", color: "#6B4A94" }}>Mission</div>
-          <div style={{ font: "600 32px/1.2 Inter, sans-serif", letterSpacing: "-0.8px", marginTop: 20, color: "#1C1C1E" }}>
-            We build commercially and socially valuable ventures together with corporates.
+          <div style={{ font: "600 26px/1.25 Inter, sans-serif", letterSpacing: "-0.6px", marginTop: 20, color: "#1C1C1E" }}>
+            Wir entwerfen Geschäftsmodelle und führen sie zum Ergebnis.
           </div>
+          <p style={{ font: "400 15px/1.55 Inter, sans-serif", color: "#3D3D3A", marginTop: 12, marginBottom: 0 }}>Wir bleiben, bis es trägt.</p>
+        </div>
+        <div style={{ background: "#DDE4E0", borderRadius: 20, padding: 40 }}>
+          <div style={{ font: "500 11px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.1em", color: "#1D6B66" }}>Vision</div>
+          <div style={{ font: "600 26px/1.25 Inter, sans-serif", letterSpacing: "-0.6px", marginTop: 20, color: "#1C1C1E" }}>
+            KI wird zum Wachstumshebel etablierter Unternehmen.
+          </div>
+          <p style={{ font: "400 15px/1.55 Inter, sans-serif", color: "#3D3D3A", marginTop: 12, marginBottom: 0 }}>Messbar. Im laufenden Betrieb.</p>
         </div>
       </div>
 
       {/* Principles */}
-      <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", color: "#1C1C1E", margin: "0 0 8px" }}>B—M Principles</h3>
+      <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", color: "#1C1C1E", margin: "0 0 8px" }}>Die sechs Principles</h3>
       <p style={{ font: "var(--text-small)", color: "#6B6B65", margin: "0 0 24px", maxWidth: 560 }}>
-        Wie wir arbeiten — die operativen Leitplanken hinter Purpose und Mission.
+        Wie wir arbeiten — Wortlaut = Website (Principles-Seite & Karriere), das ist die kanonische Fassung.
       </p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12, marginBottom: 56 }}>
         {principles.map((p, i) => (
-          <div key={p.t} style={{ background: "#fff", borderRadius: 16, padding: 28, display: "flex", gap: 20, alignItems: "flex-start" }}>
+          <div key={p.t} className="card-clean" style={{ background: "#fff", borderRadius: 16, padding: 28, display: "flex", gap: 20, alignItems: "flex-start" }}>
             <div style={{ font: "600 28px/1 Inter, sans-serif", letterSpacing: "-0.8px", color: "#C4B1DC", minWidth: 36 }}>0{i + 1}</div>
             <div>
               <div style={{ font: "600 17px/1.3 Inter, sans-serif", letterSpacing: "-0.3px", color: "#1C1C1E" }}>{p.t}</div>
@@ -48,7 +61,7 @@ function BbStorySection() {
       </div>
 
       {/* Bindestrich narrative */}
-      <div style={{ background: "#F5F1EB", borderRadius: 20, padding: 48 }}>
+      <div style={{ background: "#F5F1EB", borderRadius: 20, padding: 48, border: "1px solid #E8E5DF" }}>
         <div style={{ font: "500 11px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.1em", color: "#918F87", marginBottom: 16 }}>
           Das Logo als Idee
         </div>
@@ -83,22 +96,29 @@ function BbVoiceSection() {
   const notWeAre = [
     { title: "Nicht buzzwordy", body: "Keine austauschbaren Marketingwörter." },
     { title: "Nicht naiv", body: "Wir kennen die Realität in etablierten Unternehmen." },
-    { title: "Nicht techie", body: "Business kommt zuerst, Technik dient. Wir sind keine Dev-Shop, kein KI-Lab." },
+    { title: "Nicht techie", body: "Business kommt zuerst, Technik dient. Kein Dev-Shop, kein KI-Lab." },
     { title: "Nicht unverbindlich", body: "Klare Aussagen, keine Konjunktive." },
     { title: "Nicht reine Umsetzung", body: "Wir verbinden Strategie und Umsetzung." },
     { title: "Nicht laut", body: "Lautstärke kompensiert fehlende Substanz." },
   ];
 
   return (
-    <BbSection id="voice" num="11" title="Voice & Tone"
+    <BbSection id="voice" num="03" title="Voice & Tone"
       desc='„We are matter-of-fact, but know how to express our emotions. Calm and wise, yet fierce and brave. We go deep — but we are crystal clear."'>
+
+      <div style={{ background: "#EDE3F5", borderRadius: 16, padding: "20px 28px", marginBottom: 40, font: "var(--text-small)", color: "#4A2D6B", lineHeight: 1.6 }}>
+        <strong>Verbindlich für jede Textarbeit:</strong> der Voice & Style Guide v1.0 —{" "}
+        <a href="../guidelines/08-voice.md" style={{ color: "#6B4A94", textDecoration: "underline", textUnderlineOffset: 3 }}>guidelines/08-voice.md</a>.
+        Er trägt Tone-Level (Standard / Empathisch / Visionär), Wortlisten, verbotene Phrasen und die Selbst-Checks.
+        Diese Sektion zeigt nur die Polaritäten und Dimensionen.
+      </div>
 
       {/* Block 1 — Polaritäten */}
       <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", color: "#1C1C1E", margin: "0 0 8px" }}>Vier Polaritäten</h3>
       <p style={{ font: "var(--text-small)", color: "#6B6B65", margin: "0 0 28px", maxWidth: 620, lineHeight: 1.6 }}>
         Bridgemaker steht nicht an einem Ende eines Spektrums. Wir leben in Spannungen. Jede Polarität hat zwei Pole, die wir gleichzeitig halten.
       </p>
-      <div style={{ background: "#fff", borderRadius: 20, padding: 40, marginBottom: 56, display: "grid", gap: 18 }}>
+      <div className="card-clean" style={{ background: "#fff", borderRadius: 20, padding: 40, marginBottom: 56, display: "grid", gap: 18 }}>
         {polarities.map(([a, b]) => (
           <div key={a} style={{
             display: "grid",
@@ -117,7 +137,7 @@ function BbVoiceSection() {
       <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", color: "#1C1C1E", margin: "0 0 20px" }}>Vier Dimensionen</h3>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 56 }}>
         {dimensions.map(v => (
-          <div key={v.title} style={{ background: "#fff", borderRadius: 16, padding: 28 }}>
+          <div key={v.title} className="card-clean" style={{ background: "#fff", borderRadius: 16, padding: 28 }}>
             <div style={{ font: "600 17px/1.3 Inter, sans-serif", letterSpacing: "-0.3px", color: "#1C1C1E" }}>{v.title}</div>
             <p style={{ font: "var(--text-small)", color: "#3D3D3A", marginTop: 10, lineHeight: 1.6 }}>{v.body}</p>
           </div>
@@ -143,7 +163,7 @@ function BbVoiceSection() {
         <div style={{ background: "#E8E5DF", borderRadius: 16, padding: 32 }}>
           <span className="bm-badge bm-badge-teal">Do</span>
           <ul style={{ font: "var(--text-small)", color: "#1C1C1E", margin: "16px 0 0", paddingLeft: 20, lineHeight: 1.9 }}>
-            <li>„Wir bauen Ventures, die im Markt bestehen."</li>
+            <li>„Wir bauen Geschäftsmodelle, die im Markt bestehen."</li>
             <li>„Vom ersten Workshop bis zum Tag, an dem die Zahlen stimmen."</li>
             <li>„Faster than traditional consulting."</li>
             <li>„Innovation ist unser Geschäft."</li>
@@ -170,12 +190,13 @@ function BbVoiceSection() {
   );
 }
 
-function BbSpacingSection() {
-  const scale = [["1",4],["2",8],["3",12],["4",16],["5",20],["6",24],["8",32],["10",40],["12",48],["16",64],["20",80],["24",96]];
+function BbLayoutSection() {
+  const scale = [["1",4],["2",8],["3",12],["4",16],["5",20],["6",24],["8",32],["10",40],["12",48],["16",64],["20",80],["24",96],["30",120]];
   return (
-    <BbSection id="spacing" num="12" title="Spacing & Motion" desc="4pt-Scale. Containers 1200px max. Motion kurz und präzise.">
-      <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", margin: "0 0 20px" }}>Spacing (4pt)</h3>
-      <div style={{ display: "grid", gap: 8, marginBottom: 64 }}>
+    <BbSection id="layout" num="07" title="Layout & Motion"
+      desc="8px-Raster (4px als halbe Stufe) — verbindlich. Container 1200px, Padding 16/32px. Sektionen py-24 (96px). Headlines max-w-xl, Leads max-w-2xl. Höchstens EIN Motion-Moment pro Sektion.">
+      <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", margin: "0 0 20px" }}>Spacing — 8px-Raster</h3>
+      <div style={{ display: "grid", gap: 8, marginBottom: 48 }}>
         {scale.map(([k, v]) => (
           <div key={k} style={{ display: "grid", gridTemplateColumns: "80px 60px 1fr", alignItems: "center", gap: 16 }}>
             <code style={{ font: "400 12px/1 'JetBrains Mono', Menlo, monospace", color: "#6B4A94" }}>--space-{k}</code>
@@ -185,14 +206,35 @@ function BbSpacingSection() {
         ))}
       </div>
 
-      <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", margin: "0 0 20px" }}>Motion</h3>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 48 }}>
+        <div className="card-clean" style={{ background: "#fff", borderRadius: 16, padding: 28 }}>
+          <div style={{ font: "500 12px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "#918F87" }}>Container & Maße</div>
+          <ul style={{ font: "var(--text-small)", color: "#3D3D3A", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.8 }}>
+            <li>Container max <strong>1200px</strong> · Padding 16px mobil / 32px ab md</li>
+            <li>Sektionen <code>py-24</code> (96px) · Grid-Gutter 24px</li>
+            <li>Headlines <code>max-w-xl</code> · Leads <code>max-w-2xl</code> — nie volle Breite</li>
+            <li>Negativraum ist ein Marken-Asset — im Zweifel: mehr</li>
+          </ul>
+        </div>
+        <div className="card-clean" style={{ background: "#fff", borderRadius: 16, padding: 28 }}>
+          <div style={{ font: "500 12px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "#918F87" }}>Hover-Konventionen</div>
+          <ul style={{ font: "var(--text-small)", color: "#3D3D3A", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.8 }}>
+            <li>Karten <strong>liften</strong>: −4px + shadow-md (200ms)</li>
+            <li>Buttons wechseln die Füllung in der Familie — nie nach Schwarz</li>
+            <li>Pfeile nudgen (translate-x 2px) · Thumbs skalieren 1.02</li>
+            <li>Unterstreichung nur bei reinen Textlinks</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", margin: "0 0 20px" }}>Motion-Tokens</h3>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
         {[
-          { name: "ease-out", t: "cubic-bezier(0.22, 1, 0.36, 1)", use: "Entrances, snappy exits" },
-          { name: "ease-in-out", t: "cubic-bezier(0.65, 0, 0.35, 1)", use: "Balanced swaps" },
-          { name: "ease-spring", t: "cubic-bezier(0.34, 1.56, 0.64, 1)", use: "Micro-interactions, sparsam" },
+          { name: "--ease-out", t: "cubic-bezier(0.22, 1, 0.36, 1)", use: "Eintritte" },
+          { name: "ease-in-out (Keyword)", t: "Swaps & Ambient-Loops", use: "z. B. Kasane-Drift" },
+          { name: "--ease-spring", t: "cubic-bezier(0.34, 1.56, 0.64, 1)", use: "Nur verspielte Mikro-Interaktionen" },
         ].map(e => (
-          <div key={e.name} style={{ background: "#fff", borderRadius: 16, padding: 24 }}>
+          <div key={e.name} className="card-clean" style={{ background: "#fff", borderRadius: 16, padding: 24 }}>
             <div style={{ font: "500 14px/1 Inter, sans-serif" }}>{e.name}</div>
             <code style={{ font: "400 11px/1.4 'JetBrains Mono', Menlo, monospace", color: "#6B4A94", display: "block", marginTop: 8, wordBreak: "break-all" }}>{e.t}</code>
             <p style={{ font: "var(--text-caption)", color: "#6B6B65", marginTop: 10 }}>{e.use}</p>
@@ -200,42 +242,50 @@ function BbSpacingSection() {
         ))}
       </div>
       <div style={{ marginTop: 24, display: "flex", gap: 12, flexWrap: "wrap" }}>
-        <span className="bm-badge bm-badge-purple">--dur-fast 150ms</span>
-        <span className="bm-badge bm-badge-purple">--dur-base 240ms</span>
-        <span className="bm-badge bm-badge-purple">--dur-slow 400ms</span>
-        <span className="bm-badge bm-badge-purple">--dur-atmos 18s (Kasane)</span>
+        <span className="bm-badge bm-badge-purple">--duration-fast 150ms</span>
+        <span className="bm-badge bm-badge-purple">--duration-base 240ms</span>
+        <span className="bm-badge bm-badge-purple">--duration-slow 400ms</span>
+        <span className="bm-badge bm-badge-purple">kasane-drift 14s · bold 9s</span>
       </div>
+      <p style={{ font: "var(--text-small)", color: "#6B6B65", marginTop: 24, maxWidth: 620, lineHeight: 1.6 }}>
+        <strong>prefers-reduced-motion ist Pflicht</strong> — jede Animation fällt auf einen ruhigen statischen Zustand
+        zurück. Kein Scroll-Jacking. Scroll-Reveals laufen DOM-getrieben ([data-armed]-Muster, siehe guidelines/05).
+      </p>
     </BbSection>
   );
 }
 
 function BbTokensSection() {
   const lines = [
-    { k: "/* Typography */", c: "#6B6B65" },
-    ["--font-display", '"Inter Display", "Inter", sans-serif'],
-    ["--font-body", '"Inter", sans-serif'],
+    { k: "/* Typografie — nur type-*-Klassen */", c: "#6B6B65" },
+    ["--font-sans", '"Inter", sans-serif'],
+    ["--font-mono", '"JetBrains Mono", monospace'],
     { sp: 12 },
-    ["--text-display",    "600 64px/1.10 var(--font-display)"],
-    ["--text-h1",         "600 48px/1.15 var(--font-display)"],
-    ["--text-h2",         "600 32px/1.25 var(--font-display)"],
-    ["--text-body",       "400 16px/1.60 var(--font-body)"],
+    [".type-display", "clamp(40px, 5.5vw, 64px) · 600 · -0.03em"],
+    [".type-h1", "clamp(32px, 4.2vw, 48px) · 600"],
+    [".type-h2", "clamp(26px, 3vw, 32px) · 600"],
+    [".type-body", "16px · 400 · 1.60"],
     { sp: 18 },
-    { k: "/* Colors */", c: "#6B6B65" },
-    ["--charcoal",    "#1C1C1E"],
-    ["--off-white",   "#F5F1EB"],
-    ["--bm-purple",   "#6B4A94"],
-    ["--bm-berry",    "#B84A6F"],
-    ["--bm-teal",     "#3A9E97"],
+    { k: "/* Farben — Familien */", c: "#6B6B65" },
+    ["--charcoal", "#1C1C1E"],
+    ["--off-white", "#F5F1EB"],
+    ["--bm-purple", "#6B4A94"],
+    ["--bm-berry", "#B84A6F"],
+    ["--bm-teal", "#3A9E97"],
+    ["--bm-lavender-dark", "#AF94D2 (on-dark)"],
     { sp: 18 },
-    { k: "/* Buttons */", c: "#6B6B65" },
-    ["--btn-radius", "999px"],
-    ["--btn-h",      "44px"],
+    { k: "/* Karten & Gradients */", c: "#6B6B65" },
+    [".card-clean / .card-elevated", "Inset-Haarlinie + nahe Elevation"],
+    [".card-glass / .hero-card-glass", "Frost über Gradient"],
+    [".bg-kasane-* / .bg-hebel-* / …", "28 Katalog-Flächen"],
   ];
   return (
-    <BbSection id="tokens" num="13" title="Design Tokens" desc="Single source of truth. In jedem Projekt als erstes laden.">
+    <BbSection id="tokens" num="15" title="Design Tokens"
+      desc="tokens.css + tokens.json v2.0 — Quelle: globals.css der Website. In jedem Projekt als Erstes laden; Werte nie inline neu definieren.">
       <div style={{ display: "flex", gap: 12, marginBottom: 24, flexWrap: "wrap" }}>
         <a href="../tokens/tokens.css" className="bm-btn bm-btn-primary" style={{ textDecoration: "none" }}>tokens.css</a>
         <a href="../tokens/tokens.json" className="bm-btn bm-btn-secondary" style={{ textDecoration: "none" }}>tokens.json</a>
+        <a href="../guidelines/README.md" className="bm-btn bm-btn-ghost" style={{ textDecoration: "none" }}>Guidelines (Kanon) →</a>
       </div>
       <div style={{
         background: "#1C1C1E", borderRadius: 16, padding: "32px 36px",
@@ -254,29 +304,31 @@ function BbTokensSection() {
 
 function BbClaudeSection() {
   return (
-    <BbSection id="claude" num="14" title="Claude Instructions"
-      desc="Die CLAUDE.md macht dieses Brandbook maschinenlesbar. Claude lädt sie bei jedem Projekt.">
+    <BbSection id="claude" num="16" title="Claude Instructions"
+      desc="Die CLAUDE.md (v2) macht dieses Brandbook maschinenlesbar — das Destillat aus den Guidelines. Claude lädt sie bei jedem Projekt.">
       <div style={{ background: "#1C1C1E", color: "#F5F1EB", borderRadius: 20, padding: 48 }}>
-        <div style={{ font: "500 11px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.1em", color: "#AF94D2", marginBottom: 16 }}>Hard rules</div>
+        <div style={{ font: "500 11px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.1em", color: "#AF94D2", marginBottom: 16 }}>Hard Rules (v2)</div>
         <ul style={{ margin: 0, paddingLeft: 20, font: "400 15px/1.8 Inter, sans-serif", color: "#F5F1EB" }}>
-          <li>Load <code style={{ color: "#AF94D2" }}>tokens/tokens.css</code> first. Never hardcode colors or sizes.</li>
-          <li>Default background: <code style={{ color: "#AF94D2" }}>--off-white (#F5F1EB)</code>. Never pure white.</li>
-          <li>Header logo: <strong>wordmark, 16px tall</strong>. The B—M monogram never goes in the header.</li>
-          <li>Buttons: pill shape only. <code style={{ color: "#AF94D2" }}>border-radius: 999px</code>.</li>
-          <li>Hover lifts (<code style={{ color: "#AF94D2" }}>translateY(-1px)</code> + soft shadow) — never darken to black.</li>
-          <li>Cards are borderless. No colored accent edges (<code style={{ color: "#AF94D2" }}>border-left</code> callout brackets are banned).</li>
-          <li>Kasane gradients only for hero/moment sections. Never as generic backgrounds.</li>
-          <li>Never hand-draw SVG illustrations. Use striped placeholders.</li>
-          <li>Voice: matter-of-fact + emotional, calm + fierce, deep + crystal clear. No jargon, no AI-Geschwätz.</li>
-          <li>When anything is ambiguous — <strong>ask</strong>, don't improvise.</li>
+          <li><code style={{ color: "#AF94D2" }}>tokens/tokens.css</code> zuerst laden. Farben und Größen nie hardcoden.</li>
+          <li>Grundton <code style={{ color: "#AF94D2" }}>--off-white</code>; reines Weiß ist Sektionsfläche im Flächenrhythmus.</li>
+          <li>Header-Logo: <strong>Wortmarke, 20px im 64px-Header</strong>. Das Monogramm nie im Header.</li>
+          <li>Buttons: nur Pill. Hover = Füllungswechsel in der Familie — nie nach Schwarz.</li>
+          <li>Karten sitzen: Inset-Haarlinie + nahe Elevation. Verlinkte Karten liften. Keine farbigen Akzent-Kanten.</li>
+          <li>Nur <code style={{ color: "#AF94D2" }}>type-*</code>-Klassen — nie ad-hoc-Typografie.</li>
+          <li>Glas nur über Gradient/Bild; Glas und Inhalte darunter ohne filter/blend-mode.</li>
+          <li>Kasane: ein Hero-Kasane pro Seite; Gradient-Felder im Wechsel mit ruhigen Flächen, nie hinter Fließtext.</li>
+          <li>Produkt-/App-UIs: MD3 mit explizitem Bridgemaker-Mapping (§ 14) — nie seed-generieren.</li>
+          <li>Keine SVG-Illustrationen erfinden — gestreifte Platzhalter. KI-Bilder nur mit CD-Freigabe.</li>
+          <li>Voice: matter-of-fact + emotional, calm + fierce, deep + crystal clear. Kein Jargon, kein KI-Geschwätz.</li>
+          <li>Wenn etwas unklar ist — <strong>fragen</strong>, nicht improvisieren.</li>
         </ul>
         <div style={{ display: "flex", gap: 12, marginTop: 32, flexWrap: "wrap" }}>
-          <a href="../CLAUDE.md" className="bm-btn bm-btn-primary" style={{ textDecoration: "none", background: "#F5F1EB", color: "#1C1C1E" }}>CLAUDE.md öffnen</a>
-          <a href="../starter-kit/index.html" className="bm-btn bm-btn-secondary" style={{ textDecoration: "none", color: "#AF94D2", boxShadow: "inset 0 0 0 1.5px #AF94D2" }}>Starter-Kit →</a>
+          <a href="../CLAUDE.md" className="bm-btn" style={{ textDecoration: "none", background: "#F5F1EB", color: "#1C1C1E" }}>CLAUDE.md öffnen</a>
+          <a href="../guidelines/README.md" className="bm-btn bm-btn-secondary" style={{ textDecoration: "none", color: "#AF94D2", boxShadow: "inset 0 0 0 1.5px #AF94D2" }}>Guidelines (Kanon) →</a>
         </div>
       </div>
     </BbSection>
   );
 }
 
-Object.assign(window, { BbStorySection, BbVoiceSection, BbSpacingSection, BbTokensSection, BbClaudeSection });
+Object.assign(window, { BbStorySection, BbVoiceSection, BbLayoutSection, BbTokensSection, BbClaudeSection });

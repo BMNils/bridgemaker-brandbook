@@ -29,9 +29,9 @@ function BbNav({ sections, active, onJump }) {
       borderBottom: "1px solid rgba(0,0,0,0.04)",
       padding: "0 var(--space-16, 64px)",
     }}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 60 }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" style={{ height: 16, display: "block" }} />
+          <img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" style={{ height: 20, display: "block" }} />
         </div>
 
         <div data-bb-nav style={{ position: "relative" }}>
@@ -62,7 +62,13 @@ function BbNav({ sections, active, onJump }) {
               boxShadow: "0 12px 40px rgba(0,0,0,0.08)",
               minWidth: 220, maxHeight: "70vh", overflowY: "auto",
             }}>
-              {sections.map(n => (
+              {sections.map(n => n.header ? (
+                <div key={n.header} style={{
+                  font: "500 10px/1 Inter, sans-serif", textTransform: "uppercase",
+                  letterSpacing: "0.1em", color: "#918F87",
+                  padding: "14px 14px 6px",
+                }}>{n.header}</div>
+              ) : (
                 <button
                   key={n.id}
                   role="menuitem"
@@ -94,21 +100,31 @@ function BbHero() {
   return (
     <section style={{ maxWidth: 1200, margin: "0 auto", padding: "100px 48px 72px" }}>
       <div style={{ font: "500 12px/1.4 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "#918F87", marginBottom: 32 }}>
-        Bridgemaker · Brand & Style · v1.0 — 2026
+        Bridgemaker · Brand & Style · v2.0 — Juli 2026
       </div>
-      <h1 style={{
-        font: "600 88px/1.05 Inter, sans-serif", letterSpacing: "-2.8px",
-        color: "#1C1C1E", margin: 0, maxWidth: 900,
-      }}>We build ventures<br/>that matter.</h1>
-      <p style={{ font: "400 19px/1.55 Inter, sans-serif", color: "#3D3D3A", marginTop: 32, maxWidth: 620 }}>
-        Das vollständige Brandbook für Bridgemaker: Logo, Typografie, Farbe, Komponenten, Bildsprache, Slide-Templates, Landingpage-Patterns — und eine <code>CLAUDE.md</code>, die Claude bei jedem Projekt als Grundlage lädt.
+      <h1 className="type-display-l" style={{ color: "#1C1C1E", margin: 0, maxWidth: 980 }}>
+        Ergebnis. KI-nativ.<br/>Umgesetzt.
+      </h1>
+      <p style={{ font: "400 19px/1.55 Inter, sans-serif", color: "#3D3D3A", marginTop: 32, maxWidth: 640 }}>
+        Das Brandbook der Bridgemaker GmbH — abgeleitet aus dem Kanon in <code>guidelines/</code> und dem gelebten
+        Design-System der Website: Glass & Karten, fluide Typografie, Gradient-Katalog, Motion, MD3 für Produkt-UIs.
       </p>
       <div style={{ display: "flex", gap: 16, marginTop: 48, flexWrap: "wrap" }}>
         <a href="../CLAUDE.md" className="bm-btn bm-btn-primary" style={{ textDecoration: "none" }}>CLAUDE.md öffnen</a>
-        <a href="../tokens/tokens.css" className="bm-btn bm-btn-secondary" style={{ textDecoration: "none" }}>tokens.css</a>
-        <a href="../starter-kit/index.html" className="bm-btn bm-btn-ghost" style={{ textDecoration: "none" }}>Starter Kit →</a>
+        <a href="../guidelines/README.md" className="bm-btn bm-btn-secondary" style={{ textDecoration: "none" }}>Guidelines (Kanon)</a>
+        <a href="../tokens/tokens.css" className="bm-btn bm-btn-ghost" style={{ textDecoration: "none" }}>tokens.css →</a>
       </div>
     </section>
+  );
+}
+
+function BbGroupHeader({ letter, label }) {
+  return (
+    <div style={{ paddingTop: 96, display: "flex", alignItems: "baseline", gap: 16 }}>
+      <div style={{ font: "600 15px/1 'JetBrains Mono', Menlo, monospace", color: "#6B4A94" }}>{letter}</div>
+      <div style={{ font: "500 13px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.14em", color: "#918F87" }}>{label}</div>
+      <div style={{ flex: 1, height: 1, background: "#C5C0B8", alignSelf: "center" }} />
+    </div>
   );
 }
 
@@ -170,4 +186,4 @@ function BbSwatch({ name, hex, usage, token, light }) {
   );
 }
 
-Object.assign(window, { BbNav, BbHero, BbSection, BbSwatch });
+Object.assign(window, { BbNav, BbHero, BbSection, BbSwatch, BbGroupHeader });
