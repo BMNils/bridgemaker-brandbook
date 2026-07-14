@@ -15,7 +15,7 @@ fertigem Start-Prompt zum Copy-pasten:
 >
 > Vom Klonen bis zur fertigen Präsentation im Bridgemaker-Look.
 
-Dashboards · Apps · Interfaces · Landingpages — Anleitungen folgen.
+Anleitungen für Dashboards, Apps, Interfaces und Landingpages folgen.
 
 ## Weg 1 — Nachschlagen (Design, Marketing, Text)
 
