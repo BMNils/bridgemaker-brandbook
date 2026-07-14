@@ -6,6 +6,17 @@ Such dir den Weg, der zu deiner Aufgabe passt.
 
 ---
 
+## Anleitungen für konkrete Anwendungsfälle
+
+Der schnellste Weg zum fertigen Ergebnis — Schritt für Schritt, mit
+fertigem Start-Prompt zum Copy-pasten:
+
+> **[Slides bauen (HTML-Präsentationen) →](howto/slides.md)**
+>
+> Vom Klonen bis zur fertigen Präsentation im Bridgemaker-Look.
+
+Dashboards · Apps · Interfaces · Landingpages — Anleitungen folgen.
+
 ## Weg 1 — Nachschlagen (Design, Marketing, Text)
 
 Du bist schon am Ziel: Alles liegt auf dieser Seite, nichts zu
@@ -51,14 +62,6 @@ npm run dev        # → http://localhost:3000
 - Kit-spezifische Regeln stehen in `starter-kit/CLAUDE.md`.
 - Marketing-Flächen (Landingpages, Decks) sind Bridgemaker-Eigenbau —
   kein MD3.
-
-## Anleitungen für konkrete Anwendungsfälle
-
-Schritt für Schritt, mit fertigem Start-Prompt zum Copy-pasten:
-
-- **[Slides bauen (HTML-Präsentationen)](howto/slides.md)** — vom
-  Klonen bis zur fertigen Präsentation im Bridgemaker-Look.
-- Dashboards · Apps · Interfaces · Landingpages — Anleitungen folgen.
 
 ---
 
