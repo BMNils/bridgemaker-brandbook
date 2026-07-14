@@ -9,6 +9,11 @@
 <style>
   body { background: var(--off-white); }
   code { font-family: "JetBrains Mono", Menlo, monospace; }
+  /* Sektionsgrenzen: 1px surface-stone (Kanon §2). Die erste Sektion
+     nach einem Werkgruppen-Header trägt keine eigene Linie — der
+     Header bringt seine mit (sonst Doppellinie). */
+  .bb-section { border-top: 1px solid var(--surface-stone); }
+  .bb-group + .bb-section { border-top: none; }
 </style>
 </head>
 <body>

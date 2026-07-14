@@ -45,7 +45,7 @@ function BbComponentsSection() {
       {/* Karten */}
       <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", color: "#1C1C1E", margin: "0 0 8px" }}>Karten — sitzen, nicht fliegen</h3>
       <p style={{ font: "var(--text-small)", color: "#6B6B65", margin: "0 0 24px", maxWidth: 620 }}>
-        Inset-Haarlinie + nahe Elevation (<code>card-clean</code>/<code>card-elevated</code> — Details § 08).
+        Inset-Haarlinie + nahe Elevation (<code>card-clean</code>/<code>card-elevated</code> — Details in „Cards & Glass").
         Verlinkte Karten <strong>liften</strong> auf Hover (−4px + shadow-md). Füllungen variieren — nie drei gleiche
         Surfaces in einer Reihe. <strong>Verboten:</strong> farbige Akzent-Kanten (border-left-„Klammern").
       </p>

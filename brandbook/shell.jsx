@@ -120,7 +120,7 @@ function BbHero() {
 
 function BbGroupHeader({ letter, label }) {
   return (
-    <div style={{ paddingTop: 96, display: "flex", alignItems: "baseline", gap: 16 }}>
+    <div className="bb-group" style={{ paddingTop: 96, display: "flex", alignItems: "baseline", gap: 16 }}>
       <div style={{ font: "600 15px/1 'JetBrains Mono', Menlo, monospace", color: "#6B4A94" }}>{letter}</div>
       <div style={{ font: "500 13px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.14em", color: "#918F87" }}>{label}</div>
       <div style={{ flex: 1, height: 1, background: "#C5C0B8", alignSelf: "center" }} />
@@ -130,32 +130,19 @@ function BbGroupHeader({ letter, label }) {
 
 function BbSection({ title, id, children, desc, num }) {
   return (
-    <section id={id} style={{
+    <section id={id} className="bb-section" style={{
       scrollMarginTop: 80,
       paddingTop: 120,
       paddingBottom: 120,
-      borderTop: "1px solid #1C1C1E",
       position: "relative",
     }}>
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "minmax(0, 280px) 1fr",
-        gap: 48,
-        marginBottom: 72,
-        alignItems: "start",
-      }}>
-        <div style={{ position: "sticky", top: 84 }}>
-          <div style={{ font: "500 11px/1 'JetBrains Mono', Menlo, monospace", color: "#918F87", marginBottom: 16, letterSpacing: "0.05em" }}>
-            {num ? `§ ${num}` : ""}
-          </div>
-          <h2 style={{
-            font: "600 44px/1.05 Inter, sans-serif", letterSpacing: "-1.2px",
-            color: "#1C1C1E", margin: 0,
-          }}>{title}</h2>
-        </div>
-        <div>
-          {desc && <p style={{ font: "400 17px/1.55 Inter, sans-serif", color: "#3D3D3A", margin: "8px 0 0", maxWidth: 620 }}>{desc}</p>}
-        </div>
+      {/* Headline, Lead drunter — Headlines max-w-xl, Leads max-w-2xl (Kanon §6) */}
+      <div style={{ marginBottom: 72 }}>
+        <h2 style={{
+          font: "600 44px/1.05 Inter, sans-serif", letterSpacing: "-1.2px",
+          color: "#1C1C1E", margin: 0, maxWidth: 576,
+        }}>{title}</h2>
+        {desc && <p style={{ font: "400 17px/1.55 Inter, sans-serif", color: "#3D3D3A", margin: "24px 0 0", maxWidth: 672 }}>{desc}</p>}
       </div>
       {children}
     </section>

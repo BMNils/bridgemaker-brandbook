@@ -87,7 +87,7 @@ function BbColorsSection() {
             <li><strong>Sektions-/Flächengrenzen:</strong> 1px <code>--surface-stone</code> — die weichste sichtbare Grenze</li>
             <li><strong>Umriss-Boxen, Tabellen:</strong> <code>--border-subtle</code> (#C5C0B8)</li>
             <li><strong>Fokus, aktive Umrisse:</strong> <code>--border-strong</code> (1.5px Purple)</li>
-            <li>Karten tragen ihre Kante als Inset-Ring im Schatten-Rezept — nie als CSS-border (§ 08)</li>
+            <li>Karten tragen ihre Kante als Inset-Ring im Schatten-Rezept — nie als CSS-border (Sektion „Cards & Glass")</li>
           </ul>
         </div>
         <div className="bm-on-dark" style={{ background: "#1C1C1E", borderRadius: 16, padding: 28 }}>

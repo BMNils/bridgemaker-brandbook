@@ -11,7 +11,7 @@ function BbStorySection() {
     { t: "Dein Venture", d: "Handle wie ein Eigentümer. Entscheiden, umsetzen, Verantwortung für das Ergebnis übernehmen." },
   ];
   return (
-    <BbSection id="story" num="01" title="Positionierung · Mission · Principles"
+    <BbSection id="story" num="01" title="Markenkern"
       desc='Die Bridgemaker-DNA in Worten — Wortlaut der Website. Das Logo ist der „Bindestrich": die direkteste Brücke zwischen zwei Welten.'>
 
       {/* Positionierung */}
@@ -317,7 +317,7 @@ function BbClaudeSection() {
           <li>Nur <code style={{ color: "#AF94D2" }}>type-*</code>-Klassen — nie ad-hoc-Typografie.</li>
           <li>Glas nur über Gradient/Bild; Glas und Inhalte darunter ohne filter/blend-mode.</li>
           <li>Kasane: ein Hero-Kasane pro Seite; Gradient-Felder im Wechsel mit ruhigen Flächen, nie hinter Fließtext.</li>
-          <li>Produkt-/App-UIs: MD3 mit explizitem Bridgemaker-Mapping (§ 14) — nie seed-generieren.</li>
+          <li>Produkt-/App-UIs: MD3 mit explizitem Bridgemaker-Mapping (Sektion „Produkt-UIs") — nie seed-generieren.</li>
           <li>Keine SVG-Illustrationen erfinden — gestreifte Platzhalter. KI-Bilder nur mit CD-Freigabe.</li>
           <li>Voice: matter-of-fact + emotional, calm + fierce, deep + crystal clear. Kein Jargon, kein KI-Geschwätz.</li>
           <li>Wenn etwas unklar ist — <strong>fragen</strong>, nicht improvisieren.</li>
