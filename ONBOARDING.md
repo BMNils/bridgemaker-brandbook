@@ -2,23 +2,21 @@
 
 Willkommen. Hier liegt alles, was Bridgemaker visuell und sprachlich
 ausmacht: Regelwerk, Tokens, visuelles Brandbook und Referenz-Code.
-Such dir unten den Weg, der zu deiner Aufgabe passt.
-
-**Der schnellste Einstieg für alle:**
-👉 https://bridgemaker-brandbook.vercel.app
+Such dir den Weg, der zu deiner Aufgabe passt.
 
 ---
 
 ## Weg 1 — Nachschlagen (Design, Marketing, Text)
 
-Du brauchst nichts zu installieren.
+Du bist schon am Ziel: Alles liegt auf dieser Seite, nichts zu
+installieren.
 
-- **Visuelles Brandbook:** Farben, Typo, Karten, Gradients, Components —
-  als erlebbare Referenz. [bridgemaker-brandbook.vercel.app](https://bridgemaker-brandbook.vercel.app)
-- **Guidelines (Kanon):** das Regelwerk in neun Kapiteln. Bei Widerspruch
-  gewinnt immer der Kanon.
-- **Voice & Style Guide:** verbindlich für jede Textarbeit — lies ihn,
-  bevor du eine Zeile für Bridgemaker schreibst.
+- **[Visuelles Brandbook](brandbook/index.html):** Farben, Typo, Karten,
+  Gradients, Components — als erlebbare Referenz.
+- **[Guidelines (Kanon)](guidelines/README.md):** das Regelwerk in neun
+  Kapiteln. Bei Widerspruch gewinnt immer der Kanon.
+- **[Voice & Style Guide](guidelines/08-voice.md):** verbindlich für jede
+  Textarbeit — lies ihn, bevor du eine Zeile für Bridgemaker schreibst.
 
 ## Weg 2 — Mit KI gestalten (Claude Code, Langdock & Co.)
 
