@@ -1,81 +1,63 @@
 /* ============================================================
-   Bridgemaker Design Tokens — v1.0 · 2026
-   Single source of truth. Load this first in every project.
+   Bridgemaker Design Tokens — v2.0 (2026-07-14)
+   Quelle der Wahrheit: bridgemaker-website/src/app/globals.css
+   (Stand Juli 2026). Portabel — kein Framework nötig.
+   Regeln & Einsatz: guidelines/ (Kapitel 01–09).
+
+   Hinweis für Tailwind-v4-Projekte: handgeschriebene
+   backdrop-filter-Deklarationen in @layer-Blöcken werden von der
+   Tailwind-/Lightning-Pipeline gestrippt — dort den Frost über
+   Tailwind-Utilities am Element setzen (backdrop-blur-xl,
+   backdrop-saturate-150). In diesem framework-freien Stylesheet ist
+   backdrop-filter direkt enthalten. Siehe guidelines/04 §4.7.
    ============================================================ */
 
 :root {
-  /* ---------- Typography ---------- */
-  --font-display: "Inter Display", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: "JetBrains Mono", "Menlo", "Monaco", monospace;
+  /* ---------- Typografie ---------- */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "Menlo", monospace;
+  /* Display = Inter (kein separates Inter Display — v2-Entscheidung) */
+  --font-display: var(--font-sans);
 
-  /* Display scale — grösser = leichter (bewusst) */
-  --text-display-xl: 400 128px/1.00 var(--font-display);
-  --text-display-l:  500 96px/1.05 var(--font-display);
-  --text-display:    600 64px/1.10 var(--font-display);
+  /* ---------- Markenfarben — Familien ---------- */
+  --bm-purple:        #6B4A94;
+  --bm-deep-plum:     #4A2D6B;
+  --bm-lavender:      #9070B8;
+  --bm-soft-purple:   #C4B1DC;
+  --bm-purple-tint:   #EDE3F5;
+  --bm-lavender-dark: #AF94D2; /* Links/Buttons auf Dunkel — nie rohes Purple */
 
-  /* UI / editorial scale */
-  --text-h1:      600 48px/1.15 var(--font-display);
-  --text-h2:      600 32px/1.25 var(--font-display);
-  --text-h3:      500 24px/1.30 var(--font-display);
-  --text-h4:      500 20px/1.40 var(--font-display);
-  --text-body:    400 16px/1.60 var(--font-body);
-  --text-body-l:  400 18px/1.55 var(--font-body); /* p.large — Lead-Absätze */
-  --text-small:   400 14px/1.50 var(--font-body);
-  --text-caption: 400 12px/1.40 var(--font-body);
-  --text-eyebrow: 500 12px/1.40 var(--font-body); /* UPPERCASE + letter-spacing 0.08em */
+  --bm-berry:         #B84A6F;
+  --bm-deep-berry:    #8A3050;
+  --bm-dusty-rose:    #D4809A;
+  --bm-rose-tint:     #F5E0E8;
 
-  --track-display-xl: -3.8px;
-  --track-display-l:  -2.9px;
-  --track-display:    -1.9px;
-  --track-h1:         -1.2px;
-  --track-h2:         -0.8px;
-  --track-h3:         -0.5px;
-  --track-h4:         -0.3px;
+  --bm-teal:          #3A9E97;
+  --bm-deep-teal:     #1D6B66;
+  --bm-soft-teal:     #7EC4BE;
+  --bm-teal-tint:     #E0F2F0;
 
-  /* ---------- Brand Colors ---------- */
-  --bm-purple:       #6B4A94; /* Primary */
-  --bm-deep-plum:    #4A2D6B;
-  --bm-lavender:     #9070B8;
-  --bm-soft-purple:  #C4B1DC;
-  --bm-purple-tint:  #EDE3F5;
-  --bm-lavender-on-dark: #AF94D2; /* für Links/CTAs auf Charcoal */
-
-  --bm-berry:        #B84A6F; /* Accent */
-  --bm-deep-berry:   #8A3050;
-  --bm-dusty-rose:   #D4809A;
-  --bm-rose-tint:    #F5E0E8;
-
-  --bm-teal:         #3A9E97; /* Secondary — Charts, Tech */
-  --bm-deep-teal:    #1D6B66;
-  --bm-soft-teal:    #7EC4BE;
-  --bm-teal-tint:    #E0F2F0;
-
-  --bm-sage:         #7A8B6A; /* Support — Charts */
-  --bm-deep-sage:    #4A5A3C;
-  --bm-soft-sage:    #A8B89A;
-  --bm-sage-tint:    #E2E8DC;
+  /* Sage als benannte Farbe gestrichen (2026-07-14) — Grüntöne existieren
+     nur noch als Bestandteile der Gradient-Rezepte und als surface-sage. */
 
   /* ---------- Neutrals ---------- */
-  --charcoal:    #1C1C1E; /* Foreground Primary */
-  --dark:        #3D3D3A;
-  --mid:         #6B6B65; /* Body secondary */
-  --soft:        #A8A69E;
-  --light:       #918F87; /* Eyebrow color */
-  --off-white:   #F5F1EB; /* ⚠️ DEFAULT BACKGROUND — NEVER use #FFFFFF */
-  --white:       #FFFFFF;
+  --charcoal:  #1C1C1E;
+  --dark:      #3D3D3A;
+  --mid:       #6B6B65;
+  --soft:      #A8A69E; /* Fließtext auf Dunkel */
+  --light:     #918F87; /* Eyebrows */
+  --off-white: #F5F1EB; /* Grundton der Seite */
+  --white:     #FFFFFF; /* Sektionsfläche im Flächenrhythmus */
 
   /* ---------- Surfaces ---------- */
-  --surface-stone:    #E8E5DF; /* Default cards, dividers */
-  --surface-mauve:    #E3E0E8; /* Purple-DNA sections */
-  --surface-sage:     #DDE4E0; /* Tech / Security context */
-  --surface-sand:     #E5E0D8; /* Ventures context */
-  --surface-mid-stone: #C5C0B8;
-  --surface-mid-mauve: #B8B4C0;
-  --surface-mid-sage:  #B0BCB5;
-  --surface-dark:     #333330; /* Dark-section contrast */
+  --surface-stone:     #E8E5DF;
+  --surface-mauve:     #E3E0E8;
+  --surface-sage:      #DDE4E0;
+  --surface-sand:      #E5E0D8;
+  --surface-mid-stone: #C5C0B8; /* = Rand-/Trennlinien-Wert */
+  --surface-dark:      #333330;
 
-  /* ---------- Spacing (4pt scale) ---------- */
+  /* ---------- Spacing (8px-Raster, 4px halbe Stufe) ---------- */
   --space-1:  4px;
   --space-2:  8px;
   --space-3:  12px;
@@ -87,107 +69,487 @@
   --space-12: 48px;
   --space-16: 64px;
   --space-20: 80px;
-  --space-24: 96px;
+  --space-24: 96px;  /* Standard-Sektions-Padding (py) */
   --space-30: 120px;
 
-  /* ---------- Radii ---------- */
+  /* ---------- Radien ---------- */
   --radius-sm:   8px;
-  --radius-md:   12px;
+  --radius-md:   12px;  /* Inputs — nie Pill */
   --radius-lg:   16px;
-  --radius-xl:   20px;
+  --radius-xl:   20px;  /* Karten, Bilder */
   --radius-2xl:  28px;
-  --radius-pill: 999px; /* ⚠️ Buttons, pills, chips — ALWAYS pill-shape */
+  --radius-pill: 999px; /* Buttons, Pills, Chips — IMMER Pill */
 
-  /* ---------- Buttons ---------- */
-  --btn-radius: var(--radius-pill);
-  --btn-h:      44px;
-  --btn-h-sm:   36px;
-  --btn-h-lg:   52px;
-  --btn-px:     28px;
-  --btn-px-sm:  20px;
-  --btn-px-lg:  36px;
-  --btn-weight: 500;
-
-  /* ---------- Shadows (use sparingly) ---------- */
+  /* ---------- Schatten (sparsam) ---------- */
   --shadow-xs: 0 1px 2px rgba(28,28,30,0.04);
   --shadow-sm: 0 2px 8px rgba(28,28,30,0.05);
   --shadow-md: 0 6px 24px rgba(28,28,30,0.08);
   --shadow-lg: 0 16px 48px rgba(28,28,30,0.12);
 
-  /* ---------- Borders ----------
-     --border-subtle is the default for dividers, outline boxes, table lines.
-     --border-hairline only for very soft inner splits on calm backgrounds.
-     --border-strong for focus rings / active outlines. */
+  /* ---------- Ränder ----------
+     subtle: Default für Trennlinien, Umriss-Boxen, Tabellenlinien.
+     hairline: nur weiche innere Unterteilungen (= Karten-Inset-Ton).
+     strong: Fokusringe, aktive Umrisse, Sekundär-Button-Kontur. */
   --border-hairline: 1px solid rgba(28,28,30,0.06);
   --border-subtle:   1px solid #C5C0B8;
   --border-strong:   1.5px solid var(--bm-purple);
 
   /* ---------- Motion ---------- */
-  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);     /* snappy exits */
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);     /* balanced */
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);  /* light bounce */
-  --dur-fast:    150ms;
-  --dur-base:    240ms;
-  --dur-slow:    400ms;
-  --dur-atmos:   18s; /* Kasane drift */
+  --duration-fast: 150ms;
+  --duration-base: 240ms;
+  --duration-slow: 400ms;
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* nur verspielte Mikro-Interaktionen */
+  /* Swaps & Ambient-Loops: CSS-Keyword ease-in-out */
 
-  /* ---------- Layout ---------- */
+  /* ---------- Container ---------- */
   --container-max: 1200px;
-  --container-pad: 48px;
-  --grid-gutter:   24px;
+  --container-pad: 16px; /* ab Desktop 32px */
 }
 
 /* ============================================================
-   Base reset — conservative; only what's essential.
+   LEGACY-ALIASE (v1) — deprecated, nur für Altbestände.
+   Neu: type-*-Klassen und --duration-* verwenden.
+   ============================================================ */
+:root {
+  --bm-lavender-on-dark: var(--bm-lavender-dark);
+  --dur-fast: var(--duration-fast);
+  --dur-base: var(--duration-base);
+  --dur-slow: var(--duration-slow);
+  --text-display-xl: 400 128px/1.00 var(--font-display);
+  --text-display-l:  500 96px/1.05 var(--font-display);
+  --text-display:    600 64px/1.10 var(--font-display);
+  --text-h1:      600 48px/1.15 var(--font-display);
+  --text-h2:      600 32px/1.25 var(--font-display);
+  --text-h3:      500 24px/1.30 var(--font-display);
+  --text-h4:      500 20px/1.40 var(--font-display);
+  --text-body:    400 16px/1.60 var(--font-sans);
+  --text-body-l:  400 18px/1.55 var(--font-sans);
+  --text-small:   400 14px/1.50 var(--font-sans);
+  --text-caption: 400 12px/1.40 var(--font-sans);
+  --text-eyebrow: 500 12px/1.40 var(--font-sans);
+  --btn-h: 44px;
+  --btn-radius: var(--radius-pill);
+}
+/* Legacy (v1): weiße Box mit dezentem Lift — neu: .bm-card + .card-clean */
+.bm-lift {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 1px 2px rgba(28,28,30,0.04), 0 0 0 1px rgba(28,28,30,0.03);
+}
+
+/* ============================================================
+   Base-Reset — konservativ, nur das Nötige.
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 body {
   margin: 0;
-  font: var(--text-body);
+  font: 400 16px/1.60 var(--font-sans);
   color: var(--charcoal);
   background: var(--off-white);
   text-wrap: pretty;
 }
-a { color: var(--bm-purple); text-decoration: none; }
+a { color: inherit; text-decoration: none; }
+/* Hover-Unterstreichung NUR für reine Textlinks (guidelines/07 §7.5) */
 a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ============================================================
-   Utility classes — opt-in helpers, not a framework.
+   Typografie — fluide type-*-Skala (guidelines/03).
+   Große Stufen via clamp(); Tracking dort in em (skaliert mit).
    ============================================================ */
-.bm-container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
-.bm-eyebrow {
-  font: var(--text-eyebrow);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--light);
-}
-.bm-stack > * + * { margin-top: var(--space-4); }
+.type-display-xl { font-size: clamp(64px, 9vw, 128px); font-weight: 400; line-height: 1.00; letter-spacing: -0.03em; }
+.type-display-l  { font-size: clamp(52px, 7.5vw, 96px); font-weight: 500; line-height: 1.05; letter-spacing: -0.03em; }
+.type-display    { font-size: clamp(40px, 5.5vw, 64px); font-weight: 600; line-height: 1.10; letter-spacing: -0.03em; }
+.type-h1         { font-size: clamp(32px, 4.2vw, 48px); font-weight: 600; line-height: 1.15; letter-spacing: -0.025em; }
+.type-h2         { font-size: clamp(26px, 3vw, 32px);   font-weight: 600; line-height: 1.25; letter-spacing: -0.025em; }
+.type-stat       { font-size: clamp(28px, 3vw, 36px);   font-weight: 500; line-height: 1.10; letter-spacing: -0.025em; }
+.type-h3         { font-size: 24px; font-weight: 500; line-height: 1.30; letter-spacing: -0.5px; }
+.type-h4         { font-size: 20px; font-weight: 500; line-height: 1.40; letter-spacing: -0.3px; }
+.type-card-title { font-size: 18px; font-weight: 600; line-height: 1.45; letter-spacing: -0.3px; }
+.type-h5         { font-size: 16px; font-weight: 500; line-height: 1.45; letter-spacing: -0.2px; }
+.type-body-l     { font-size: 18px; font-weight: 400; line-height: 1.55; }
+.type-body       { font-size: 16px; font-weight: 400; line-height: 1.60; }
+.type-nav        { font-size: 15px; font-weight: 500; line-height: 1.40; }
+.type-small      { font-size: 14px; font-weight: 400; line-height: 1.50; }
+.type-caption    { font-size: 12px; font-weight: 400; line-height: 1.40; }
+.type-eyebrow    { font-size: 12px; font-weight: 500; line-height: 1.40; letter-spacing: 0.08em; text-transform: uppercase; }
+.type-micro      { font-size: 10px; font-weight: 400; line-height: 1.40; }
 
 /* ============================================================
-   Buttons — Pill shape. Always.
-   Usage:  <button class="bm-btn bm-btn-primary">Label</button>
+   Karten-Familie — Paper & Glass (guidelines/04).
+   Karten sitzen auf der Seite, sie fliegen nicht.
+   ============================================================ */
+
+/* Basis: Fläche + Radius + Padding (mit card-clean/-elevated kombinieren) */
+.bm-card { background: var(--white); border-radius: var(--radius-xl); padding: var(--space-8); }
+.bm-card-stone { background: var(--surface-stone); }
+.bm-card-mauve { background: var(--surface-mauve); }
+.bm-card-sage  { background: var(--surface-sage); }
+.bm-card-sand  { background: var(--surface-sand); }
+.bm-card-dark  { background: var(--charcoal); color: var(--off-white); }
+
+/* Paper — weiße matte Karte: knackige Inset-Haarlinie + nahe Elevation */
+.card-clean {
+  box-shadow:
+    inset 0 0 0 1px rgba(28, 28, 30, 0.06),
+    0 1px 2px rgba(28, 28, 30, 0.03),
+    0 10px 24px -18px rgba(28, 28, 30, 0.10);
+}
+
+/* Paper — getönte matte Karte: identisches Treatment */
+.card-elevated {
+  box-shadow:
+    inset 0 0 0 1px rgba(28, 28, 30, 0.06),
+    0 1px 2px rgba(28, 28, 30, 0.04),
+    0 10px 24px -18px rgba(28, 28, 30, 0.12);
+}
+
+/* Glass — gefrostete Karte über Gradients. Bewusst transluzent. */
+.card-glass {
+  background-image: linear-gradient(135deg, rgba(255,255,255,0.72), rgba(255,255,255,0.46));
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  backdrop-filter: blur(24px) saturate(1.5);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.55),
+    0 0 0 1px rgba(28, 28, 30, 0.04),
+    0 1px 2px rgba(28, 28, 30, 0.05),
+    0 6px 16px -8px rgba(28, 28, 30, 0.12);
+}
+
+/* Hero-Glass — echte Milchglasscheibe. Karte darf selbst KEINEN filter
+   tragen (Compositing-Falle, guidelines/04 §4.7). */
+.hero-card-glass {
+  -webkit-backdrop-filter: blur(40px) saturate(1.5) brightness(1.05);
+  backdrop-filter: blur(40px) saturate(1.5) brightness(1.05);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.85),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4),
+    0 2px 6px rgba(28, 28, 30, 0.08),
+    0 30px 60px -18px rgba(28, 28, 30, 0.18);
+}
+
+/* Milchige Scheibe: über dem Ghost, unter dem Inhalt.
+   ▲ MILCHIGKEIT: die letzten Weiß-Werte (0.6/0.4) —
+     niedriger = glasiger, höher = deckender/matter. */
+.hero-card-veil {
+  background:
+    radial-gradient(120% 60% at 18% -10%, rgba(255,255,255,0.45), transparent 55%),
+    linear-gradient(115deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 30%),
+    linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+}
+
+/* Ergebnis-Leiste über Bildern. Bild darunter: kein filter/blend-mode! */
+.case-glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0.78));
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  backdrop-filter: blur(24px) saturate(1.5);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Pop-Schatten — max. eine Featured-Box pro Seite */
+.shadow-pop { box-shadow: 0 18px 44px -18px rgba(28, 28, 30, 0.45); }
+
+/* ============================================================
+   Grain — Filmkorn-Finish (guidelines/04 §4.4).
+   Als absolutes Overlay (pointer-events-none) einsetzen.
+   ============================================================ */
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 150px 150px;
+  mix-blend-mode: multiply;
+  opacity: 0.12;
+}
+.grain-screen {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 150px 150px;
+  mix-blend-mode: screen;
+  opacity: 0.1;
+}
+/* Alpha-Rauschen ohne Blend-Mode — hält Backdrop-Sampling intakt
+   (für Bilder UNTER Glasscheiben) */
+.grain-photo {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9 0.9 0.9 0 -0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 150px 150px;
+  opacity: 0.22;
+}
+.grain-photo-screen {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 150px 150px;
+  mix-blend-mode: screen;
+  opacity: 0.34;
+}
+
+/* ============================================================
+   Kasane-Drift — Ambient-Motion (guidelines/05 §5.4).
+   Eltern-Element braucht overflow:hidden.
+   ============================================================ */
+@keyframes kasane-drift {
+  0%   { transform: translate(0%,    0%)    scale(1.00); }
+  25%  { transform: translate(4.5%,  3.0%)  scale(1.10); }
+  50%  { transform: translate(1.5%,  5.5%)  scale(1.14); }
+  75%  { transform: translate(-3.0%, 2.5%)  scale(1.10); }
+  100% { transform: translate(0%,    0%)    scale(1.00); }
+}
+@keyframes kasane-drift-bold {
+  0%   { transform: translate(0%,    0%)    scale(1.00) rotate(0deg); }
+  25%  { transform: translate(9.0%,  6.0%)  scale(1.20) rotate(10deg); }
+  50%  { transform: translate(-5.0%, 10.0%) scale(1.28) rotate(18deg); }
+  75%  { transform: translate(-8.0%, 3.0%)  scale(1.20) rotate(8deg); }
+  100% { transform: translate(0%,    0%)    scale(1.00) rotate(0deg); }
+}
+.kasane-drift      { animation: kasane-drift 14s ease-in-out infinite; will-change: transform; }
+.kasane-drift-bold { animation: kasane-drift-bold 9s ease-in-out infinite; will-change: transform; }
+@media (prefers-reduced-motion: reduce) {
+  .kasane-drift, .kasane-drift-bold { animation: none; }
+}
+
+/* ============================================================
+   Gradient-Katalog (guidelines/04 §4.5/4.6).
+   Systematik: Familienfarben als radiale Ellipsen über Basis;
+   ein Thema = eine Farbwelt.
+   ============================================================ */
+
+/* Light Kasane — Seiten-Hero auf Off-White */
+.bg-kasane-hero {
+  background:
+    radial-gradient(ellipse 70% 65% at 12% 80%, rgba(196,177,220,0.65) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 92% 30%, rgba(177,142,182,0.70) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 55% at 28%  5%, rgba(168,184,154,0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 75% -5%, rgba(196,177,220,0.55) 0%, transparent 65%),
+    radial-gradient(ellipse 80% 30% at 50%  0%, rgba(186,164,196,0.35) 0%, transparent 70%);
+}
+
+/* Dark Kasane — dunkle CTA-Flächen, Mobile-Menü */
+.bg-kasane-cta {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 80%, rgba(138, 48, 80,0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 80% at 75% 20%, rgba(107, 74,148,0.55) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(144,112,184,0.25) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 70% at 10% 30%, rgba( 74, 45,107,0.55) 0%, transparent 50%);
+}
+
+/* Kontakt-/Abschluss-CTA — Triade auf Deep-Plum; Teal und Berry müssen
+   als eigene Farbräume lesbar bleiben, kein homogenes Lila */
+.bg-contact-cta {
+  background:
+    radial-gradient(ellipse 55% 65% at 24% 26%, rgba( 58,158,151,0.90) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 72% 18%, rgba(144,112,184,0.85) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 70% at 68% 84%, rgba(184, 74,111,0.80) 0%, transparent 60%),
+    var(--bm-deep-plum);
+}
+
+/* Featured-/Produkt-Band — satt farbig auf dunkler Basis, für weiße Typo */
+.bg-commercial-os {
+  background:
+    radial-gradient(ellipse 90% 110% at 10% 12%, rgba( 58,158,151,0.90) 0%, transparent 58%),
+    radial-gradient(ellipse 85% 110% at 95% 20%, rgba(144,112,184,0.85) 0%, transparent 58%),
+    radial-gradient(ellipse 80% 110% at 72% 112%, rgba(184, 74,111,0.80) 0%, transparent 58%),
+    var(--bm-deep-plum);
+}
+
+/* Plum Kasane — vollfarbige Moment-Fläche (Vision/Prozess) */
+.bg-kasane-plum {
+  background:
+    radial-gradient(ellipse 110% 120% at -5%   0%, rgba(196,177,220,0.70) 0%, transparent 75%),
+    radial-gradient(ellipse 100% 110% at 100% 100%, rgba(184, 74,111,0.55) 0%, transparent 75%),
+    radial-gradient(ellipse  95% 100% at 100% -10%, rgba(144,112,184,0.55) 0%, transparent 75%),
+    radial-gradient(ellipse  95% 105% at   0% 110%, rgba(107, 74,148,0.55) 0%, transparent 75%),
+    radial-gradient(ellipse 130%  90% at  50%  50%, rgba(180,148,210,0.30) 0%, transparent 80%),
+    #4A3570;
+}
+
+/* Kapitelbänder — Surface-Ton als weiche Kasane-Wolke, läuft an den
+   Rändern in den Off-White-Grund aus (kein harter Anstoß) */
+.bg-kasane-band-sage {
+  background:
+    radial-gradient(ellipse 90% 75% at 20% 35%, rgba(168, 184, 154, 0.35) 0%, transparent 62%),
+    radial-gradient(ellipse 85% 70% at 85% 65%, rgba(126, 196, 190, 0.28) 0%, transparent 60%),
+    radial-gradient(ellipse 120% 70% at 50% 50%, rgba(221, 228, 224, 0.85) 0%, transparent 78%);
+}
+.bg-kasane-band-mauve {
+  background:
+    radial-gradient(ellipse 90% 75% at 80% 30%, rgba(196, 177, 220, 0.38) 0%, transparent 60%),
+    radial-gradient(ellipse 85% 70% at 15% 70%, rgba(176, 148, 210, 0.26) 0%, transparent 60%),
+    radial-gradient(ellipse 120% 70% at 50% 55%, rgba(227, 224, 232, 0.85) 0%, transparent 78%);
+}
+
+/* Themen-Karten-Visuals — ein Hebel = eine Farbwelt */
+.bg-hebel-kundenschnittstelle {
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 25%, rgba(107, 74,148,0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 85%, rgba(196,177,220,0.70) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 70% 25%, rgba(212,128,154,0.25) 0%, transparent 60%),
+    var(--surface-mauve);
+}
+.bg-hebel-vertrieb {
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 25%, rgba( 29,107,102,0.50) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 15% 80%, rgba(168,184,154,0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(126,196,190,0.40) 0%, transparent 60%),
+    var(--surface-sage);
+}
+.bg-hebel-neue-felder {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 25%, rgba(138, 48, 80,0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 25% 85%, rgba(212,128,154,0.55) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 85% 60%, rgba(196,177,220,0.30) 0%, transparent 60%),
+    var(--surface-sand);
+}
+.bg-hebel-ventures {
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 25%, rgba( 74, 90, 60,0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 15% 80%, rgba(196,177,220,0.40) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 65% 75%, rgba(168,184,154,0.55) 0%, transparent 60%),
+    var(--surface-stone);
+}
+
+/* Offene Farbbänder — weicher Farb-Glow oben-mittig + Weiß-Sockel,
+   full-bleed hinter 1200er-Content */
+.bg-hebel-wash-kundenschnittstelle {
+  background:
+    radial-gradient(ellipse 120% 75% at 50% -15%, rgba(196,177,220,0.30) 0%, transparent 60%),
+    radial-gradient(ellipse 90% 60% at 85% 120%, rgba(107, 74,148,0.07) 0%, transparent 60%),
+    rgba(255,255,255,0.45);
+}
+.bg-hebel-wash-vertrieb {
+  background:
+    radial-gradient(ellipse 120% 75% at 50% -15%, rgba(126,196,190,0.30) 0%, transparent 60%),
+    radial-gradient(ellipse 90% 60% at 85% 120%, rgba( 29,107,102,0.06) 0%, transparent 60%),
+    rgba(255,255,255,0.45);
+}
+.bg-hebel-wash-neue-felder {
+  background:
+    radial-gradient(ellipse 120% 75% at 50% -15%, rgba(212,128,154,0.26) 0%, transparent 60%),
+    radial-gradient(ellipse 90% 60% at 85% 120%, rgba(138, 48, 80,0.06) 0%, transparent 60%),
+    rgba(255,255,255,0.45);
+}
+.bg-hebel-wash-ventures {
+  background:
+    radial-gradient(ellipse 120% 75% at 50% -15%, rgba(168,184,154,0.32) 0%, transparent 60%),
+    radial-gradient(ellipse 90% 60% at 85% 120%, rgba( 74, 90, 60,0.06) 0%, transparent 60%),
+    rgba(255,255,255,0.45);
+}
+
+/* Case-/Grid-Visuals — rotierende Branchen-Tonalitäten */
+.bg-case-visual-1 {
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 30%, rgba(196,177,220,0.60), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 80% 80%, rgba(237,227,245,0.80), transparent 50%),
+    var(--surface-mauve);
+}
+.bg-case-visual-2 {
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 30%, rgba(126,196,190,0.50), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 20% 70%, rgba(224,242,240,0.70), transparent 50%),
+    var(--surface-sage);
+}
+.bg-case-visual-3 {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 30%, rgba(212,128,154,0.40), transparent 60%),
+    radial-gradient(ellipse 60% 60% at 30% 80%, rgba(245,224,232,0.80), transparent 55%),
+    var(--surface-sand);
+}
+.bg-case-visual-4 {
+  background:
+    radial-gradient(ellipse 80% 60% at 80% 30%, rgba(168,184,154,0.45), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(226,232,220,0.70), transparent 50%),
+    var(--surface-stone);
+}
+.bg-case-visual-5 {
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 40%, rgba(196,177,220,0.50), transparent 60%),
+    radial-gradient(ellipse 60% 60% at 80% 70%, rgba(212,128,154,0.35), transparent 55%),
+    var(--surface-mauve);
+}
+.bg-case-visual-6 {
+  background:
+    radial-gradient(ellipse 70% 60% at 60% 40%, rgba(126,196,190,0.45), transparent 60%),
+    radial-gradient(ellipse 50% 50% at 25% 75%, rgba(168,184,154,0.40), transparent 50%),
+    var(--surface-sage);
+}
+
+/* Case-Karten pro Hebel — Akzente Plum/Teal/Berry über Surfaces */
+.bg-case-neues-verkaufen {
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 25%, rgba(107, 74,148,0.55), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 85%, rgba(196,177,220,0.65), transparent 55%),
+    var(--surface-mauve);
+}
+.bg-case-besser-verkaufen {
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 25%, rgba( 29,107,102,0.50), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 15% 80%, rgba(168,184,154,0.50), transparent 60%),
+    var(--surface-sage);
+}
+.bg-case-besser-arbeiten {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 25%, rgba(138, 48, 80,0.45), transparent 60%),
+    radial-gradient(ellipse 60% 60% at 25% 85%, rgba(212,128,154,0.55), transparent 55%),
+    var(--surface-sand);
+}
+
+/* Stimmen-/Zitat-Karten — satte dunkle Verläufe (mit grain-photo-screen) */
+.bg-stimme-plum {
+  background:
+    radial-gradient(ellipse 85% 70% at  5%  5%, rgba(180,148,210,0.75), transparent 55%),
+    radial-gradient(ellipse 75% 70% at 95% 95%, rgba(158, 72,104,0.65), transparent 50%),
+    radial-gradient(ellipse 55% 55% at 60% 40%, rgba(100, 72,138,0.40), transparent 55%),
+    #4A3570;
+}
+.bg-stimme-teal {
+  background:
+    radial-gradient(ellipse 85% 70% at 95%  5%, rgba( 72,178,168,0.70), transparent 55%),
+    radial-gradient(ellipse 75% 70% at  5% 95%, rgba( 96,124, 82,0.65), transparent 50%),
+    radial-gradient(ellipse 55% 55% at 40% 50%, rgba( 32,100, 94,0.35), transparent 55%),
+    #1E5E58;
+}
+
+/* Media-Thumbs auf dunklen Karten — leise Verläufe als Platzhalter */
+.bg-youtube-preview {
+  background:
+    radial-gradient(ellipse 70% 60% at 30% 30%, rgba(196,177,220,0.25), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(212,128,154,0.18), transparent 50%),
+    #232325;
+}
+.bg-yt-thumb-featured {
+  background:
+    radial-gradient(ellipse 70% 60% at 30% 30%, rgba(196,177,220,0.25), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(212,128,154,0.18), transparent 50%),
+    rgba(255,255,255,0.04);
+}
+.bg-yt-thumb-tile {
+  background:
+    radial-gradient(ellipse 70% 60% at 25% 30%, rgba(196,177,220,0.18), transparent 60%),
+    radial-gradient(ellipse 60% 60% at 80% 70%, rgba(126,196,190,0.14), transparent 50%),
+    rgba(255,255,255,0.04);
+}
+
+/* Grafische Platzhalter — diagonale Streifen-Textur (Stone-Töne) */
+.bg-stripes-diagonal {
+  background: repeating-linear-gradient(135deg, var(--surface-stone) 0 12px, #DDD9D2 12px 24px);
+}
+
+/* ============================================================
+   Buttons — Pill. Immer. (guidelines/07 §7.3)
+   Hover = Füllungswechsel innerhalb der Markenfamilie, nie Schwarz.
    ============================================================ */
 .bm-btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  height: var(--btn-h); padding: 0 var(--btn-px);
-  border-radius: var(--btn-radius);
-  border: none;
-  font-family: var(--font-body);
-  font-size: 15px; font-weight: var(--btn-weight);
-  cursor: pointer;
-  transition: transform var(--dur-fast) var(--ease-out),
-              background var(--dur-fast) var(--ease-out),
-              color var(--dur-fast) var(--ease-out),
-              box-shadow var(--dur-fast) var(--ease-out);
-  white-space: nowrap;
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 44px; padding: 0 28px;
+  border: none; border-radius: var(--radius-pill);
+  font-family: var(--font-sans); font-size: 15px; font-weight: 500;
+  cursor: pointer; white-space: nowrap;
+  transition: background var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
 }
-.bm-btn:active { transform: translateY(1px); }
-.bm-btn-sm { height: var(--btn-h-sm); padding: 0 var(--btn-px-sm); font-size: 13px; }
-.bm-btn-lg { height: var(--btn-h-lg); padding: 0 var(--btn-px-lg); font-size: 16px; }
+.bm-btn-sm { height: 36px; padding: 0 20px; font-size: 13px; }
+.bm-btn-lg { height: 52px; padding: 0 36px; font-size: 16px; }
 
 .bm-btn-primary { background: var(--charcoal); color: var(--off-white); }
-.bm-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,0.30); }
+.bm-btn-primary:hover { background: var(--bm-deep-plum); }
 
 .bm-btn-secondary {
   background: transparent; color: var(--bm-purple);
@@ -198,70 +560,55 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
 .bm-btn-ghost { background: transparent; color: var(--charcoal); }
 .bm-btn-ghost:hover { background: var(--surface-stone); }
 
-/* On-dark variants */
+/* Featured/Glow — Verlaufs-Pill für dunkle CTA-Flächen */
+.bm-btn-glow {
+  background: linear-gradient(180deg, var(--off-white), var(--bm-purple-tint));
+  color: var(--charcoal);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+}
+.bm-btn-glow:hover {
+  background: linear-gradient(180deg, var(--off-white), var(--bm-soft-purple));
+}
+
+/* On-Dark-Varianten */
 .bm-on-dark .bm-btn-primary { background: var(--off-white); color: var(--charcoal); }
+.bm-on-dark .bm-btn-primary:hover { background: var(--bm-soft-purple); }
 .bm-on-dark .bm-btn-secondary {
-  color: var(--bm-lavender-on-dark);
-  box-shadow: inset 0 0 0 1.5px var(--bm-lavender-on-dark);
+  color: var(--bm-lavender-dark);
+  box-shadow: inset 0 0 0 1.5px var(--bm-lavender-dark);
   background: transparent;
 }
-
-/* Text link */
-.bm-link {
-  color: var(--bm-purple); font-weight: 500; cursor: pointer;
-}
-.bm-on-dark .bm-link { color: var(--bm-lavender-on-dark); }
+.bm-on-dark a, .bm-on-dark .bm-link { color: var(--bm-lavender-dark); }
 
 /* ============================================================
-   Cards
-   ============================================================ */
-.bm-card {
-  background: var(--white);
-  border-radius: var(--radius-xl);
-  padding: var(--space-8);
-}
-.bm-card-surface { background: var(--surface-stone); border: none; box-shadow: none; }
-.bm-card-mauve   { background: var(--surface-mauve); border: none; box-shadow: none; }
-.bm-card-sage    { background: var(--surface-sage); border: none; box-shadow: none; }
-.bm-card-sand    { background: var(--surface-sand); border: none; box-shadow: none; }
-.bm-card-dark    { background: var(--charcoal); color: var(--off-white); border: none; box-shadow: none; }
-
-/* Inline utility: weiße Box mit dezentem Lift (kein hartes Border) */
-.bm-lift {
-  background: var(--white);
-  border-radius: var(--radius-xl);
-  box-shadow: 0 1px 2px rgba(28,28,30,0.04), 0 0 0 1px rgba(28,28,30,0.03);
-}
-
-/* ============================================================
-   Badges / Tags — small pills
+   Badges / Tags — kleine Pills (guidelines/07 §7.6)
    ============================================================ */
 .bm-badge {
   display: inline-flex; align-items: center;
   height: 24px; padding: 0 10px;
   border-radius: var(--radius-pill);
-  font: var(--text-caption); font-weight: 500;
+  font-family: var(--font-sans); font-size: 12px; font-weight: 500; line-height: 1.4;
   background: var(--surface-stone); color: var(--charcoal);
 }
-.bm-badge-purple { background: var(--bm-purple-tint); color: var(--bm-purple); }
+.bm-badge-purple { background: var(--bm-purple-tint); color: var(--bm-deep-plum); }
 .bm-badge-berry  { background: var(--bm-rose-tint);   color: var(--bm-deep-berry); }
 .bm-badge-teal   { background: var(--bm-teal-tint);   color: var(--bm-deep-teal); }
-.bm-badge-sage   { background: var(--bm-sage-tint);   color: var(--bm-deep-sage); }
 
 /* ============================================================
-   Form inputs
+   Formulare (guidelines/07 §7.4) — radius-md, nie Pill.
+   Labels über den Feldern.
    ============================================================ */
 .bm-input, .bm-textarea, .bm-select {
   width: 100%;
-  height: var(--btn-h);
+  height: 44px;
   padding: 0 var(--space-4);
   border: var(--border-subtle);
   border-radius: var(--radius-md);
   background: var(--white);
-  font: var(--text-body);
+  font: 400 16px/1.6 var(--font-sans);
   color: var(--charcoal);
-  transition: border-color var(--dur-fast) var(--ease-out),
-              box-shadow var(--dur-fast) var(--ease-out);
+  transition: border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
 }
 .bm-textarea { height: auto; padding: 12px var(--space-4); min-height: 120px; }
 .bm-input:focus, .bm-textarea:focus, .bm-select:focus {
@@ -269,11 +616,18 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
   border-color: var(--bm-purple);
   box-shadow: 0 0 0 3px rgba(107,74,148,0.12);
 }
-.bm-label { font: var(--text-small); font-weight: 500; color: var(--charcoal); display: block; margin-bottom: 6px; }
-.bm-help  { font: var(--text-caption); color: var(--mid); margin-top: 6px; }
+.bm-label { font: 500 14px/1.5 var(--font-sans); color: var(--charcoal); display: block; margin-bottom: 6px; }
+.bm-help  { font: 400 12px/1.4 var(--font-sans); color: var(--mid); margin-top: 6px; }
 
 /* ============================================================
-   Reduced motion
+   Container & Eyebrow-Utility
+   ============================================================ */
+.bm-container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
+@media (min-width: 768px) { .bm-container { padding: 0 32px; } }
+.bm-eyebrow { font-size: 12px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light); }
+
+/* ============================================================
+   Reduced Motion — Pflicht (guidelines/05 §5.1)
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
