@@ -17,10 +17,14 @@
    Farben, Größen, Radien, Abstände NIE inline neu definieren.
 2. **Grundton `--off-white` (#F5F1EB).** Reines Weiß ist Sektionsfläche
    im Wechsel (Weiß ↔ Off-White ↔ Surfaces), nie der Ganzseiten-Grund.
-3. **Inter + JetBrains Mono.** In Next.js via `next/font`; Google-Fonts-
-   Link nur für statische Artefakte. Keine anderen Fonts ohne Freigabe.
-   Einzige Ausnahme: Print-Display-Grade laufen in **Inter Display**
-   (Override im Print-Layer, s. Punkt „Print" in Abschnitt 7).
+3. **Inter für alles — Mono nur für echten Code.** JetBrains Mono ist
+   ausschließlich für Code-Darstellung und Platzhalter-Captions erlaubt;
+   UI-Text (Eyebrows, Badges, KPIs, Nummerierungen, Meta-Zeilen,
+   Chart-Achsen, Folios) läuft IMMER in Inter. In Next.js via
+   `next/font`; Google-Fonts-Link nur für statische Artefakte. Keine
+   anderen Fonts ohne Freigabe. Einzige Ausnahme: Print-Display-Grade
+   laufen in **Inter Display** (Override im Print-Layer, s. Punkt
+   „Print" in Abschnitt 7).
 4. **Nur `type-*`-Klassen für Text.** Nie ad-hoc Größen/Gewichte/Tracking.
 5. **Pill-Buttons, immer** (`border-radius: 999px`).
 6. **Header-Logo = Wortmarke, immer** (20px hoch im 64px-Header; weiße
@@ -72,7 +76,7 @@
   `type-display-xl/-l/display` (64–128px, größer = LEICHTER),
   `type-h1…h5`, `type-stat`, `type-card-title`, `type-body-l/body`,
   `type-nav`, `type-small/caption/micro`, `type-eyebrow`
-  (12px, Versalien, +0.08em — einzige positive Spationierung).
+  (12px, Versalien, +0.10em — einzige positive Spationierung).
 - Negatives Tracking auf Headlines (fluide Stufen in `em`).
 - Umlaute in Display-Headlines sind willkommen; lange Komposita brechen
   lassen (`overflow-wrap: break-word`), nicht schrumpfen.

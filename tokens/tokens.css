@@ -15,6 +15,9 @@
 :root {
   /* ---------- Typografie ---------- */
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Mono ausschließlich für echte Code-Darstellung und Platzhalter-
+     Captions — nie für UI-Text (Eyebrows, Badges, KPIs, Nummerierungen,
+     Meta-Zeilen, Chart-Achsen laufen in Inter). Stand Website 2026-07-16. */
   --font-mono: "JetBrains Mono", "Menlo", monospace;
   /* Display = Inter (kein separates Inter Display — v2-Entscheidung) */
   --font-display: var(--font-sans);
@@ -173,7 +176,7 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
 .type-nav        { font-size: 15px; font-weight: 500; line-height: 1.40; }
 .type-small      { font-size: 14px; font-weight: 400; line-height: 1.50; }
 .type-caption    { font-size: 12px; font-weight: 400; line-height: 1.40; }
-.type-eyebrow    { font-size: 12px; font-weight: 500; line-height: 1.40; letter-spacing: 0.08em; text-transform: uppercase; }
+.type-eyebrow    { font-size: 12px; font-weight: 500; line-height: 1.40; letter-spacing: 0.10em; text-transform: uppercase; }
 .type-micro      { font-size: 10px; font-weight: 400; line-height: 1.40; }
 
 /* ============================================================
@@ -616,7 +619,7 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
    ============================================================ */
 .bm-container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
 @media (min-width: 768px) { .bm-container { padding: 0 32px; } }
-.bm-eyebrow { font-size: 12px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light); }
+.bm-eyebrow { font-size: 12px; font-weight: 500; line-height: 1.4; letter-spacing: 0.10em; text-transform: uppercase; color: var(--light); }
 
 /* ============================================================
    Reduced Motion — Pflicht (guidelines/05 §5.1)

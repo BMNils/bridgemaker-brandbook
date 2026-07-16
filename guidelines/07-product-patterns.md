@@ -95,8 +95,9 @@ der Flächenrhythmus gliedert die Seite, nicht Trennlinien allein.
 
 Kleine Pills (~24px). **Farblogik (Stand Website): Tint-Hintergrund +
 Deep-Textfarbe** — `purple-tint`+`deep-plum`, `teal-tint`+`deep-teal`,
-`rose-tint`+`deep-berry`. Daneben existiert eine Mono-Micro-Variante
-(JetBrains Mono, `text-xs`) für technische Labels. Mehr als 3 Badges in
+`rose-tint`+`deep-berry`. Die frühere Mono-Micro-Variante für technische
+Labels ist gestrichen *(Website, 2026-07-16)* — auch technische Labels
+laufen in Inter (`type-caption`/`type-micro`). Mehr als 3 Badges in
 einem View sind meist ein Layout-Problem.
 
 ## 7.7 Bildsprache
@@ -160,7 +161,7 @@ keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
   Hurenkinder vermeiden: Headlines `text-wrap: balance`, Fließtext
   `pretty` — notfalls umformulieren.
 - **Grund konstant Off-White.** Hintergrundwechsel nur mit Bedeutung:
-  Kapiteltrenner (Kapitelband `bg-kasane-band-*` + große Mono-Ziffer),
+  Kapiteltrenner (Kapitelband `bg-kasane-band-*` + große Ziffer),
   Cover/Schluss (dunkel), max. eine Moment-Slide (Zitat).
 - **Kasane-Whitelist:** in Decks nur Charcoal-Basis + `bg-kasane-cta`
   (Cover statisch; Schluss gedimmt, ~35 % Opacity) sowie die
@@ -168,7 +169,7 @@ keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
   `bg-commercial-os`, `bg-kasane-plum` …) sind in Decks tabu.
   Auf Dunkel: Headlines `--off-white`, Fließtext `--soft`.
 - **Kopfzeile als System:** Kapitel-Label links (`type-eyebrow`,
-  neutral), Seitenzahl rechts (Mono, CSS-Counter) — auf jeder Slide
+  neutral), Seitenzahl rechts (Inter, CSS-Counter) — auf jeder Slide
   außer dem Cover, immer an derselben Position. Keine Fußzeile;
   unten bleibt frei für Inhalt.
 - **Kontrast auf Off-White:** Typo eher dunkler (`--dark` statt
@@ -176,7 +177,7 @@ keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
   Trennlinien `--border-subtle` — die Haarlinie trennt nur auf Weiß.
 - **Karten:** Füllungen Weiß/Mauve/Sage — Sand und Stone sind auf
   Off-White Ton-in-Ton und dort tabu; nie zweimal dieselbe Surface
-  nebeneinander. Komposition IN der Box: große Mono-Ziffer oder ein
+  nebeneinander. Komposition IN der Box: große Ziffer oder ein
   Icon oben, Inhalt unten — nie nur Eyebrow + Liste stapeln. Karten
   mit Kopf trennen den Kopf mit feiner Linie (`--border-subtle`)
   vom Inhalt.
@@ -215,7 +216,11 @@ Validiert am Bookazine v1 (Druck: Pinguin Druck Berlin, 2026).
   Spacing in **mm**, Typografie in **pt** — nie px im Print.
 - **Schrift:** Display-Grade laufen im Print in **Inter Display**
   (`--font-display`-Override im Print-Layer; Ausnahme-Regel in
-  Kapitel 03 §3.1). Body/UI bleiben Inter, Mono bleibt JetBrains Mono.
+  Kapitel 03 §3.1). Body/UI bleiben Inter. Mono nur noch für echte
+  Code-Darstellung und Platzhalter-Captions *(seit 2026-07-16)* —
+  Folio, Running Header und TOC-Kapitelnummern laufen in Inter.
+  Hinweis: Bookazine v1 wurde noch mit Mono-Folio validiert; die
+  Inter-Folios sind beim nächsten Druck zu prüfen.
 - **Satzspiegel:** symmetrisch, 16mm links/rechts, 14mm oben (Running
   Header), 18mm unten (Folio). Satzbreite 178mm, 12-Spalten-Raster mit
   4mm Gutter (`.pp-grid` + `.pp-col-*`).
@@ -242,8 +247,8 @@ Validiert am Bookazine v1 (Druck: Pinguin Druck Berlin, 2026).
 - **Seitenkonstruktion:** jede Seite ist ein `.pp-page`-Element
   (`@page { size: A4; margin: 0 }`); Varianten `.pp-page-bleed`
   (vollflächig, z. B. Cover/Opener) und `.pp-page-dark`. Running
-  Header + Folio in Mono-Versalien, Platzhalter wie am Bildschirm
-  gestreift mit Monospace-Caption.
+  Header + Folio in Inter-Versalien (+0.10em), Platzhalter wie am
+  Bildschirm gestreift mit Monospace-Caption.
 
 ## 7.10 Venture-Projekte
 

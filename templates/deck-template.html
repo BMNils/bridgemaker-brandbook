@@ -131,7 +131,7 @@
     display: flex; justify-content: space-between; align-items: baseline;
     color: var(--mid);
   }
-  .slide-head .pagenum { font: 400 12px/1.4 var(--font-mono); }
+  .slide-head .pagenum { font: 400 12px/1.4 var(--font-sans); }
   .slide-head .pagenum::after { content: counter(slide, decimal-leading-zero); }
   .dslide-dark .slide-head { color: var(--soft); }
 
@@ -158,7 +158,7 @@
     margin-top: var(--space-12);
   }
   .agenda-row { display: flex; align-items: baseline; gap: var(--space-6); padding: var(--space-5) 0; border-top: var(--border-subtle); }
-  .agenda-num { font-family: var(--font-mono); color: var(--mid); width: var(--space-10); flex-shrink: 0; }
+  .agenda-num { color: var(--mid); width: var(--space-10); flex-shrink: 0; }
 
   .deck-table { width: 100%; border-collapse: collapse; margin-top: var(--space-10); }
   .deck-table th { text-align: left; padding: var(--space-3) var(--space-4); border-bottom: var(--border-subtle); color: var(--mid); }
@@ -177,10 +177,10 @@
     font: 500 14px/1.5 var(--font-mono);
   }
 
-  /* Kapiteltrenner: große Mono-Ziffer als stilles grafisches
+  /* Kapiteltrenner: große Ziffer als stilles grafisches
      Element — Ton aus den Tokens, keine neue Farbe. */
   .chapter-num {
-    font: 500 200px/0.85 var(--font-mono);
+    font: 500 200px/0.85 var(--font-sans);
     color: var(--surface-mid-stone);
     letter-spacing: -0.04em;
   }
@@ -310,7 +310,7 @@
         <div class="deck-card card-elevated" style="background: var(--surface-mauve); display: flex; flex-direction: column; justify-content: space-between; min-height: 330px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline;">
             <span class="type-eyebrow" style="color: var(--dark);">Blickwinkel A</span>
-            <span style="font: 500 64px/1 var(--font-mono); letter-spacing: -0.04em; color: var(--surface-mid-stone);">01</span>
+            <span style="font: 500 64px/1 var(--font-sans); letter-spacing: -0.04em; color: var(--surface-mid-stone);">01</span>
           </div>
           <div>
             <div class="type-h3">These der Karte in einer Zeile</div>
@@ -323,7 +323,7 @@
         <div class="deck-card card-elevated" style="background: var(--surface-sage); display: flex; flex-direction: column; justify-content: space-between; min-height: 330px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline;">
             <span class="type-eyebrow" style="color: var(--dark);">Blickwinkel B</span>
-            <span style="font: 500 64px/1 var(--font-mono); letter-spacing: -0.04em; color: var(--surface-mid-stone);">02</span>
+            <span style="font: 500 64px/1 var(--font-sans); letter-spacing: -0.04em; color: var(--surface-mid-stone);">02</span>
           </div>
           <div>
             <div class="type-h3">Gegenthese in einer Zeile</div>

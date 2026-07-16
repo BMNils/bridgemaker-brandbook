@@ -5,7 +5,15 @@
 - **Inter** für alles — auch Display-Größen (`--font-display` zeigt auf
   Inter; die Website lädt kein separates „Inter Display" —
   *ersetzt die v1-Regel „Inter Display oberhalb 24px"*).
-- **JetBrains Mono** für Code, Daten und technische Captions.
+- **JetBrains Mono** ausschließlich für **echte Code-Darstellung**
+  *(Website, 2026-07-16 — ersetzt „Code, Daten und technische Captions")*.
+  Für UI-Text ist Mono **verboten**: Eyebrows, Tag-Pills und Badges,
+  KPI- und Dauer-Anzeigen, Meta-Zeilen, Nummerierungen („01/02/03"),
+  Chart-Achsenbeschriftungen — alles läuft in Inter. Der Token
+  `--font-mono` bleibt definiert, reserviert für Code-Blöcke.
+  Einzige zweite erlaubte Verwendung: die Monospace-Caption auf
+  Platzhaltern (§7.7) — sie markiert Unfertiges und wird nie
+  ausgeliefert.
 - **Print-Ausnahme** *(Nils, 2026-07-14)*: In Print-Publikationen
   (DIN-A4-Layer, `tokens/print-tokens.css`) zeigt `--font-display` auf
   **Inter Display** — die Schrift ist für große Grade gezeichnet und
@@ -51,7 +59,7 @@ ersetzt die fixe px-Skala von v1.
 | `type-nav` | 15px | 500 | 1.40 | — | Nav-Links & Nav-CTA — zwischen small und body: präsent, aber nicht laut |
 | `type-small` | 14px | 400 | 1.50 | — | Meta, sekundäre UI |
 | `type-caption` | 12px | 400 | 1.40 | — | Labels, Zeitstempel |
-| `type-eyebrow` | 12px | 500 | 1.40 | +0.08em, VERSALIEN | Kicker über Headlines |
+| `type-eyebrow` | 12px | 500 | 1.40 | +0.10em, VERSALIEN | Kicker über Headlines |
 | `type-micro` | 10px | 400 | 1.40 | — | Kleinstinformationen |
 
 **Display-Regel:** größer = leichter. Wirkt eleganter und trägt mehr Luft.
@@ -63,7 +71,9 @@ ersetzt die fixe px-Skala von v1.
   mitskaliert (−0.03em ≈ −3.8px bei 128px). Fixe Stufen behalten
   px-Tracking.
 - Nie positives Tracking auf Headlines — das liest sich wie PowerPoint
-  von 2005. Einzige Ausnahme: `type-eyebrow` (+0.08em, Versalien).
+  von 2005. Einzige Ausnahme: `type-eyebrow` (+0.10em, Versalien —
+  angehoben von 0.08em am 2026-07-16 als optischer Ausgleich für die
+  schmalere Laufweite von Inter, seit Eyebrows nicht mehr in Mono laufen).
 
 ## 3.4 Deutsch in Display-Größen
 

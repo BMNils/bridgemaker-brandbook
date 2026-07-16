@@ -83,8 +83,9 @@
   --pp-text-eyebrow:    500 8pt/12pt var(--font-sans);
   --pp-track-eyebrow:   0.12em;
 
-  /* Folio / Running header */
-  --pp-text-folio:      500 9pt/14pt var(--font-mono);
+  /* Folio / Running header — Inter seit 2026-07-16 (Mono nur noch für
+     Code + Platzhalter-Captions; Bookazine v1 lief noch mit Mono-Folio) */
+  --pp-text-folio:      500 9pt/14pt var(--font-sans);
 
   /* KPI-Zahl (große Stat-Werte in Tiles) */
   --pp-text-stat:       500 32pt/1.0 var(--font-display);
@@ -195,7 +196,7 @@
   left: var(--pp-margin-x);
   right: var(--pp-margin-x);
   font: var(--pp-text-folio);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.10em; /* optischer Ausgleich Inter statt Mono, wie type-eyebrow */
   text-transform: uppercase;
   color: var(--mid);
   display: flex;
@@ -343,7 +344,7 @@
   border-bottom: var(--pp-rule-hair);
 }
 .pp-toc-row:last-child { border-bottom: none; }
-.pp-toc-kap   { font: var(--pp-text-small); font-family: var(--font-mono); color: var(--mid); text-transform: none; }
+.pp-toc-kap   { font: var(--pp-text-small); color: var(--mid); text-transform: none; }
 .pp-toc-title { font: 500 12pt/1.3 var(--font-display); color: var(--charcoal); letter-spacing: -0.2pt; }
 .pp-toc-pg    { font: var(--pp-text-folio); color: var(--mid); text-align: right; letter-spacing: 0.05em; }
 
