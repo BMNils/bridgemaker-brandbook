@@ -146,8 +146,9 @@ keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
 1920×1080-/24px-Regel.)
 
 - **Template-Pflicht:** Jedes Deck entsteht als Kopie von
-  `templates/deck-template.html` (muss einen Ordner tief im Repo
-  liegen). Die dortigen Layouts — Cover, Agenda, Kapiteltrenner,
+  `templates/deck-template.html` — einen Ordner tief im Repo oder,
+  bei Kundenarbeit, im Projekt-Kit außerhalb des Repos (Kit-Prinzip
+  im Skill `bridgemaker-slides`; Kundendaten nie ins Brandbook). Die dortigen Layouts — Cover, Agenda, Kapiteltrenner,
   Content 2/3 + 1/3, 1/2-Split, Zahlen, Icon-Grid, Zitat, Tabelle,
   Schluss — sind die freigegebene Menge. Slides duplizieren und
   umsortieren ja; neue Layouts erfinden nein. Fehlt ein Layout:

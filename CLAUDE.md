@@ -163,7 +163,9 @@
   (1440×810-Stage, Web-Typoskala, Kopfzeile mit Seitenzahl, statisch,
   Weitergabe nur als PDF). Layouts ausschließlich aus dem Template;
   Regeln + Sehpflicht: `guidelines/07 §7.8` und Repo-Skill
-  `bridgemaker-slides`. Kundendecks nie committen (Repo öffentlich).
+  `bridgemaker-slides`. Kundenarbeit entsteht NIE in diesem Repo
+  (auch nicht lokal/gitignored) — eigener Projektordner außerhalb,
+  mit kopiertem Kit (tokens/, templates/deck-stage.js, assets/logos/).
 - **Print (DIN A4):** `tokens/print-tokens.css` als Layer NACH tokens.css
   laden. mm/pt statt px, Baseline-Grid 14pt, Großziffer→Headline 18mm,
   Eyebrow→Headline 12mm, Hairlines 0.4pt statt 1px, Print-Kasane mit

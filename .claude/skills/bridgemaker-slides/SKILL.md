@@ -18,8 +18,24 @@ lesen, vor Textarbeit `guidelines/08-voice.md`. Alle Werte kommen aus
 ## 2. Template kopieren — nie frei bauen
 
 Jedes Deck entsteht als Kopie von `templates/deck-template.html`.
-Die Datei muss **einen Ordner tief im Repo** liegen (relative Pfade
-auf `../tokens/` und `../assets/`). Die Layouts im Template sind die
+
+**Ablageort — Kundenarbeit nie im Brandbook-Repo** (das Repo ist
+öffentlich und projektübergreifend; Kundendaten gehören auch lokal
+nicht hinein). Für jedes Kundenprojekt einen Projektordner außerhalb
+anlegen und das Kit hineinkopieren — die Ordnerstruktur spiegelt das
+Repo, dadurch funktionieren alle relativen Pfade unverändert:
+
+```bash
+mkdir -p <projektordner>/{tokens,templates,assets/logos,deck}
+cp tokens/tokens.css <projektordner>/tokens/
+cp templates/deck-stage.js <projektordner>/templates/
+cp assets/logos/wordmark-*.svg <projektordner>/assets/logos/
+```
+
+Das Deck liegt dann in `<projektordner>/deck/` — einen Ordner tief,
+mit relativen Pfaden auf `../tokens/`, `../templates/` und
+`../assets/`. Nur neutrale, freigegebene Muster dürfen im Repo
+selbst liegen. Die Layouts im Template sind die
 freigegebene Menge: Cover, Agenda, Kapiteltrenner, Content 2/3 + 1/3,
 1/2-Split, Zahlen, Icon-Grid, Zitat, Tabelle, Schluss. Slides
 duplizieren und umsortieren ist ausdrücklich okay — **neue Layouts
@@ -81,6 +97,8 @@ rendern. Erst abgeben, wenn ein kompletter Durchgang ohne Befund ist.
 ## 6. Abgabe
 
 Weitergegeben wird **nur das PDF** (Drucken → als PDF sichern liefert
-eine Seite pro Slide). Die HTML-Datei funktioniert nur im Repo und
-verlässt es nicht. **Kundendecks nie committen** — das Repo ist
-öffentlich; `examples/` ist nur für freigegebene, neutrale Muster.
+eine Seite pro Slide). Die HTML-Datei funktioniert nur im Projekt-Kit
+bzw. Repo und wird nie einzeln verschickt. **Kundendateien nie ins
+Brandbook-Repo legen oder committen** — Kundenarbeit lebt im
+Projektordner; `examples/` ist ausschließlich für freigegebene,
+neutrale Muster.

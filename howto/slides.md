@@ -66,9 +66,11 @@ Teil des Workflows.
 - **Weitergeben: nur als PDF.** Im Browser Drucken → „Als PDF sichern"
   (eine Seite pro Slide). Die HTML-Datei allein ist außerhalb des
   Repos kaputt — nie einzeln verschicken.
-- **Wichtig:** Kundendecks nie ins Repo committen — das Repo ist
-  öffentlich. Sie bleiben lokal (`examples/detax-*` u. Ä. sind per
-  .gitignore geschützt).
+- **Wichtig — Kundenarbeit nie im Brandbook-Repo:** Das Repo ist
+  öffentlich und projektübergreifend. Für jedes Kundenprojekt legt
+  Claude einen Projektordner außerhalb an und kopiert das Kit hinein
+  (tokens, deck-stage.js, Logos — macht der Skill automatisch);
+  Deck und Inhaltsdokumente leben nur dort.
 
 ## Änderungen danach
 
