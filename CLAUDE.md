@@ -159,8 +159,11 @@
   topografische Linien auf Gradients, konstruierte Vektor-Icons). Bis
   das neue Konzept steht: KEINE Bildentscheidungen ohne CD-Freigabe.
   Fehlendes Asset → gestreifter Platzhalter mit Monospace-Caption.
-- **Decks:** 1920×1080, min. 24px Text. Cover = Kasane + Display-Titel;
-  Layouts s. `guidelines/07 §7.8`.
+- **Decks:** immer als Kopie von `templates/deck-template.html`
+  (1440×810-Stage, Web-Typoskala, Kopfzeile mit Seitenzahl, statisch,
+  Weitergabe nur als PDF). Layouts ausschließlich aus dem Template;
+  Regeln + Sehpflicht: `guidelines/07 §7.8` und Repo-Skill
+  `bridgemaker-slides`. Kundendecks nie committen (Repo öffentlich).
 - **Print (DIN A4):** `tokens/print-tokens.css` als Layer NACH tokens.css
   laden. mm/pt statt px, Baseline-Grid 14pt, Großziffer→Headline 18mm,
   Eyebrow→Headline 12mm, Hairlines 0.4pt statt 1px, Print-Kasane mit
@@ -191,6 +194,8 @@ Digitale Produkte bauen auf **MD3** mit Bridgemaker-Theming
 - Farbrollen **explizit mappen, NIE seed-generieren** (primary =
   bm-purple, surface = off-white, dark-primary = lavender-dark …).
 - Type-Scale auf `type-*` mappen; Inter, nie Roboto.
+- Icons: **Material Symbols Outlined** — einzige Icon-Quelle, auch in
+  Decks (Regeln: `guidelines/09 §9.8`).
 - Pill = MD3 full radius; Inputs `radius-md`.
 - Bridgemaker-Elevation statt MD3-Tonal-Elevation; Motion gedeckelt.
 - MD3 liefert Anatomie, States, A11y — Bridgemaker liefert Farbe, Typo,

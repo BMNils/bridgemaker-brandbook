@@ -125,3 +125,22 @@ MD3-Komponenten verlieren dann ihr Box-Modell (Buttons ohne
 Innen-Padding). Lösung im Starter-Kit: Preflight-Kopie, die alle
 `md-*`-Tags per `:where(:not(…))` vom Universal-Reset ausnimmt
 (`starter-kit/src/app/preflight-md3.css`).
+
+## 9.8 Icons
+
+**Material Symbols Outlined** ist die einzige freigegebene Icon-Quelle —
+für Produkt-UIs und für Decks (Beschluss 16.07.2026; schließt die
+bisherige Icon-Lücke dieses Mappings).
+
+- Stil ausschließlich **Outlined**, `FILL 0`; **Weight 300** (passt zur
+  Inter-Strichstärke), `GRAD 0`, `opsz 48` — via
+  `font-variation-settings`.
+- Farben aus **einer** Familie pro View; Default auf Hell ist
+  `--bm-deep-plum`. Nie mehrfarbige Icon-Reihen.
+- **Funktional statt dekorativ:** Icons geben Orientierung (ein Icon
+  pro Karte/Aspekt) — nie als Zeilenschmuck vor jedem Bullet, nie als
+  Bildersatz.
+- Laden: Google-Fonts-Link für statische Artefakte (Decks), Paket im
+  Starter-Kit für Produkt-UIs. Icon-Namen: fonts.google.com/icons.
+- MD3-Komponenten-Slots (Dialoge, Menüs, Tabs …) verwenden dieselben
+  Symbols — keine Library-eigenen Icon-Sets durchsickern lassen.

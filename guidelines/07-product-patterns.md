@@ -138,12 +138,71 @@ Heroes und Cover-Slides.
 
 ## 7.8 Slide-Decks
 
-- Format **1920×1080**, Mindest-Textgröße **24px**. Keine Ausnahmen.
-- Layouts: **Cover** (dunkles/vibrantes Kasane, Display-Titel, kleines
-  Eyebrow, kein Fließtext), **Kapiteltrenner** (Surface-Farbe
-  full-bleed, zentrierte einzeilige H1), **Content** (2/3 Text + 1/3
-  Visual oder 1/2-Split), **Zitat** (großes kursives Zitat, Attribution
-  im Eyebrow-Stil), **Schluss-Slide** (Claim + Kontakt, dunkles Kasane).
+Decks sind **statische Lese-Artefakte**: gebaut als HTML auf einer
+festen **1440×810-Stage** (`templates/deck-stage.js` skaliert verlust-
+frei), weitergegeben **ausschließlich als PDF** (Drucken → als PDF
+sichern, eine Seite pro Slide). Keine Animationen, kein kasane-drift,
+keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
+1920×1080-/24px-Regel.)
+
+- **Template-Pflicht:** Jedes Deck entsteht als Kopie von
+  `templates/deck-template.html` (muss einen Ordner tief im Repo
+  liegen). Die dortigen Layouts — Cover, Agenda, Kapiteltrenner,
+  Content 2/3 + 1/3, 1/2-Split, Zahlen, Icon-Grid, Zitat, Tabelle,
+  Schluss — sind die freigegebene Menge. Slides duplizieren und
+  umsortieren ja; neue Layouts erfinden nein. Fehlt ein Layout:
+  Platzhalter setzen und CD fragen.
+- **Typografie = Web:** die normalen `type-*`-Klassen in Web-Größen
+  (Basis 16px, Contentbreite 1200px wie der Web-Container). Der
+  Deck-Layer pinnt nur die fluiden `clamp()`-Stufen auf feste Werte,
+  damit Bildschirm und PDF identisch sind. Keine eigenen Größen.
+  Hurenkinder vermeiden: Headlines `text-wrap: balance`, Fließtext
+  `pretty` — notfalls umformulieren.
+- **Grund konstant Off-White.** Hintergrundwechsel nur mit Bedeutung:
+  Kapiteltrenner (Kapitelband `bg-kasane-band-*` + große Mono-Ziffer),
+  Cover/Schluss (dunkel), max. eine Moment-Slide (Zitat).
+- **Kasane-Whitelist:** in Decks nur Charcoal-Basis + `bg-kasane-cta`
+  (Cover statisch; Schluss gedimmt, ~35 % Opacity) sowie die
+  Kapitelbänder. Vibrante Website-Rezepte (`bg-contact-cta`,
+  `bg-commercial-os`, `bg-kasane-plum` …) sind in Decks tabu.
+  Auf Dunkel: Headlines `--off-white`, Fließtext `--soft`.
+- **Kopfzeile als System:** Kapitel-Label links (`type-eyebrow`,
+  neutral), Seitenzahl rechts (Mono, CSS-Counter) — auf jeder Slide
+  außer dem Cover, immer an derselben Position. Keine Fußzeile;
+  unten bleibt frei für Inhalt.
+- **Kontrast auf Off-White:** Typo eher dunkler (`--dark` statt
+  `--mid` für Fließtext, `--mid` statt `--light` für Eyebrows),
+  Trennlinien `--border-subtle` — die Haarlinie trennt nur auf Weiß.
+- **Karten:** Füllungen Weiß/Mauve/Sage — Sand und Stone sind auf
+  Off-White Ton-in-Ton und dort tabu; nie zweimal dieselbe Surface
+  nebeneinander. Komposition IN der Box: große Mono-Ziffer oder ein
+  Icon oben, Inhalt unten — nie nur Eyebrow + Liste stapeln. Karten
+  mit Kopf trennen den Kopf mit feiner Linie (`--border-subtle`)
+  vom Inhalt.
+- **Raum nutzen:** ab vier Listenpunkten zweispaltig denken; keine
+  Slide, deren rechte Hälfte leer bleibt.
+- **Farbe rationiert:** eine Farbwelt pro Slide. Farbe kommt aus
+  Inhalten — Badges, Zielwerte, Icons, der Gedankenstrich als
+  Verbinder (z. B. im Gegenüberstellungs-Ledger) — nie aus Eyebrows
+  oder Kapitel-Farbcodes. Einfache Daten-SVGs (Balken, Zeitachsen)
+  in EINER Farbfamilie.
+- **Grafik-Platzhalter statt Improvisation:** Wo ein Diagramm oder
+  Bild helfen würde: gestreifter Platzhalter (`bg-stripes-diagonal`)
+  mit Monospace-Caption „Vorschlag: … — lass uns das gemeinsam
+  entwerfen." Keine komplexen Infografiken freihand.
+- **Icons:** nur Material Symbols Outlined (s. `09 §9.8`), Farben aus
+  einer Familie, funktional statt dekorativ.
+- **Wortmarke** auf Cover und Schluss (`assets/logos/`). Die
+  Schluss-Slide ist bewusst anders als das Cover: zentriert, ruhig,
+  mit Ansprechpartner-Card (Glass-Karte, runder Foto-Platzhalter,
+  Name, Rolle, **verifizierte** E-Mail — keine erfundenen Adressen).
+- **Voice:** durchgehend Du/ihr, Headlines ohne Schlusspunkt, keine
+  Meta-/Prozesssätze im Slide-Text, keine Sprachmischung; belastbare
+  Zahlen oder Mono-Platzhalter („[ Zitat folgt ]").
+- **Sehpflicht:** Vor jeder Abgabe das Deck per Headless-Chrome als
+  PDF rendern, jede Seite ansehen und gegen diese Liste prüfen —
+  korrigieren und erneut rendern, bis nichts mehr auffällt.
+  Workflow im Repo-Skill `bridgemaker-slides`.
 
 ## 7.9 Print-Publikationen (DIN A4)
 
