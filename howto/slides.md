@@ -15,30 +15,24 @@ cd bridgemaker-brandbook
 Schon geklont? Dann reicht `git pull` — Template und Regeln
 entwickeln sich weiter.
 
-## Schritt 2: Skills installieren (einmalig)
+Mehr brauchst du nicht: Auch die drei Handwerks-Skills für
+Story-Aufbau und Diagramme liegen im Repo und kommen beim Klonen
+automatisch mit. Die Rangordnung bleibt immer: **Skills liefern das
+WIE, das Brandbook liefert das Aussehen.** Das erzwingt der
+Repo-Skill automatisch.
 
-Drei geprüfte Skills fürs Handwerk — Story-Aufbau und Diagramme:
-
-```bash
-npx -y skills add wshobson/agents@data-storytelling -g -y
-npx -y skills add anthropics/knowledge-work-plugins@data-visualization -g -y
-npx -y skills add antvis/chart-visualization-skills@chart-visualization -g -y
-```
-
-Die Rangordnung bleibt immer: **Skills liefern das WIE, das Brandbook
-liefert das Aussehen.** Das erzwingt der Repo-Skill automatisch.
-
-## Schritt 3: Claude Code im Repo-Ordner starten
+## Schritt 2: Claude Code im Repo-Ordner starten
 
 ```bash
 claude
 ```
 
 Der Ordner ist entscheidend: Nur hier lädt Claude automatisch die
-`CLAUDE.md` mit den Markenregeln und den Skill `bridgemaker-slides`
-mit Template-Pflicht und Qualitäts-Workflow.
+`CLAUDE.md` mit den Markenregeln und alle Skills — `bridgemaker-slides`
+mit Template-Pflicht und Qualitäts-Workflow plus die drei
+Handwerks-Skills.
 
-## Schritt 4: Start-Prompt
+## Schritt 3: Start-Prompt
 
 Kopieren, die `[…]`-Stellen ausfüllen, abschicken:
 

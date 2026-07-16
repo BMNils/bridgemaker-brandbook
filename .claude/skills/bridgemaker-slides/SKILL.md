@@ -70,9 +70,11 @@ Die Kurzliste:
 
 ## 4. Skills nutzen — Brandbook schlägt Skill
 
-Für Story-Aufbau und Diagramm-Handwerk die installierten Skills
-verwenden (z. B. `data-storytelling`, `data-visualization`,
-`chart-visualization`). Sie liefern das WIE (Struktur, Dramaturgie,
+Für Story-Aufbau und Diagramm-Handwerk die mitgelieferten Skills
+verwenden — `data-storytelling`, `data-visualization` und
+`chart-visualization` liegen als geprüfte Kopien in
+`.claude/skills/` (Herkunft: dortiges README).
+Sie liefern das WIE (Struktur, Dramaturgie,
 Chart-Wahl). Sobald ein Skill eigene Farben, Schriften, Größen oder
 Schatten vorschlägt, gilt ausnahmslos das Brandbook.
 
