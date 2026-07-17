@@ -108,9 +108,14 @@
   Wechsel mit ruhigen Flächen, nie zwei direkt aneinander, nie hinter
   Fließtext. Katalog (28 Flächen, „ein Thema = eine Farbwelt") in
   tokens.css.
-- Karten: `radius-xl` (20px), Füllungen variieren (nie 3× dieselbe
-  Surface in einer Reihe). **Farbige Akzent-Kanten (`border-left`-
-  Callouts) sind verboten.**
+- Karten: `radius-xl` (20px). **Tönung braucht Bedeutung:** Dieselbe
+  Surface darf sich frei wiederholen — Uniformität ist Ruhe, kein
+  Fehler. Unterschiedliche Tönungen nur, wenn der Unterschied etwas
+  sagt (Identität, Kategorie, Rolle). **Verboten: Schachbrett-
+  Alternanz** zweier Tönungen im Grid und jeder Farbwechsel als
+  Deko-Rhythmus. Summen-/Resultat-/Basis-Elemente werden anders
+  exponiert als die Reihe darüber (Rolle = Behandlung). **Farbige
+  Akzent-Kanten (`border-left`-Callouts) sind verboten.**
 
 **⚠ Handwerks-Fallen (hart erarbeitet):**
 1. Tailwind v4 strippt handgeschriebenes `backdrop-filter` in
@@ -154,15 +159,36 @@
 - **Header:** fix, 64px, transparent → blur-solid beim Scrollen
   (`backdrop-blur-xl bg-white/30`), Dark-Inversion auf dunklen
   Sektionen; Nav-CTA als Charcoal-Pill; Links `type-nav`.
-- **Badges:** kleine Pills, Tint-Hintergrund + Deep-Text
-  (purple-tint+deep-plum etc.); >3 pro View = Layout-Problem.
+- **Badges — eine Bedeutung, eine Gestalt (dokumentweit):**
+  1. Semantik-Badge („Quick-Win"): Tint-Hintergrund + Deep-Text
+  (purple-tint+deep-plum etc.), Inter — dieselbe Aussage trägt immer
+  dieselbe Farbe. 2. Themen-Tag: Outline in Familienfarbe, max. 3
+  pro Einheit, nie als Listenersatz. 3. Werte/Ziele: NIE als Badge —
+  Meta-Zeile (Label links, Wert rechts). 4. Arbeitsstände („folgt
+  nach Freigabe"): nie als Layout-Element. Badges nur auf Sand/Weiß;
+  >3 pro View = Layout-Problem.
+- **Charts & Diagramme:** eine Aussage, keine Ausstattung. Erst die
+  Typografie-Frage (tragen zwei, drei Zahlen die Aussage? → freie
+  Stats statt Chart). Vergleichs-Charts: EINE farbige Reihe,
+  Vergleich grau/gepunktet, Direktbeschriftung statt Legende, eine
+  Baseline, keine Gitter. Struktur-Diagramme (Gantt, Kategorien):
+  Familienfarben als Kategorien-Code, konsistent, mit Legende.
+  Beschriftung Inter, nie Mono. Ein Chart, das eine Methodik-
+  Fußnote braucht, ist gescheitert. Stilisierung vereinfacht die
+  Mittel, nie die Substanz (Details: `guidelines/07 §7.11`).
 - **Formulare:** Outline-Inputs (`radius-md`, nie Pill), Ruhezustand
   transparent — **weiß erst bei Fokus**; Labels über dem Feld.
 - **Bildsprache: WORK IN PROGRESS.** Das alte Editorial-Foto-Konzept
   gilt nicht mehr; die Website arbeitet heute ohne Fotografie (feine
   topografische Linien auf Gradients, konstruierte Vektor-Icons). Bis
   das neue Konzept steht: KEINE Bildentscheidungen ohne CD-Freigabe.
-  Fehlendes Asset → gestreifter Platzhalter mit Monospace-Caption.
+  Fehlendes **Bild-Asset** (Foto, freie Illustration, CD-pflichtige
+  Bildwelt, fehlendes Logo) → gestreifter Platzhalter mit
+  Monospace-Caption. **Informationsgrafiken** — Diagramme, Timelines,
+  Prozess-Schaubilder, Charts aus der Marken-Formensprache (Linien,
+  Kreise, Typo, Familienfarben, Material Symbols) — sind kein
+  Bild-Asset: Sie werden IMMER gebaut, als erster Draft, der
+  gemeinsam iteriert wird. Nie als Platzhalter mit Text-Idee ablegen.
 - **Decks:** immer als Kopie von `templates/deck-template.html`
   (1440×810-Stage, Web-Typoskala, Kopfzeile mit Seitenzahl, statisch,
   Weitergabe nur als PDF). Layouts ausschließlich aus dem Template;
@@ -219,9 +245,11 @@ statt erfundener Assets ✓ Negativraum atmen lassen ✓ Fragen, wenn unklar.
 
 **Don't:** ganze Seiten in sterilem Reinweiß ❌ Monogramm im Header ❌
 Rechtecke statt Pills ❌ farbige Akzent-Kanten ❌ Hover nach Schwarz ❌
-rohes Purple auf Dunkel ❌ drei Markenfarben gleichgewichtet ❌ Kasane
-als Tapete oder hinter Fließtext ❌ ad-hoc-Typografie ❌ SVG-
-Illustrationen erfinden ❌ Emoji als Bildersatz/in Headlines ❌ AI slop
+rohes Purple auf Dunkel ❌ drei Markenfarben gleichgewichtet ❌
+Schachbrett-Alternanz zweier Tönungen ❌ Kasane als Tapete oder hinter
+Fließtext ❌ ad-hoc-Typografie ❌ dekorative Illustrationen erfinden ❌
+(konstruierte Informationsgrafiken sind Pflicht, kein Verstoß)
+Emoji als Bildersatz/in Headlines ❌ AI slop
 (Bild wie Text) ❌ Ton oder Headlines improvisieren ❌.
 
 ## 11. Wann stoppen und fragen

@@ -100,6 +100,23 @@ Labels ist gestrichen *(Website, 2026-07-16)* — auch technische Labels
 laufen in Inter (`type-caption`/`type-micro`). Mehr als 3 Badges in
 einem View sind meist ein Layout-Problem.
 
+**Badge-Vokabular** *(Nordstern-Review, 2026-07-17)* — eine Bedeutung =
+eine Gestalt, dokumentweit konsistent:
+
+1. **Semantik-Badge** („Quick-Win", „Neu"): Tint-Hintergrund +
+   Deep-Text wie oben, Inter. Dieselbe Aussage trägt im gesamten
+   Dokument exakt dieselbe Farbe und Form.
+2. **Themen-Tag** (Referenz: Hebel-Chips der Website): Outline in
+   einer Familienfarbe, max. 3 pro Einheit, nie als Listenersatz.
+3. **Werte und Ziele** („Ziel: < 2 Wochen"): **nie als Badge.**
+   Werte gehören in die Meta-Zeile — Label links, Wert rechts.
+4. **Arbeitsstände** („folgt nach Freigabe"): **nie als
+   Layout-Element.** Gehören auf eine Notizen-Seite oder in eine
+   einheitliche Meta-Zeile.
+
+Badges sind für Sand- und Weiß-Grund rezeptiert; auf getönten
+Flächen (Tint auf Tint) haben sie nichts verloren.
+
 ## 7.7 Bildsprache
 
 > ⚠️ **Work in progress** *(Nils, 2026-07-14)*: Das Editorial-Foto-Konzept
@@ -126,9 +143,16 @@ optional `grain-photo`-Finish (siehe
 [`04-surfaces-glass.md`](04-surfaces-glass.md) §4.4). Full-bleed nur in
 Heroes und Cover-Slides.
 
-- **Asset fehlt?** Gestreiften Platzhalter-Block mit Monospace-Caption
-  verwenden, die beschreibt, was dort hingehört. Nie eine
-  SVG-Illustration erfinden.
+- **Bild-Asset fehlt?** (Foto, freie Illustration, CD-pflichtige
+  Bildwelt, fehlendes Logo): Gestreiften Platzhalter-Block mit
+  Monospace-Caption verwenden, die beschreibt, was dort hingehört.
+  Nie eine dekorative Illustration erfinden.
+- **Informationsgrafiken sind kein Bild-Asset** *(2026-07-17)*:
+  Diagramme, Timelines, Prozess-Schaubilder und Charts aus der
+  Marken-Formensprache (Linien, Kreise, Typografie, Familienfarben,
+  Material Symbols) werden IMMER gebaut — als erster Draft, der
+  gemeinsam iteriert wird. Nie als Platzhalter mit Text-Idee
+  abgelegt (Regeln: §7.11).
 - **KI-generierte Bilder sind erlaubt**, wenn sie den editorialen
   Standard erfüllen und vom Creative Director freigegeben sind. Der
   Maßstab ist nicht „wurde es von KI gemacht?", sondern „fühlt es sich
@@ -176,11 +200,13 @@ keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
   `--mid` für Fließtext, `--mid` statt `--light` für Eyebrows),
   Trennlinien `--border-subtle` — die Haarlinie trennt nur auf Weiß.
 - **Karten:** Füllungen Weiß/Mauve/Sage — Sand und Stone sind auf
-  Off-White Ton-in-Ton und dort tabu; nie zweimal dieselbe Surface
-  nebeneinander. Komposition IN der Box: große Ziffer oder ein
-  Icon oben, Inhalt unten — nie nur Eyebrow + Liste stapeln. Karten
-  mit Kopf trennen den Kopf mit feiner Linie (`--border-subtle`)
-  vom Inhalt.
+  Off-White Ton-in-Ton und dort tabu. **Tönung braucht Bedeutung**
+  *(ersetzt „nie zweimal dieselbe Surface", 2026-07-17)*: Dieselbe
+  Surface darf sich frei wiederholen — Uniformität ist Ruhe.
+  Unterschiedliche Tönungen nur, wenn der Unterschied etwas sagt
+  (Identität, Kategorie, Rolle); Schachbrett-Alternanz zweier
+  Tönungen ist verboten. Summen-/Resultat-Elemente werden anders
+  exponiert als die Reihe darüber (Rolle = Behandlung).
 - **Raum nutzen:** ab vier Listenpunkten zweispaltig denken; keine
   Slide, deren rechte Hälfte leer bleibt.
 - **Farbe rationiert:** eine Farbwelt pro Slide. Farbe kommt aus
@@ -188,16 +214,20 @@ keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
   Verbinder (z. B. im Gegenüberstellungs-Ledger) — nie aus Eyebrows
   oder Kapitel-Farbcodes. Einfache Daten-SVGs (Balken, Zeitachsen)
   in EINER Farbfamilie.
-- **Grafik-Platzhalter statt Improvisation:** Wo ein Diagramm oder
-  Bild helfen würde: gestreifter Platzhalter (`bg-stripes-diagonal`)
-  mit Monospace-Caption „Vorschlag: … — lass uns das gemeinsam
-  entwerfen." Keine komplexen Infografiken freihand.
+- **Grafiken bauen, nicht ankündigen** *(ersetzt die
+  Platzhalter-Regel, 2026-07-17)*: Wo ein Diagramm oder Schaubild
+  hilft, wird es als Informationsgrafik gebaut — erster Draft
+  reicht, iteriert wird gemeinsam (Regeln: §7.11). Der gestreifte
+  Platzhalter bleibt nur für Bild-Assets (Fotos, CD-pflichtige
+  Bildwelt, fehlende Logos/Daten).
 - **Icons:** nur Material Symbols Outlined (s. `09 §9.8`), Farben aus
   einer Familie, funktional statt dekorativ.
 - **Wortmarke** auf Cover und Schluss (`assets/logos/`). Die
-  Schluss-Slide ist bewusst anders als das Cover: zentriert, ruhig,
-  mit Ansprechpartner-Card (Glass-Karte, runder Foto-Platzhalter,
-  Name, Rolle, **verifizierte** E-Mail — keine erfundenen Adressen).
+  Schluss-Slide ist ein Statement, keine Content-Seite: EIN Satz,
+  bold und fast leer; Ansprechpartner klein und dezent als
+  Textzeilen (Caps-Label, Name, Rolle, **verifizierte** E-Mail —
+  keine erfundenen Adressen). Keine Glass-Karte, kein
+  Foto-Platzhalter, keine To-do-Listen *(2026-07-17)*.
 - **Voice:** durchgehend Du/ihr, Headlines ohne Schlusspunkt, keine
   Meta-/Prozesssätze im Slide-Text, keine Sprachmischung; belastbare
   Zahlen oder Mono-Platzhalter („[ Zitat folgt ]").
@@ -257,3 +287,44 @@ Identität nicht ohne ausdrückliche Freigabe des Creative Directors für
 Ventures wiederverwenden. Bei Venture-Aufträgen: nach den Brand-Assets
 des Ventures fragen oder bestätigen lassen, dass Bridgemaker direkt
 verwendet werden soll.
+
+## 7.11 Charts & Diagramme
+
+*(Neu 2026-07-17, Nordstern-Review. Referenz:
+`assets/referenz/website-2026-07/was-wir-bauen-06-chart-direktbeschriftung.png`.)*
+
+**Ein Chart ist eine Aussage, keine Ausstattung.**
+
+1. **Erst die Typografie-Frage:** Trägt die Aussage in zwei, drei
+   Zahlen? Dann freie Stats zwischen vertikalen Hairlines
+   (`type-stat`, Caps-Label, ein Erklärsatz) statt Chart — das
+   Track-Record-Muster der Website. Ein Chart muss mehr zeigen als
+   drei Werte, sonst ist es Deko.
+2. **Selbsterklärungs-Test:** Ein Chart, das eine Methodik-Fußnote
+   braucht, um lesbar zu sein, ist gescheitert — Charttyp wechseln
+   oder zur Typografie zurückkehren.
+3. **Vergleichs-Charts** (Verläufe, Balken, Datenreihen): EINE
+   farbige Reihe aus einer Familienfarbe; Vergleichsreihe grau und
+   gepunktet; **Direktbeschriftung statt Legende** (Label an der
+   Linie/am Balken); eine Baseline-Hairline; keine Gitternetze,
+   keine Achsenkästen; nichts in Balken hineinquetschen.
+4. **Struktur-Diagramme** (Gantt, Kategorien-Karten, Prozessbilder):
+   Familienfarben als Kategorien-Code — eine Farbe pro Kategorie,
+   konsistent durchgehalten, mit Legende. Das ist Tönung MIT
+   Bedeutung und kein Verstoß gegen die Ein-Familien-Regel (die
+   gilt für Datenreihen).
+5. **Beschriftung in Inter** (`type-caption`/`type-small`), nie
+   Mono. Zahlen im Chart sind Inter wie überall.
+6. **Größe:** Ein Chart, das die Slide trägt, bekommt ihre Fläche.
+   Kein Briefmarken-Chart auf leerer Seite.
+7. **Substanz vor Stil:** Stilisierung vereinfacht die Mittel
+   (Linien, Luft, Farben), nie die Substanz. Informations-
+   dimensionen, die das Argument tragen — Parallelität, Dauer,
+   Abhängigkeiten, Größenverhältnisse — bleiben erhalten. Ein
+   Gantt wird veredelt, nicht zur Punktlinie reduziert.
+8. **Eine Rückfrage vor dem Bau:** Sind Datenlage, Dimensionen oder
+   Aussage unklar, die geplante Grafik in einem Satz ansagen und
+   bestätigen lassen („Ich baue X mit den Dimensionen Y — fehlt
+   etwas?"). Gefragt wird nach **Inhalt**, nie nach Form (die steht
+   im Kanon) — und danach wird in jedem Fall gebaut (§7.7:
+   Informationsgrafiken sind kein Bild-Asset).
