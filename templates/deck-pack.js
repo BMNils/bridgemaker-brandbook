@@ -12,9 +12,11 @@
      node ../templates/deck-pack.js <deck>.html --pdf    → zusätzlich <deck>.pdf
 
    --pdf rendert über Headless Chrome (eine Seite pro Slide,
-   1440×810, pixelidentisch zum Bildschirm). IMMER diesen Weg
-   nehmen — der Drucken-Dialog des Browsers skaliert falsch
-   und produziert zerschossene PDFs.
+   1440×810, pixelidentisch zum Bildschirm, ohne Stellschrauben —
+   der Standard für Abgaben). Schnellweg: Chromes Druckdialog
+   liefert dasselbe Ergebnis, wenn Hintergrundgrafiken AN,
+   Kopf-/Fußzeilen AUS und Skalierung Standard sind.
+   Safari/Firefox nie — sie ignorieren die @page-Größe.
 
    Die Versand-Datei hat KEINE externen Abhängigkeiten: Auch die
    Fonts (Inter, JetBrains Mono, Material Symbols) liegen lokal

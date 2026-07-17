@@ -202,12 +202,14 @@ node ../templates/deck-pack.js <deck>.html --pdf
 ```
 
 Das erzeugt beide Freigabe-Formate: `<deck>.pdf` (Headless-Chrome-
-Render, pixelidentisch, eine Seite pro Slide — NIE den Drucken-
-Dialog des Browsers benutzen, der skaliert falsch) und
-`<deck>-versand.html` (Einzeldatei, ALLE Ressourcen inklusive der
-Fonts inline — läuft offline, ohne Ordner, ohne externe Aufrufe).
-Standard der Abgabe bleibt das PDF; die Versand-HTML ist für
-Empfänger, die selbst durchklicken sollen. **Kundendateien nie ins
+Render, pixelidentisch, eine Seite pro Slide, ohne Stellschrauben)
+und `<deck>-versand.html` (Einzeldatei, ALLE Ressourcen inklusive
+der Fonts inline — läuft offline, ohne Ordner, ohne externe
+Aufrufe). Standard der Abgabe bleibt das PDF; die Versand-HTML ist
+für Empfänger, die selbst durchklicken sollen. Der Chrome-
+Druckdialog ist als Schnellweg okay (Hintergrundgrafiken AN,
+Kopf-/Fußzeilen AUS, Skalierung Standard) — Safari und Firefox
+nie. **Kundendateien nie ins
 Brandbook-Repo legen oder committen** — Kundenarbeit lebt im
 Projektordner; `examples/` ist ausschließlich für freigegebene,
 neutrale Muster.

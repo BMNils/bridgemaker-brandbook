@@ -77,9 +77,11 @@ Durchgang ohne Befund war.
   bekommst beides: das PDF (eine Seite pro Slide) und eine einzelne
   Versand-HTML, in der alles steckt, auch die Schriften. Die kannst
   du gefahrlos verschicken: keine Ordner, keine Assets, kein
-  Internet nötig. Zwei Dinge bleiben tabu — die rohe Deck-HTML
-  einzeln verschicken und PDFs über den Drucken-Dialog erzeugen
-  (der skaliert falsch und liefert zerschossene Seiten).
+  Internet nötig. Schnellweg: In Chrome funktioniert auch Drucken →
+  „Als PDF speichern" — aber nur mit „Hintergrundgrafiken" an,
+  Kopf- und Fußzeilen aus und Skalierung auf Standard, und nie in
+  Safari oder Firefox (die zerschneiden die Slides auf
+  Papierformate). Die rohe Deck-HTML bleibt tabu zum Verschicken.
 - **Wichtig — Kundenarbeit nie im Brandbook-Repo:** Das Repo ist
   öffentlich und projektübergreifend. Für jedes Kundenprojekt legt
   Claude einen Projektordner außerhalb an und kopiert das Kit hinein
