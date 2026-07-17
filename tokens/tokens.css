@@ -334,7 +334,12 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
 }
 
 /* Kontakt-/Abschluss-CTA — Triade auf Deep-Plum; Teal und Berry müssen
-   als eigene Farbräume lesbar bleiben, kein homogenes Lila */
+   als eigene Farbräume lesbar bleiben, kein homogenes Lila.
+   ⚠ BEFUND (2026-07-17): Dieses Rezept entspricht NICHT dem
+   Website-Footer — die drei engen Ellipsen erzeugen Leuchtbälle.
+   Deck-Schluss-Slides nutzen deshalb den Custom-Verlauf im
+   Deck-Template (Rosé → Purple → Blauviolett); Rework des Tokens
+   steht aus (CD-Abgleich mit dem Live-Footer). */
 .bg-contact-cta {
   background:
     radial-gradient(ellipse 55% 65% at 24% 26%, rgba( 58,158,151,0.90) 0%, transparent 60%),

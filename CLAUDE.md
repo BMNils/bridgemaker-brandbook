@@ -190,12 +190,17 @@
   Bild-Asset: Sie werden IMMER gebaut, als erster Draft, der
   gemeinsam iteriert wird. Nie als Platzhalter mit Text-Idee ablegen.
 - **Decks:** immer als Kopie von `templates/deck-template.html`
-  (1440×810-Stage, Web-Typoskala, Kopfzeile mit Seitenzahl, statisch,
-  Weitergabe nur als PDF). Layouts ausschließlich aus dem Template;
-  Regeln + Sehpflicht: `guidelines/07 §7.8` und Repo-Skill
+  (1440×810-Stage, Web-Typoskala, statisch, Weitergabe nur als PDF).
+  Kopfzeile „NN / Kapitel" links, Fußzeile Wortmarke + Kunde +
+  Seitenzahl (jede Slide außer Cover, Zitat und Schluss);
+  Headlines max. zwei
+  Zeilen (redigieren statt schrumpfen); max. drei Textgrößen pro
+  Seite (Headline/Content/Meta). Layouts ausschließlich aus dem
+  Template; Regeln + Sehpflicht: `guidelines/07 §7.8` und Repo-Skill
   `bridgemaker-slides`. Kundenarbeit entsteht NIE in diesem Repo
   (auch nicht lokal/gitignored) — eigener Projektordner außerhalb,
-  mit kopiertem Kit (tokens/, templates/deck-stage.js, assets/logos/).
+  mit kopiertem Kit (tokens/, templates/deck-stage.js +
+  deck-topo-konturen.js, assets/logos/).
 - **Print (DIN A4):** `tokens/print-tokens.css` als Layer NACH tokens.css
   laden. mm/pt statt px, Baseline-Grid 14pt, Großziffer→Headline 18mm,
   Eyebrow→Headline 12mm, Hairlines 0.4pt statt 1px, Print-Kasane mit

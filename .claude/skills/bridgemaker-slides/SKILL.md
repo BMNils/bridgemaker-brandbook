@@ -35,7 +35,7 @@ Repo, dadurch funktionieren alle relativen Pfade unverändert:
 ```bash
 mkdir -p <projektordner>/{tokens,templates,assets/logos,deck}
 cp tokens/tokens.css <projektordner>/tokens/
-cp templates/deck-stage.js <projektordner>/templates/
+cp templates/deck-stage.js templates/deck-topo-konturen.js <projektordner>/templates/
 cp assets/logos/wordmark-*.svg <projektordner>/assets/logos/
 ```
 
@@ -44,10 +44,10 @@ mit relativen Pfaden auf `../tokens/`, `../templates/` und
 `../assets/`. Die Layouts im Template sind die freigegebene Menge:
 Cover, Agenda, Kapiteltrenner, Hairline-Kolumnen (mit optionalem
 Resultat-Band), Content 2/3 + 1/3 mit Infografik, Zahlen (freie
-Stats), Principle-Zeilen, Gegenüberstellung, Objekt-Karten, Tabelle,
-Zitat, Schluss. Slides duplizieren und umsortieren ist ausdrücklich
-okay — **neue Layouts erfinden ist verboten.** Fehlt ein Layout: CD
-fragen.
+Stats), Principle-Zeilen, Gegenüberstellung, Objekt-Karten,
+nummerierte Objekt-Karten, Tabelle, Zitat, Schluss. Slides
+duplizieren und umsortieren ist ausdrücklich okay — **neue Layouts
+erfinden ist verboten.** Fehlt ein Layout: CD fragen.
 
 ## 3. Inhalte anfordern — als letzte Aktion des Setups
 
@@ -78,6 +78,11 @@ beantworten (kurz notieren, nicht nur denken):
   Hairlines — kein Chart, keine KPI-Kacheln.
 - **Benannte Dinge (Produkte, Cases, Angebote)?** → Objekt-Karten,
   Tönung uniform oder eine je Identität — nie Schachbrett.
+- **Zählbare Handlungsaufträge (Risiken, Hebel, Felder)?** →
+  nummerierte Objekt-Karten: Display-Ziffer light im
+  Familien-Deep-Ton, Surface-Farbcode eine je Identität.
+  Musterpaar: Hairlines = Beobachtungen, nummerierte Karten =
+  zählbare Handlungsaufträge.
 - **Prozess/Zeit?** → Infografik bauen (§7.11) — Substanz erhalten
   (Parallelität, Dauer, Abhängigkeiten), nicht zur Punktlinie
   glätten.
@@ -101,7 +106,11 @@ Informationsgrafiken (Diagramme, Timelines, Prozess-Schaubilder,
 Charts) werden IMMER gebaut — erster Draft reicht, iteriert wird
 gemeinsam. Regeln: `guidelines/07 §7.11` (Typografie-Frage,
 Direktbeschriftung, eine Farbreihe bzw. Kategorien-Code, Inter,
-keine Methodik-Fußnoten-Krücke). Bei unklarer Datenlage EINE
+keine Methodik-Fußnoten-Krücke). **Konstruieren statt zeichnen**
+(§7.11 Punkte 9–12): erst die Invarianten benennen (Mittelachsen,
+Äquidistanz, gleiche Lücken, Pitch), dann die Koordinaten daraus
+berechnen; viewBox croppt eng; Farben inline per `style` (die
+SVG-Falle: Klassen-`fill` schlägt das Attribut). Bei unklarer Datenlage EINE
 Inhalts-Rückfrage („Ich baue X mit den Dimensionen Y — fehlt
 etwas?"), dann bauen. Der gestreifte Platzhalter ist NUR für
 Bild-Assets erlaubt (Fotos, CD-pflichtige Bildwelt, fehlende Logos).
@@ -129,6 +138,14 @@ jede Frage explizit beantworten** (abhaken, nicht überfliegen):
 **Pro Seite:**
 - [ ] Erklärt das Layout die Argumentstruktur — oder ist es nur ein
       gefülltes Raster?
+- [ ] Headline max. zwei Zeilen? (Sonst redigieren — nicht
+      schrumpfen; Umbruch nach Sinn per `<br />`, Gedankenstrich
+      nie am Zeilenanfang)
+- [ ] Max. drei Textgrößen — Headline, Content, Meta (12px)?
+      Quellen als `.source-note` im Meta-Register?
+- [ ] Kopfzeile „NN / Kapitel" links, Fußzeile Wortmarke +
+      Kunde/Projekt + Seitenzahl (jede Slide außer den
+      Moment-Slides Cover, Zitat und Schluss)?
 - [ ] Grund Off-White? (Farbfläche nur Cover/Trenner/Zitat/Schluss)
 - [ ] Trägt jede Box ein benanntes Ding, ein Zitat oder eine
       Illustration? Alles andere → Hairlines.
@@ -140,6 +157,12 @@ jede Frage explizit beantworten** (abhaken, nicht überfliegen):
       Meta-Zeile, nicht als Chip; Arbeitsstände gar nicht)
 - [ ] Charts: Direktbeschriftung, eine Farbreihe bzw. Kategorien-
       Code, Inter, groß genug, keine Methodik-Fußnote nötig?
+- [ ] Grafik-Geometrie NACHGERECHNET: Symmetrien und Abstände
+      stimmen, keine Kollision Linie ↔ Text, ein Label-Register
+      pro Ebene, viewBox croppt eng, Balken scharfkantig oder
+      4px Lücke?
+- [ ] Arbeitsstände („folgt nach Freigabe") von der Slide in die
+      Speaker Notes verschoben?
 - [ ] Kein Mono außer echtem Code/Platzhalter-Captions? Ziffern in
       Inter?
 - [ ] Raum besetzt — unteres Drittel nicht ohne Absicht leer, rechte
@@ -152,9 +175,12 @@ jede Frage explizit beantworten** (abhaken, nicht überfliegen):
 
 **Übers ganze Deck (Blätter-Test):**
 - [ ] Alle Seiten schnell durchschalten — springt die Headline, die
-      Kopfzeile oder die Seitenzahl? (Muss stehen wie angenagelt)
-- [ ] Kopfzeile auf jeder Slide außer Cover, an derselben Position?
-- [ ] Eine Farbwelt pro Kapitel, Trenner kündigt sie an?
+      Kopfzeile, die Fußzeile oder die Seitenzahl? (Muss stehen wie
+      angenagelt)
+- [ ] Kopf- UND Fußzeile auf jeder Slide außer Cover, Zitat und
+      Schluss, an derselben Position?
+- [ ] Eine Farbwelt pro Kapitel, Trenner kündigt sie an? Mehrere
+      Trenner: Band-Farbwelt und Linienbild (Seed) variieren?
 - [ ] Gleiche Bedeutung = gleiche Gestalt? (Badges, Zitat-
       Attributionen, Listenanfänge, − vs. -, Chip-Stile)
 - [ ] Wortmarke auf Cover und Schluss; Schluss ist Statement + 

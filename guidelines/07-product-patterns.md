@@ -180,9 +180,12 @@ keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
 - **Slide Writing — Layout folgt Argument:** Vor jedem Layout die
   Strukturfrage: gleichrangige Punkte? Kontrast? Ursachen →
   Resultat? Tabelle? Benannte Dinge? Das Layout bildet genau diese
-  Struktur ab — gleichrangig heißt uniform behandelt, ein Resultat
-  wird anders exponiert (Resultat-Band), ein Prozess läuft. Ein
-  gefülltes Raster ist noch keine Slide.
+  Struktur ab — gleichrangig heißt uniform behandelt (dieselbe
+  Typo-Stufe, auch im 50/50-Zweispalter), ein Resultat wird anders
+  exponiert (Resultat-Band), ein Prozess läuft. Musterpaar:
+  Hairline-Kolumnen = Beobachtungen, nummerierte Objekt-Karten =
+  zählbare Handlungsaufträge. Ein gefülltes Raster ist noch keine
+  Slide.
 - **Template-Pflicht:** Jedes Deck entsteht als Kopie von
   `templates/deck-template.html` — einen Ordner tief im Repo oder,
   bei Kundenarbeit, im Projekt-Kit außerhalb des Repos (Kit-Prinzip
@@ -190,8 +193,9 @@ keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
   Die dortigen Layouts — Cover, Agenda, Kapiteltrenner,
   **Hairline-Kolumnen (mit optionalem Resultat-Band)**, Content
   2/3 + 1/3 mit gebauter Infografik, Zahlen (freie Stats),
-  Principle-Zeilen, Gegenüberstellung, Objekt-Karten, Tabelle,
-  Zitat, Schluss — sind die freigegebene Menge. Slides duplizieren
+  Principle-Zeilen, Gegenüberstellung, Objekt-Karten, nummerierte
+  Objekt-Karten, Tabelle, Zitat, Schluss — sind die freigegebene
+  Menge. Slides duplizieren
   und umsortieren ja; neue Layouts erfinden nein. Fehlt ein
   Layout: CD fragen.
 - **Feste Kopfzone — die Headline steht:** Eyebrow-Kopfzeile und
@@ -212,28 +216,68 @@ keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
   Hurenkinder vermeiden: Headlines `text-wrap: balance`, Fließtext
   `pretty` — notfalls umformulieren.
 - **Grund konstant Off-White.** Hintergrundwechsel nur mit Bedeutung:
-  Kapiteltrenner (Kapitelband `bg-kasane-band-*` + große Ziffer),
+  Kapiteltrenner (Kapitelband `bg-kasane-band-*` + große Ziffer
+  light + topografische Konturen in Hellgrau `#C5C0B8`),
   Cover/Schluss (dunkel), max. eine Moment-Slide (Zitat).
-- **Kasane-Whitelist:** in Decks nur Charcoal-Basis + `bg-kasane-cta`
-  (Cover statisch; Schluss gedimmt, ~35 % Opacity) sowie die
-  Kapitelbänder. Vibrante Website-Rezepte (`bg-contact-cta`,
-  `bg-commercial-os`, `bg-kasane-plum` …) sind in Decks tabu.
-  Auf Dunkel: Headlines `--off-white`, Fließtext `--soft`.
-- **Kopfzeile als System:** Kapitel-Label links (`type-eyebrow`,
-  neutral), Seitenzahl rechts (Inter, CSS-Counter) — auf jeder Slide
-  außer dem Cover, immer an derselben Position. Keine Fußzeile;
-  unten bleibt frei für Inhalt.
+- **Moment-Flächen** *(Neufassung 2026-07-17)*: Cover = Charcoal +
+  `bg-kasane-cta` (statisch) + topografische Konturen — rechts
+  dicht, links offen zum Text, wie der Website-Hero. Schluss =
+  Footer-Verlauf (custom, volle Stärke, im Template hinterlegt;
+  der Token `bg-contact-cta` entspricht NICHT dem Website-Footer)
+  + konzentrische Konturen um den Content. Topo-Linien sind
+  Blickführung um den Content, nie Deko-Gewusel; Generator:
+  `templates/deck-topo-konturen.js` (cover/schluss). Dazu die
+  Kapitelbänder `bg-kasane-band-*` mit hellgrauen Konturen. Bei
+  mehreren Kapiteln variieren die Trenner: nächste Band-Farbwelt
+  + eigenes Linienbild (Konturen-Seed = Basis + Kapitelnummer) —
+  nie zwei identische Trenner hintereinander. Andere vibrante
+  Website-Rezepte (`bg-commercial-os`, `bg-kasane-plum` …) sind
+  in Decks tabu. Auf Dunkel: Headlines `--off-white`, Fließtext
+  `--soft`.
+- **Kopf- und Fußzeile als System** *(Neufassung 2026-07-17 —
+  ersetzt „keine Fußzeile")*: Kopfzeile = NUR das Kapitel-Label
+  „NN / Kapitel" links (`type-eyebrow`, neutral). Fußzeile =
+  Wortmarke (14px) + Kunde/Projekt links (4px Gap — halbe
+  Rasterstufe, optischer Ausgleich zum Geviertstrich-Innenabstand
+  der Wortmarke; der Kundenname im Wortmarken-Schwarz und
+  semi-bold — Kunde und Bridgemaker stehen gleichwertig),
+  Seitenzahl rechts (12px Inter Regular in `--mid`, CSS-Counter). Beide auf jeder
+  Slide außer den Moment-Slides Cover, Zitat und Schluss, immer
+  an exakt derselben Position (`--deck-head-y`, `--deck-foot-y`);
+  `--deck-pad-b` hält die Mindestluft zwischen Inhalt und
+  Fußzeilen-Typo. Auf dunklen Slides mit Fußzeile trägt sie die
+  weiße Wortmarke.
+- **Headlines: max. zwei Zeilen.** Löst eine Headline die dritte
+  Zeile aus, wird redigiert — nicht geschrumpft und nicht mit
+  willkürlichen max-widths gequetscht. Umbruch nach Sinn per
+  `<br />` (dann `text-wrap: initial`); Gedankenstrich nie am
+  Zeilenanfang. Im Fließtext Gedankenstriche ganz vermeiden
+  (AI-Slop-Signal); in Headlines als Strukturmittel okay.
+- **Max. drei Textgrößen pro Seite:** Headline / Content / Meta
+  (12px). Quellen und Fußnoten laufen im Meta-Register
+  (`.source-note`: 12px, rechtsbündig, `--mid`; in Karten
+  `--light` und per `margin-top: auto` am Boxboden, Sternchen
+  verknüpft Label\* ↔ \* Fußnote; Grafik-Fußnoten mittelachsig)
+  — nie als eigene Stufe.
 - **Kontrast auf Off-White:** Typo eher dunkler (`--dark` statt
   `--mid` für Fließtext, `--mid` statt `--light` für Eyebrows),
   Trennlinien `--border-subtle` — die Haarlinie trennt nur auf Weiß.
 - **Karten:** Füllungen Weiß/Mauve/Sage — Sand und Stone sind auf
-  Off-White Ton-in-Ton und dort tabu. **Tönung braucht Bedeutung**
+  Off-White Ton-in-Ton und dort tabu (Ausnahme: der Vierer-
+  Farbcode nummerierter Objekt-Karten, dessen `card-clean`-
+  Anatomie sie per Inset-Haarlinie vom Grund trennt). Karten
+  umschließen ihren Inhalt eng — Leerraum lebt auf Slide-Ebene,
+  nicht in aufgeblasenen Boxen; Karten-Reihen mit gemeinsamer
+  Unterkante und gleicher Höhe (min-height im 8px-Raster).
+  **Tönung braucht Bedeutung**
   *(ersetzt „nie zweimal dieselbe Surface", 2026-07-17)*: Dieselbe
   Surface darf sich frei wiederholen — Uniformität ist Ruhe.
   Unterschiedliche Tönungen nur, wenn der Unterschied etwas sagt
   (Identität, Kategorie, Rolle); Schachbrett-Alternanz zweier
   Tönungen ist verboten. Summen-/Resultat-Elemente werden anders
-  exponiert als die Reihe darüber (Rolle = Behandlung).
+  exponiert als die Reihe darüber (Rolle = Behandlung — Gestalt
+  des Resultat-Bands: Mauve-Tint, Eyebrow und Satz in Deep-Plum,
+  Satz als `type-body` bold, nie `type-h4`, nie Charcoal-Kachel).
 - **Raum nutzen — auch vertikal:** ab vier Listenpunkten
   zweispaltig denken; keine Slide, deren rechte Hälfte leer bleibt,
   und keine, deren unteres Drittel ohne Absicht leer bleibt — der
@@ -244,6 +288,23 @@ keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
   Verbinder (z. B. im Gegenüberstellungs-Ledger) — nie aus Eyebrows
   oder Kapitel-Farbcodes. Einfache Daten-SVGs (Balken, Zeitachsen)
   in EINER Farbfamilie.
+- **Badges in Decks:** Semantik-Badges sitzen rechtsbündig am
+  Zeilenende (Flex, baseline) — nie im Textfluss; max. 3 pro
+  Seite (Vokabular: §7.6).
+- **Große Ziffern** (KPIs, Karten-Nummern): `type-display` mit
+  `font-weight: 300` — immer light. Nummerierte Objekt-Karten:
+  Display-Ziffer im Familien-Deep-Ton der Kartenfarbe (Neutrals:
+  Charcoal), Surface-Farbcode eine je Identität
+  (mauve/sage/sand/stone).
+- **Arbeitsstände nie auf die Slide** („folgt nach Freigabe",
+  „wird noch geklärt"): Sie gehören in die Speaker Notes
+  (`script#speaker-notes`, liest `deck-stage.js`) — nie ins
+  Layout.
+- **Referenz-Visuals** (Dashboards, Produkt-Screens) sind
+  contentverwoben, nie Showcase-Solo-Slide: Bausteine/Argument
+  links, Device-Mockup rechts, Bildunterschrift zentriert unterm
+  Bild. Das Bild selbst ist ein Bild-Asset — fehlt es, gilt die
+  Platzhalter-Regel (§7.7).
 - **Grafiken bauen, nicht ankündigen** *(ersetzt die
   Platzhalter-Regel, 2026-07-17)*: Wo ein Diagramm oder Schaubild
   hilft, wird es als Informationsgrafik gebaut — erster Draft
@@ -253,11 +314,12 @@ keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
 - **Icons:** nur Material Symbols Outlined (s. `09 §9.8`), Farben aus
   einer Familie, funktional statt dekorativ.
 - **Wortmarke** auf Cover und Schluss (`assets/logos/`). Die
-  Schluss-Slide ist ein Statement, keine Content-Seite: EIN Satz,
-  bold und fast leer; Ansprechpartner klein und dezent als
-  Textzeilen (Caps-Label, Name, Rolle, **verifizierte** E-Mail —
-  keine erfundenen Adressen). Keine Glass-Karte, kein
-  Foto-Platzhalter, keine To-do-Listen *(2026-07-17)*.
+  Schluss-Slide ist ein Statement, keine Content-Seite: EIN Satz
+  in direkter Anrede („ihr"), bold und fast leer; Ansprechpartner
+  klein und dezent als Textzeilen OHNE Eyebrow (Name, Rolle,
+  **verifizierte** E-Mail — keine erfundenen Adressen). Keine
+  Glass-Karte, kein Foto-Platzhalter, keine To-do-Listen
+  *(2026-07-17)*.
 - **Voice — Redigat ist Pflicht** *(2026-07-17)*: Gelieferte
   Inhalte werden aktiv in Bridgemaker-Sprache redigiert (Satzbau,
   Wording, Ton nach `08-voice.md`) — die Aussage und die Struktur
@@ -364,3 +426,31 @@ verwendet werden soll.
    etwas?"). Gefragt wird nach **Inhalt**, nie nach Form (die steht
    im Kanon) — und danach wird in jedem Fall gebaut (§7.7:
    Informationsgrafiken sind kein Bild-Asset).
+9. **Konstruieren statt zeichnen** *(2026-07-17)*: Erst die
+   Invarianten benennen — Mittelachsen, Äquidistanz, gleiche
+   Lücken, Pitch —, dann die Koordinaten daraus BERECHNEN.
+   Ausrichtung entsteht übers Koordinatensystem, nie durch
+   Pixel-Schieben einzelner Elemente. Symmetrische Formen bleiben
+   symmetrisch; weiße Flächen ohne Outline; ein Label-Register
+   pro Ebene.
+10. **Geometrie-Regeln:** Die `viewBox` croppt eng (kein
+    Eigen-Leerraum), `preserveAspectRatio="xMinYMin meet"` — die
+    Grafik füllt ihre Spalte über die Geometrie, nicht übers
+    Skalieren. Balken treffen Linien scharfkantig ODER mit 4px
+    Lücke — nie fast. Die Baseline spannt exakt die
+    Balkenspannweite; Balken-Werte mittig über dem Balken
+    (`text-anchor: middle` auf Balkenmitte). Legenden: gleiche
+    LÜCKEN zwischen den Einträgen, nicht gleicher Pitch.
+11. **Timelines und Gantt:** Label-Zone und Chart-Zone strikt
+    getrennt — Markerlinien kreuzen nie Labels. Bar-Label am
+    Balkenende (+10px) in der Familien-Deep-Farbe seiner
+    Kategorie; fehlt rechts der Platz, end-anchored nach links.
+    Farbabstufung NUR mit benannter Bedeutung (z. B. kräftig =
+    erste Welle, 40 % = Folgewelle — die Regel steht in Legende
+    oder Fußnote). Wir sind keine Dekorateure.
+12. **SVG-Handwerk:** CSS-Klassen-`fill` schlägt das
+    `fill`-Attribut — Farben inline per `style` setzen. Nach dem
+    Bau die Geometrie NACHRECHNEN: Symmetrien, Abstände,
+    Kollisionsfreiheit Linie ↔ Text, Register, viewBox-Crop
+    (Geometrie-Block der Sehpflicht im Skill
+    `bridgemaker-slides`).
