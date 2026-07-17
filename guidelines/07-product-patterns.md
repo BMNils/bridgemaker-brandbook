@@ -170,14 +170,41 @@ sichern, eine Seite pro Slide). Keine Animationen, kein kasane-drift,
 keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
 1920×1080-/24px-Regel.)
 
+- **Nordstern** *(2026-07-17)*: Eine Bridgemaker-Slide ist
+  Typografie auf ruhigem Grund, gegliedert durch Linien. **Boxen
+  sind die Ausnahme mit Bedeutung** — benanntes Ding (Produkt,
+  Case, Angebot), Zitat oder Bühne für eine Illustration. Reine
+  Information (Listen, Zahlen, Vergleiche, Prozesse, Prinzipien)
+  läuft über Hairlines, Spalten und Abstände. Visuelle Referenz:
+  `assets/referenz/website-2026-07/`.
+- **Slide Writing — Layout folgt Argument:** Vor jedem Layout die
+  Strukturfrage: gleichrangige Punkte? Kontrast? Ursachen →
+  Resultat? Tabelle? Benannte Dinge? Das Layout bildet genau diese
+  Struktur ab — gleichrangig heißt uniform behandelt, ein Resultat
+  wird anders exponiert (Resultat-Band), ein Prozess läuft. Ein
+  gefülltes Raster ist noch keine Slide.
 - **Template-Pflicht:** Jedes Deck entsteht als Kopie von
   `templates/deck-template.html` — einen Ordner tief im Repo oder,
   bei Kundenarbeit, im Projekt-Kit außerhalb des Repos (Kit-Prinzip
-  im Skill `bridgemaker-slides`; Kundendaten nie ins Brandbook). Die dortigen Layouts — Cover, Agenda, Kapiteltrenner,
-  Content 2/3 + 1/3, 1/2-Split, Zahlen, Icon-Grid, Zitat, Tabelle,
-  Schluss — sind die freigegebene Menge. Slides duplizieren und
-  umsortieren ja; neue Layouts erfinden nein. Fehlt ein Layout:
-  Platzhalter setzen und CD fragen.
+  im Skill `bridgemaker-slides`; Kundendaten nie ins Brandbook).
+  Die dortigen Layouts — Cover, Agenda, Kapiteltrenner,
+  **Hairline-Kolumnen (mit optionalem Resultat-Band)**, Content
+  2/3 + 1/3 mit gebauter Infografik, Zahlen (freie Stats),
+  Principle-Zeilen, Gegenüberstellung, Objekt-Karten, Tabelle,
+  Zitat, Schluss — sind die freigegebene Menge. Slides duplizieren
+  und umsortieren ja; neue Layouts erfinden nein. Fehlt ein
+  Layout: CD fragen.
+- **Feste Kopfzone — die Headline steht:** Eyebrow-Kopfzeile und
+  Headline beginnen auf jeder Content-Slide an exakt derselben
+  Position (`--deck-title-y` im Template); der Inhalt füllt den
+  Raum darunter (`.deck-body`), nie umgekehrt. Blätter-Test in der
+  Sehpflicht: Beim Durchschalten darf nichts springen.
+- **Eine Linien-Ebene pro Fläche:** Die Hairline hat pro Slide
+  genau einen Job — Spalten eröffnen ODER Zeilen trennen, nie
+  beides ineinander. Sie bindet sich durch Nähe an ihren Inhalt;
+  Zwischenüberschriften trennen sich durch Raum, nicht durch
+  eigene Striche. Nie Linien-Listen in Karten stapeln (Box ODER
+  Linie — ein Inhalt, ein Gliederungsmittel).
 - **Typografie = Web:** die normalen `type-*`-Klassen in Web-Größen
   (Basis 16px, Contentbreite 1200px wie der Web-Container). Der
   Deck-Layer pinnt nur die fluiden `clamp()`-Stufen auf feste Werte,
@@ -207,8 +234,11 @@ keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
   (Identität, Kategorie, Rolle); Schachbrett-Alternanz zweier
   Tönungen ist verboten. Summen-/Resultat-Elemente werden anders
   exponiert als die Reihe darüber (Rolle = Behandlung).
-- **Raum nutzen:** ab vier Listenpunkten zweispaltig denken; keine
-  Slide, deren rechte Hälfte leer bleibt.
+- **Raum nutzen — auch vertikal:** ab vier Listenpunkten
+  zweispaltig denken; keine Slide, deren rechte Hälfte leer bleibt,
+  und keine, deren unteres Drittel ohne Absicht leer bleibt — der
+  Inhalt verteilt sich über die verfügbare Höhe (macht
+  `.deck-body` im Template automatisch), statt oben zu kleben.
 - **Farbe rationiert:** eine Farbwelt pro Slide. Farbe kommt aus
   Inhalten — Badges, Zielwerte, Icons, der Gedankenstrich als
   Verbinder (z. B. im Gegenüberstellungs-Ledger) — nie aus Eyebrows
@@ -228,9 +258,15 @@ keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
   Textzeilen (Caps-Label, Name, Rolle, **verifizierte** E-Mail —
   keine erfundenen Adressen). Keine Glass-Karte, kein
   Foto-Platzhalter, keine To-do-Listen *(2026-07-17)*.
-- **Voice:** durchgehend Du/ihr, Headlines ohne Schlusspunkt, keine
-  Meta-/Prozesssätze im Slide-Text, keine Sprachmischung; belastbare
-  Zahlen oder Mono-Platzhalter („[ Zitat folgt ]").
+- **Voice — Redigat ist Pflicht** *(2026-07-17)*: Gelieferte
+  Inhalte werden aktiv in Bridgemaker-Sprache redigiert (Satzbau,
+  Wording, Ton nach `08-voice.md`) — die Aussage und die Struktur
+  dahinter bleiben unangetastet, die Sprache wird unsere.
+  Durchgehend Du/ihr, Headlines ohne Schlusspunkt, keine
+  Meta-/Prozesssätze im Slide-Text, kein Middot, Gedankenstriche
+  sparsam (max. einer pro Absatz), kein „→" im Fließtext, keine
+  Sprachmischung; belastbare Zahlen oder Mono-Platzhalter
+  („[ Zitat folgt ]").
 - **Sehpflicht:** Vor jeder Abgabe das Deck per Headless-Chrome als
   PDF rendern, jede Seite ansehen und gegen diese Liste prüfen —
   korrigieren und erneut rendern, bis nichts mehr auffällt.

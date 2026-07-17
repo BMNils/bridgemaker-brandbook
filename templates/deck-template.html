@@ -7,68 +7,79 @@
 
 <!-- ============================================================
      BRIDGEMAKER DECK-TEMPLATE (guidelines/07 §7.8)
+     Neufassung 2026-07-17 nach dem Nordstern-Review:
+     Linien statt Boxen. Visuelle Referenz:
+     ../assets/referenz/website-2026-07/
 
      So benutzt du dieses File:
-     1. Kopieren, umbenennen, Inhalte ersetzen. Layouts NICHT neu
-        erfinden — jede Slide unten ist ein freigegebenes Layout.
-        Slides duplizieren und umsortieren ist ausdrücklich okay.
+     1. Kopieren, umbenennen, dann pro Slide: erst die
+        ARGUMENTSTRUKTUR des Inhalts bestimmen (gleichrangig?
+        Kontrast? Ursachen → Resultat? Tabelle? benannte Dinge?),
+        dann das passende Layout unten wählen. Layouts NICHT neu
+        erfinden; duplizieren und umsortieren ist ausdrücklich okay.
      2. Das File muss einen Ordner tief im Brandbook-Repo liegen
         (../tokens/tokens.css und ../assets/... müssen auflösen).
+        Kundenarbeit: Projekt-Kit außerhalb des Repos (Skill
+        bridgemaker-slides).
      3. Weitergabe IMMER als PDF: im Browser Drucken → als PDF
         sichern (eine Seite pro Slide, macht deck-stage.js).
-        Die HTML-Datei allein ist außerhalb des Repos kaputt.
 
      Deck-Regeln — nicht verhandelbar:
-     - Der Grund ist durchgehend Off-White. Hintergrundwechsel
-       nur mit Bedeutung: Kapiteltrenner (Kapitelband),
+     - NORDSTERN: Eine Bridgemaker-Slide ist Typografie auf ruhigem
+       Grund, gegliedert durch Linien. Boxen sind die Ausnahme mit
+       Bedeutung (benanntes Ding, Zitat, Bühne für Illustration).
+       Reine Information (Listen, Zahlen, Vergleiche, Prozesse)
+       läuft über Hairlines, Spalten und Abstände — nie über Karten.
+     - DIE HEADLINE STEHT: Auf jeder Content-Slide beginnt die
+       Headline an exakt derselben Position (das Grundgerüst unten
+       erzwingt das). Der Inhalt füllt den Raum darunter — nie
+       umgekehrt. Beim Durchblättern darf nichts springen.
+     - GRUND KONSTANT SAND (Off-White) auf allen Content-Slides.
+       Ausnahmen nur mit Bedeutung: Kapiteltrenner (Kapitelband),
        Cover/Schluss (dunkel), max. eine Moment-Slide (Zitat).
-       Nie willkürlich zwischen Weiß und Off-White wechseln.
-     - Typografie = die normalen type-*-Klassen aus tokens.css,
-       wie im Web (Basisschrift 16px). Der Deck-Layer unten pinnt
-       NUR die fluiden clamp()-Stufen auf feste Werte, damit
-       Bildschirm und PDF identisch sind. Keine eigenen Größen,
-       keine eigenen Klassen erfinden.
-     - Kasane in Decks NUR das gedeckte dunkle Rezept
-       (Charcoal-Basis + bg-kasane-cta) auf Cover und Schluss,
-       plus das Kapitelband (bg-kasane-band-*) auf Trennern.
-       Die vibranten Website-Rezepte (bg-contact-cta,
-       bg-commercial-os, bg-kasane-plum …) sind in Decks tabu.
-       Auf Dunkel: Headlines --off-white, Fließtext --soft.
-     - Die Kopfzeile ist ein SYSTEM: Kapitel-Label links,
-       Seitenzahl rechts (Mono) — auf jeder Slide außer dem Cover,
-       immer an derselben Position. Keine Fußzeile; unten bleibt
-       frei für Inhalt. Nichts springt.
-     - Hurenkinder vermeiden: text-wrap balance/pretty sind im
-       Deck-Layer gesetzt — Headlines notfalls umformulieren,
-       statt ein einzelnes Wort in die letzte Zeile zu zwingen.
-     - Karten mit Kopf (Eyebrow + Titel) trennen den Kopf mit
-       feiner Linie (--border-subtle) vom Inhalt.
-     - Eyebrows/Labels sind NEUTRAL (--mid auf hellem Grund,
-       --soft auf Dunkel) — keine farbigen Eyebrows, kein
-       Farbcode pro Kapitel. Kontrastregel Off-White: Typo eher
-       dunkler (--dark statt --mid für Fließtext), Trennlinien
-       --border-subtle — die Haarlinie trennt nur auf Weiß. Farbe kommt sparsam aus Inhalten (Badges,
-       Zielwerte, Icons), nicht aus der Navigation.
-     - Raum nutzen: ab vier Listenpunkten zweispaltig denken;
-       keine Slide, deren rechte Hälfte leer bleibt.
+     - TÖNUNG BRAUCHT BEDEUTUNG: Dieselbe Surface darf sich frei
+       wiederholen — Uniformität ist Ruhe. Unterschiedliche
+       Tönungen nur, wenn der Unterschied etwas sagt (Identität,
+       Kategorie, Rolle). SCHACHBRETT-ALTERNANZ IST VERBOTEN.
+       Summen-/Resultat-Elemente anders exponieren als die Reihe
+       darüber (Rolle = Behandlung → .result-band).
+     - EINE LINIEN-EBENE PRO FLÄCHE: Die Hairline hat pro Slide
+       genau einen Job (Spalten eröffnen ODER Zeilen trennen).
+       Sie bindet sich durch Nähe an ihren Inhalt. Zwischen-
+       überschriften trennen sich durch Raum, nicht durch eigene
+       Striche. Nie Linien-Listen IN Karten stapeln.
+     - GRAFIKEN WERDEN GEBAUT (§7.11): Diagramme, Timelines und
+       Schaubilder aus der Formensprache — erster Draft reicht,
+       iteriert wird gemeinsam. Bei unklarer Datenlage EINE
+       Inhalts-Rückfrage, dann bauen. Der gestreifte Platzhalter
+       bleibt NUR für Bild-Assets (Fotos, CD-Bildwelt, Logos).
+     - Typografie = die normalen type-*-Klassen aus tokens.css
+       (der Deck-Layer pinnt nur die clamp()-Stufen). Große
+       Ziffern IMMER in Inter — Mono existiert in der UI nicht
+       mehr, es bleibt nur für echten Code und Platzhalter-Captions.
+     - Kopfzeile als System: Kapitel-Label links (type-eyebrow,
+       neutral), Seitenzahl rechts — jede Slide außer Cover,
+       immer an derselben Position. Keine Fußzeile.
+     - Kasane-Whitelist: Charcoal-Basis + bg-kasane-cta (Cover
+       statisch, Schluss gedimmt), Kapitelbänder bg-kasane-band-*.
+       Vibrante Website-Rezepte sind in Decks tabu. Auf Dunkel:
+       Headlines --off-white, Fließtext --soft, Links
+       --bm-lavender-dark.
+     - Badges nach Vokabular (§7.6): Semantik-Badge (Tint+Deep),
+       Themen-Tag (Outline, max. 3), Werte NIE als Badge (→
+       .meta-row), Arbeitsstände NIE im Layout. Nur auf Sand/Weiß.
+     - Voice: Texte werden in Bridgemaker-Sprache REDIGIERT
+       (Aussage bleibt, Sprache wird unsere — 08-voice.md): Du/ihr,
+       Headlines ohne Schlusspunkt, keine Meta-/Prozesssätze, kein
+       Middot, Gedankenstriche sparsam, kein „→" im Fließtext.
      - Decks sind STATISCH (PDF-Artefakt): keine Animationen,
        kein kasane-drift, keine Hover-Effekte.
-     - EINE Farbwelt pro Slide. Gradient-Karten nie im Grid,
-       nie unter Fließtext.
-     - Auf Off-White-Grund keine Sand-/Stone-Karten (Ton-in-Ton):
-       getönte Karten in Mauve oder Sage, dazu Weiß — und nie
-       zweimal dieselbe Surface nebeneinander.
-     - Anrede durchgehend Du/ihr — nie mit Sie mischen.
-       Headlines ohne Schlusspunkt. Keine Meta-/Prozesssätze
-       im Slide-Text.
-     - Wortmarke auf Cover und Schluss (liegt in ../assets/logos/).
-     - Icons: NUR Material Symbols Outlined über die .msym-Klasse,
-       Farben aus einer Familie, funktional statt dekorativ —
-       nie als Zeilenschmuck vor jedem Bullet.
-     - Fehlt eine Grafik oder würde ein Diagramm helfen:
-       gestreiften Platzhalter setzen (Muster auf Slide 04) mit
-       Monospace-Caption „Vorschlag: … — lass uns das gemeinsam
-       entwerfen". Nichts improvisieren.
+     - Icons: NUR Material Symbols Outlined (.msym), Farben aus
+       einer Familie, funktional — nie als Zeilenschmuck.
+     - Wortmarke auf Cover und Schluss (../assets/logos/).
+     - SEHPFLICHT vor jeder Abgabe: PDF rendern, jede Seite gegen
+       die Checkliste im Skill bridgemaker-slides prüfen,
+       korrigieren, erneut rendern.
      ============================================================ -->
 
 <link rel="stylesheet" href="../tokens/tokens.css" />
@@ -79,9 +90,7 @@
   /* ----------------------------------------------------------
      Deck-Layer: pinnt die fluiden type-*-Stufen auf ihre festen
      Desktop-Werte (clamp() rechnet gegen den Viewport — auf der
-     festen 1920er-Stage und im PDF-Druck wäre das falsch).
-     Gleiche Klassen, gleiche Optik wie im Web — nur ohne vw.
-     Vorbild: tokens/print-tokens.css fürs Print-Medium.
+     festen Stage und im PDF-Druck wäre das falsch).
      ---------------------------------------------------------- */
   .type-display-xl { font-size: 128px; }
   .type-display-l  { font-size: 96px; }
@@ -91,40 +100,54 @@
   .type-stat       { font-size: 36px; }
 
   :root {
-    --deck-pad-x: 120px;  /* 1440 − 2×120 = 1200px Contentbreite wie im Web */
-    --deck-pad-y: 96px;
+    --deck-pad-x: 120px;   /* 1440 − 2×120 = 1200px Contentbreite wie im Web */
     --deck-head-y: 48px;   /* Oberkante Kopfzeile */
+    --deck-title-y: 136px; /* Oberkante Headline — FIX auf jeder Content-Slide */
+    --deck-pad-b: 72px;
   }
 
-  /* Material Symbols — einzige erlaubte Icon-Quelle.
-     Outlined, Weight 300 (zu Inter), Farbe aus EINER Familie. */
+  /* Material Symbols — einzige erlaubte Icon-Quelle. */
   .msym {
     font-family: 'Material Symbols Outlined';
     font-weight: normal; font-style: normal;
-    font-size: 40px; line-height: 1;
+    font-size: 32px; line-height: 1;
     display: inline-block;
     font-variation-settings: 'opsz' 48, 'wght' 300, 'FILL' 0, 'GRAD' 0;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ---------- Slide-Grundgerüst ---------- */
+  /* ---------- Slide-Grundgerüst ----------
+     Content-Slides: Headline beginnt IMMER bei --deck-title-y.
+     Der .deck-body darunter bekommt den Rest der Höhe und
+     verteilt seinen Inhalt — so besetzt der Inhalt die Fläche,
+     ohne dass die Headline je wandert. */
   .dslide {
-    display: flex; flex-direction: column; justify-content: center;
-    padding: var(--deck-pad-y) var(--deck-pad-x);
+    display: flex; flex-direction: column;
+    padding: var(--deck-title-y) var(--deck-pad-x) var(--deck-pad-b);
     background: var(--off-white); color: var(--charcoal);
     font-family: var(--font-sans);
     counter-increment: slide;
   }
+  .dslide > .dslide-content { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+  .deck-title { margin: 0; }
+  .deck-lead { color: var(--dark); max-width: 672px; margin: var(--space-4) 0 0; }
+  .deck-body {
+    flex: 1; min-height: 0;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .deck-body-end { justify-content: flex-end; }
+
+  /* Moment-Slides (Cover, Trenner, Zitat, Schluss) haben eigene
+     Konzepte und heben die feste Kopfzone bewusst auf. */
+  .dslide-moment { justify-content: center; padding: 96px var(--deck-pad-x); }
+  .dslide-moment > .dslide-content { flex: 0 0 auto; }
 
   .dslide-dark { background: var(--charcoal); color: var(--off-white); }
   .kasane-layer { position: absolute; inset: 0; z-index: 0; }
   .grain-layer  { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
   .dslide-content { position: relative; z-index: 2; }
 
-  /* ---------- Kopf- und Fußzeile — konstantes System ----------
-     Kopfzeile: Kapitel-Label oben links, neutral (type-eyebrow).
-     Fußzeile: Seitenzahl unten rechts (CSS-Counter, Mono).
-     Auf jeder Content-Slide an exakt derselben Position. */
+  /* ---------- Kopfzeile — konstantes System ---------- */
   .slide-head {
     position: absolute; z-index: 2;
     top: var(--deck-head-y); left: var(--deck-pad-x); right: var(--deck-pad-x);
@@ -135,35 +158,105 @@
   .slide-head .pagenum::after { content: counter(slide, decimal-leading-zero); }
   .dslide-dark .slide-head { color: var(--soft); }
 
-  /* Hurenkinder vermeiden: Headlines ausgewogen brechen,
-     Fließtext ohne einsames letztes Wort. */
   .type-display-xl, .type-display-l, .type-display, .type-h1, .type-h2 { text-wrap: balance; }
-  .dslide p, .deck-row { text-wrap: pretty; }
+  .dslide p, .hl-col, .meta-row { text-wrap: pretty; }
 
-  .deck-lead { color: var(--dark); max-width: 672px; margin: var(--space-4) 0 0; }
+  /* ---------- PATTERN: Hairline-Kolumnen ----------
+     DAS Standard-Layout für gleichrangige Punkte (Referenz:
+     was-wir-bauen-01-hairline-kolumnen.png). Hairline eröffnet
+     die Spalte, darunter Index + Titel, darunter gestapelte
+     Kurzabsätze — Abstand trennt, keine weiteren Linien. */
+  .hl-cols { display: grid; gap: var(--space-12); }
+  .hl-cols-2 { grid-template-columns: 1fr 1fr; }
+  .hl-cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .hl-cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .hl-col { border-top: var(--border-subtle); padding-top: var(--space-4); }
+  .hl-col .hl-index {
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--mid); margin-bottom: var(--space-4);
+  }
+  .hl-col .hl-title { margin: 0 0 var(--space-4); }
+  .hl-col p { color: var(--dark); margin: 0 0 var(--space-4); }
+  .hl-col p:last-child { margin-bottom: 0; }
+  .hl-sublabel { color: var(--mid); margin: var(--space-6) 0 var(--space-3); }
 
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-top: var(--space-10); }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); margin-top: var(--space-10); }
-  .split-23 { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-12); margin-top: var(--space-10); align-items: stretch; }
+  /* ---------- PATTERN: Meta-Zeile ----------
+     Für Werte, Ziele, Quellen, Fakten: Label links, Wert rechts
+     (Referenz: frontpage-06-case-karten-meta-zeilen.png).
+     Werte NIE als Badge oder Chip. */
+  .meta-rows { border-top: var(--border-subtle); }
+  .meta-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: var(--space-8); padding: var(--space-4) 0;
+    border-bottom: var(--border-subtle);
+  }
+  .meta-row .value { color: var(--bm-deep-plum); white-space: nowrap; }
 
+  /* ---------- PATTERN: freie Zahlen ----------
+     Stats stehen frei zwischen vertikalen Hairlines — nie in
+     KPI-Kacheln (Referenz: frontpage-05-stats-vertikale-hairlines.png). */
+  .stat-strip { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .stat-cell { padding: var(--space-2) var(--space-10); border-left: var(--border-subtle); }
+  .stat-cell:first-child { border-left: none; padding-left: 0; }
+  .stat-cell .num { letter-spacing: -0.03em; }
+  .stat-cell .label { color: var(--mid); margin-top: var(--space-4); }
+  .stat-cell p { color: var(--dark); margin: var(--space-3) 0 0; }
+
+  /* ---------- PATTERN: Principle-Zeile ----------
+     Werte/Prinzipien/Aspekte mit Icon: Hairline oben, Icon links,
+     Titel RECHTSBÜNDIG auf derselben Zeile, Copy darunter
+     (Referenz: karriere-01-principle-zeilen.png). */
+  .principle-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-16); row-gap: var(--space-12);
+  }
+  .principle { border-top: var(--border-subtle); padding-top: var(--space-4); }
+  .principle .p-head { display: flex; justify-content: space-between; align-items: center; }
+  .principle .p-head .msym { color: var(--charcoal); font-size: 24px; }
+  .principle p { color: var(--dark); margin: var(--space-4) 0 0; }
+
+  /* ---------- PATTERN: Resultat-Band ----------
+     Für Summen/Basis/Ergebnis unter einer gleichrangigen Reihe:
+     bewusst ANDERS exponiert (Rolle = Behandlung) — negativ auf
+     Charcoal. Nie dieselbe Surface wie die Reihe darüber. */
+  .result-band {
+    background: var(--charcoal); color: var(--off-white);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6) var(--space-8);
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: var(--space-10); margin-top: var(--space-10);
+  }
+  .result-band .type-eyebrow { color: var(--soft); }
+
+  /* ---------- Karten — nur für benannte Dinge, Zitate, Bühnen ---------- */
   .deck-card { background: var(--white); border-radius: var(--radius-xl); padding: var(--space-8); }
+  .object-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+  .object-card {
+    border-radius: var(--radius-xl); padding: var(--space-8);
+    min-height: 200px; display: flex; flex-direction: column;
+    justify-content: space-between;
+  }
+  .object-card .o-name { display: flex; justify-content: flex-end; align-items: center; gap: var(--space-2); color: var(--dark); }
 
-  .deck-row { padding: var(--space-4) 0; border-top: var(--border-subtle); }
-  .deck-row:first-child { border-top: none; padding-top: 0; }
-  .deck-row .desc { color: var(--dark); margin-top: var(--space-1); }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+  .split-23 { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-12); align-items: center; }
 
+  /* Agenda: Hairline-Zeilen, Inter-Ziffern (Mono existiert nicht mehr) */
   .agenda-grid {
     display: grid; grid-template-columns: 1fr 1fr;
     column-gap: var(--space-16); row-gap: 0;
-    margin-top: var(--space-12);
+    align-content: center;
   }
   .agenda-row { display: flex; align-items: baseline; gap: var(--space-6); padding: var(--space-5) 0; border-top: var(--border-subtle); }
   .agenda-num { color: var(--mid); width: var(--space-10); flex-shrink: 0; }
 
-  .deck-table { width: 100%; border-collapse: collapse; margin-top: var(--space-10); }
-  .deck-table th { text-align: left; padding: var(--space-3) var(--space-4); border-bottom: var(--border-subtle); color: var(--mid); }
-  .deck-table td { padding: var(--space-4); border-bottom: var(--border-subtle); vertical-align: top; }
+  .deck-table { width: 100%; border-collapse: collapse; }
+  .deck-table th { text-align: left; padding: var(--space-3) var(--space-4) var(--space-3) 0; border-bottom: var(--border-subtle); color: var(--mid); }
+  .deck-table td { padding: var(--space-4) var(--space-4) var(--space-4) 0; border-bottom: var(--border-subtle); vertical-align: top; }
+  .deck-table .value { color: var(--bm-deep-plum); }
 
+  /* Platzhalter — NUR für Bild-Assets (Fotos, CD-Bildwelt, Logos).
+     Informationsgrafiken werden gebaut (§7.11), nie angekündigt. */
   .placeholder-frame {
     border-radius: var(--radius-xl); overflow: hidden;
     display: flex; align-items: flex-end;
@@ -177,13 +270,17 @@
     font: 500 14px/1.5 var(--font-mono);
   }
 
-  /* Kapiteltrenner: große Ziffer als stilles grafisches
-     Element — Ton aus den Tokens, keine neue Farbe. */
+  /* Kapiteltrenner: große Ziffer in Inter als stilles Element */
   .chapter-num {
     font: 500 200px/0.85 var(--font-sans);
     color: var(--surface-mid-stone);
     letter-spacing: -0.04em;
   }
+
+  /* Infografik-Grundstil: Beschriftung Inter, eine Baseline,
+     keine Gitter (§7.11) */
+  .chart-label { font: 500 14px/1.4 var(--font-sans); }
+  .chart-label-soft { font: 400 13px/1.4 var(--font-sans); fill: var(--mid); }
 
   .wordmark { height: 24px; width: auto; display: block; }
 </style>
@@ -193,12 +290,12 @@
 <deck-stage width="1440" height="810">
 
   <!-- ========================================================
-       LAYOUT „COVER" — Pflicht als erste Slide.
-       Gedecktes dunkles Kasane (statisch), Wortmarke, neutrales
-       Eyebrow, Display-Titel. KEIN Fließtext auf dem Cover.
-       Keine Kopf-/Fußzeile, keine Seitenzahl.
+       ROLLE „COVER" — Pflicht als erste Slide.
+       Gedecktes dunkles Kasane (statisch), Wortmarke links oben,
+       Eyebrow, Display-Titel, Arbeitsstand unten. Sonst NICHTS —
+       kein Fließtext, keine Kopfzeile, keine Seitenzahl.
        ======================================================== -->
-  <section class="dslide dslide-dark" data-label="Cover">
+  <section class="dslide dslide-dark dslide-moment" data-label="Cover">
     <div class="kasane-layer bg-kasane-cta"></div>
     <div class="grain-layer grain-screen"></div>
     <div class="dslide-content" style="display: flex; flex-direction: column; align-items: flex-start; height: 100%; justify-content: space-between;">
@@ -207,57 +304,61 @@
         <div class="type-eyebrow" style="color: var(--soft); margin-bottom: var(--space-6);">Kunde × Bridgemaker — Anlass</div>
         <h1 class="type-display-l" style="margin: 0; max-width: 1080px; color: var(--off-white);">Titel des Decks über<br />maximal zwei Zeilen</h1>
       </div>
-      <div class="type-small" style="color: var(--soft);">Berlin, 16. Juli 2026</div>
+      <div class="type-small" style="color: var(--soft);">Gemeinsamer Arbeitsstand, Monat Jahr</div>
     </div>
   </section>
 
   <!-- ========================================================
-       LAYOUT „AGENDA / LISTE" — ab vier Punkten zweispaltig
-       (1–3 links, 4–6 rechts). Mono-Ziffern, Hairline-Trenner.
+       LAYOUT „AGENDA" — offene Hairline-Zeilen, KEINE Boxen.
+       Ab vier Punkten zweispaltig (1–3 links, 4–6 rechts).
+       Ziffern in Inter. Hairline über JEDER Zeile (die Linie
+       eröffnet — ein Job, eine Ebene).
        ======================================================== -->
   <section class="dslide" data-label="Agenda">
     <header class="slide-head"><span class="type-eyebrow">Agenda</span><span class="pagenum"></span></header>
     <div class="dslide-content">
-      <h2 class="type-h1" style="margin: 0;">Der Ablauf für heute</h2>
-      <div class="agenda-grid">
-        <div class="agenda-row" style="border-top: none;">
-          <span class="agenda-num type-body">01</span>
-          <div><div class="type-h4">Erster Punkt</div><div class="type-small" style="color: var(--dark); margin-top: var(--space-1);">Ein halber Satz dazu</div></div>
-        </div>
-        <div class="agenda-row" style="border-top: none;">
-          <span class="agenda-num type-body">04</span>
-          <div><div class="type-h4">Vierter Punkt</div><div class="type-small" style="color: var(--dark); margin-top: var(--space-1);">Ein halber Satz dazu</div></div>
-        </div>
-        <div class="agenda-row">
-          <span class="agenda-num type-body">02</span>
-          <div><div class="type-h4">Zweiter Punkt</div><div class="type-small" style="color: var(--dark); margin-top: var(--space-1);">Ein halber Satz dazu</div></div>
-        </div>
-        <div class="agenda-row">
-          <span class="agenda-num type-body">05</span>
-          <div><div class="type-h4">Fünfter Punkt</div><div class="type-small" style="color: var(--dark); margin-top: var(--space-1);">Ein halber Satz dazu</div></div>
-        </div>
-        <div class="agenda-row">
-          <span class="agenda-num type-body">03</span>
-          <div><div class="type-h4">Dritter Punkt</div><div class="type-small" style="color: var(--dark); margin-top: var(--space-1);">Ein halber Satz dazu</div></div>
-        </div>
-        <div class="agenda-row">
-          <span class="agenda-num type-body">06</span>
-          <div><div class="type-h4">Sechster Punkt</div><div class="type-small" style="color: var(--dark); margin-top: var(--space-1);">Ein halber Satz dazu</div></div>
+      <h2 class="type-h1 deck-title">Der Ablauf für heute</h2>
+      <div class="deck-body">
+        <div class="agenda-grid">
+          <div class="agenda-row">
+            <span class="agenda-num type-body">01</span>
+            <div><div class="type-h4">Erster Punkt</div><div class="type-small" style="color: var(--dark); margin-top: var(--space-1);">Ein halber Satz dazu</div></div>
+          </div>
+          <div class="agenda-row">
+            <span class="agenda-num type-body">04</span>
+            <div><div class="type-h4">Vierter Punkt</div><div class="type-small" style="color: var(--dark); margin-top: var(--space-1);">Ein halber Satz dazu</div></div>
+          </div>
+          <div class="agenda-row">
+            <span class="agenda-num type-body">02</span>
+            <div><div class="type-h4">Zweiter Punkt</div><div class="type-small" style="color: var(--dark); margin-top: var(--space-1);">Ein halber Satz dazu</div></div>
+          </div>
+          <div class="agenda-row">
+            <span class="agenda-num type-body">05</span>
+            <div><div class="type-h4">Fünfter Punkt</div><div class="type-small" style="color: var(--dark); margin-top: var(--space-1);">Ein halber Satz dazu</div></div>
+          </div>
+          <div class="agenda-row">
+            <span class="agenda-num type-body">03</span>
+            <div><div class="type-h4">Dritter Punkt</div><div class="type-small" style="color: var(--dark); margin-top: var(--space-1);">Ein halber Satz dazu</div></div>
+          </div>
+          <div class="agenda-row">
+            <span class="agenda-num type-body">06</span>
+            <div><div class="type-h4">Sechster Punkt</div><div class="type-small" style="color: var(--dark); margin-top: var(--space-1);">Ein halber Satz dazu</div></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ========================================================
-       LAYOUT „KAPITELTRENNER" — weiches Kapitelband
-       (bg-kasane-band-*, pro Kapitel wechseln) + große
-       Mono-Kapitelziffer als grafisches Element.
-       Keine Kopfzeile (die Slide IST das Kapitel-Label).
+       ROLLE „KAPITELTRENNER" — weiches Kapitelband
+       (bg-kasane-band-*, EINE Farbwelt pro Kapitel, die das
+       Kapitel dann durchhält) + große Inter-Kapitelziffer.
+       Der Trenner sagt: hier beginnt ein neues Thema.
        ======================================================== -->
-  <section class="dslide" data-label="Kapiteltrenner">
+  <section class="dslide dslide-moment" data-label="Kapiteltrenner">
     <div class="kasane-layer bg-kasane-band-mauve"></div>
     <header class="slide-head"><span></span><span class="pagenum"></span></header>
-    <div class="dslide-content" style="display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-16);">
+    <div class="dslide-content" style="display: flex; flex-direction: row; align-items: flex-end; justify-content: space-between; gap: var(--space-16); margin-top: auto;">
       <div style="padding-bottom: var(--space-4);">
         <div class="type-eyebrow" style="color: var(--dark); margin-bottom: var(--space-6);">Kapitel 01</div>
         <h2 class="type-display" style="margin: 0; max-width: 880px;">Eine Zeile, die das Kapitel trägt</h2>
@@ -267,143 +368,147 @@
   </section>
 
   <!-- ========================================================
-       LAYOUT „CONTENT 2/3 + 1/3" — Text links, Visual rechts.
-       Rechts steht hier das Pflicht-Muster für fehlende Grafiken:
-       gestreifter Platzhalter + Monospace-Caption mit Vorschlag.
-       NIE eine Grafik improvisieren — Platzhalter setzen.
+       LAYOUT „HAIRLINE-KOLUMNEN" — DAS Standard-Layout für
+       gleichrangige Punkte (3–4 Spalten). Keine Karten: Hairline
+       eröffnet die Spalte, Index + Titel, gestapelte Kurzabsätze
+       (Abstand trennt). Optional darunter das RESULTAT-BAND für
+       „und die Summe ist" — bewusst anders exponiert.
        ======================================================== -->
-  <section class="dslide" data-label="Content 2/3">
+  <section class="dslide" data-label="Hairline-Kolumnen">
     <header class="slide-head"><span class="type-eyebrow">Kapitel 01 — Thema</span><span class="pagenum"></span></header>
     <div class="dslide-content">
-      <h2 class="type-h1" style="margin: 0; max-width: 800px;">Aussage der Slide als ganzer Satz</h2>
-      <div class="split-23">
-        <div>
-          <p class="type-body-l deck-lead" style="margin: 0;">
-            Lead-Absatz: die eine Botschaft dieser Slide, in zwei bis drei Sätzen.
-            Aktive Verben, belastbare Zahlen oder keine.
-          </p>
-          <div style="margin-top: var(--space-8); max-width: 672px;">
-            <div class="deck-row type-body">Erster Beleg für die Aussage</div>
-            <div class="deck-row type-body">Zweiter Beleg für die Aussage</div>
-            <div class="deck-row type-body">Dritter Beleg für die Aussage</div>
+      <h2 class="type-h1 deck-title" style="max-width: 980px;">Aussage der Slide als ganzer Satz</h2>
+      <div class="deck-body">
+        <div class="hl-cols hl-cols-3">
+          <div class="hl-col">
+            <div class="hl-index"><span class="type-small">01</span><span class="msym" style="font-size: 18px;">arrow_forward</span></div>
+            <h3 class="type-h4 hl-title">Erster Punkt</h3>
+            <p class="type-body">Zwei bis drei Sätze, die den Punkt tragen — als Fließtext, nicht als Halbzeilen.</p>
+            <p class="type-body">Weiterer Absatz nur, wenn er etwas Neues sagt.</p>
+          </div>
+          <div class="hl-col">
+            <div class="hl-index"><span class="type-small">02</span><span class="msym" style="font-size: 18px;">arrow_forward</span></div>
+            <h3 class="type-h4 hl-title">Zweiter Punkt</h3>
+            <p class="type-body">Zwei bis drei Sätze, die den Punkt tragen.</p>
+          </div>
+          <div class="hl-col">
+            <div class="hl-index"><span class="type-small">03</span><span class="msym" style="font-size: 18px;">arrow_forward</span></div>
+            <h3 class="type-h4 hl-title">Dritter Punkt</h3>
+            <p class="type-body">Zwei bis drei Sätze, die den Punkt tragen.</p>
           </div>
         </div>
-        <div class="placeholder-frame bg-stripes-diagonal">
-          <div class="placeholder-caption">Vorschlag: Diagramm — Umsatzbrücke 2024→2025. Lass uns das hier gemeinsam entwerfen.</div>
+        <div class="result-band">
+          <span class="type-eyebrow">Das Ergebnis</span>
+          <span class="type-h4" style="margin: 0;">Der Satz, der aus den drei Punkten folgt</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ========================================================
-       LAYOUT „1/2-SPLIT" — zwei getönte Karten, verschiedene
-       Surfaces (nie zweimal dieselbe nebeneinander).
-       Komposition IN der Box: große Mono-Ziffer oben als
-       stilles grafisches Element, Inhalt unten — nie nur
-       Eyebrow + Liste stapeln (Boxen-Diskussion Website).
+       LAYOUT „CONTENT 2/3 + 1/3 MIT INFOGRAFIK" — Text links,
+       GEBAUTE Grafik rechts (§7.11): eine Farbfamilie als
+       Datenreihe, Direktbeschriftung, eine Baseline, keine
+       Gitter, Beschriftung Inter. Das SVG hier ist das
+       Grundmuster — an die echten Daten anpassen.
+       Der gestreifte Platzhalter ist NUR noch für Bild-Assets
+       erlaubt (CSS .placeholder-frame bleibt dafür erhalten).
        ======================================================== -->
-  <section class="dslide" data-label="Split">
+  <section class="dslide" data-label="Content-Infografik">
     <header class="slide-head"><span class="type-eyebrow">Kapitel 01 — Thema</span><span class="pagenum"></span></header>
     <div class="dslide-content">
-      <h2 class="type-h1" style="margin: 0;">Zwei Seiten derselben Sache</h2>
-      <div class="grid-2">
-        <div class="deck-card card-elevated" style="background: var(--surface-mauve); display: flex; flex-direction: column; justify-content: space-between; min-height: 330px;">
-          <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span class="type-eyebrow" style="color: var(--dark);">Blickwinkel A</span>
-            <span style="font: 500 64px/1 var(--font-sans); letter-spacing: -0.04em; color: var(--surface-mid-stone);">01</span>
-          </div>
+      <h2 class="type-h1 deck-title" style="max-width: 800px;">Aussage der Slide als ganzer Satz</h2>
+      <div class="deck-body">
+        <div class="split-23">
           <div>
-            <div class="type-h3">These der Karte in einer Zeile</div>
-            <p class="type-body" style="color: var(--dark); margin: var(--space-3) 0 0; max-width: 560px;">
-              Zwei bis drei Sätze, die die These tragen — als Fließtext,
-              nicht als gestapelte Halbzeilen.
+            <p class="type-body-l deck-lead" style="margin: 0;">
+              Lead-Absatz: die eine Botschaft dieser Slide, in zwei bis drei Sätzen.
+              Aktive Verben, belastbare Zahlen oder keine.
             </p>
+            <div class="meta-rows" style="margin-top: var(--space-10); max-width: 560px;">
+              <div class="meta-row"><span class="type-body">Erste Messgröße</span><span class="type-body value">Wert</span></div>
+              <div class="meta-row"><span class="type-body">Zweite Messgröße</span><span class="type-body value">Wert</span></div>
+              <div class="meta-row"><span class="type-body">Dritte Messgröße</span><span class="type-body value">Wert</span></div>
+            </div>
           </div>
-        </div>
-        <div class="deck-card card-elevated" style="background: var(--surface-sage); display: flex; flex-direction: column; justify-content: space-between; min-height: 330px;">
-          <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span class="type-eyebrow" style="color: var(--dark);">Blickwinkel B</span>
-            <span style="font: 500 64px/1 var(--font-sans); letter-spacing: -0.04em; color: var(--surface-mid-stone);">02</span>
-          </div>
-          <div>
-            <div class="type-h3">Gegenthese in einer Zeile</div>
-            <p class="type-body" style="color: var(--dark); margin: var(--space-3) 0 0; max-width: 560px;">
-              Zwei bis drei Sätze, die die Gegenthese tragen und die
-              Spannung zur linken Karte aufmachen.
-            </p>
-          </div>
+          <svg viewBox="0 0 380 300" style="width: 100%;" role="img" aria-label="Beispiel-Infografik: drei Werte im Vergleich">
+            <text x="0" y="18" class="chart-label" fill="var(--charcoal)">Direktes Label der Reihe</text>
+            <rect x="0"   y="120" width="90"  height="140" rx="8" fill="var(--bm-teal)" opacity="0.45" />
+            <rect x="120" y="80"  width="90"  height="180" rx="8" fill="var(--bm-teal)" opacity="0.7" />
+            <rect x="240" y="40"  width="90"  height="220" rx="8" fill="var(--bm-teal)" />
+            <text x="0"   y="105" class="chart-label" fill="var(--bm-deep-teal, #2A7E78)">12</text>
+            <text x="120" y="65"  class="chart-label" fill="var(--bm-deep-teal, #2A7E78)">18</text>
+            <text x="240" y="25"  class="chart-label" fill="var(--bm-deep-teal, #2A7E78)">27</text>
+            <line x1="0" y1="260" x2="380" y2="260" stroke="#C5C0B8" stroke-width="1" />
+            <text x="0"   y="282" class="chart-label-soft">2024</text>
+            <text x="120" y="282" class="chart-label-soft">2025</text>
+            <text x="240" y="282" class="chart-label-soft">2026</text>
+          </svg>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ========================================================
-       LAYOUT „ZAHLEN" — Stat-Tiles auf weißen Karten.
-       Ziffern in Charcoal; Farbe nur in den Delta-Badges
-       (teal = positiv, berry = negativ — sparsam).
+       LAYOUT „ZAHLEN" — freie Stats zwischen vertikalen
+       Hairlines. KEINE KPI-Kacheln. Ziffern groß, in Inter,
+       Charcoal; Caps-Label; ein Erklärsatz. Quelle als Zeile.
        ======================================================== -->
   <section class="dslide" data-label="Zahlen">
     <header class="slide-head"><span class="type-eyebrow">Kapitel 01 — Thema</span><span class="pagenum"></span></header>
     <div class="dslide-content">
-      <h2 class="type-h1" style="margin: 0;">Die drei Zahlen, die zählen</h2>
-      <div class="grid-3">
-        <div class="deck-card card-clean" style="min-height: 240px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div class="type-eyebrow" style="color: var(--mid);">Kennzahl A</div>
-          <div>
-            <div class="type-stat">27,3 Mio. €</div>
-            <div style="margin-top: var(--space-4);"><span class="bm-badge bm-badge-berry">−5,1 % ggü. Vorjahr</span></div>
+      <h2 class="type-h1 deck-title">Die drei Zahlen, die zählen</h2>
+      <div class="deck-body">
+        <div class="stat-strip">
+          <div class="stat-cell">
+            <div class="type-display num">27,3 Mio. €</div>
+            <div class="type-eyebrow label">Kennzahl A</div>
+            <p class="type-body">Ein Satz, der die Zahl einordnet.</p>
+          </div>
+          <div class="stat-cell">
+            <div class="type-display num">+8,2 %</div>
+            <div class="type-eyebrow label">Kennzahl B</div>
+            <p class="type-body">Ein Satz, der die Zahl einordnet.</p>
+          </div>
+          <div class="stat-cell">
+            <div class="type-display num">56 %</div>
+            <div class="type-eyebrow label">Kennzahl C</div>
+            <p class="type-body">Ein Satz, der die Zahl einordnet.</p>
           </div>
         </div>
-        <div class="deck-card card-elevated" style="background: var(--surface-mauve); min-height: 240px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div class="type-eyebrow" style="color: var(--dark);">Kennzahl B</div>
-          <div>
-            <div class="type-stat">14,9 Mio. €</div>
-            <div style="margin-top: var(--space-4);"><span class="bm-badge bm-badge-teal">+8,2 %</span></div>
-          </div>
-        </div>
-        <div class="deck-card card-elevated" style="background: var(--surface-sage); min-height: 240px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div class="type-eyebrow" style="color: var(--dark);">Kennzahl C</div>
-          <div>
-            <div class="type-stat">56 %</div>
-            <div style="margin-top: var(--space-4);"><span class="bm-badge">Kontext in vier Worten</span></div>
-          </div>
-        </div>
+        <p class="type-small" style="color: var(--mid); margin: var(--space-12) 0 0;">
+          Quelle: … in einem Satz.
+        </p>
       </div>
-      <p class="type-small" style="color: var(--dark); margin: var(--space-8) 0 0; max-width: 672px;">
-        Fußnote oder Quelle in einem Satz.
-      </p>
     </div>
   </section>
 
   <!-- ========================================================
-       LAYOUT „DREI ASPEKTE MIT ICONS" — Material Symbols,
-       eine Farbfamilie pro Slide, Icon trägt Orientierung.
-       Icon-Namen: fonts.google.com/icons (Stil „Outlined").
+       LAYOUT „PRINCIPLE-ZEILEN" — Aspekte/Werte mit Icon:
+       Hairline oben, Icon links, Titel rechtsbündig auf der
+       Zeile, Copy darunter. 2×2 oder 2×3. Ersetzt Icon-Karten.
        ======================================================== -->
-  <section class="dslide" data-label="Icons">
+  <section class="dslide" data-label="Principle-Zeilen">
     <header class="slide-head"><span class="type-eyebrow">Kapitel 01 — Thema</span><span class="pagenum"></span></header>
     <div class="dslide-content">
-      <h2 class="type-h1" style="margin: 0;">Drei Aspekte, ein System</h2>
-      <div class="grid-3">
-        <div class="deck-card card-elevated" style="background: var(--surface-mauve); min-height: 280px; display: flex; flex-direction: column; justify-content: space-between;">
-          <span class="msym" style="color: var(--bm-deep-plum);">insights</span>
-          <div>
-            <div class="type-h4">Erster Aspekt</div>
-            <p class="type-body" style="color: var(--dark); margin: var(--space-2) 0 0;">Ein bis zwei Sätze, was das konkret heißt.</p>
+      <h2 class="type-h1 deck-title">Vier Aspekte, ein System</h2>
+      <div class="deck-body">
+        <div class="principle-grid">
+          <div class="principle">
+            <div class="p-head"><span class="msym">insights</span><span class="type-h4">Erster Aspekt</span></div>
+            <p class="type-body">Ein bis zwei Sätze, was das konkret heißt.</p>
           </div>
-        </div>
-        <div class="deck-card card-clean" style="min-height: 280px; display: flex; flex-direction: column; justify-content: space-between;">
-          <span class="msym" style="color: var(--bm-deep-plum);">hub</span>
-          <div>
-            <div class="type-h4">Zweiter Aspekt</div>
-            <p class="type-body" style="color: var(--dark); margin: var(--space-2) 0 0;">Ein bis zwei Sätze, was das konkret heißt.</p>
+          <div class="principle">
+            <div class="p-head"><span class="msym">hub</span><span class="type-h4">Zweiter Aspekt</span></div>
+            <p class="type-body">Ein bis zwei Sätze, was das konkret heißt.</p>
           </div>
-        </div>
-        <div class="deck-card card-elevated" style="background: var(--surface-sage); min-height: 280px; display: flex; flex-direction: column; justify-content: space-between;">
-          <span class="msym" style="color: var(--bm-deep-plum);">rocket_launch</span>
-          <div>
-            <div class="type-h4">Dritter Aspekt</div>
-            <p class="type-body" style="color: var(--dark); margin: var(--space-2) 0 0;">Ein bis zwei Sätze, was das konkret heißt.</p>
+          <div class="principle">
+            <div class="p-head"><span class="msym">query_stats</span><span class="type-h4">Dritter Aspekt</span></div>
+            <p class="type-body">Ein bis zwei Sätze, was das konkret heißt.</p>
+          </div>
+          <div class="principle">
+            <div class="p-head"><span class="msym">rocket_launch</span><span class="type-h4">Vierter Aspekt</span></div>
+            <p class="type-body">Ein bis zwei Sätze, was das konkret heißt.</p>
           </div>
         </div>
       </div>
@@ -411,12 +516,108 @@
   </section>
 
   <!-- ========================================================
-       LAYOUT „ZITAT" — die eine erlaubte Moment-Slide.
-       Dunkle Stimmen-Fläche (statisch), großes kursives Zitat,
-       Attribution im Eyebrow-Stil. Ein Zitat pro Slide,
-       nie Zitat-Chips im Grid.
+       LAYOUT „GEGENÜBERSTELLUNG" — Kontrast als zwei OFFENE
+       Hairline-Spalten (keine Karten). Bedeutung darf ein Icon
+       tragen (z. B. Stärke/Engpass), nie die Flächenfarbe.
        ======================================================== -->
-  <section class="dslide dslide-dark" data-label="Zitat">
+  <section class="dslide" data-label="Gegenüberstellung">
+    <header class="slide-head"><span class="type-eyebrow">Kapitel 01 — Thema</span><span class="pagenum"></span></header>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title" style="max-width: 980px;">Zwei Seiten derselben Sache</h2>
+      <div class="deck-body">
+        <div class="hl-cols hl-cols-2">
+          <div class="hl-col">
+            <div class="hl-index"><span class="type-eyebrow" style="color: var(--mid);">Blickwinkel A</span><span class="msym" style="font-size: 20px; color: var(--bm-deep-teal, #2A7E78);">verified</span></div>
+            <p class="type-body">Erster Punkt als ganzer Satz.</p>
+            <p class="type-body">Zweiter Punkt als ganzer Satz.</p>
+            <p class="type-body">Dritter Punkt als ganzer Satz.</p>
+          </div>
+          <div class="hl-col">
+            <div class="hl-index"><span class="type-eyebrow" style="color: var(--mid);">Blickwinkel B</span><span class="msym" style="font-size: 20px; color: var(--bm-deep-plum);">pending</span></div>
+            <p class="type-body">Erster Punkt als ganzer Satz.</p>
+            <p class="type-body">Zweiter Punkt als ganzer Satz.</p>
+            <p class="type-body">Dritter Punkt als ganzer Satz.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       LAYOUT „OBJEKT-KARTEN" — die legitime Karten-Slide:
+       BENANNTE DINGE (Produkte, Angebote, Cases). Jede Karte
+       trägt Identität: Statement + Name. Tönungen entweder
+       UNIFORM oder eine je Identität (wie die Tautiom-Karten der
+       Website) — nie zufällig gemischt, nie Schachbrett.
+       ======================================================== -->
+  <section class="dslide" data-label="Objekt-Karten">
+    <header class="slide-head"><span class="type-eyebrow">Kapitel 01 — Thema</span><span class="pagenum"></span></header>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title">Vier Werkzeuge, ein System</h2>
+      <div class="deck-body">
+        <div class="object-grid">
+          <div class="object-card" style="background: var(--surface-mauve);">
+            <div class="type-h3" style="max-width: 400px;">Statement des ersten Dings in einer Zeile.</div>
+            <div class="o-name type-small">Produktname A</div>
+          </div>
+          <div class="object-card" style="background: var(--surface-mauve);">
+            <div class="type-h3" style="max-width: 400px;">Statement des zweiten Dings in einer Zeile.</div>
+            <div class="o-name type-small">Produktname B</div>
+          </div>
+          <div class="object-card" style="background: var(--surface-mauve);">
+            <div class="type-h3" style="max-width: 400px;">Statement des dritten Dings in einer Zeile.</div>
+            <div class="o-name type-small">Produktname C</div>
+          </div>
+          <div class="object-card" style="background: var(--surface-mauve);">
+            <div class="type-h3" style="max-width: 400px;">Statement des vierten Dings in einer Zeile.</div>
+            <div class="o-name type-small">Produktname D</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       LAYOUT „TABELLE" — für KPIs, Vergleiche, Roadmap-Stände.
+       Offene Hairline-Zeilen, kein Rahmen, keine Zebra-Streifen.
+       Zielwerte in Deep-Plum (Werte-Spalte statt Chips).
+       Max. 8 Zeilen pro Slide — sonst auf zwei Slides teilen.
+       ======================================================== -->
+  <section class="dslide" data-label="Tabelle">
+    <header class="slide-head"><span class="type-eyebrow">Kapitel 02 — KPIs</span><span class="pagenum"></span></header>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title">Woran ihr uns messt</h2>
+      <div class="deck-body">
+        <table class="deck-table type-body">
+          <thead>
+            <tr>
+              <th class="type-eyebrow">Dimension</th>
+              <th class="type-eyebrow">Messgröße</th>
+              <th class="type-eyebrow">Heute</th>
+              <th class="type-eyebrow">Ziel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="color: var(--mid);">Dimension A</td><td>Messgröße als ganzer Ausdruck</td><td style="color: var(--dark);">Ausgangswert</td><td class="value">Zielwert</td></tr>
+            <tr><td style="color: var(--mid);">Dimension B</td><td>Messgröße</td><td style="color: var(--dark);">Ausgangswert</td><td class="value">Zielwert</td></tr>
+            <tr><td style="color: var(--mid);">Dimension C</td><td>Messgröße</td><td style="color: var(--dark);">Ausgangswert</td><td class="value">Zielwert</td></tr>
+          </tbody>
+        </table>
+        <!-- Offene Zielwerte in EINEM Satz im Lead erklären („werden in
+             der Setup-Phase festgelegt") — nie als Chip je Zeile. -->
+        <p class="type-small" style="color: var(--mid); margin: var(--space-8) 0 0;">
+          Quelle: … in einem Satz.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       ROLLE „ZITAT" — die eine erlaubte Moment-Slide.
+       Dunkle Stimmen-Fläche (statisch), großes kursives Zitat,
+       Attribution im Eyebrow-Stil. Ein Zitat pro Slide.
+       ======================================================== -->
+  <section class="dslide dslide-dark dslide-moment" data-label="Zitat">
     <div class="kasane-layer bg-stimme-plum"></div>
     <div class="grain-layer grain-photo-screen"></div>
     <header class="slide-head"><span></span><span class="pagenum"></span></header>
@@ -427,52 +628,23 @@
   </section>
 
   <!-- ========================================================
-       LAYOUT „TABELLE" — für KPIs, Vergleiche, Roadmap-Stände.
-       Zellen in type-body/type-small, Header type-eyebrow.
-       Max. 8 Zeilen pro Slide — sonst auf zwei Slides teilen.
+       ROLLE „SCHLUSS" — Pflicht als letzte Slide, und sie ist
+       ein STATEMENT, keine Content-Seite: EIN Satz, bold und
+       fast leer. Ansprechpartner klein und dezent als Textzeilen
+       (verifizierte E-Mail!). Keine Glass-Karte, kein Foto,
+       keine To-do-Listen — nächste Schritte gehören auf eine
+       eigene Content-Slide davor.
        ======================================================== -->
-  <section class="dslide" data-label="Tabelle">
-    <header class="slide-head"><span class="type-eyebrow">Kapitel 02 — KPIs</span><span class="pagenum"></span></header>
-    <div class="dslide-content">
-      <h2 class="type-h1" style="margin: 0;">Woran ihr uns messt</h2>
-      <table class="deck-table type-body">
-        <thead>
-          <tr>
-            <th class="type-eyebrow">Dimension</th>
-            <th class="type-eyebrow">KPI</th>
-            <th class="type-eyebrow">Heute</th>
-            <th class="type-eyebrow">Ziel</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Dimension A</td><td>Messgröße als ganzer Ausdruck</td><td style="color: var(--dark);">Ausgangswert</td><td style="color: var(--bm-deep-plum);">Zielwert</td></tr>
-          <tr><td>Dimension B</td><td>Messgröße</td><td style="color: var(--dark);">Ausgangswert</td><td style="color: var(--bm-deep-plum);">Zielwert</td></tr>
-          <tr><td>Dimension C</td><td>Messgröße</td><td style="color: var(--dark);">Ausgangswert</td><td style="color: var(--bm-deep-plum);">Zielwert</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ========================================================
-       LAYOUT „SCHLUSS" — Pflicht als letzte Slide.
-       Bewusst ANDERS als das Cover: zentriert, ruhig, Charcoal
-       mit nur einem Hauch Kasane. Claim + Kontakt + Wortmarke.
-       ======================================================== -->
-  <section class="dslide dslide-dark" data-label="Schluss" style="align-items: center; text-align: center; justify-content: center;">
+  <section class="dslide dslide-dark dslide-moment" data-label="Schluss" style="align-items: center; text-align: center; justify-content: center;">
     <div class="kasane-layer bg-kasane-cta" style="opacity: 0.35;"></div>
     <div class="grain-layer grain-screen"></div>
-    <div class="dslide-content" style="display: flex; flex-direction: column; align-items: center; gap: var(--space-12);">
+    <div class="dslide-content" style="display: flex; flex-direction: column; align-items: center; gap: var(--space-16);">
       <img class="wordmark" src="../assets/logos/wordmark-white.svg" alt="Bridgemaker" />
-      <h2 class="type-h1" style="margin: 0; max-width: 880px; color: var(--off-white);">Claim als Einladung — was wir jetzt gemeinsam bauen</h2>
-      <div class="card-glass" style="border-radius: var(--radius-xl); padding: var(--space-5) var(--space-8); display: flex; align-items: center; gap: var(--space-5); color: var(--charcoal); text-align: left;">
-        <div class="bg-stripes-diagonal" style="width: 72px; height: 72px; border-radius: var(--radius-pill); flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
-          <span style="font: 500 11px/1 var(--font-mono); color: var(--dark);">Foto</span>
-        </div>
-        <div>
-          <div class="type-eyebrow" style="color: var(--dark);">Dein Ansprechpartner</div>
-          <div class="type-h4" style="margin-top: var(--space-1);">Vorname Nachname</div>
-          <div class="type-small" style="color: var(--bm-deep-plum); margin-top: var(--space-1);">vorname.nachname@bridgemaker.com</div>
-        </div>
+      <h2 class="type-display" style="margin: 0; max-width: 1000px; color: var(--off-white);">Claim als Einladung — was wir jetzt gemeinsam bauen</h2>
+      <div>
+        <div class="type-eyebrow" style="color: var(--soft);">Dein Ansprechpartner</div>
+        <div class="type-body" style="color: var(--off-white); margin-top: var(--space-3);">Vorname Nachname, Rolle</div>
+        <div class="type-small" style="color: var(--bm-lavender-dark); margin-top: var(--space-1);">vorname.nachname@bridgemaker.com</div>
       </div>
     </div>
   </section>
