@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Beispiel-Kundendeck: Wachstumsprogramm — Bridgemaker</title>
+
+<!-- FREIGEGEBENES NEUTRALES MUSTER (guidelines/07 §7.8):
+     vollständiges 16-Seiten-Kundendeck nach templates/deck-template.html,
+     inhaltlich neutralisiert (fiktive „Muster AG", generische Segmente,
+     fiktive Zahlen). Zeigt die Layouts, die Kopf-/Fußzeilen-Geometrie,
+     gebaute Grafiken und die Moment-Flächen im Zusammenspiel. -->
+
+<link rel="stylesheet" href="../tokens/tokens.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,300,0,0" rel="stylesheet" />
+
+<style>
+  .type-display-xl { font-size: 128px; }
+  .type-display-l  { font-size: 96px; }
+  .type-display    { font-size: 64px; }
+  .type-h1         { font-size: 48px; }
+  .type-h2         { font-size: 32px; }
+  .type-stat       { font-size: 36px; }
+
+  :root {
+    --deck-pad-x: 120px;
+    --deck-head-y: 48px;
+    --deck-foot-y: 24px;   /* Unterkante Fußzeilen-Textbox */
+    --deck-title-y: 96px;
+    --deck-pad-b: 72px;    /* = Fußzeilen-Oberkante (41px) + Mindestluft ≈ Abstand Unterkante→Baseline */
+  }
+
+  .msym {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal; font-style: normal;
+    font-size: 32px; line-height: 1;
+    display: inline-block;
+    font-variation-settings: 'opsz' 48, 'wght' 300, 'FILL' 0, 'GRAD' 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .dslide {
+    display: flex; flex-direction: column;
+    padding: var(--deck-title-y) var(--deck-pad-x) var(--deck-pad-b);
+    background: var(--off-white); color: var(--charcoal);
+    font-family: var(--font-sans);
+    counter-increment: slide;
+  }
+  .dslide > .dslide-content { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+  .deck-title { margin: 0; }
+  .deck-lead { color: var(--dark); max-width: 672px; margin: var(--space-4) 0 0; }
+  .deck-body {
+    flex: 1; min-height: 0; margin-top: var(--space-10);
+    display: flex; flex-direction: column; justify-content: safe center;
+  }
+  .dslide-moment { justify-content: center; padding: 96px var(--deck-pad-x); }
+  .dslide-moment > .dslide-content { flex: 0 0 auto; }
+
+  .dslide-dark { background: var(--charcoal); color: var(--off-white); }
+  .kasane-layer { position: absolute; inset: 0; z-index: 0; }
+  .grain-layer  { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+  .dslide-content { position: relative; z-index: 2; }
+
+  .slide-head {
+    position: absolute; z-index: 2;
+    top: var(--deck-head-y); left: var(--deck-pad-x); right: var(--deck-pad-x);
+    display: flex; justify-content: space-between; align-items: baseline;
+    color: var(--mid);
+  }
+  .dslide-dark .slide-head { color: var(--soft); }
+
+  .slide-foot {
+    position: absolute; z-index: 2;
+    bottom: var(--deck-foot-y); left: var(--deck-pad-x); right: var(--deck-pad-x);
+    display: flex; justify-content: space-between; align-items: baseline;
+    color: var(--mid); font: 400 12px/1.4 var(--font-sans);
+  }
+  .slide-foot .pagenum::after { content: counter(slide, decimal-leading-zero); }
+  .slide-foot .foot-brand { display: flex; align-items: center; gap: 4px; /* optischer Ausgleich zum Geviertstrich-Abstand in der Wortmarke */ }
+  .slide-foot .foot-brand span { color: var(--charcoal); font-weight: 600; }
+  .slide-foot .foot-brand img { height: 14px; width: auto; display: block; }
+  .dslide-dark .slide-foot { color: var(--soft); }
+
+  .type-display-xl, .type-display-l, .type-display, .type-h1, .type-h2 { text-wrap: balance; }
+  .dslide p, .hl-col, .meta-row { text-wrap: pretty; }
+
+  .hl-cols { display: grid; gap: var(--space-10); }
+  .hl-cols-2 { grid-template-columns: 1fr 1fr; }
+  .hl-cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .hl-cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .hl-col { border-top: var(--border-subtle); padding-top: var(--space-4); }
+  .hl-col .hl-index {
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--mid); margin-bottom: var(--space-4);
+  }
+  .hl-col .hl-title { margin: 0 0 var(--space-3); }
+  .hl-col p { color: var(--dark); margin: 0 0 var(--space-3); }
+  .hl-col p:last-child { margin-bottom: 0; }
+  .hl-sublabel { color: var(--mid); margin: var(--space-6) 0 var(--space-3); }
+
+  .meta-rows { border-top: var(--border-subtle); }
+  .meta-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: var(--space-8); padding: var(--space-4) 0;
+    border-bottom: var(--border-subtle);
+  }
+  .meta-row .value { color: var(--bm-deep-plum); white-space: nowrap; }
+
+  .stat-strip { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .stat-cell { padding: var(--space-2) var(--space-10); border-left: var(--border-subtle); }
+  .stat-cell:first-child { border-left: none; padding-left: 0; }
+  .stat-cell .num { letter-spacing: -0.03em; }
+  .stat-cell .label { color: var(--mid); margin-top: var(--space-4); }
+  .stat-cell p { color: var(--dark); margin: var(--space-3) 0 0; }
+
+  .result-band {
+    background: var(--surface-mauve); color: var(--charcoal);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6) var(--space-8);
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: var(--space-10); margin-top: var(--space-10);
+  }
+  .result-band .type-eyebrow { color: var(--bm-deep-plum); flex-shrink: 0; }
+  .result-band .type-body { color: var(--bm-deep-plum); font-weight: 600; }
+
+  .source-note { font: 400 12px/1.4 var(--font-sans); color: var(--mid); text-align: right; }
+
+  .agenda-row { display: flex; align-items: baseline; gap: var(--space-6); padding: var(--space-5) 0; border-top: var(--border-subtle); }
+  .agenda-num { color: var(--charcoal); width: var(--space-10); flex-shrink: 0; }
+
+  .deck-table { width: 100%; border-collapse: collapse; }
+  .deck-table th { text-align: left; padding: var(--space-3) var(--space-4) var(--space-3) 0; border-bottom: var(--border-subtle); color: var(--mid); }
+  .deck-table td { padding: var(--space-4) var(--space-4) var(--space-4) 0; border-bottom: var(--border-subtle); vertical-align: top; }
+  .deck-table .value { color: var(--bm-deep-plum); }
+
+  .split-23 { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-12); align-items: center; }
+
+  .chart-label { font: 500 13px/1.4 var(--font-sans); }
+  .chart-label-soft { font: 400 12px/1.4 var(--font-sans); fill: var(--mid); }
+  .chart-label-strong { font: 600 14px/1.4 var(--font-sans); }
+
+  .quote-open { border-top: var(--border-subtle); padding-top: var(--space-4); }
+  .quote-open p { font-style: italic; color: var(--charcoal); margin: 0; }
+  .quote-open .attr { color: var(--mid); margin-top: var(--space-2); }
+
+  .chapter-num {
+    font: 500 200px/0.85 var(--font-sans);
+    color: var(--surface-mid-stone);
+    letter-spacing: -0.04em;
+  }
+  .wordmark { height: 24px; width: auto; display: block; }
+</style>
+</head>
+<body>
+
+<script type="application/json" id="speaker-notes">
+[
+  "Wir zeigen, was Zahlen und Wargame für den Kunden bedeuten, welche Wachstumshebel daraus folgen und welchen ersten Schritt wir gemeinsam freigeben können.",
+  "Wir beginnen mit den Zahlen, leiten die Marktbewegungen ab und übersetzen sie in ein umsetzbares Programm. Am Ende steht die Entscheidung über die Setup-Phase.",
+  "Der Rückgang ist nicht gleichmäßig verteilt: wachsende digitale Linie, konzentrierte Verluste im Zweitsegment, Kanalprobleme werden spät erkannt.",
+  "Kein einheitliches Wachstumsproblem — starker digitaler Kern, konzentriertes Risiko. Aufgabe: Kern skalieren, Verluste früher erkennen.",
+  "Der Kunde beginnt nicht bei null. Die Assets müssen in systematischen Marktzugang übersetzt werden.",
+  "Aus Marktbewegungen, Stakeholderreaktionen und Interviews entsteht ein breites Szenariobild; die nächste Slide zeigt vier Beispiele.",
+  "Vier bewusst unterschiedliche Ausschnitte. Die Risiken leiten wir aus der Gesamtanalyse ab.",
+  "Alle vier Risiken betreffen den Marktzugang. Genau darauf antworten die Hebel.",
+  "Vier Hebel plus eine gemeinsame operative Basis, die das Team entlastet und die Hebel steuerbar macht.",
+  "Referenz aus einem laufenden Bridgemaker-Projekt; im echten Deck steht hier das freigegebene Dashboard-Visual.",
+  "Wir starten nicht zwölf Projekte parallel; Phase 3 folgt nur nach separater Entscheidung.",
+  "Erst Baseline, dann Zielwerte; jede Kennzahl zahlt auf Umsatz, Nutzung oder Geschwindigkeit ein.",
+  "Der verbindliche Zeitstrahl endet mit den priorisierten Initiativen.",
+  "Der Retainer finanziert Kapazität; der Bonus entsteht nur auf zurechenbaren Mehrumsatz.",
+  "Mit der Freigabe terminieren wir den Kick-off; nach vier Wochen liegt die Entscheidungsgrundlage vor.",
+  ""
+]
+</script>
+
+<deck-stage width="1440" height="810">
+
+  <!-- 01 — COVER -->
+  <section class="dslide dslide-dark dslide-moment" data-label="Cover">
+    <div class="kasane-layer bg-kasane-cta"></div>
+    <svg class="kasane-layer" viewBox="0 0 1440 810" preserveAspectRatio="xMidYMid slice" style="z-index: 1; width: 100%; height: 100%;" aria-hidden="true"><g fill="none" stroke="#F5F1EB" stroke-width="1" opacity="0.10"><path d="M0.0,445.2 L8.7,416.0 L27.5,376.0 L49.1,336.0 L64.0,317.2 L80.0,304.4 L96.0,297.1 L144.0,286.4 L160.0,280.7 L168.0,276.6 L184.0,264.6 L197.4,248.0 L208.0,227.5 L214.6,208.0 L217.8,192.0 L221.3,160.0 L225.6,144.0 L231.4,128.0 L260.8,56.0 L271.6,32.0 L281.0,16.0 L294.9,0.0" /><path d="M0.0,783.4 L48.0,771.0 L64.0,769.6 L72.0,770.7 L86.3,776.0 L96.0,777.9 L152.0,781.7 L160.0,783.7 L168.0,787.1 L176.0,793.1 L184.0,803.8 L189.1,816.0" /><path d="M290.0,816.0 L297.6,776.0 L303.0,760.0 L314.2,744.0 L346.6,712.0 L352.6,704.0 L361.1,688.0 L365.9,672.0 L367.7,656.0 L365.9,632.0 L361.6,616.0 L357.8,608.0 L352.0,599.6 L344.0,591.8 L323.2,576.0 L304.9,560.0 L298.0,552.0 L285.7,528.0 L277.2,520.0 L264.3,512.0 L248.0,504.9 L200.0,490.1 L192.0,486.3 L183.2,480.0 L175.1,472.0 L164.4,456.0 L158.6,440.0 L157.5,432.0 L157.8,424.0 L160.0,414.4 L166.0,400.0 L176.0,386.3 L184.0,379.1 L200.0,369.2 L256.0,345.7 L272.0,337.7 L285.1,328.0 L291.2,320.0 L294.1,312.0 L294.5,304.0 L288.0,271.4 L283.9,240.0 L281.4,200.0 L281.5,160.0 L283.7,144.0 L289.9,120.0 L299.4,96.0 L308.4,80.0 L314.5,72.0 L322.4,64.0 L345.5,48.0 L368.0,36.1 L424.0,12.0 L447.4,0.0" /><path d="M538.4,0.0 L544.0,16.0 L552.0,29.0 L560.0,36.7 L576.0,48.9 L606.1,80.0 L624.0,91.2 L680.0,114.8 L702.0,128.0 L711.8,136.0 L720.0,145.4 L727.7,160.0 L729.8,168.0 L730.2,184.0 L725.8,200.0 L720.0,210.4 L712.0,220.0 L697.7,232.0 L680.0,243.3 L656.0,254.0 L640.0,258.0 L624.0,259.1 L616.0,257.9 L608.0,254.6 L600.0,247.3 L595.8,240.0 L592.8,232.0 L588.4,208.0 L584.0,151.7 L580.7,136.0 L575.0,120.0 L568.0,107.9 L552.0,89.2 L536.0,75.9 L520.0,67.5 L496.0,61.9 L472.0,60.9 L440.0,63.7 L408.0,71.7 L389.1,80.0 L376.3,88.0 L368.0,94.6 L358.7,104.0 L352.4,112.0 L343.6,128.0 L338.3,144.0 L335.8,168.0 L337.4,192.0 L342.1,216.0 L349.9,240.0 L363.7,272.0 L395.1,336.0 L400.0,344.8 L408.0,355.7 L416.0,363.4 L432.0,374.1 L448.0,383.7 L456.0,387.5 L464.0,389.4 L472.0,389.6 L480.0,388.4 L517.4,376.0 L536.0,371.4 L552.0,369.6 L568.0,371.2 L576.0,375.0 L585.4,384.0 L592.0,396.3 L594.8,408.0 L591.3,512.0 L593.9,528.0 L599.7,544.0 L596.1,552.0 L588.5,560.0 L552.0,591.3 L528.7,616.0 L515.2,632.0 L505.2,648.0 L502.7,656.0 L502.8,664.0 L506.2,672.0 L514.0,680.0 L520.0,683.5 L536.0,689.8 L568.0,696.3 L576.0,699.4 L592.0,710.4 L600.5,720.0 L608.0,736.0 L609.3,744.0 L608.0,760.0 L600.6,776.0 L593.9,784.0 L584.0,792.0 L576.0,796.1 L568.0,799.1 L552.0,801.9 L488.0,805.8 L472.0,809.5 L459.8,816.0" /><path d="M608.6,0.0 L651.0,56.0 L664.0,70.3 L680.0,82.1 L720.0,104.0 L731.2,112.0 L739.4,120.0 L745.4,128.0 L753.3,144.0 L757.6,160.0 L759.1,176.0 L758.0,192.0 L754.5,208.0 L748.1,224.0 L743.3,232.0 L736.0,241.2 L728.0,248.7 L693.0,272.0 L674.6,288.0 L668.5,296.0 L664.4,304.0 L658.7,320.0 L655.6,344.0 L657.6,400.0 L656.0,424.0 L656.5,432.0 L658.2,440.0 L664.7,456.0 L688.0,491.7 L698.7,512.0 L704.2,528.0 L706.1,544.0 L703.5,560.0 L696.0,575.7 L688.0,585.9 L659.7,616.0 L653.7,624.0 L645.2,640.0 L642.0,656.0 L642.5,664.0 L646.2,680.0 L661.0,720.0 L663.4,736.0 L663.2,744.0 L659.9,760.0 L652.7,776.0 L638.0,800.0 L625.3,816.0" /><path d="M664.0,0.0 L680.0,20.9 L696.0,37.3 L712.0,48.1 L744.0,65.2 L752.0,71.2 L760.0,79.4 L768.0,91.6 L776.1,112.0 L781.6,136.0 L785.1,168.0 L784.8,192.0 L782.1,216.0 L777.0,240.0 L771.6,256.0 L760.0,278.3 L728.0,319.1 L722.2,328.0 L715.7,344.0 L711.2,368.0 L707.1,424.0 L707.6,432.0 L711.5,448.0 L733.9,504.0 L739.2,520.0 L742.6,536.0 L743.9,552.0 L743.1,584.0 L738.9,608.0 L732.8,624.0 L718.5,648.0 L717.1,656.0 L719.3,664.0 L724.8,672.0 L744.0,690.7 L754.0,704.0 L757.6,712.0 L759.4,720.0 L758.9,736.0 L753.6,752.0 L744.0,765.6 L731.9,776.0 L708.5,792.0 L700.5,800.0 L690.3,816.0" /><path d="M789.8,0.0 L800.0,8.0 L806.3,16.0 L810.5,24.0 L814.1,40.0 L814.2,48.0 L810.3,72.0 L809.0,88.0 L810.9,184.0 L809.4,216.0 L806.5,248.0 L800.0,299.1 L796.4,312.0 L787.1,328.0 L760.7,360.0 L752.0,374.9 L748.2,384.0 L743.8,400.0 L741.1,424.0 L741.6,432.0 L744.8,448.0 L749.7,464.0 L771.0,520.0 L779.4,560.0 L784.0,575.4 L791.0,592.0 L807.3,624.0 L813.6,640.0 L817.7,656.0 L822.2,688.0 L828.5,760.0 L829.0,776.0 L828.0,784.0 L823.6,792.0 L815.7,800.0 L804.9,808.0 L790.6,816.0" /><path d="M909.8,816.0 L914.0,808.0 L916.6,800.0 L917.6,792.0 L916.7,784.0 L913.8,776.0 L908.5,768.0 L879.6,736.0 L872.0,724.8 L865.7,712.0 L856.0,681.6 L849.4,648.0 L845.1,632.0 L839.6,616.0 L816.8,560.0 L804.8,520.0 L779.7,464.0 L772.6,440.0 L770.9,424.0 L772.4,408.0 L777.7,392.0 L786.8,376.0 L816.0,335.6 L824.3,320.0 L829.1,304.0 L831.5,256.0 L832.6,128.0 L836.2,96.0 L842.1,72.0 L856.0,37.8 L864.0,23.9 L870.8,16.0 L880.0,8.8 L897.4,0.0" /><path d="M965.9,816.0 L966.1,792.0 L963.1,776.0 L959.8,768.0 L955.2,760.0 L944.0,746.4 L915.4,720.0 L904.0,707.5 L895.9,696.0 L887.7,680.0 L882.6,664.0 L875.0,632.0 L848.8,560.0 L837.5,520.0 L831.1,504.0 L812.3,464.0 L806.2,448.0 L802.5,432.0 L801.8,424.0 L803.5,408.0 L810.1,392.0 L846.7,336.0 L854.5,320.0 L858.7,304.0 L858.5,280.0 L851.3,208.0 L850.5,160.0 L852.3,136.0 L854.8,120.0 L858.6,104.0 L864.0,88.2 L871.5,72.0 L880.0,57.4 L888.0,46.3 L896.0,37.8 L912.0,25.7 L928.0,16.6 L968.0,0.0" /><path d="M1054.5,0.0 L1048.0,10.9 L1040.0,19.0 L1032.0,24.2 L1024.0,27.5 L1008.0,31.1 L960.0,37.1 L944.0,41.6 L930.4,48.0 L919.3,56.0 L904.0,71.8 L896.0,81.9 L886.9,96.0 L879.3,112.0 L872.1,136.0 L868.8,160.0 L868.5,184.0 L872.0,218.3 L876.8,240.0 L888.1,280.0 L890.7,296.0 L890.6,304.0 L889.1,312.0 L883.0,328.0 L843.3,392.0 L837.1,408.0 L835.7,416.0 L836.3,432.0 L842.1,456.0 L864.3,512.0 L880.0,562.6 L908.0,632.0 L918.7,664.0 L928.0,679.1 L936.0,688.0 L976.0,723.7 L994.4,744.0 L1004.0,760.0 L1007.0,768.0 L1014.7,800.0 L1022.5,816.0" /><path d="M1089.8,0.0 L1081.6,32.0 L1072.0,55.0 L1064.0,67.5 L1056.0,76.1 L1050.1,80.0 L1040.0,83.7 L1032.0,84.3 L976.0,76.8 L960.0,77.4 L952.0,78.9 L936.0,84.8 L920.0,95.9 L912.0,104.0 L901.0,120.0 L893.8,136.0 L888.3,160.0 L887.6,184.0 L889.5,200.0 L895.9,224.0 L902.8,240.0 L930.6,288.0 L932.9,296.0 L933.0,304.0 L930.8,312.0 L922.1,328.0 L882.3,384.0 L874.3,400.0 L870.5,416.0 L872.0,440.0 L875.6,456.0 L880.6,472.0 L910.3,552.0 L920.0,571.9 L928.0,584.8 L944.0,604.1 L1000.0,658.7 L1016.0,669.1 L1048.0,684.8 L1064.0,694.3 L1072.0,701.3 L1080.1,712.0 L1085.9,728.0 L1087.4,744.0 L1086.1,760.0 L1080.7,784.0 L1079.8,792.0 L1082.3,816.0" /><path d="M1117.7,0.0 L1112.0,34.4 L1101.4,80.0 L1098.2,104.0 L1097.4,120.0 L1098.0,136.0 L1099.4,144.0 L1102.0,152.0 L1114.6,176.0 L1114.5,184.0 L1104.0,213.2 L1099.6,232.0 L1096.8,264.0 L1096.4,304.0 L1093.8,320.0 L1090.8,328.0 L1085.9,336.0 L1080.0,341.9 L1072.0,346.8 L1064.0,349.7 L1056.0,351.4 L1040.0,352.3 L1000.0,349.6 L984.0,349.9 L968.0,352.6 L952.0,358.7 L936.0,369.5 L928.0,377.3 L920.0,387.8 L913.2,400.0 L910.4,408.0 L909.0,424.0 L910.2,440.0 L913.2,456.0 L920.0,476.8 L928.0,493.8 L936.0,505.8 L944.0,513.9 L952.0,518.8 L960.0,521.0 L968.0,521.0 L976.0,519.3 L1024.0,501.3 L1032.0,499.7 L1048.0,499.0 L1064.0,495.5 L1112.0,473.6 L1128.0,468.5 L1136.0,467.3 L1144.0,467.4 L1152.0,468.9 L1160.0,472.1 L1168.0,476.8 L1176.0,483.6 L1185.5,496.0 L1193.3,512.0 L1199.6,536.0 L1201.0,552.0 L1198.4,576.0 L1190.4,600.0 L1184.0,612.0 L1165.1,640.0 L1162.1,648.0 L1161.9,656.0 L1165.7,672.0 L1166.9,688.0 L1163.8,712.0 L1157.3,728.0 L1136.0,765.6 L1126.9,784.0 L1123.2,800.0 L1122.9,816.0" /><path d="M1148.0,0.0 L1138.6,64.0 L1138.9,80.0 L1140.6,88.0 L1144.0,96.9 L1152.0,109.3 L1176.0,133.6 L1184.0,145.2 L1192.0,165.3 L1193.6,176.0 L1193.5,184.0 L1190.7,200.0 L1184.0,217.3 L1174.8,232.0 L1152.0,257.4 L1143.6,272.0 L1139.1,288.0 L1138.3,296.0 L1139.1,312.0 L1142.1,328.0 L1148.5,344.0 L1170.6,376.0 L1176.0,385.1 L1182.5,400.0 L1184.7,408.0 L1186.2,424.0 L1188.0,432.0 L1204.3,472.0 L1211.3,496.0 L1217.3,528.0 L1220.2,560.0 L1218.9,592.0 L1213.6,632.0 L1212.7,648.0 L1218.5,696.0 L1218.0,720.0 L1213.6,736.0 L1205.1,752.0 L1193.2,768.0 L1179.1,784.0 L1173.9,792.0 L1170.4,800.0 L1167.0,816.0" /><path d="M1203.7,0.0 L1197.2,16.0 L1193.1,32.0 L1188.9,56.0 L1188.1,64.0 L1188.9,72.0 L1194.0,88.0 L1212.8,128.0 L1218.8,144.0 L1224.3,168.0 L1224.8,184.0 L1222.8,200.0 L1218.8,216.0 L1196.0,280.0 L1193.5,296.0 L1193.6,304.0 L1194.6,312.0 L1198.8,328.0 L1221.2,384.0 L1227.3,408.0 L1229.7,480.0 L1241.3,600.0 L1245.9,632.0 L1259.0,696.0 L1261.6,720.0 L1260.1,736.0 L1258.3,744.0 L1252.0,760.0 L1242.1,776.0 L1223.9,800.0 L1214.7,816.0" /><path d="M1254.5,816.0 L1272.7,792.0 L1286.2,768.0 L1294.2,744.0 L1296.2,728.0 L1295.7,712.0 L1289.6,680.0 L1281.0,648.0 L1261.6,592.0 L1253.2,552.0 L1249.8,528.0 L1248.7,496.0 L1250.0,472.0 L1255.3,424.0 L1255.0,408.0 L1250.2,384.0 L1231.8,328.0 L1227.9,304.0 L1230.0,280.0 L1248.3,216.0 L1251.9,200.0 L1253.8,184.0 L1253.5,168.0 L1249.8,144.0 L1233.3,80.0 L1232.2,64.0 L1233.0,56.0 L1237.7,40.0 L1241.7,32.0 L1253.5,16.0 L1268.9,0.0" /><path d="M1303.7,0.0 L1281.2,32.0 L1273.4,48.0 L1271.3,56.0 L1270.4,72.0 L1271.5,88.0 L1284.2,160.0 L1285.1,184.0 L1280.4,208.0 L1260.4,272.0 L1257.1,288.0 L1255.6,304.0 L1258.2,328.0 L1273.4,384.0 L1277.1,408.0 L1276.3,432.0 L1266.3,496.0 L1265.7,520.0 L1267.4,536.0 L1272.0,556.7 L1278.3,576.0 L1302.8,632.0 L1311.4,656.0 L1324.9,704.0 L1328.8,728.0 L1328.3,744.0 L1326.9,752.0 L1321.3,768.0 L1312.1,784.0 L1288.2,816.0" /><path d="M1333.3,0.0 L1310.4,40.0 L1305.4,56.0 L1304.6,64.0 L1304.9,80.0 L1306.9,96.0 L1322.7,160.0 L1324.6,176.0 L1323.8,184.0 L1318.7,200.0 L1299.7,240.0 L1290.1,264.0 L1283.1,288.0 L1280.4,312.0 L1283.2,336.0 L1293.3,384.0 L1296.0,408.0 L1295.0,432.0 L1285.1,496.0 L1284.3,512.0 L1285.4,528.0 L1289.3,544.0 L1298.0,568.0 L1333.4,648.0 L1356.3,712.0 L1361.9,736.0 L1362.0,752.0 L1360.5,760.0 L1353.7,776.0 L1342.3,792.0 L1321.3,816.0" /><path d="M1354.9,816.0 L1377.4,792.0 L1388.4,776.0 L1394.2,760.0 L1394.9,744.0 L1391.7,728.0 L1385.7,712.0 L1366.4,672.0 L1349.9,632.0 L1319.3,568.0 L1309.9,544.0 L1305.5,528.0 L1303.7,512.0 L1303.9,496.0 L1311.5,432.0 L1312.7,408.0 L1310.8,384.0 L1304.8,344.0 L1302.6,320.0 L1304.9,296.0 L1309.4,280.0 L1315.7,264.0 L1329.0,240.0 L1358.4,200.0 L1366.3,184.0 L1367.5,176.0 L1365.0,160.0 L1344.4,104.0 L1340.3,88.0 L1338.2,72.0 L1338.8,56.0 L1340.5,48.0 L1346.3,32.0 L1361.5,0.0" /><path d="M1390.3,0.0 L1375.1,40.0 L1371.5,56.0 L1371.2,72.0 L1376.5,96.0 L1399.2,152.0 L1403.2,168.0 L1403.8,176.0 L1402.6,184.0 L1399.5,192.0 L1394.5,200.0 L1357.6,240.0 L1344.0,257.6 L1331.7,280.0 L1326.1,296.0 L1323.0,312.0 L1322.3,328.0 L1327.6,392.0 L1328.1,416.0 L1322.5,472.0 L1321.2,496.0 L1321.8,512.0 L1324.4,528.0 L1329.4,544.0 L1335.9,560.0 L1392.0,671.1 L1420.4,720.0 L1429.6,744.0 L1430.6,752.0 L1429.9,760.0 L1427.2,768.0 L1416.0,784.0 L1387.2,816.0" /><path d="M1440.0,699.6 L1420.7,672.0 L1376.0,597.6 L1355.6,560.0 L1348.3,544.0 L1342.6,528.0 L1339.3,512.0 L1337.8,488.0 L1343.2,408.0 L1340.7,328.0 L1342.3,312.0 L1346.4,296.0 L1353.4,280.0 L1363.7,264.0 L1377.7,248.0 L1419.6,208.0 L1431.6,192.0 L1435.1,184.0 L1436.5,176.0 L1436.2,168.0 L1433.4,152.0 L1428.3,136.0 L1408.0,92.9 L1404.5,80.0 L1402.8,64.0 L1404.7,48.0 L1409.5,32.0 L1416.0,18.6 L1424.0,7.1 L1430.6,0.0" /><path d="M1440.0,659.6 L1423.0,632.0 L1389.6,584.0 L1368.0,545.6 L1360.7,528.0 L1356.5,512.0 L1354.4,496.0 L1353.7,480.0 L1354.4,456.0 L1358.1,408.0 L1358.1,336.0 L1359.8,320.0 L1363.6,304.0 L1368.0,292.8 L1375.1,280.0 L1387.9,264.0 L1408.0,245.0 L1440.0,219.7" /><path d="M1440.0,620.6 L1401.1,568.0 L1382.5,536.0 L1376.2,520.0 L1372.2,504.0 L1369.3,472.0 L1370.0,448.0 L1373.2,408.0 L1375.2,344.0 L1377.2,328.0 L1381.0,312.0 L1387.3,296.0 L1400.0,277.6 L1416.0,262.1 L1440.0,244.8" /><path d="M1440.0,589.1 L1416.0,557.6 L1398.2,528.0 L1392.0,512.0 L1388.2,496.0 L1385.4,464.0 L1392.0,359.6 L1395.1,336.0 L1399.0,320.0 L1405.5,304.0 L1416.0,288.5 L1424.5,280.0 L1440.0,268.2" /><path d="M1440.0,559.4 L1423.1,536.0 L1411.3,512.0 L1405.0,488.0 L1403.0,472.0 L1402.6,456.0 L1410.5,368.0 L1414.3,344.0 L1419.0,328.0 L1424.0,316.8 L1432.0,304.4 L1440.0,295.5" /><path d="M1440.0,528.1 L1431.5,512.0 L1425.9,496.0 L1422.5,480.0 L1420.7,456.0 L1422.2,432.0 L1429.4,376.0 L1432.7,360.0 L1440.0,339.4" /></g></svg>
+    <div class="grain-layer grain-screen"></div>
+    <div class="dslide-content" style="display: flex; flex-direction: column; align-items: flex-start; height: 100%; justify-content: space-between;">
+      <img class="wordmark" src="../assets/logos/wordmark-white.svg" alt="Bridgemaker" />
+      <div>
+        <div class="type-eyebrow" style="color: var(--soft); margin-bottom: var(--space-6);">Von Marktbewegungen zu messbaren Wachstumsinitiativen</div>
+        <h1 class="type-display-l" style="margin: 0; max-width: 1080px; color: var(--off-white);">Muster AG<br />Wachstumsprogramm</h1>
+      </div>
+      <div class="type-small" style="color: var(--soft);">Gemeinsamer Arbeitsstand von Muster AG und Bridgemaker, 17. Juli 2026</div>
+    </div>
+  </section>
+
+  <!-- 02 — ZIEL UND AGENDA · gleichrangiger 50/50-Zweispalter -->
+  <section class="dslide" data-label="Ziel und Agenda">
+    <header class="slide-head"><span class="type-eyebrow">01 / Ausgangslage</span></header>
+    <footer class="slide-foot"><span class="foot-brand"><img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" /><span>Muster AG Wachstumsprogramm</span></span><span class="pagenum"></span></footer>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title" style="max-width: 1000px;">Heute priorisieren wir die Wachstumshebel und entscheiden über den Start</h2>
+      <div class="deck-body">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--space-16);">
+          <div>
+            <div class="type-eyebrow" style="color: var(--mid); margin-bottom: var(--space-4);">Der Kunde entscheidet heute über drei Punkte</div>
+            <div class="agenda-row"><span class="agenda-num type-body">01</span><div class="type-h4">Freigabe der Setup-Phase</div></div>
+            <div class="agenda-row"><span class="agenda-num type-body">02</span><div class="type-h4">Priorisierung der Wachstumshebel</div></div>
+            <div class="agenda-row"><span class="agenda-num type-body">03</span><div class="type-h4">Benennung der internen Verantwortlichen</div></div>
+          </div>
+          <div>
+            <div class="type-eyebrow" style="color: var(--mid); margin-bottom: var(--space-4);">Ablauf in vier Kapiteln</div>
+            <div class="agenda-row"><span class="agenda-num type-body">01</span><div><div class="type-h4">Ausgangslage</div><div class="type-small" style="color: var(--mid); margin-top: var(--space-1);">Executive Summary und Status quo</div></div></div>
+            <div class="agenda-row"><span class="agenda-num type-body">02</span><div><div class="type-h4">Marktbewegungen</div><div class="type-small" style="color: var(--mid); margin-top: var(--space-1);">Wargame-Setup, Szenarien und Risiken</div></div></div>
+            <div class="agenda-row"><span class="agenda-num type-body">03</span><div><div class="type-h4">Wachstumsprogramm</div><div class="type-small" style="color: var(--mid); margin-top: var(--space-1);">Chancen, Initiativen und Messlogik</div></div></div>
+            <div class="agenda-row"><span class="agenda-num type-body">04</span><div><div class="type-h4">Entscheidung</div><div class="type-small" style="color: var(--mid); margin-top: var(--space-1);">Timeline, Angebot und nächster Schritt</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 — EXECUTIVE SUMMARY · Hairline-Zeilen + Resultat-Band -->
+  <section class="dslide" data-label="Executive Summary">
+    <header class="slide-head"><span class="type-eyebrow">01 / Ausgangslage</span></header>
+    <footer class="slide-foot"><span class="foot-brand"><img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" /><span>Muster AG Wachstumsprogramm</span></span><span class="pagenum"></span></footer>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title">Die Muster AG muss den Umsatzrückgang stoppen und das digitale Wachstum in die Breite übersetzen</h2>
+      <div class="deck-body">
+        <div>
+          <div class="agenda-row" style="align-items: baseline; padding: var(--space-3) 0;">
+            <span class="agenda-num type-body">01</span>
+            <div style="max-width: 1000px;">
+              <div class="type-h4">Der Umsatzmix zeigt Wachstum und Risiko zugleich</div>
+              <p class="type-body" style="color: var(--dark); margin: var(--space-2) 0 0;">Gesamtumsatz 2025: 24,3 Mio. € (−5,0 % ggü. 2024). Segment A wächst um 8,1 %, getragen von der digitalen Linie mit 4,2 Mio. € (+55 %). Segment B fällt auf 9,8 Mio. € (−18,8 %), und 75 % dieses Rückgangs stammen aus drei Kundenverlusten.</p>
+            </div>
+          </div>
+          <div class="agenda-row" style="align-items: baseline; padding: var(--space-3) 0;">
+            <span class="agenda-num type-body">02</span>
+            <div style="max-width: 1000px;">
+              <div class="type-h4">Vier Marktbewegungen erhöhen den Handlungsdruck</div>
+              <p class="type-body" style="color: var(--dark); margin: var(--space-2) 0 0;">Workflow-Zugang und Systemanbieter im neuen Zielmarkt, geringe Bekanntheit bei Bedarfsträgern, digitale Erfassung und digitale Fertigung und eine zu spät erkannte Händlererosion.</p>
+            </div>
+          </div>
+          <div class="agenda-row" style="align-items: baseline; padding: var(--space-3) 0;">
+            <span class="agenda-num type-body">03</span>
+            <div style="max-width: 1000px;">
+              <div class="type-h4">Die Muster AG braucht ein verbundenes Wachstumsprogramm</div>
+              <p class="type-body" style="color: var(--dark); margin: var(--space-2) 0 0;">Systeme und Prozesse, Positionierung und Marktbearbeitung und der direkte Kundenkanal als strategische Ausbaustufe.</p>
+            </div>
+          </div>
+        </div>
+        <div class="result-band" style="margin-top: var(--space-6); padding: var(--space-5) var(--space-8);">
+          <span class="type-eyebrow">Der nächste Schritt</span>
+          <span class="type-body" style="margin: 0;">Mit einer vierwöchigen Setup-Phase starten, die Baseline festlegen, danach die erste Umsetzungswelle freigeben</span>
+        </div>
+        <p class="source-note" style="margin: var(--space-3) 0 0;">Quellen: Umsatzdaten 2024–2025 der Muster AG, Wargame-Analyse 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 — PERFORMANCE · gebaute Umsatz-Bridge + offene Zitate -->
+  <section class="dslide" data-label="Performance">
+    <header class="slide-head"><span class="type-eyebrow">01 / Ausgangslage</span></header>
+    <footer class="slide-foot"><span class="foot-brand"><img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" /><span>Muster AG Wachstumsprogramm</span></span><span class="pagenum"></span></footer>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title">Die digitale Linie wächst stark, drei Kundenverluste prägen den Rückgang in Segment B</h2>
+      <div class="deck-body">
+        <div class="card-clean" style="background: var(--white); border-radius: var(--radius-xl); padding: var(--space-8) var(--space-10) var(--space-4); flex: 1; display: flex; flex-direction: column;">
+        <div class="split-23" style="align-items: center; flex: 1; align-content: center;">
+          <svg viewBox="60 80 730 320" preserveAspectRatio="xMinYMin meet" style="width: calc(100% - 32px); max-height: 368px;" role="img" aria-label="Umsatz-Bridge 2024 auf 2025: Segment A wächst, Segment B fällt, ein Großteil des Rückgangs stammt aus drei Kundenverlusten">
+            <!-- Skala: 1 Mio. € = 8,3 px, Basislinie y=360 = Balkenspannweite, Labels mittig je Balken -->
+            <text x="110" y="106" text-anchor="middle" class="chart-label-strong" fill="var(--charcoal)">25,6 Mio. €</text>
+            <rect x="60" y="121" width="100" height="239" fill="var(--bm-teal)" opacity="0.55" />
+            <text x="110" y="386" text-anchor="middle" class="chart-label-soft">2024</text>
+
+            <line x1="160" y1="121" x2="270" y2="121" stroke="#C5C0B8" stroke-width="1" />
+            <text x="320" y="96" text-anchor="middle" class="chart-label" fill="var(--bm-deep-teal, #2A7E78)">Segment A +8,1 %</text>
+            <rect x="270" y="111" width="100" height="10" fill="var(--bm-teal)" />
+            <text x="320" y="386" text-anchor="middle" class="chart-label-soft">+1,0 Mio. €</text>
+
+            <line x1="370" y1="111" x2="480" y2="111" stroke="#C5C0B8" stroke-width="1" />
+            <text x="530" y="96" text-anchor="middle" class="chart-label" fill="var(--charcoal)">Segment B −18,8 %</text>
+            <rect x="480" y="111" width="100" height="7" fill="var(--bm-teal)" opacity="0.35" />
+            <rect x="480" y="118" width="100" height="16" fill="var(--bm-deep-teal, #2A7E78)" />
+            <line x1="520" y1="136" x2="505" y2="176" stroke="#C5C0B8" stroke-width="1" />
+            <text x="505" y="196" text-anchor="middle" class="chart-label" fill="var(--charcoal)">75 % aus drei Kundenverlusten</text>
+            <text x="530" y="386" text-anchor="middle" class="chart-label-soft">−2,3 Mio. €</text>
+
+            <line x1="580" y1="134" x2="690" y2="134" stroke="#C5C0B8" stroke-width="1" />
+            <text x="740" y="119" text-anchor="middle" class="chart-label-strong" fill="var(--charcoal)">24,3 Mio. €</text>
+            <rect x="690" y="134" width="100" height="226" fill="var(--bm-teal)" />
+            <text x="740" y="386" text-anchor="middle" class="chart-label-soft">2025, −5,0 %</text>
+
+            <line x1="60" y1="360" x2="790" y2="360" stroke="#C5C0B8" stroke-width="1" />
+          </svg>
+          <div style="padding-right: var(--space-4);">
+            <div class="type-eyebrow" style="color: var(--mid); margin-bottom: var(--space-2);">Interviewevidenz</div>
+            <div class="quote-open" style="margin-bottom: var(--space-6);">
+              <p class="type-body">„Der Anbieter hat eine hohe Qualität."</p>
+              <div class="type-small attr">Anwender, Deutschland</div>
+            </div>
+            <div class="quote-open">
+              <p class="type-body">„Wir wissen zu wenig über den Anbieter."</p>
+              <div class="type-small attr">Entscheiderin, Deutschland</div>
+            </div>
+            <p class="type-small" style="color: var(--dark); margin-top: var(--space-8); max-width: 340px;">Segment A wächst vor allem digital, die übrigen Linien stagnieren. Der Rückgang in Segment B ist stark konzentriert — die Priorität liegt auf dem Turnaround.</p>
+          </div>
+        </div>
+        <p class="source-note" style="margin-top: auto; padding-top: var(--space-2); color: var(--light);">Quellen: Umsatzdaten 2024–2025 der Muster AG (2024-Wert aus dem bestätigten Rückgang von −5,0 % errechnet), anonymisierte Marktinterviews 2026</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 — STRATEGISCHE AUSGANGSLAGE · Gegenüberstellung, offene Spalten -->
+  <section class="dslide" data-label="Ausgangslage">
+    <header class="slide-head"><span class="type-eyebrow">01 / Ausgangslage</span></header>
+    <footer class="slide-foot"><span class="foot-brand"><img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" /><span>Muster AG Wachstumsprogramm</span></span><span class="pagenum"></span></footer>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title">Die Assets sind da — der Engpass liegt in Marktzugang und Steuerung</h2>
+      <div class="deck-body">
+        <div class="hl-cols hl-cols-2">
+          <div class="hl-col">
+            <div class="hl-index"><span class="type-eyebrow" style="color: var(--mid);">Assets</span><span class="msym" style="font-size: 24px; color: var(--bm-deep-teal, #2A7E78);">verified</span></div>
+            <p class="type-body">Breites Portfolio über beide Segmente und Anwendungsfelder.</p>
+            <p class="type-body">Regulatorische Position: Zulassungen und validierte Workflows.</p>
+            <p class="type-body">Material- und Anwendungskompetenz, internationale Zertifizierungen.</p>
+            <p class="type-body">Erste Vertriebsbasis: neues CRM, Vertriebsworkshops.</p>
+          </div>
+          <div class="hl-col">
+            <div class="hl-index"><span class="type-eyebrow" style="color: var(--mid);">Engpässe</span><span class="msym" style="font-size: 24px; color: var(--bm-deep-plum);">pending</span></div>
+            <p class="type-body">Das neue Produkt N1 braucht klaren Marktzugang.</p>
+            <p class="type-body">Vertrieb und Händler werden noch nicht datenbasiert gesteuert.</p>
+            <p class="type-body">Internationale Wachstumsfelder brauchen Prioritäten, die USA sind bereits der zweitgrößte Markt.</p>
+            <p class="type-body">Das kleine Team braucht Entlastung.</p>
+          </div>
+        </div>
+        <div style="margin-top: var(--space-10); border-top: var(--border-subtle); padding-top: var(--space-4);">
+          <div class="type-eyebrow" style="color: var(--mid); margin-bottom: var(--space-4);">Produktthese</div>
+          <p class="type-body" style="margin: 0; max-width: 1100px;"><strong>Produkt N1 ist zertifiziert, zugelassen und technisch einsatzbereit —<br />eine Marktchance, kein gesicherter Vertriebserfolg.</strong></p>
+        </div>
+        <p class="source-note" style="margin: var(--space-2) 0 0;">Quellen: interne Unterlagen der Muster AG, Produktunterlagen N1</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 — WARGAME-SETUP · gebaute Arena-Grafik -->
+  <section class="dslide" data-label="Wargame-Setup">
+    <header class="slide-head"><span class="type-eyebrow">02 / Marktbewegungen</span></header>
+    <footer class="slide-foot"><span class="foot-brand"><img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" /><span>Muster AG Wachstumsprogramm</span></span><span class="pagenum"></span></footer>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title">Marktanalyse, Simulation und Interviews machen das Spektrum möglicher Entwicklungen sichtbar</h2>
+      <div class="deck-body">
+        <svg viewBox="0 0 1200 462" style="width: 100%; max-height: 440px; margin: 0 auto;" role="img" aria-label="Wargame Arena: simulierte Stakeholder und Interviewevidenz fließen in die Arena, darunter verdichtet ein Trichter die Szenarien zu vier Beispielen">
+          <defs>
+            <radialGradient id="arena" cx="40%" cy="35%" r="80%">
+              <stop offset="0%" stop-color="var(--bm-purple)" />
+              <stop offset="100%" stop-color="var(--bm-deep-plum)" />
+            </radialGradient>
+          </defs>
+
+          <!-- Symmetrie: beide Blöcke 300 breit, Innenkanten je 296 von der
+               Mittelachse x=600; Linien starten Kante+4, enden Radius+4. -->
+
+          <!-- Stakeholder links -->
+          <text x="0" y="14" class="chart-label-soft" style="letter-spacing: 0.08em;">SIMULIERTE STAKEHOLDER</text>
+          <g fill="var(--white)">
+            <rect x="0" y="42"  width="300" height="30" rx="15" />
+            <rect x="0" y="80"  width="300" height="30" rx="15" />
+            <rect x="0" y="118" width="300" height="30" rx="15" />
+            <rect x="0" y="156" width="300" height="30" rx="15" />
+            <rect x="0" y="194" width="300" height="30" rx="15" />
+            <rect x="0" y="232" width="300" height="30" rx="15" />
+            <rect x="0" y="270" width="300" height="30" rx="15" />
+          </g>
+          <g class="chart-label" fill="var(--charcoal)">
+            <text x="20" y="62">Anwenderbetriebe</text>
+            <text x="20" y="100">Direktkunden</text>
+            <text x="20" y="138">Fachentscheider</text>
+            <text x="20" y="176">Serviceorganisationen</text>
+            <text x="20" y="214">Händler</text>
+            <text x="20" y="252">Wettbewerber</text>
+            <text x="20" y="290">Endnutzer</text>
+          </g>
+          <g stroke="#C5C0B8" stroke-width="1">
+            <line x1="304" y1="57"  x2="472.8" y2="112.9" />
+            <line x1="304" y1="95"  x2="468.7" y2="128.4" />
+            <line x1="304" y1="133" x2="466.4" y2="145.1" />
+            <line x1="304" y1="171" x2="466.2" y2="162.2" />
+            <line x1="304" y1="209" x2="468.2" y2="179.0" />
+            <line x1="304" y1="247" x2="472.1" y2="194.8" />
+            <line x1="304" y1="285" x2="477.3" y2="208.9" />
+          </g>
+
+          <!-- Arena Mitte -->
+          <circle cx="600" cy="155" r="130" fill="url(#arena)" />
+          <text x="600" y="130" text-anchor="middle" fill="var(--off-white)" style="font: 600 20px/1 var(--font-sans);">Wargame Arena</text>
+          <g fill="var(--off-white)" opacity="0.9" style="font: 400 12px/1.4 var(--font-sans);" text-anchor="middle">
+            <text x="600" y="156">Marktbewegungen und Stakeholder-</text>
+            <text x="600" y="173">reaktionen werden durchgespielt,</text>
+            <text x="600" y="190">abgeglichen und iteriert</text>
+          </g>
+
+          <!-- Interviewevidenz rechts -->
+          <text x="900" y="14" class="chart-label-soft" style="letter-spacing: 0.08em;">INTERVIEWEVIDENZ</text>
+          <g fill="var(--white)">
+            <rect x="900" y="42"  width="300" height="56" rx="12" />
+            <rect x="900" y="108" width="300" height="56" rx="12" />
+            <rect x="900" y="174" width="300" height="56" rx="12" />
+            <rect x="900" y="240" width="300" height="56" rx="12" />
+          </g>
+          <g fill="var(--charcoal)" style="font: italic 500 12px/1.3 var(--font-sans);">
+            <text x="918" y="64">„Der Anbieter ist uns zu teuer."</text>
+            <text x="918" y="130">„Der Anbieter hat eine hohe Qualität."</text>
+            <text x="918" y="196">„…wir brauchen ein besseres Verständnis."</text>
+            <text x="918" y="262">„Wir wissen zu wenig über den Anbieter."</text>
+          </g>
+          <g fill="var(--mid, #6E6A63)" style="font: 400 11px/1.3 var(--font-sans);">
+            <text x="918" y="84">Entscheider, Deutschland</text>
+            <text x="918" y="150">Anwender, Deutschland</text>
+            <text x="918" y="216">Mitarbeiterin eines Anwenderbetriebs, Deutschland</text>
+            <text x="918" y="282">Entscheiderin, Deutschland</text>
+          </g>
+          <g stroke="#C5C0B8" stroke-width="1">
+            <line x1="896" y1="70"  x2="728.8" y2="118.0" />
+            <line x1="896" y1="136" x2="733.7" y2="146.4" />
+            <line x1="896" y1="202" x2="732.3" y2="176.0" />
+            <line x1="896" y1="268" x2="725.2" y2="202.8" />
+          </g>
+
+          <!-- Trichter: Wände beginnen unterhalb der Labels, symmetrisch um x=600 -->
+          <g class="chart-label-soft" text-anchor="middle" style="font-size: 11px;">
+            <text x="400" y="318">Workflow-Zugang</text>
+            <text x="500" y="318">Händlerpriorität</text>
+            <text x="600" y="318">Portfolio-Migration</text>
+            <text x="700" y="318">Anwenderzugang</text>
+            <text x="800" y="318">Education</text>
+          </g>
+          <g stroke="#C5C0B8" stroke-width="1">
+            <line x1="340" y1="330" x2="555" y2="425" />
+            <line x1="860" y1="330" x2="645" y2="425" />
+          </g>
+          <g fill="var(--surface-mauve)" stroke="var(--bm-purple)" stroke-width="1">
+            <circle cx="400" cy="342" r="7" /><circle cx="500" cy="342" r="7" />
+            <circle cx="600" cy="342" r="7" /><circle cx="700" cy="342" r="7" />
+            <circle cx="800" cy="342" r="7" />
+          </g>
+          <g fill="var(--bm-purple)" opacity="0.35">
+            <circle cx="460" cy="368" r="3" /><circle cx="530" cy="368" r="3" />
+            <circle cx="600" cy="368" r="3" /><circle cx="670" cy="368" r="3" />
+            <circle cx="740" cy="368" r="3" />
+            <circle cx="510" cy="390" r="3" /><circle cx="570" cy="390" r="3" />
+            <circle cx="630" cy="390" r="3" /><circle cx="690" cy="390" r="3" />
+          </g>
+          <!-- Vier Beispiele: uniformer Pitch 120, Reihe zentriert auf x=600 -->
+          <g fill="var(--bm-purple)">
+            <circle cx="374" cy="450" r="8" /><circle cx="512" cy="450" r="8" />
+            <circle cx="640" cy="450" r="8" /><circle cx="745" cy="450" r="8" />
+          </g>
+          <g class="chart-label" fill="var(--charcoal)">
+            <text x="388" y="454">Digitale Erfassung</text>
+            <text x="526" y="454">Full-Stack</text>
+            <text x="654" y="454">Handel</text>
+            <text x="759" y="454">Plattformen</text>
+          </g>
+        </svg>
+        <p class="source-note" style="margin: var(--space-6) 0 0; text-align: center;">Methodik: Marktanalyse, mehr als 50 Interviews mit den simulierten Marktrollen, Szenariosimulation in der Arena. Der Trichter verdichtet, er priorisiert nicht und ist nicht vollständig.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 — VIER SZENARIEN · vier uniforme Hairline-Spalten -->
+  <section class="dslide" data-label="Szenarien">
+    <header class="slide-head"><span class="type-eyebrow">02 / Marktbewegungen</span></header>
+    <footer class="slide-foot"><span class="foot-brand"><img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" /><span>Muster AG Wachstumsprogramm</span></span><span class="pagenum"></span></footer>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title" style="max-width: 900px;">Vier Beispiele zeigen die Bandbreite der untersuchten Marktbewegungen</h2>
+      <p class="type-body deck-lead">Beispielauswahl aus der Wargame-Analyse, keine Priorisierung.</p>
+      <div class="deck-body">
+        <div class="hl-cols hl-cols-4">
+          <div class="hl-col">
+            <div class="type-micro" style="color: var(--mid); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--space-3);">Segment B, Herstellungsprozess</div>
+            <h3 class="type-h4 hl-title">Digitale Erfassung löst den klassischen Prozess ab</h3>
+            <p class="type-small">Druck auf klassische Umsätze, Chance in digitalen Anwendungen.</p>
+            <p class="type-small" style="font-style: italic;">„Der digitale Prozess ist fantastisch. Er dauert zwei Minuten, dann ist man fertig." — Endkunde, Deutschland</p>
+          </div>
+          <div class="hl-col">
+            <div class="type-micro" style="color: var(--mid); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--space-3);">Digitale Linie, Wettbewerb</div>
+            <h3 class="type-h4 hl-title">Full-Stack-Anbieter bündeln Gerät, Material, Software und Workflow</h3>
+            <p class="type-small">Produktqualität allein sichert keinen Marktzugang. Kompatibilität, Partner und Anwenderzugang entscheiden.</p>
+            <p class="type-small" style="font-style: italic;">„Die Produkte sind gut, aber wir brauchen ein besseres Verständnis." — Mitarbeiterin eines Anwenderbetriebs, Deutschland</p>
+          </div>
+          <div class="hl-col">
+            <div class="type-micro" style="color: var(--mid); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--space-3);">Beide Segmente, Vertriebskanal</div>
+            <h3 class="type-h4 hl-title">Der Handel konzentriert das Sortiment auf weniger Anbieter</h3>
+            <p class="type-small">Schleichender Verlust von Regalplatz, Priorität und Umsatz, ohne Frühwarnsystem spät sichtbar.</p>
+            <p class="type-small" style="font-style: italic;">„Für uns ist es einfacher, alles aus einer Hand zu kaufen." — Marktinterview</p>
+          </div>
+          <div class="hl-col">
+            <div class="type-micro" style="color: var(--mid); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--space-3);">Marktübergreifend, Kundenzugang</div>
+            <h3 class="type-h4 hl-title">Digitale Plattformen bündeln Wissen, Workflow und Transaktion</h3>
+            <p class="type-small">Wer die direkte Schnittstelle hält, erhält Nutzungsdaten und Feedback.</p>
+            <p class="type-small" style="font-style: italic;">„Ich bin über den Anbieter wenig informiert. Andere sind deutlich präsenter bei uns." — Anwender, Deutschland</p>
+          </div>
+        </div>
+        <p class="source-note" style="margin: var(--space-10) 0 0;">Quellen: Wargame-Analyse 2026, anonymisierte Marktinterviews, Portfolio-Unterlagen</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 — VIER RISIKEN · vier uniforme Hairline-Spalten -->
+  <section class="dslide" data-label="Risiken">
+    <header class="slide-head"><span class="type-eyebrow">02 / Marktbewegungen</span></header>
+    <footer class="slide-foot"><span class="foot-brand"><img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" /><span>Muster AG Wachstumsprogramm</span></span><span class="pagenum"></span></footer>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title">Aus der Gesamtanalyse folgen vier Risiken, die die Muster AG jetzt aktiv steuern muss</h2>
+      <div class="deck-body">
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6);">
+          <div class="card-clean" style="background: var(--surface-mauve); border-radius: var(--radius-xl); padding: var(--space-6);">
+            <div class="type-display" style="font-weight: 300; letter-spacing: -0.03em; color: var(--bm-deep-plum);">1</div>
+            <h3 class="type-h4" style="margin: var(--space-4) 0 var(--space-3);">Das Zeitfenster im neuen Zielmarkt wird enger</h3>
+            <p class="type-small" style="color: var(--dark); margin: 0 0 var(--space-3);">Das zugelassene Produkt ist da. Der Erfolg hängt am schnellen Zugang zu Geräte-, Software- und Anwenderworkflows.</p>
+            <p class="type-small" style="color: var(--mid); margin: 0;">Indikator: zweistelliges Marktwachstum bis 2035, Originalquelle in Bestätigung.</p>
+          </div>
+          <div class="card-clean" style="background: var(--surface-sage); border-radius: var(--radius-xl); padding: var(--space-6);">
+            <div class="type-display" style="font-weight: 300; letter-spacing: -0.03em; color: var(--bm-deep-teal, #2A7E78);">2</div>
+            <h3 class="type-h4" style="margin: var(--space-4) 0 var(--space-3);">Die Muster AG hat zu wenig direkten Zugang zu Bedarfsträgern</h3>
+            <p class="type-small" style="color: var(--dark); margin: 0 0 var(--space-3);">Ohne Nähe zu Anwendern und Entscheidern bleiben Sichtbarkeit, Feedback und Nachfrage bei präsenteren Anbietern.</p>
+            <p class="type-small" style="font-style: italic; color: var(--dark); margin: 0;">„Andere Anbieter sind deutlich präsenter bei uns." — Anwender, Deutschland</p>
+          </div>
+          <div class="card-clean" style="background: var(--surface-sand); border-radius: var(--radius-xl); padding: var(--space-6);">
+            <div class="type-display" style="font-weight: 300; letter-spacing: -0.03em; color: var(--charcoal);">3</div>
+            <h3 class="type-h4" style="margin: var(--space-4) 0 var(--space-3);">Segment B verschiebt sich zu digitalen Prozessen</h3>
+            <p class="type-small" style="color: var(--dark); margin: 0 0 var(--space-3);">Digitale Erfassung reduziert klassische Produkte. Rückläufiger Umsatz muss durch digitale Angebote ersetzt werden.</p>
+            <p class="type-small" style="font-style: italic; color: var(--dark); margin: 0;">„Kunden bevorzugen den digitalen Weg. Es ist doch einfacher für uns." — Anwender, Deutschland</p>
+          </div>
+          <div class="card-clean" style="background: var(--surface-stone); border-radius: var(--radius-xl); padding: var(--space-6);">
+            <div class="type-display" style="font-weight: 300; letter-spacing: -0.03em; color: var(--charcoal);">4</div>
+            <h3 class="type-h4" style="margin: var(--space-4) 0 var(--space-3);">Handelserosion wird zu spät erkannt</h3>
+            <p class="type-small" style="color: var(--dark); margin: 0 0 var(--space-3);">Prioritätsverlust zeigt sich zuerst im Umsatz. Ohne Daten je Händler, Kunde und Produkt bleiben die Ursachen unklar.</p>
+            <p class="type-small" style="color: var(--mid); margin: 0;">Beleg: Deutschland 2024: 9,4 Mio. €, 2025: 8,6 Mio. € (rund −8,0 %).</p>
+          </div>
+        </div>
+        <p class="source-note" style="margin: var(--space-10) 0 0;">Quellen: Umsatzdaten der Muster AG, anonymisierte Marktinterviews, Produktunterlagen N1</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 — WACHSTUMSHEBEL · vier Spalten + Basis als Resultat-Band -->
+  <section class="dslide" data-label="Wachstumshebel">
+    <header class="slide-head"><span class="type-eyebrow">03 / Wachstumsprogramm</span></header>
+    <footer class="slide-foot"><span class="foot-brand"><img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" /><span>Muster AG Wachstumsprogramm</span></span><span class="pagenum"></span></footer>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title">Vier Wachstumshebel verbinden bessere Steuerung mit konkreter Marktbearbeitung</h2>
+      <div class="deck-body">
+        <div class="hl-cols hl-cols-4">
+          <div class="hl-col">
+            <div class="type-micro" style="color: var(--mid); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--space-3);">Antwort auf späte Erosionserkennung</div>
+            <h3 class="type-h4 hl-title">Commercial Steering und Reaktivierung</h3>
+            <p class="type-small">Kundenhistorie im CRM, Accounts priorisieren, inaktive Kunden reaktivieren, Händlerentwicklung früh erkennen.</p>
+          </div>
+          <div class="hl-col">
+            <div class="type-micro" style="color: var(--mid); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--space-3);">Antwort auf das enge Zeitfenster</div>
+            <h3 class="type-h4 hl-title">Go-to-Market Produkt N1</h3>
+            <p class="type-small">Segmente und Länder priorisieren, Geräte-, Software- und Workflow-Partner bestimmen, Content und Education für Anwender und Multiplikatoren in einer Launch-Roadmap.</p>
+          </div>
+          <div class="hl-col">
+            <div class="type-micro" style="color: var(--mid); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--space-3);">Antwort auf die digitale Verschiebung</div>
+            <h3 class="type-h4 hl-title">Portfolio-Migration Segment B</h3>
+            <p class="type-small">Exposition klassischer Produkte messen, digitale Materialien und Zielkunden priorisieren, Umsatz, Marge und Kannibalisierung steuern.</p>
+          </div>
+          <div class="hl-col">
+            <div class="type-micro" style="color: var(--mid); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--space-3);">Antwort auf geringe Bekanntheit</div>
+            <h3 class="type-h4 hl-title">Education und direkte Kundenschnittstelle</h3>
+            <p class="type-small">Wissen anwendungsnah bereitstellen, Nachfrage direkt aufbauen, Kunden-Academy als Einstieg. Strategische Ausbaustufe nach dem Kernprogramm.</p>
+          </div>
+        </div>
+        <div class="result-band">
+          <span class="type-eyebrow">Die Basis unter allen vier Hebeln</span>
+          <span class="type-body" style="margin: 0; max-width: 760px;">Interne Effizienz und Vertriebseffizienz: die Infrastruktur, die die Hebel steuerbar macht, aber allein kein Wachstum erzeugt.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 — DIE BASIS IM DETAIL · Bausteine links, Dashboard rechts -->
+  <section class="dslide" data-label="Steuerungsbasis">
+    <header class="slide-head"><span class="type-eyebrow">03 / Wachstumsprogramm</span></header>
+    <footer class="slide-foot"><span class="foot-brand"><img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" /><span>Muster AG Wachstumsprogramm</span></span><span class="pagenum"></span></footer>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title" style="text-wrap: initial;">Die Basis: eine gemeinsame Steuerungssicht<br />für Vertrieb und Marketing</h2>
+      <div class="deck-body">
+        <div style="display: grid; grid-template-columns: 2fr 3fr; column-gap: var(--space-16); align-items: center;">
+          <div class="hl-col">
+            <div class="hl-index"><span class="type-eyebrow" style="color: var(--mid);">Vier Bausteine</span></div>
+            <p class="type-body"><strong>Knowledge-Datenbank.</strong> Produkt- und Anwendungswissen an einem Ort, für Team und Kunden abrufbar.</p>
+            <p class="type-body"><strong>CRM und Lead Scoring.</strong> Vollständige Kundenhistorie, priorisierte Accounts, reaktivierbare Kunden sichtbar.</p>
+            <p class="type-body"><strong>Automatisierte Anfrageverteilung.</strong> Anfragen landen ohne Umweg beim richtigen Ansprechpartner.</p>
+            <p class="type-body"><strong>Händler-Frühwarnsystem.</strong> Abweichungen je Händler, Kunde und Produkt fallen in Tagen auf, nicht in Monaten.</p>
+          </div>
+          <div>
+            <!-- Bild-Asset (CD-pflichtige Referenz) -> gestreifter Platzhalter (§7.7).
+                 Im echten Deck: freigegebenes Dashboard-Visual im Device-Mockup,
+                 contentverwoben (Bausteine links, Mockup rechts, BU zentriert). -->
+            <div style="min-height: 400px; border-radius: var(--radius-xl); border: var(--border-subtle); background: repeating-linear-gradient(45deg, rgba(28,28,30,0.05) 0 14px, transparent 14px 28px); display: flex; align-items: flex-end;">
+              <div style="background: rgba(255,255,255,0.85); padding: var(--space-4) var(--space-5); margin: var(--space-5); border-radius: var(--radius-md); color: var(--dark); font: 500 14px/1.5 var(--font-mono);">[ Dashboard-Referenz im Device-Mockup — Bild-Asset, folgt nach CD-Freigabe ]</div>
+            </div>
+            <p class="source-note" style="margin: var(--space-3) 0 0; text-align: center;">Beispiel aus einem laufenden Bridgemaker-Projekt</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 — PROGRAMM · drei Hairline-Spalten mit Jetzt/Danach -->
+  <section class="dslide" data-label="Programm">
+    <header class="slide-head"><span class="type-eyebrow">03 / Wachstumsprogramm</span></header>
+    <footer class="slide-foot"><span class="foot-brand"><img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" /><span>Muster AG Wachstumsprogramm</span></span><span class="pagenum"></span></footer>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title" style="text-wrap: initial;">Erst die Steuerungsbasis, dann der Markt —<br />die Kundenschnittstelle als Option</h2>
+      <div class="deck-body">
+        <div class="hl-cols hl-cols-3">
+          <div class="hl-col" style="display: flex; flex-direction: column; align-items: stretch;">
+            <h3 class="type-h4 hl-title">Systeme und Prozesse</h3>
+            <div class="type-eyebrow hl-sublabel">Jetzt</div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-3); margin: 0 0 var(--space-3);"><span class="type-small" style="color: var(--dark);">CRM Health Scan und historische Anreicherung</span><span class="bm-badge bm-badge-purple" style="flex-shrink: 0;">Quick-Win-Kandidat</span></div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-3); margin: 0 0 var(--space-3);"><span class="type-small" style="color: var(--dark);">Händler-Dashboard und Frühwarnsystem</span><span class="bm-badge bm-badge-purple" style="flex-shrink: 0;">Quick-Win-Kandidat</span></div>
+            <p class="type-small" style="color: var(--dark); margin: 0 0 var(--space-3);">Knowledge-Datenbank</p>
+            <div style="background: var(--surface-mauve); border-radius: var(--radius-xl); padding: var(--space-4) var(--space-5); margin-top: auto; margin-bottom: -8px; min-height: 152px; box-sizing: border-box;">
+            <div class="type-eyebrow" style="color: var(--bm-deep-plum); margin: 0 0 var(--space-3);">Danach</div>
+            <p class="type-small" style="color: var(--dark); margin: 0 0 var(--space-3);">CRM-Copilot und Lead Scoring</p>
+            <p class="type-small" style="color: var(--dark); margin: 0;">Interner Copilot, externer Knowledge-Copilot</p>
+            </div>
+            </div>
+          <div class="hl-col" style="display: flex; flex-direction: column; align-items: stretch;">
+            <h3 class="type-h4 hl-title">Positionierung und Marktbearbeitung</h3>
+            <div class="type-eyebrow hl-sublabel">Jetzt</div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-3); margin: 0 0 var(--space-3);"><span class="type-small" style="color: var(--dark);">Reaktivierungskampagnen</span><span class="bm-badge bm-badge-purple" style="flex-shrink: 0;">Quick-Win-Kandidat</span></div>
+            <p class="type-small" style="color: var(--dark); margin: 0 0 var(--space-3);">Go-to-Market Produkt N1</p>
+            <p class="type-small" style="color: var(--dark); margin: 0 0 var(--space-3);">Portfolio-Migration Segment B</p>
+            <div style="background: var(--surface-mauve); border-radius: var(--radius-xl); padding: var(--space-4) var(--space-5); margin-top: auto; margin-bottom: -8px; min-height: 152px; box-sizing: border-box;">
+            <div class="type-eyebrow" style="color: var(--bm-deep-plum); margin: 0 0 var(--space-3);">Danach</div>
+            <p class="type-small" style="color: var(--dark); margin: 0 0 var(--space-3);">Content Engine und Kampagnenlogik</p>
+            <p class="type-small" style="color: var(--dark); margin: 0;">KOL-Steuerung und Fachmedien, Händler-Enablement</p>
+            </div>
+            </div>
+          <div style="display: flex; flex-direction: column;">
+            <div class="card-clean" style="background: var(--white); border-radius: var(--radius-xl); padding: var(--space-5); flex: 1; display: flex; flex-direction: column; margin-bottom: -8px;">
+              <h3 class="type-h4" style="margin: 0 0 var(--space-4);">Kundenschnittstelle und<br />Direktkanal</h3>
+              <div class="type-eyebrow" style="color: var(--mid); margin: 0 0 var(--space-3);">Phase 3, separate Option*</div>
+              <p class="type-small" style="color: var(--dark); margin: 0 0 var(--space-3);">Kunden-Academy als möglicher Einstieg</p>
+              <p class="type-small" style="color: var(--dark); margin: 0;">Digitale Direktkanal-Plattform als Ausbaustufe</p>
+              <p style="font: 400 12px/1.4 var(--font-sans); color: var(--light); margin-top: auto; padding-top: var(--space-4); text-align: right;">* Nicht Bestandteil der sechs Monate, separate Beauftragung mit eigenem Decision Gate.</p>
+            </div>
+          </div>
+        </div>
+        <p class="type-small" style="color: var(--mid); margin: var(--space-10) 0 0;">Priorisierung in der Setup-Phase nach Umsatzpotenzial, Kundennutzen, Daten- und Systemabhängigkeiten, Umsetzungsaufwand, interner Kapazität und Zeit bis zum messbaren Ergebnis.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 — MESSLOGIK · drei Gruppen + Outcomes als Resultat-Band -->
+  <section class="dslide" data-label="Messlogik">
+    <header class="slide-head"><span class="type-eyebrow">03 / Wachstumsprogramm</span></header>
+    <footer class="slide-foot"><span class="foot-brand"><img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" /><span>Muster AG Wachstumsprogramm</span></span><span class="pagenum"></span></footer>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title">Nach der Baseline messen wir jede Initiative an Umsatz, Nutzung und Geschwindigkeit</h2>
+      <p class="type-small deck-lead" style="max-width: 1160px; color: var(--mid);">Offene Baselines und Zielwerte werden in der Setup-Phase festgelegt; jede Kennzahl trägt ihren Status: bestätigt, Arbeitsannahme oder in Setup zu bestimmen.</p>
+      <div class="deck-body">
+        <div class="hl-cols hl-cols-3">
+          <div class="hl-col">
+            <div class="type-eyebrow" style="color: var(--mid); margin-bottom: var(--space-4);">Systeme und Prozesse</div>
+            <p class="type-small"><strong>Vollständige CRM-Profile.</strong> Heute noch nicht belastbar. Zielhypothese: über 90 % der identifizierbaren Kunden inklusive Ansprechpartnern.</p>
+            <p class="type-small"><strong>Erkennungszeit bei Händlerabweichungen.</strong> Heute teils erst nach Monaten. Zielhypothese: automatische Markierung binnen zwei Wochen.</p>
+            <p class="type-small"><strong>Erosionsrate im deutschen Handel.</strong> Arbeitsannahme <span style="white-space: nowrap;">3–6 %</span> pro Jahr. Zielhypothese: etwa halbieren.</p>
+          </div>
+          <div class="hl-col">
+            <div class="type-eyebrow" style="color: var(--mid); margin-bottom: var(--space-4);">Positionierung und Marktbearbeitung</div>
+            <p class="type-small"><strong>Umsatz aus reaktivierten Kunden.</strong> Baseline heute nicht identifizierbar. Zielwert nach Potenzialanalyse in Setup.</p>
+            <p class="type-small"><strong>Self-Service-fähige Anfragen.</strong> Arbeitsannahme rund 75 % manuell. Zielhypothese: unter 20 %.</p>
+            <p class="type-small"><strong>Pipeline und Umsatz Produkt N1, Anteil digitaler Produkte in Segment B.</strong> In Setup zu bestimmen.</p>
+          </div>
+          <div class="hl-col">
+            <div class="type-eyebrow" style="color: var(--mid); margin-bottom: var(--space-4);">Kundenschnittstelle</div>
+            <p class="type-small"><strong>Aktive Academy-Nutzer.</strong> Nach Spezifikation der Academy festzulegen.</p>
+            <p class="type-small"><strong>Qualifizierte Direktkontakte.</strong> Nach Spezifikation der Academy festzulegen.</p>
+          </div>
+        </div>
+        <div class="result-band">
+          <span class="type-eyebrow">Übergeordnete Business Outcomes</span>
+          <span class="type-body" style="margin: 0; max-width: 820px;">Gesamtumsatz und Umsatzwachstum, Umsatz aus reaktivierten Kunden, Umsatz und Pipeline in priorisierten digitalen Produkten und Stabilisierung von Segment B.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 — ROADMAP · gebautes Gantt mit Kategorien-Code -->
+  <section class="dslide" data-label="Roadmap">
+    <header class="slide-head"><span class="type-eyebrow">04 / Entscheidung</span></header>
+    <footer class="slide-foot"><span class="foot-brand"><img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" /><span>Muster AG Wachstumsprogramm</span></span><span class="pagenum"></span></footer>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title">Die Setup-Phase schafft die Baseline, danach folgen die priorisierten Umsetzungswellen</h2>
+      <div class="deck-body">
+        <svg viewBox="0 0 1200 460" preserveAspectRatio="xMinYMin meet" style="width: 100%; max-height: 448px;" role="img" aria-label="Roadmap Juli 2026 bis Januar 2027: Setup-Phase, Decision Gate Mitte August, danach Umsetzungswellen in Systemen und Positionierung">
+            <!-- Invarianten: Label-Zone 0–296, Chart ab x=260 (Monat = 128),
+                 Zeilenpitch 30, Balken 20 hoch, Bar-Label = Balkenende + 10,
+                 Balken an Markerlinien: 2px Abstand -->
+            <g class="chart-label-soft">
+              <text x="260" y="14">Jul 26</text><text x="388" y="14">Aug</text>
+              <text x="516" y="14">Sep</text><text x="644" y="14">Okt</text>
+              <text x="772" y="14">Nov</text><text x="900" y="14">Dez</text>
+              <text x="1028" y="14">Jan 27</text>
+            </g>
+            <line x1="260" y1="26" x2="1156" y2="26" stroke="#C5C0B8" stroke-width="1" />
+            <line x1="324" y1="26" x2="324" y2="452" stroke="var(--charcoal)" stroke-width="1.5" />
+            <text x="332" y="46" class="chart-label" fill="var(--charcoal)">Heute</text>
+            <line x1="452" y1="26" x2="452" y2="452" stroke="var(--bm-deep-berry, #8F3554)" stroke-width="1.5" stroke-dasharray="4 4" />
+            <text x="460" y="46" class="chart-label" fill="var(--bm-deep-berry, #8F3554)">Decision Gate 1, Mitte August</text>
+
+            <text x="0" y="76" class="chart-label" fill="var(--charcoal)">Setup-Phase</text>
+            <rect x="328" y="62" width="120" height="20" rx="10" fill="var(--surface-mid-stone)" />
+            <text x="460" y="76" class="chart-label-soft">Process Mapping, Anforderungen, Sales-Baseline</text>
+
+            <text x="0" y="122" class="chart-label" fill="var(--bm-deep-teal, #2A7E78)">Systeme und Prozesse</text>
+            <rect x="456" y="108" width="188" height="20" rx="10" fill="var(--bm-teal)" />
+            <text x="654" y="122" class="chart-label-soft" style="fill: var(--bm-deep-teal, #2A7E78);">CRM-Anreicherung und Health Scan</text>
+            <rect x="456" y="138" width="188" height="20" rx="10" fill="var(--bm-teal)" />
+            <text x="654" y="152" class="chart-label-soft" style="fill: var(--bm-deep-teal, #2A7E78);">Knowledge-Datenbank</text>
+            <rect x="516" y="168" width="256" height="20" rx="10" fill="var(--bm-teal)" />
+            <text x="782" y="182" class="chart-label-soft" style="fill: var(--bm-deep-teal, #2A7E78);">Händler-Dashboard und Frühwarnsystem</text>
+            <rect x="580" y="198" width="192" height="20" rx="10" fill="var(--bm-teal)" opacity="0.4" />
+            <text x="782" y="212" class="chart-label-soft" style="fill: var(--bm-deep-teal, #2A7E78);">CRM-Copilot, Lead Scoring und Testing</text>
+            <rect x="644" y="228" width="128" height="20" rx="10" fill="var(--bm-teal)" opacity="0.4" />
+            <text x="782" y="242" class="chart-label-soft" style="fill: var(--bm-deep-teal, #2A7E78);">Interner Copilot, nach der Knowledge-Datenbank</text>
+            <rect x="772" y="258" width="192" height="20" rx="10" fill="var(--bm-teal)" opacity="0.4" />
+            <text x="974" y="272" class="chart-label-soft" style="fill: var(--bm-deep-teal, #2A7E78);">Externer Knowledge-Copilot</text>
+
+            <text x="0" y="326" class="chart-label" fill="var(--bm-deep-plum)">Positionierung und Marktbearbeitung</text>
+            <rect x="516" y="312" width="256" height="20" rx="10" fill="var(--bm-purple)" />
+            <text x="782" y="326" class="chart-label-soft" style="fill: var(--bm-deep-plum);">Reaktivierung, nach belastbarer CRM-Baseline</text>
+            <rect x="516" y="342" width="320" height="20" rx="10" fill="var(--bm-purple)" />
+            <text x="846" y="356" class="chart-label-soft" style="fill: var(--bm-deep-plum);">Go-to-Market Produkt N1, nach Gate 1</text>
+            <rect x="516" y="372" width="320" height="20" rx="10" fill="var(--bm-purple)" />
+            <text x="846" y="386" class="chart-label-soft" style="fill: var(--bm-deep-plum);">Portfolio-Migration Segment B, Maßnahmen nach Gate 1</text>
+            <rect x="772" y="402" width="256" height="20" rx="10" fill="var(--bm-purple)" opacity="0.4" />
+            <text x="762" y="416" text-anchor="end" class="chart-label-soft" style="fill: var(--bm-deep-plum);">Content Engine, Händler-Enablement</text>
+            <rect x="1028" y="432" width="128" height="20" rx="10" fill="var(--bm-purple)" opacity="0.4" />
+            <text x="1018" y="446" text-anchor="end" class="chart-label-soft" style="fill: var(--bm-deep-plum);">KOL-Steuerung und Fachmedien, ab Januar 2027</text>
+        </svg>
+        <p class="type-small" style="color: var(--mid); margin: var(--space-5) 0 0;">Alle Zeiträume sind Planungsannahmen. Abhängigkeiten: Reaktivierung nach belastbarer CRM-Baseline, interner Copilot nach der Knowledge-Datenbank. Kräftige Balken starten mit Gate 1, helle folgen nach Priorisierung. Phase 3 (Kunden-Academy, Direktkanal) ohne Termine, mit eigenem Decision Gate.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 — ANGEBOT · freie Zahlen in zwei offenen Spalten -->
+  <section class="dslide" data-label="Angebot">
+    <header class="slide-head"><span class="type-eyebrow">04 / Entscheidung</span></header>
+    <footer class="slide-foot"><span class="foot-brand"><img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" /><span>Muster AG Wachstumsprogramm</span></span><span class="pagenum"></span></footer>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title">Der Retainer finanziert die Umsetzung, der Bonus entsteht nur auf zurechenbaren Mehrumsatz</h2>
+      <div class="deck-body">
+        <div class="hl-cols hl-cols-2">
+          <div class="hl-col">
+            <div class="hl-index"><span class="type-eyebrow" style="color: var(--mid);">Fixe Komponente</span></div>
+            <div class="type-display" style="font-weight: 300; letter-spacing: -0.03em;">15.000 € / Monat</div>
+            <p class="type-small" style="margin-top: var(--space-4);">Sechs Monate, 90.000 € fixe Gesamtvergütung. Umfasst Setup, Baseline, Priorisierung, Umsetzung der freigegebenen Initiativen, Steuerung, Systemaufbau, Kampagnen und Messung.</p>
+            <p class="type-small" style="color: var(--mid);">Nach der Setup-Phase werden Scope und Zeitannahmen bestätigt. Bei Nicht-Fortsetzung endet die Zusammenarbeit nach dem ersten Monatsretainer.</p>
+          </div>
+          <div class="hl-col">
+            <div class="hl-index"><span class="type-eyebrow" style="color: var(--mid);">Variable Komponente</span></div>
+            <div class="type-display" style="font-weight: 300; letter-spacing: -0.03em;">1–3 %</div>
+            <p class="type-small" style="margin-top: var(--space-4);">Erfolgsbonus auf zurechenbaren, inkrementellen Nettomehrumsatz aus drei Quellen, jedes Geschäft genau einer zugeordnet: Reaktivierung, Cross- und Upsell, Neugeschäft.</p>
+            <p class="type-small" style="color: var(--mid);">Staffel: 1 % unter der DB-Schwelle, 3 % ab der DB-Schwelle. Bonus ab vereinbarter Mindesthöhe des kumulierten Mehrumsatzes. Schwellen und Zeitraum werden in der Setup-Phase festgelegt.</p>
+          </div>
+        </div>
+        <div class="meta-rows" style="margin-top: var(--space-10);">
+          <div class="meta-row">
+            <span class="type-eyebrow" style="color: var(--mid); flex-shrink: 0;">So wird gemessen</span>
+            <span class="type-small" style="color: var(--dark); text-align: right;">CRM-Kennzeichnung, dann ERP Closed Won, dann Baseline-Abgleich, dann quartalsweise Abrechnung mit verrechneten Stornos und Retouren</span>
+          </div>
+          <div class="meta-row">
+            <span class="type-eyebrow" style="color: var(--mid); flex-shrink: 0;">Scope</span>
+            <span class="type-small" style="color: var(--dark); text-align: right;">Phase 3 (Kundenschnittstelle und Direktkanal) ist nicht Bestandteil des sechsmonatigen Retainers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 — ENTSCHEIDUNG UND NÄCHSTE SCHRITTE · zwei offene Listen -->
+  <section class="dslide" data-label="Entscheidung">
+    <header class="slide-head"><span class="type-eyebrow">04 / Entscheidung</span></header>
+    <footer class="slide-foot"><span class="foot-brand"><img src="../assets/logos/wordmark-black.svg" alt="Bridgemaker" /><span>Muster AG Wachstumsprogramm</span></span><span class="pagenum"></span></footer>
+    <div class="dslide-content">
+      <h2 class="type-h1 deck-title" style="max-width: 1000px;">Mit der Freigabe der Setup-Phase starten wir direkt in die Baseline</h2>
+      <div class="deck-body">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--space-16);">
+          <div>
+            <div class="type-eyebrow" style="color: var(--mid); margin-bottom: var(--space-4);">Entscheidung heute</div>
+            <div class="agenda-row"><span class="agenda-num type-body">01</span><div class="type-h4">Setup-Phase für 15.000 € freigeben</div></div>
+            <div class="agenda-row"><span class="agenda-num type-body">02</span><div class="type-h4">Einen internen Owner und Verantwortliche aus Vertrieb, Marketing, Produkt, Service und IT benennen</div></div>
+            <div class="agenda-row"><span class="agenda-num type-body">03</span><div class="type-h4">Datenzugänge und Workshop-Termine vorbereiten</div></div>
+          </div>
+          <div>
+            <div class="type-eyebrow" style="color: var(--mid); margin-bottom: var(--space-4);">Schritte nach der Freigabe</div>
+            <div class="agenda-row"><span class="agenda-num type-body">01</span><div class="type-h4">Kick-off und Process Mapping terminieren</div></div>
+            <div class="agenda-row" style="padding-bottom: 76px;"><span class="agenda-num type-body">02</span><div class="type-h4">CRM-, ERP-, E-Mail- und Umsatzdaten prüfen</div></div>
+            <div class="agenda-row"><span class="agenda-num type-body">03</span><div class="type-h4">Baseline, Business Case und erste Umsetzungswelle vorbereiten</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 — SCHLUSS · Statement + dezente Kontaktzeilen -->
+  <section class="dslide dslide-dark dslide-moment" data-label="Schluss" style="align-items: center; text-align: center; justify-content: center;">
+    <div class="kasane-layer" style="background: radial-gradient(ellipse 85% 100% at 3% 0%, rgba(168,84,110,0.55) 0%, transparent 62%), radial-gradient(ellipse 95% 130% at 100% 55%, rgba(88,102,158,0.55) 0%, transparent 68%), linear-gradient(112deg, #8A5C88 0%, #7A5AA0 38%, #6C58A4 68%, #5E64A0 100%);"></div>
+    <svg class="kasane-layer" viewBox="0 0 1440 810" preserveAspectRatio="xMidYMid slice" style="z-index: 1; width: 100%; height: 100%;" aria-hidden="true"><g fill="none" stroke="#F5F1EB" stroke-width="1" opacity="0.12"><path d="M1275,405 L1275,420 L1274,434 L1273,449 L1270,463 L1267,478 L1263,492 L1259,507 L1253,521 L1247,536 L1239,550 L1231,565 L1221,579 L1210,592 L1198,606 L1184,619 L1169,631 L1153,643 L1135,654 L1116,664 L1096,674 L1074,682 L1052,690 L1029,696 L1006,702 L981,706 L957,710 L933,713 L908,716 L884,717 L860,719 L836,719 L813,720 L789,720 L766,721 L743,721 L720,721 L697,721 L674,721 L651,721 L627,721 L604,720 L580,719 L556,718 L532,716 L507,713 L483,709 L460,705 L436,700 L413,694 L391,687 L369,679 L348,671 L329,661 L310,651 L293,640 L276,628 L261,616 L247,604 L234,591 L222,577 L212,564 L202,550 L193,536 L185,522 L178,508 L172,493 L166,479 L162,464 L159,449 L156,435 L155,420 L155,405 L156,390 L158,376 L162,361 L167,347 L174,332 L182,318 L191,305 L201,292 L212,279 L224,266 L238,254 L251,243 L266,231 L281,220 L296,210 L311,199 L327,189 L343,179 L359,169 L376,159 L393,149 L410,139 L427,129 L446,120 L464,110 L484,101 L504,92 L525,84 L547,76 L570,69 L594,63 L618,58 L643,54 L668,51 L694,50 L720,49 L746,50 L772,52 L797,55 L822,59 L846,64 L870,70 L893,77 L915,84 L936,92 L957,100 L977,109 L996,118 L1015,127 L1033,137 L1051,146 L1068,156 L1085,166 L1102,176 L1118,186 L1134,196 L1150,207 L1164,218 L1179,230 L1192,241 L1205,254 L1217,266 L1228,279 L1237,292 L1246,305 L1253,319 L1260,333 L1265,347 L1269,362 L1272,376 L1274,390 L1275,405 Z" /><path d="M1414,405 L1413,423 L1411,441 L1408,459 L1403,477 L1397,495 L1391,513 L1383,530 L1373,548 L1363,565 L1351,581 L1337,598 L1322,614 L1306,629 L1288,644 L1269,658 L1248,671 L1226,683 L1203,695 L1178,705 L1153,715 L1128,724 L1102,732 L1075,739 L1048,746 L1021,752 L994,758 L967,763 L940,768 L913,773 L886,777 L859,782 L832,786 L805,791 L777,795 L749,799 L720,802 L691,805 L661,808 L631,810 L601,811 L570,811 L539,810 L508,808 L477,805 L447,800 L418,794 L389,787 L361,778 L335,768 L309,757 L286,745 L263,732 L242,718 L223,703 L205,688 L189,673 L173,657 L159,641 L146,624 L134,608 L123,591 L113,575 L103,558 L94,542 L86,525 L78,508 L72,491 L66,474 L61,457 L58,440 L55,422 L54,405 L55,388 L56,370 L59,353 L64,336 L70,319 L77,302 L86,285 L95,269 L106,252 L118,237 L131,221 L144,206 L159,190 L174,176 L190,161 L206,146 L223,132 L241,118 L260,104 L279,90 L300,76 L321,63 L344,51 L368,39 L393,28 L419,18 L447,9 L475,1 L504,-6 L534,-11 L565,-15 L596,-17 L627,-19 L658,-18 L689,-17 L720,-14 L750,-10 L780,-5 L809,1 L837,8 L864,15 L891,22 L917,30 L943,38 L968,46 L992,55 L1017,63 L1041,71 L1065,80 L1089,88 L1113,97 L1137,107 L1161,116 L1185,126 L1208,137 L1230,148 L1252,160 L1273,173 L1293,186 L1312,200 L1329,215 L1345,230 L1359,246 L1372,263 L1383,280 L1392,297 L1400,315 L1405,332 L1410,351 L1413,369 L1414,387 L1414,405 Z" /><path d="M1523,405 L1519,426 L1514,447 L1509,467 L1502,488 L1494,508 L1485,528 L1475,548 L1463,567 L1450,587 L1436,605 L1420,624 L1403,642 L1384,659 L1364,676 L1342,692 L1320,707 L1296,721 L1271,735 L1245,749 L1218,761 L1191,773 L1163,785 L1135,796 L1106,806 L1077,816 L1047,826 L1017,836 L987,845 L956,854 L924,863 L892,871 L859,879 L825,886 L791,892 L756,897 L720,901 L684,904 L647,906 L610,906 L573,904 L537,901 L501,896 L465,889 L431,881 L398,871 L366,860 L336,848 L307,834 L280,819 L255,804 L231,788 L208,771 L187,754 L167,737 L147,720 L129,703 L111,685 L94,668 L77,651 L61,633 L45,616 L29,598 L14,580 L-1,562 L-14,544 L-28,525 L-40,506 L-50,486 L-60,467 L-67,446 L-73,426 L-77,405 L-79,384 L-79,363 L-78,342 L-74,321 L-68,300 L-60,280 L-51,259 L-40,239 L-28,219 L-14,200 L1,180 L17,162 L35,143 L53,125 L73,107 L94,90 L116,73 L139,57 L164,41 L190,26 L217,12 L245,-2 L275,-14 L306,-25 L338,-35 L371,-44 L405,-51 L440,-57 L475,-61 L510,-64 L546,-66 L581,-67 L617,-66 L652,-64 L686,-62 L720,-59 L753,-55 L786,-51 L819,-46 L851,-41 L883,-36 L915,-31 L947,-26 L978,-21 L1010,-16 L1042,-10 L1075,-4 L1107,3 L1140,10 L1172,17 L1205,26 L1237,36 L1268,46 L1298,58 L1327,71 L1355,85 L1381,101 L1405,117 L1427,135 L1447,153 L1464,173 L1479,193 L1492,213 L1503,234 L1511,255 L1518,277 L1523,298 L1525,320 L1527,341 L1527,363 L1525,384 L1523,405 Z" /><path d="M1604,405 L1603,428 L1601,451 L1598,474 L1594,497 L1589,521 L1582,544 L1574,567 L1565,589 L1553,612 L1540,634 L1525,656 L1508,678 L1488,699 L1468,719 L1445,739 L1421,758 L1395,776 L1368,794 L1340,811 L1310,827 L1280,843 L1248,858 L1216,872 L1183,886 L1149,899 L1114,912 L1078,924 L1041,935 L1004,945 L965,954 L926,962 L886,969 L845,975 L804,979 L762,981 L720,982 L678,981 L636,978 L595,973 L555,967 L515,959 L477,949 L440,938 L404,926 L370,913 L337,898 L305,884 L274,868 L245,852 L217,836 L189,820 L162,804 L135,788 L108,772 L82,756 L56,739 L29,723 L3,706 L-23,689 L-48,671 L-74,653 L-98,634 L-121,614 L-143,593 L-163,572 L-181,550 L-197,527 L-210,503 L-221,479 L-229,455 L-234,430 L-236,405 L-236,380 L-232,355 L-226,330 L-218,306 L-207,282 L-195,258 L-180,235 L-164,212 L-147,190 L-128,168 L-107,147 L-86,126 L-63,106 L-40,86 L-15,67 L11,48 L38,30 L67,13 L97,-3 L127,-19 L160,-33 L193,-47 L227,-59 L263,-70 L299,-80 L336,-89 L374,-96 L412,-103 L451,-108 L489,-112 L528,-115 L566,-118 L605,-120 L643,-121 L682,-122 L720,-122 L758,-122 L797,-122 L835,-121 L874,-120 L914,-119 L953,-117 L993,-115 L1033,-111 L1074,-107 L1114,-102 L1154,-96 L1194,-88 L1234,-79 L1272,-68 L1309,-56 L1344,-41 L1378,-26 L1409,-9 L1439,10 L1465,30 L1489,51 L1510,73 L1529,96 L1545,119 L1559,143 L1570,167 L1579,192 L1586,216 L1592,240 L1596,264 L1599,288 L1602,312 L1603,335 L1604,359 L1604,382 L1604,405 Z" /><path d="M1722,405 L1728,431 L1732,458 L1735,485 L1736,512 L1734,540 L1730,567 L1723,595 L1714,622 L1701,649 L1685,675 L1667,701 L1646,726 L1622,750 L1596,773 L1568,795 L1538,817 L1506,837 L1473,857 L1439,876 L1403,893 L1366,910 L1328,926 L1289,941 L1250,955 L1209,969 L1168,981 L1125,992 L1082,1002 L1038,1011 L994,1018 L949,1024 L903,1029 L858,1032 L812,1033 L766,1033 L720,1031 L675,1027 L630,1022 L586,1015 L543,1008 L501,999 L459,989 L419,978 L379,966 L341,955 L302,942 L265,930 L228,917 L190,904 L153,890 L116,877 L79,863 L42,849 L5,834 L-32,818 L-68,802 L-104,784 L-139,766 L-172,746 L-204,725 L-234,703 L-262,680 L-287,655 L-309,630 L-327,603 L-342,576 L-353,548 L-361,519 L-366,491 L-366,462 L-364,433 L-358,405 L-350,377 L-340,349 L-327,322 L-312,296 L-296,270 L-279,244 L-260,220 L-241,195 L-221,171 L-200,148 L-178,124 L-156,102 L-132,79 L-108,57 L-82,36 L-55,15 L-27,-6 L2,-26 L33,-45 L66,-63 L100,-80 L135,-96 L172,-111 L210,-125 L249,-138 L289,-150 L329,-161 L371,-171 L413,-179 L456,-187 L499,-194 L542,-200 L586,-205 L630,-210 L675,-214 L720,-217 L765,-220 L811,-221 L858,-222 L904,-221 L951,-220 L998,-217 L1044,-212 L1091,-206 L1137,-198 L1182,-189 L1225,-177 L1268,-164 L1308,-149 L1347,-132 L1383,-113 L1416,-93 L1448,-71 L1476,-49 L1502,-25 L1525,-0 L1546,25 L1565,50 L1582,76 L1597,101 L1611,127 L1623,152 L1635,178 L1646,203 L1657,228 L1667,253 L1677,278 L1687,303 L1697,328 L1706,353 L1714,379 L1722,405 Z" /><path d="M1903,405 L1912,436 L1917,468 L1918,500 L1915,531 L1909,563 L1898,594 L1884,625 L1866,655 L1844,684 L1819,713 L1791,740 L1761,766 L1728,790 L1694,814 L1658,837 L1620,858 L1582,879 L1542,898 L1502,917 L1461,935 L1420,952 L1378,968 L1335,984 L1291,999 L1247,1013 L1202,1026 L1157,1037 L1110,1048 L1063,1058 L1015,1066 L967,1073 L918,1078 L869,1082 L819,1084 L769,1085 L720,1085 L671,1083 L622,1080 L573,1075 L525,1070 L477,1064 L429,1057 L382,1049 L334,1041 L287,1032 L241,1022 L194,1012 L147,1000 L100,989 L54,976 L8,962 L-38,947 L-82,930 L-126,912 L-168,893 L-208,872 L-246,850 L-281,826 L-314,800 L-343,773 L-368,745 L-390,716 L-408,685 L-422,654 L-432,623 L-439,591 L-442,560 L-442,528 L-439,497 L-433,466 L-426,435 L-417,405 L-406,376 L-395,346 L-382,318 L-369,290 L-356,262 L-343,234 L-329,207 L-314,179 L-299,152 L-283,124 L-267,97 L-248,70 L-228,43 L-207,16 L-183,-11 L-157,-37 L-129,-62 L-98,-86 L-65,-109 L-30,-131 L7,-152 L47,-172 L88,-190 L131,-207 L176,-222 L222,-236 L269,-249 L317,-260 L365,-270 L415,-279 L465,-286 L515,-293 L566,-298 L617,-303 L668,-306 L720,-307 L772,-308 L824,-307 L876,-305 L927,-301 L979,-295 L1029,-288 L1079,-278 L1128,-267 L1175,-254 L1221,-240 L1265,-223 L1307,-205 L1347,-185 L1385,-165 L1420,-143 L1454,-120 L1485,-96 L1515,-72 L1543,-47 L1569,-23 L1595,2 L1619,27 L1643,52 L1666,77 L1690,102 L1713,127 L1735,153 L1758,178 L1780,204 L1802,231 L1823,258 L1843,286 L1861,315 L1878,344 L1892,374 L1903,405 Z" /><path d="M2076,405 L2075,441 L2070,476 L2059,511 L2045,545 L2026,579 L2004,611 L1978,643 L1949,673 L1918,703 L1885,731 L1850,758 L1814,784 L1777,809 L1740,833 L1702,857 L1664,880 L1625,903 L1586,925 L1547,946 L1507,968 L1466,989 L1425,1009 L1383,1029 L1339,1048 L1294,1066 L1247,1084 L1200,1100 L1150,1114 L1100,1128 L1048,1139 L995,1150 L941,1158 L887,1164 L831,1169 L776,1172 L720,1174 L664,1174 L608,1172 L552,1169 L497,1165 L441,1160 L386,1153 L331,1145 L276,1136 L222,1126 L168,1115 L115,1102 L63,1088 L11,1073 L-39,1055 L-88,1037 L-135,1016 L-180,994 L-223,971 L-262,945 L-299,918 L-333,890 L-363,860 L-389,829 L-412,797 L-431,765 L-447,732 L-460,698 L-469,665 L-476,631 L-481,598 L-484,565 L-486,533 L-486,500 L-486,468 L-485,437 L-484,405 L-482,374 L-481,342 L-479,310 L-476,278 L-473,246 L-469,214 L-464,181 L-456,148 L-447,115 L-435,82 L-421,49 L-403,16 L-382,-16 L-357,-48 L-329,-78 L-297,-107 L-262,-135 L-224,-161 L-183,-186 L-139,-209 L-92,-230 L-43,-249 L7,-266 L59,-282 L112,-296 L166,-308 L220,-319 L275,-329 L330,-337 L385,-344 L441,-350 L497,-355 L552,-358 L608,-361 L664,-362 L720,-362 L776,-361 L831,-358 L886,-353 L941,-347 L995,-340 L1048,-331 L1101,-320 L1152,-307 L1202,-293 L1250,-277 L1297,-260 L1343,-242 L1387,-223 L1429,-203 L1470,-182 L1511,-160 L1550,-138 L1588,-116 L1625,-93 L1662,-69 L1698,-45 L1734,-21 L1770,4 L1805,29 L1840,55 L1873,82 L1905,110 L1936,139 L1965,169 L1991,201 L2015,233 L2035,266 L2052,300 L2064,334 L2073,370 L2076,405 Z" /><path d="M2161,405 L2149,442 L2133,479 L2113,515 L2091,550 L2066,584 L2040,617 L2012,649 L1983,681 L1953,711 L1923,742 L1892,771 L1862,801 L1831,830 L1800,859 L1769,888 L1737,917 L1704,946 L1670,975 L1634,1004 L1597,1032 L1557,1060 L1515,1086 L1471,1112 L1424,1136 L1374,1159 L1322,1180 L1268,1199 L1212,1216 L1154,1230 L1094,1243 L1033,1252 L971,1260 L909,1265 L846,1268 L783,1269 L720,1268 L657,1266 L595,1261 L533,1255 L472,1248 L412,1240 L352,1230 L293,1218 L234,1206 L177,1192 L120,1177 L65,1160 L11,1142 L-41,1122 L-92,1100 L-140,1078 L-186,1053 L-230,1027 L-271,1000 L-309,971 L-345,941 L-377,910 L-407,878 L-434,846 L-458,813 L-480,780 L-500,746 L-518,713 L-535,679 L-550,645 L-565,612 L-579,578 L-592,544 L-605,510 L-617,475 L-628,440 L-639,405 L-649,369 L-657,333 L-663,296 L-666,258 L-667,220 L-665,182 L-659,144 L-648,106 L-634,69 L-615,32 L-591,-5 L-563,-39 L-530,-73 L-493,-105 L-452,-135 L-408,-163 L-360,-189 L-310,-213 L-257,-235 L-203,-255 L-147,-273 L-91,-290 L-34,-305 L24,-319 L81,-331 L139,-343 L197,-353 L254,-363 L312,-372 L369,-380 L427,-388 L485,-395 L543,-401 L602,-405 L661,-409 L720,-412 L780,-413 L839,-412 L899,-410 L958,-406 L1018,-401 L1076,-393 L1135,-384 L1192,-373 L1248,-360 L1304,-346 L1358,-330 L1411,-313 L1463,-295 L1514,-276 L1564,-255 L1614,-234 L1662,-212 L1709,-188 L1755,-164 L1800,-139 L1844,-113 L1887,-85 L1928,-57 L1967,-27 L2004,4 L2038,36 L2069,70 L2097,104 L2120,140 L2140,177 L2155,214 L2166,252 L2171,290 L2172,329 L2169,367 L2161,405 Z" /></g></svg>
+    <div class="grain-layer grain-screen"></div>
+    <div class="dslide-content" style="display: flex; flex-direction: column; align-items: center; gap: var(--space-16);">
+      <img class="wordmark" src="../assets/logos/wordmark-white.svg" alt="Bridgemaker" />
+      <h2 class="type-display" style="margin: 0; max-width: 1000px; color: var(--off-white);">Startklar, sobald ihr das Go gebt</h2>
+      <div>
+        <div class="type-body" style="color: var(--off-white); margin-top: var(--space-3);">Vorname Nachname, Rolle</div>
+        <div class="type-small" style="color: var(--bm-lavender-dark); margin-top: var(--space-1);">vorname.nachname@bridgemaker.com</div>
+      </div>
+    </div>
+  </section>
+
+</deck-stage>
+
+<script src="../templates/deck-stage.js"></script>
+</body>
+</html>

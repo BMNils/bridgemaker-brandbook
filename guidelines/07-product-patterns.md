@@ -197,7 +197,8 @@ keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
   Objekt-Karten, Tabelle, Zitat, Schluss — sind die freigegebene
   Menge. Slides duplizieren
   und umsortieren ja; neue Layouts erfinden nein. Fehlt ein
-  Layout: CD fragen.
+  Layout: CD fragen. Vollbeispiel (16 Seiten, neutralisiert):
+  `examples/beispiel-kundendeck.html`.
 - **Feste Kopfzone — die Headline steht:** Eyebrow-Kopfzeile und
   Headline beginnen auf jeder Content-Slide an exakt derselben
   Position (`--deck-title-y` im Template); der Inhalt füllt den

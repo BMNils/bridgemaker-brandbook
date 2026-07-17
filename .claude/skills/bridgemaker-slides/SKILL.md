@@ -13,7 +13,9 @@ Grafiken) → Sehpflicht-Checkliste → als PDF abgeben.**
 Der Nordstern: Eine Bridgemaker-Slide ist Typografie auf ruhigem
 Grund, gegliedert durch Linien. Boxen sind die Ausnahme mit
 Bedeutung. Cool, clean, konsistent — und trotzdem komplex und dicht.
-Visuelle Referenz: `assets/referenz/website-2026-07/`.
+Visuelle Referenz: `assets/referenz/website-2026-07/`; komplettes
+Muster-Deck (16 Seiten, neutralisiert):
+`examples/beispiel-kundendeck.html`.
 
 ## 1. Grundlage lesen
 
