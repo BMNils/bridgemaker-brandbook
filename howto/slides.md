@@ -34,24 +34,39 @@ Handwerks-Skills.
 
 ## Schritt 3: Start-Prompt
 
-Kopieren, die `[…]`-Stellen ausfüllen, abschicken:
+Kopieren, nur den Ansprechpartner eintragen, abschicken — **die
+Inhalte kommen bewusst noch nicht mit:**
 
 ```text
 Baue mir ein Slide-Deck nach dem bridgemaker-slides-Skill.
 
-Thema und Inhalt: [Thema + grob die Slides aufzählen]
-Sprache: [Deutsch oder Englisch]
-Ansprechpartner für die Schluss-Slide: [Name, Rolle, geprüfte E-Mail]
+Ansprechpartner für die Schluss-Slide: Name, Rolle, geprüfte E-Mail.
 
-Nutze templates/deck-template.html als Ausgangspunkt. Wo dir eine
-Grafik oder ein Diagramm helfen würde, setze den gestreiften
-Platzhalter mit deinem Vorschlag. Führe am Ende die Sehpflicht durch:
-PDF rendern, jede Seite selbst ansehen, gegen die Checkliste prüfen
-und korrigieren — sag mir explizit, wenn der Durchgang ohne Befund war.
+Richte zuerst alles ein. Wenn du bereit bist, frag mich nach den
+Inhalten — ich liefere sie dann als Nachricht oder als Datei.
 ```
 
-Ein zweiter Kontroll-Prompt ist nicht mehr nötig — die Prüfung ist
-Teil des Workflows.
+Mehr steht da nicht, mit Absicht: Der komplette Prozess (Template,
+Grafiken bauen, Voice-Redigat, Sehpflicht-Checkliste) steckt im
+Skill und veraltet damit nie im Prompt.
+
+## Schritt 4: Inhalte liefern — als letzte Aktion
+
+Claude richtet erst alles ein und fragt dann nach den Inhalten.
+Jetzt lieferst du — auf einem von zwei Wegen:
+
+- **Direkt als Nachricht:** Deinen kompletten Content einfach
+  einfügen, auch wenn es mehrere Seiten sind. Nichts kürzen, nichts
+  in Klammern quetschen.
+- **Als Datei:** Inhaltsdokument (z. B. `inhalts-master.md`) in den
+  Projektordner legen und Claude den Pfad nennen.
+
+Die Sprache erkennt Claude aus deinen Inhalten. Danach läuft die
+Pipeline: Argumentstruktur pro Slide, Texte im Bridgemaker-Ton
+(deine Aussagen bleiben, die Sprache wird Marke), Grafiken werden
+wirklich gebaut (erster Draft, ihr iteriert gemeinsam), am Ende die
+Sehpflicht mit Checkliste — Claude sagt dir explizit, wenn der
+Durchgang ohne Befund war.
 
 ## Ergebnis anschauen und weitergeben
 

@@ -1,21 +1,28 @@
 ---
 name: bridgemaker-slides
-description: Use when building or editing Bridgemaker HTML slide decks (Slides, Präsentation, Deck, Pitch). Enforces the deck template, the §7.8 rules, and the mandatory render-and-look self-check (Sehpflicht) before anything is delivered.
+description: Use when building or editing Bridgemaker HTML slide decks (Slides, Präsentation, Deck, Pitch). Enforces the deck template, the §7.8 rules, slide writing (layout follows the argument), voice editing, built graphics, and the mandatory per-page checklist (Sehpflicht) before anything is delivered.
 ---
 
 # Bridgemaker Slides
 
 Du baust ein Slide-Deck im Bridgemaker-Look. Der Weg ist nicht
-verhandelbar: Template kopieren → Inhalte einsetzen → ansehen →
-korrigieren → als PDF abgeben.
+verhandelbar: **Einrichten → Inhalte anfordern → pro Slide
+Argumentstruktur bestimmen → Texte redigieren → bauen (inkl.
+Grafiken) → Sehpflicht-Checkliste → als PDF abgeben.**
+
+Der Nordstern: Eine Bridgemaker-Slide ist Typografie auf ruhigem
+Grund, gegliedert durch Linien. Boxen sind die Ausnahme mit
+Bedeutung. Cool, clean, konsistent — und trotzdem komplex und dicht.
+Visuelle Referenz: `assets/referenz/website-2026-07/`.
 
 ## 1. Grundlage lesen
 
 Falls in dieser Session noch nicht geschehen: `CLAUDE.md` vollständig
-lesen, vor Textarbeit `guidelines/08-voice.md`. Alle Werte kommen aus
-`tokens/tokens.css` — keine eigenen Farben, Größen oder Klassen.
+lesen, `guidelines/07 §7.8 + §7.11`, vor Textarbeit
+`guidelines/08-voice.md`. Alle Werte kommen aus `tokens/tokens.css` —
+keine eigenen Farben, Größen oder Klassen.
 
-## 2. Template kopieren — nie frei bauen
+## 2. Einrichten — Template kopieren, nie frei bauen
 
 Jedes Deck entsteht als Kopie von `templates/deck-template.html`.
 
@@ -34,69 +41,129 @@ cp assets/logos/wordmark-*.svg <projektordner>/assets/logos/
 
 Das Deck liegt dann in `<projektordner>/deck/` — einen Ordner tief,
 mit relativen Pfaden auf `../tokens/`, `../templates/` und
-`../assets/`. Nur neutrale, freigegebene Muster dürfen im Repo
-selbst liegen. Die Layouts im Template sind die
-freigegebene Menge: Cover, Agenda, Kapiteltrenner, Content 2/3 + 1/3,
-1/2-Split, Zahlen, Icon-Grid, Zitat, Tabelle, Schluss. Slides
-duplizieren und umsortieren ist ausdrücklich okay — **neue Layouts
-erfinden ist verboten.** Fehlt ein Layout: gestreiften Platzhalter
-setzen und fragen.
+`../assets/`. Die Layouts im Template sind die freigegebene Menge:
+Cover, Agenda, Kapiteltrenner, Hairline-Kolumnen (mit optionalem
+Resultat-Band), Content 2/3 + 1/3 mit Infografik, Zahlen (freie
+Stats), Principle-Zeilen, Gegenüberstellung, Objekt-Karten, Tabelle,
+Zitat, Schluss. Slides duplizieren und umsortieren ist ausdrücklich
+okay — **neue Layouts erfinden ist verboten.** Fehlt ein Layout: CD
+fragen.
 
-## 3. Regeln beim Füllen
+## 3. Inhalte anfordern — als letzte Aktion des Setups
 
-Verbindlich ist der Kommentarblock im Template + `guidelines/07 §7.8`.
-Die Kurzliste:
+Der Start-Prompt enthält bewusst KEINE Inhalte (nur den
+Ansprechpartner). Wenn das Kit steht, meldest du dich mit genau
+dieser Frage:
 
-- Grund konstant Off-White; dunkles Kasane nur Cover/Schluss,
-  Kapitelband nur auf Trennern, max. eine Moment-Slide (Zitat).
-- Kopfzeile: Kapitel-Label links, Seitenzahl rechts — auf jeder
-  Slide außer dem Cover. Keine Fußzeile.
-- Eyebrows neutral (`--mid`), kein Farbcode. Kontrast auf Off-White:
-  Fließtext `--dark`, Linien `--border-subtle`.
-- Karten: Weiß/Mauve/Sage (kein Sand/Stone auf Off-White), nie
-  zweimal dieselbe nebeneinander; Komposition: Ziffer/Icon oben,
-  Inhalt unten; feine Linie unter dem Kartenkopf.
-- Ab vier Listenpunkten zweispaltig; keine leere rechte Hälfte.
-- Eine Farbwelt pro Slide; Diagramm-SVGs in einer Familie.
-- Icons nur Material Symbols Outlined über die `.msym`-Klasse.
-- Voice: Du/ihr durchgehend, Headlines ohne Schlusspunkt, keine
-  Meta-/Prozesssätze, keine Sprachmischung. Belastbare Zahlen oder
-  Mono-Platzhalter („[ Zitat folgt ]").
-- Wortmarke auf Cover und Schluss; Ansprechpartner-Card nur mit
-  **verifizierter** E-Mail — Adressen nie erfinden.
-- Fehlende Grafik: `bg-stripes-diagonal`-Platzhalter mit
-  Monospace-Caption „Vorschlag: … — lass uns das gemeinsam
-  entwerfen." Nichts improvisieren.
+> „Jetzt die Inhalte einfügen: direkt als Nachricht (auch mehrere
+> Seiten am Stück) oder als Pfad zu einer Datei (z. B.
+> `inhalts-master.md` im Projektordner)."
 
-## 4. Skills nutzen — Brandbook schlägt Skill
+Die Sprache des Decks erkennst du aus den Inhalten (Deutsch oder
+Englisch — nie mischen); nur bei echter Mehrdeutigkeit fragen.
 
-Für Story-Aufbau und Diagramm-Handwerk die mitgelieferten Skills
-verwenden — `data-storytelling`, `data-visualization` und
-`chart-visualization` liegen als geprüfte Kopien in
-`.claude/skills/` (Herkunft: dortiges README).
-Sie liefern das WIE (Struktur, Dramaturgie,
-Chart-Wahl). Sobald ein Skill eigene Farben, Schriften, Größen oder
-Schatten vorschlägt, gilt ausnahmslos das Brandbook.
+## 4. Slide Writing — Layout folgt Argument
 
-## 5. Sehpflicht — vor jeder Abgabe, nicht verhandelbar
+Für JEDE Slide, bevor du ein Layout wählst, die Strukturfrage
+beantworten (kurz notieren, nicht nur denken):
+
+- **Gleichrangige Punkte?** → Hairline-Kolumnen oder
+  Principle-Zeilen, alle uniform behandelt.
+- **Ursachen → Resultat / „und die Summe ist"?** → gleichrangige
+  Reihe + Resultat-Band (anders exponiert — Rolle = Behandlung).
+- **Kontrast/Gegenüberstellung?** → zwei offene Hairline-Spalten.
+- **Kennzahlen mit Zielen?** → Tabelle oder Meta-Zeilen (Label
+  links, Wert rechts) — Werte NIE als Chips.
+- **Zwei, drei tragende Zahlen?** → freie Stats zwischen vertikalen
+  Hairlines — kein Chart, keine KPI-Kacheln.
+- **Benannte Dinge (Produkte, Cases, Angebote)?** → Objekt-Karten,
+  Tönung uniform oder eine je Identität — nie Schachbrett.
+- **Prozess/Zeit?** → Infografik bauen (§7.11) — Substanz erhalten
+  (Parallelität, Dauer, Abhängigkeiten), nicht zur Punktlinie
+  glätten.
+
+Wenn identische Aussagen sich wiederholen („in Setup zu bestimmen"
+an fünf Stellen): einmal als Satz in den Lead, nicht fünf Elemente.
+
+## 5. Texte redigieren — Redigat ist Pflicht
+
+Gelieferte Inhalte werden aktiv in Bridgemaker-Sprache umgeschrieben
+(`guidelines/08-voice.md`). **Unantastbar sind Aussage und Struktur
+— Pflichtzone ist die Sprache:** Satzbau, Wording, Ton, Zeichen.
+Konkret: Du/ihr; aktive Verben; Headlines ohne Schlusspunkt; keine
+Meta-/Prozesssätze im Slide-Text; kein Middot; Gedankenstriche max.
+einer pro Absatz; kein „→" im Fließtext; verbotene Phrasen raus;
+belastbare Zahlen oder Mono-Platzhalter („[ Zitat folgt ]").
+
+## 6. Grafiken bauen — nicht ankündigen
+
+Informationsgrafiken (Diagramme, Timelines, Prozess-Schaubilder,
+Charts) werden IMMER gebaut — erster Draft reicht, iteriert wird
+gemeinsam. Regeln: `guidelines/07 §7.11` (Typografie-Frage,
+Direktbeschriftung, eine Farbreihe bzw. Kategorien-Code, Inter,
+keine Methodik-Fußnoten-Krücke). Bei unklarer Datenlage EINE
+Inhalts-Rückfrage („Ich baue X mit den Dimensionen Y — fehlt
+etwas?"), dann bauen. Der gestreifte Platzhalter ist NUR für
+Bild-Assets erlaubt (Fotos, CD-pflichtige Bildwelt, fehlende Logos).
+
+Für Diagramm-Handwerk die mitgelieferten Skills nutzen
+(`data-storytelling`, `data-visualization`, `chart-visualization` in
+`.claude/skills/`) — sie liefern das WIE; sobald ein Skill eigene
+Farben, Schriften oder Größen vorschlägt, gilt ausnahmslos das
+Brandbook.
+
+## 7. Sehpflicht — Abhak-Checkliste, nicht verhandelbar
 
 Code-Kontrolle reicht nicht; du musst dein Deck ANSEHEN:
 
 ```bash
-# im Repo-Root
-python3 -m http.server 8123 &
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
-  --headless=new --print-to-pdf=/tmp/deck.pdf --no-pdf-header-footer \
-  --virtual-time-budget=8000 "http://localhost:8123/<pfad>/<deck>.html"
+  --headless --disable-gpu --print-to-pdf=/tmp/deck.pdf \
+  --no-pdf-header-footer --virtual-time-budget=8000 \
+  "file://<absoluter-pfad>/<deck>.html"
 ```
 
-Dann das PDF mit Read **seitenweise visuell** durchgehen und jede
-Seite gegen die Regeln aus Schritt 3 prüfen — besonders: Kontrast,
-leere Flächen, Hurenkinder, Farbwelt, Kopfzeile/Seitenzahl,
-Platzhalter statt improvisierter Grafiken. Funde korrigieren, erneut
-rendern. Erst abgeben, wenn ein kompletter Durchgang ohne Befund ist.
+Das PDF mit Read **seitenweise visuell** durchgehen und **pro Seite
+jede Frage explizit beantworten** (abhaken, nicht überfliegen):
 
-## 6. Abgabe
+**Pro Seite:**
+- [ ] Erklärt das Layout die Argumentstruktur — oder ist es nur ein
+      gefülltes Raster?
+- [ ] Grund Off-White? (Farbfläche nur Cover/Trenner/Zitat/Schluss)
+- [ ] Trägt jede Box ein benanntes Ding, ein Zitat oder eine
+      Illustration? Alles andere → Hairlines.
+- [ ] Tönungen: Wiederholung okay, Unterschied nur mit Bedeutung —
+      **kein Schachbrett?** Resultat-Elemente anders exponiert?
+- [ ] Eine Linien-Ebene? (Keine Unterstreichung + Trennlinie
+      gemischt, keine Linien-Listen in Karten)
+- [ ] Badges gezählt und klassifiziert? (max. 3; Werte als
+      Meta-Zeile, nicht als Chip; Arbeitsstände gar nicht)
+- [ ] Charts: Direktbeschriftung, eine Farbreihe bzw. Kategorien-
+      Code, Inter, groß genug, keine Methodik-Fußnote nötig?
+- [ ] Kein Mono außer echtem Code/Platzhalter-Captions? Ziffern in
+      Inter?
+- [ ] Raum besetzt — unteres Drittel nicht ohne Absicht leer, rechte
+      Hälfte nicht leer?
+- [ ] Text: Du/ihr, keine Meta-/Prozesssprache, kein Middot, max.
+      ein Gedankenstrich pro Absatz, Headlines ohne Schlusspunkt?
+- [ ] Kontrast: alles lesbar (kein Tint auf Tint, kein rohes Purple
+      auf Dunkel)?
+- [ ] Hurenkinder/gequetschte Texte?
+
+**Übers ganze Deck (Blätter-Test):**
+- [ ] Alle Seiten schnell durchschalten — springt die Headline, die
+      Kopfzeile oder die Seitenzahl? (Muss stehen wie angenagelt)
+- [ ] Kopfzeile auf jeder Slide außer Cover, an derselben Position?
+- [ ] Eine Farbwelt pro Kapitel, Trenner kündigt sie an?
+- [ ] Gleiche Bedeutung = gleiche Gestalt? (Badges, Zitat-
+      Attributionen, Listenanfänge, − vs. -, Chip-Stile)
+- [ ] Wortmarke auf Cover und Schluss; Schluss ist Statement + 
+      dezente Kontaktzeilen mit VERIFIZIERTER E-Mail?
+
+Funde korrigieren, erneut rendern. Erst abgeben, wenn ein kompletter
+Durchgang ohne Befund ist — und das explizit sagen.
+
+## 8. Abgabe
 
 Weitergegeben wird **nur das PDF** (Drucken → als PDF sichern liefert
 eine Seite pro Slide). Die HTML-Datei funktioniert nur im Projekt-Kit
