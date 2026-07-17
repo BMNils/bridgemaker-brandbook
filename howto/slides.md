@@ -71,10 +71,15 @@ Durchgang ohne Befund war.
 ## Ergebnis anschauen und weitergeben
 
 - **Anschauen:** HTML-Datei im Browser öffnen (Doppelklick, Datei muss
-  im Repo liegen), Navigation per Pfeiltasten. Oder direkt das PDF.
-- **Weitergeben: nur als PDF.** Im Browser Drucken → „Als PDF sichern"
-  (eine Seite pro Slide). Die HTML-Datei allein ist außerhalb des
-  Repos kaputt — nie einzeln verschicken.
+  im Projekt-Kit bzw. Repo liegen), Navigation per Pfeiltasten. Oder
+  direkt das PDF.
+- **Weitergeben:** Sag Claude „Mach das Deck versandfertig" — du
+  bekommst beides: das PDF (eine Seite pro Slide) und eine einzelne
+  Versand-HTML, in der alles steckt, auch die Schriften. Die kannst
+  du gefahrlos verschicken: keine Ordner, keine Assets, kein
+  Internet nötig. Zwei Dinge bleiben tabu — die rohe Deck-HTML
+  einzeln verschicken und PDFs über den Drucken-Dialog erzeugen
+  (der skaliert falsch und liefert zerschossene Seiten).
 - **Wichtig — Kundenarbeit nie im Brandbook-Repo:** Das Repo ist
   öffentlich und projektübergreifend. Für jedes Kundenprojekt legt
   Claude einen Projektordner außerhalb an und kopiert das Kit hinein

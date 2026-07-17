@@ -165,9 +165,20 @@ Heroes und Cover-Slides.
 
 Decks sind **statische Lese-Artefakte**: gebaut als HTML auf einer
 festen **1440×810-Stage** (`templates/deck-stage.js` skaliert verlust-
-frei), weitergegeben **ausschließlich als PDF** (Drucken → als PDF
-sichern, eine Seite pro Slide). Keine Animationen, kein kasane-drift,
-keine Hover-Effekte. (Neufassung 16.07.2026 — ersetzt die frühere
+frei). **Weitergabe nur in zwei Formaten, beide aus
+`templates/deck-pack.js`** *(2026-07-17 — ersetzt „Drucken → als
+PDF sichern")*: das **PDF** (`--pdf`, Headless-Chrome-Render,
+pixelidentisch, eine Seite pro Slide — NIE der Drucken-Dialog des
+Browsers, der skaliert falsch und produziert zerschossene PDFs)
+und bei Bedarf die **versandfertige Einzeldatei**
+`<deck>-versand.html` (Tokens, Stage-Skript, Fonts, Logos und
+Bilder inline — keine Pfade, die brechen können, keine externen
+Aufrufe, läuft offline). Der Projektordner und die rohe Deck-HTML
+werden nie verschickt. **Fonts lokal:** Decks laden Inter,
+JetBrains Mono und Material Symbols aus `assets/fonts/`
+(Compliance — der Google-Fonts-Link ist in Decks tabu,
+*2026-07-17*). Keine Animationen, kein kasane-drift, keine
+Hover-Effekte. (Stage-Neufassung 16.07.2026 — ersetzt die frühere
 1920×1080-/24px-Regel.)
 
 - **Nordstern** *(2026-07-17)*: Eine Bridgemaker-Slide ist

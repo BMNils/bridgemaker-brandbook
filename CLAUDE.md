@@ -21,7 +21,9 @@
    ausschließlich für Code-Darstellung und Platzhalter-Captions erlaubt;
    UI-Text (Eyebrows, Badges, KPIs, Nummerierungen, Meta-Zeilen,
    Chart-Achsen, Folios) läuft IMMER in Inter. In Next.js via
-   `next/font`; Google-Fonts-Link nur für statische Artefakte. Keine
+   `next/font`; statische Artefakte (Decks) laden die lokal
+   gehosteten Fonts aus `assets/fonts/` — kein Google-Fonts-Aufruf
+   (Compliance). Keine
    anderen Fonts ohne Freigabe. Einzige Ausnahme: Print-Display-Grade
    laufen in **Inter Display** (Override im Print-Layer, s. Punkt
    „Print" in Abschnitt 7).

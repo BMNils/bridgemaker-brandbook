@@ -35,10 +35,11 @@ anlegen und das Kit hineinkopieren — die Ordnerstruktur spiegelt das
 Repo, dadurch funktionieren alle relativen Pfade unverändert:
 
 ```bash
-mkdir -p <projektordner>/{tokens,templates,assets/logos,deck}
+mkdir -p <projektordner>/{tokens,templates,assets/logos,assets/fonts,deck}
 cp tokens/tokens.css <projektordner>/tokens/
-cp templates/deck-stage.js templates/deck-topo-konturen.js <projektordner>/templates/
+cp templates/deck-stage.js templates/deck-topo-konturen.js templates/deck-pack.js <projektordner>/templates/
 cp assets/logos/wordmark-*.svg <projektordner>/assets/logos/
+cp assets/fonts/* <projektordner>/assets/fonts/
 ```
 
 Das Deck liegt dann in `<projektordner>/deck/` — einen Ordner tief,
@@ -193,9 +194,20 @@ Durchgang ohne Befund ist — und das explizit sagen.
 
 ## 8. Abgabe
 
-Weitergegeben wird **nur das PDF** (Drucken → als PDF sichern liefert
-eine Seite pro Slide). Die HTML-Datei funktioniert nur im Projekt-Kit
-bzw. Repo und wird nie einzeln verschickt. **Kundendateien nie ins
+Weitergegeben wird über `templates/deck-pack.js` — nie der
+Projektordner, nie die rohe Deck-HTML:
+
+```bash
+node ../templates/deck-pack.js <deck>.html --pdf
+```
+
+Das erzeugt beide Freigabe-Formate: `<deck>.pdf` (Headless-Chrome-
+Render, pixelidentisch, eine Seite pro Slide — NIE den Drucken-
+Dialog des Browsers benutzen, der skaliert falsch) und
+`<deck>-versand.html` (Einzeldatei, ALLE Ressourcen inklusive der
+Fonts inline — läuft offline, ohne Ordner, ohne externe Aufrufe).
+Standard der Abgabe bleibt das PDF; die Versand-HTML ist für
+Empfänger, die selbst durchklicken sollen. **Kundendateien nie ins
 Brandbook-Repo legen oder committen** — Kundenarbeit lebt im
 Projektordner; `examples/` ist ausschließlich für freigegebene,
 neutrale Muster.
