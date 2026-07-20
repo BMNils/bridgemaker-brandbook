@@ -199,10 +199,12 @@
   Zeilen (redigieren statt schrumpfen); max. drei Textgrößen pro
   Seite (Headline/Content/Meta). Layouts ausschließlich aus dem
   Template; Regeln + Sehpflicht: `guidelines/07 §7.8` und Repo-Skill
-  `bridgemaker-slides`. Kundenarbeit entsteht NIE in diesem Repo
-  (auch nicht lokal/gitignored) — eigener Projektordner außerhalb,
-  mit kopiertem Kit (tokens/, templates/deck-stage.js +
-  deck-topo-konturen.js, assets/logos/).
+  `bridgemaker-slides`. Vor der Sehpflicht die messbaren Regeln
+  maschinell prüfen: `node ../templates/deck-lint.js <deck>.html`
+  (Exit 0 = weiter zum Ansehen). Kundenarbeit entsteht NIE in
+  diesem Repo (auch nicht lokal/gitignored) — Projektordner
+  außerhalb legt `node templates/new-deck.js <ordner> --kunde
+  "Name"` an (komplettes Kit + startklare Template-Kopie).
 - **Print (DIN A4):** `tokens/print-tokens.css` als Layer NACH tokens.css
   laden. mm/pt statt px, Baseline-Grid 14pt, Großziffer→Headline 18mm,
   Eyebrow→Headline 12mm, Hairlines 0.4pt statt 1px, Print-Kasane mit

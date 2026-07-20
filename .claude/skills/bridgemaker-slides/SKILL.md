@@ -30,21 +30,19 @@ Jedes Deck entsteht als Kopie von `templates/deck-template.html`.
 
 **Ablageort — Kundenarbeit nie im Brandbook-Repo** (das Repo ist
 öffentlich und projektübergreifend; Kundendaten gehören auch lokal
-nicht hinein). Für jedes Kundenprojekt einen Projektordner außerhalb
-anlegen und das Kit hineinkopieren — die Ordnerstruktur spiegelt das
-Repo, dadurch funktionieren alle relativen Pfade unverändert:
+nicht hinein). Für jedes Kundenprojekt legt EIN Befehl den
+Projektordner außerhalb an — komplett mit Kit (tokens, Werkzeuge,
+Logos, Fonts), startklarer Template-Kopie in `deck/` und README:
 
 ```bash
-mkdir -p <projektordner>/{tokens,templates,assets/logos,assets/fonts,deck}
-cp tokens/tokens.css <projektordner>/tokens/
-cp templates/deck-stage.js templates/deck-topo-konturen.js templates/deck-pack.js <projektordner>/templates/
-cp assets/logos/wordmark-*.svg <projektordner>/assets/logos/
-cp assets/fonts/* <projektordner>/assets/fonts/
+node templates/new-deck.js <projektordner-außerhalb> --kunde "Name"
 ```
 
-Das Deck liegt dann in `<projektordner>/deck/` — einen Ordner tief,
-mit relativen Pfaden auf `../tokens/`, `../templates/` und
-`../assets/`. Die Layouts im Template sind die freigegebene Menge:
+Das Skript verweigert Ziele im Repo und überschreibt nichts
+Bestehendes. Die Ordnerstruktur spiegelt das Repo, dadurch
+funktionieren alle relativen Pfade unverändert; das Deck liegt in
+`<projektordner>/deck/` — einen Ordner tief, mit relativen Pfaden
+auf `../tokens/`, `../templates/` und `../assets/`. Die Layouts im Template sind die freigegebene Menge:
 Cover, Agenda, Kapiteltrenner, Hairline-Kolumnen (mit optionalem
 Resultat-Band), Content 2/3 + 1/3 mit Infografik, Zahlen (freie
 Stats), Principle-Zeilen, Gegenüberstellung, Objekt-Karten,
@@ -126,7 +124,18 @@ Brandbook.
 
 ## 7. Sehpflicht — Abhak-Checkliste, nicht verhandelbar
 
-Code-Kontrolle reicht nicht; du musst dein Deck ANSEHEN:
+**Erster Durchgang maschinell:** `deck-lint.js` prüft die messbare
+Hälfte der Checkliste im echten Render (Headline-Zeilen und
+-Position, Kopf-/Fußzeilen-System, Textgrößen, Mono, Grund,
+Überlauf, Middot/Emoji/Phrasen):
+
+```bash
+node ../templates/deck-lint.js <deck>.html
+```
+
+Alle FEHLER beheben, bis der Lint ohne Befund ist. Er ersetzt das
+Ansehen nicht — Layout-folgt-Argument, Grafik-Geometrie, Tönung
+und Ton prüft weiterhin dein Auge:
 
 ```bash
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
