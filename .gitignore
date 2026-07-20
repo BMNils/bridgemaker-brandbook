@@ -6,3 +6,6 @@ node_modules/
 
 # Kundendecks enthalten vertrauliche Daten — nie ins öffentliche Repo
 examples/detax-*
+
+# Temp-Renderkopien des Deck-Lints (werden normal automatisch gelöscht)
+.deck-lint-*.html

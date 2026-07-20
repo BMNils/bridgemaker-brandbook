@@ -233,24 +233,31 @@ let html = fs.readFileSync(deckPath, 'utf8');
 html = html.includes('</body>') ? html.replace('</body>', inject + '\n</body>') : html + inject;
 fs.writeFileSync(tmp, html);
 
-let report;
+/* Kein process.exit() im try — das überspringt das finally und
+   lässt die Temp-Kopie liegen. Fehler setzen nur die Meldung;
+   beendet wird NACH dem Aufräumen. */
+let report, fatal;
 try {
   const chromePaths = [
     '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     '/usr/bin/google-chrome', '/usr/bin/chromium',
   ];
   const chrome = chromePaths.find(p => fs.existsSync(p));
-  if (!chrome) { console.error('Kein Chrome gefunden — Lint braucht Headless Chrome.'); process.exit(1); }
-  const dom = execFileSync(chrome, [
-    '--headless', '--disable-gpu', '--window-size=1600,1000',
-    '--virtual-time-budget=10000', '--dump-dom', 'file://' + tmp,
-  ], { maxBuffer: 256 * 1024 * 1024, stdio: ['ignore', 'pipe', 'ignore'] }).toString('utf8');
-  const m = dom.match(/id="__deck_lint_report__"[^>]*>([A-Za-z0-9+/=]+)</);
-  if (!m) { console.error('FEHLER — Render lieferte keinen Befund (Deck lädt nicht?).'); process.exit(1); }
-  report = JSON.parse(Buffer.from(m[1], 'base64').toString('utf8'));
+  if (!chrome) {
+    fatal = 'Kein Chrome gefunden — Lint braucht Headless Chrome.';
+  } else {
+    const dom = execFileSync(chrome, [
+      '--headless', '--disable-gpu', '--window-size=1600,1000',
+      '--virtual-time-budget=10000', '--dump-dom', 'file://' + tmp,
+    ], { maxBuffer: 256 * 1024 * 1024, stdio: ['ignore', 'pipe', 'ignore'] }).toString('utf8');
+    const m = dom.match(/id="__deck_lint_report__"[^>]*>([A-Za-z0-9+/=]+)</);
+    if (!m) fatal = 'FEHLER — Render lieferte keinen Befund (Deck lädt nicht?).';
+    else report = JSON.parse(Buffer.from(m[1], 'base64').toString('utf8'));
+  }
 } finally {
   fs.rmSync(tmp, { force: true });
 }
+if (fatal) { console.error(fatal); process.exit(1); }
 
 if (asJson) { console.log(JSON.stringify(report, null, 2)); }
 
