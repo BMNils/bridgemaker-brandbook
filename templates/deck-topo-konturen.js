@@ -10,6 +10,9 @@
      node deck-topo-konturen.js schluss     [seed] [stroke] [opacity]
      node deck-topo-konturen.js band-mauve  [seed] [stroke] [opacity]
      node deck-topo-konturen.js band-sage   [seed] [stroke] [opacity]
+     node deck-topo-konturen.js band-teal   [seed] [stroke] [opacity]
+     node deck-topo-konturen.js band-rose   [seed] [stroke] [opacity]
+     node deck-topo-konturen.js band-sand   [seed] [stroke] [opacity]
 
    cover      → Dichte-Gradient wie der Website-Hero: rechts
                 dicht, nach links auslaufend (Höhenfeld = Rampe
@@ -202,6 +205,21 @@ const BAND_BLOBS = {
   'band-sage': [
     { cx: 0.20, cy: 0.35, rx: 0.90, ry: 0.75, w: 1.00 },
     { cx: 0.85, cy: 0.65, rx: 0.85, ry: 0.70, w: 0.80 },
+    { cx: 0.50, cy: 0.50, rx: 1.20, ry: 0.70, w: 0.35 },
+  ],
+  'band-teal': [
+    { cx: 0.75, cy: 0.60, rx: 0.90, ry: 0.75, w: 1.00 },
+    { cx: 0.20, cy: 0.30, rx: 0.85, ry: 0.70, w: 0.47 },
+    { cx: 0.50, cy: 0.50, rx: 1.20, ry: 0.70, w: 0.35 },
+  ],
+  'band-rose': [
+    { cx: 0.25, cy: 0.60, rx: 0.90, ry: 0.75, w: 1.00 },
+    { cx: 0.80, cy: 0.30, rx: 0.85, ry: 0.70, w: 0.38 },
+    { cx: 0.50, cy: 0.55, rx: 1.20, ry: 0.70, w: 0.35 },
+  ],
+  'band-sand': [
+    { cx: 0.70, cy: 0.35, rx: 0.90, ry: 0.75, w: 1.00 },
+    { cx: 0.20, cy: 0.70, rx: 0.85, ry: 0.70, w: 0.33 },
     { cx: 0.50, cy: 0.50, rx: 1.20, ry: 0.70, w: 0.35 },
   ],
 };

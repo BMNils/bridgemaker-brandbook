@@ -108,7 +108,7 @@
 - **Kasane-Gradients** (Familienfarben als radiale Ellipsen über Basis):
   ein Hero-Kasane pro Seite; mehrere Gradient-Felder okay, aber im
   Wechsel mit ruhigen Flächen, nie zwei direkt aneinander, nie hinter
-  Fließtext. Katalog (28 Flächen, „ein Thema = eine Farbwelt") in
+  Fließtext. Katalog (31 Flächen, „ein Thema = eine Farbwelt") in
   tokens.css.
 - Karten: `radius-xl` (20px). **Tönung braucht Bedeutung:** Dieselbe
   Surface darf sich frei wiederholen — Uniformität ist Ruhe, kein
