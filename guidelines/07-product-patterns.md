@@ -238,8 +238,9 @@ Hover-Effekte. (Stage-Neufassung 16.07.2026 — ersetzt die frühere
 - **Moment-Flächen** *(Neufassung 2026-07-17)*: Cover = Charcoal +
   `bg-kasane-cta` (statisch) + topografische Konturen — rechts
   dicht, links offen zum Text, wie der Website-Hero. Schluss =
-  Footer-Verlauf (custom, volle Stärke, im Template hinterlegt;
-  der Token `bg-contact-cta` entspricht NICHT dem Website-Footer)
+  Footer-Verlauf (Token `bg-contact-cta-static` — die vorgemischte
+  statische Hälfte des contact-cta-Paars; das rohe `bg-contact-cta`
+  bleibt tabu als Fläche, im Web gilt `.contact-cta-wash`)
   + konzentrische Konturen um den Content. Topo-Linien sind
   Blickführung um den Content, nie Deko-Gewusel; Generator:
   `templates/deck-topo-konturen.js` (cover/schluss). Dazu die

@@ -335,22 +335,62 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
 
 /* Kontakt-/Abschluss-CTA — Triade auf Deep-Plum; Teal und Berry müssen
    als eigene Farbräume lesbar bleiben, kein homogenes Lila.
-   ⚠ BEFUND (2026-07-17, präzisiert): Das Rezept ist byte-identisch
-   mit der Website (globals.css) — aber die Website nutzt es NIE
-   pur. Der Live-Footer (ContactCta.tsx) legt ZWEI Kopien mit
-   inset -35 %, blur 32px, Opacity 0.85/0.50 und gegenläufigem
-   Drift übereinander; erst das verschmilzt die Ellipsen. Pur als
-   Fläche erzeugt das Token Leuchtbälle. Statische Artefakte
-   (Decks, Print) können weder Drift noch Blur (PDF rastert) —
-   sie nutzen den vorgemischten Custom-Verlauf im Deck-Template.
-   Offen: Anwendungsrezept als Token-Paar kanonisieren
-   (Web-Wash + statische Variante). */
+   ⚠ NIE PUR ALS FLÄCHE: Das Rezept ist byte-identisch mit der
+   Website (globals.css), aber pur erzeugt es Leuchtbälle — die
+   Website nutzt es nur über das Anwendungsrezept darunter.
+   (Befund 2026-07-17, gelöst 2026-07-20 als Token-Paar:
+   .contact-cta-wash für Web, .bg-contact-cta-static für Decks
+   und Print.) */
 .bg-contact-cta {
   background:
     radial-gradient(ellipse 55% 65% at 24% 26%, rgba( 58,158,151,0.90) 0%, transparent 60%),
     radial-gradient(ellipse 50% 60% at 72% 18%, rgba(144,112,184,0.85) 0%, transparent 60%),
     radial-gradient(ellipse 55% 70% at 68% 84%, rgba(184, 74,111,0.80) 0%, transparent 60%),
     var(--bm-deep-plum);
+}
+
+/* Anwendungsrezept WEB (= ContactCta.tsx der Website): Wrapper
+   auf Deep-Plum, ZWEI Kopien der Ellipsen als Pseudo-Elemente —
+   Overscan inset -35 %, blur(32px), Opacity 0.85/0.50,
+   gegenläufiger Drift. Erst das verschmilzt die Ellipsen zum
+   Wash. Inhalt liegt als normales Kind darüber (isolation
+   hält die Pseudo-Ebenen darunter). ⚠ Handwerks-Fallen gelten:
+   Inhalte darüber ohne filter/blend-mode; auf Mobile ruckelt
+   blur auf Kasane-Flächen — prefers-reduced-motion stoppt den
+   Drift automatisch, den Blur im Mobile-Kontext reduzieren. */
+.contact-cta-wash {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bm-deep-plum);
+}
+.contact-cta-wash::before,
+.contact-cta-wash::after {
+  content: "";
+  position: absolute;
+  inset: -35%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 65% at 24% 26%, rgba( 58,158,151,0.90) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 72% 18%, rgba(144,112,184,0.85) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 70% at 68% 84%, rgba(184, 74,111,0.80) 0%, transparent 60%);
+  filter: blur(32px);
+}
+.contact-cta-wash::before { opacity: 0.85; animation: kasane-drift 14s ease-in-out infinite; }
+.contact-cta-wash::after  { opacity: 0.50; animation: kasane-drift-bold 9s ease-in-out infinite reverse; }
+@media (prefers-reduced-motion: reduce) {
+  .contact-cta-wash::before, .contact-cta-wash::after { animation: none; }
+}
+
+/* Anwendungsrezept STATISCH (Decks, Print, PDF): kein Drift,
+   kein Blur (PDF rastert beides) — der Wash ist vorgemischt.
+   Abgenommen als Schluss-Verlauf der Decks (DETAX 07/2026). */
+.bg-contact-cta-static {
+  background:
+    radial-gradient(ellipse 85% 100% at 3% 0%, rgba(168, 84,110,0.55) 0%, transparent 62%),
+    radial-gradient(ellipse 95% 130% at 100% 55%, rgba(88,102,158,0.55) 0%, transparent 68%),
+    linear-gradient(112deg, #8A5C88 0%, #7A5AA0 38%, #6C58A4 68%, #5E64A0 100%);
 }
 
 /* Featured-/Produkt-Band — satt farbig auf dunkler Basis, für weiße Typo */

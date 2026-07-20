@@ -43,10 +43,12 @@ Bestehendes. Die Ordnerstruktur spiegelt das Repo, dadurch
 funktionieren alle relativen Pfade unverändert; das Deck liegt in
 `<projektordner>/deck/` — einen Ordner tief, mit relativen Pfaden
 auf `../tokens/`, `../templates/` und `../assets/`. Die Layouts im Template sind die freigegebene Menge:
-Cover, Agenda, Kapiteltrenner, Hairline-Kolumnen (mit optionalem
-Resultat-Band), Content 2/3 + 1/3 mit Infografik, Zahlen (freie
-Stats), Principle-Zeilen, Gegenüberstellung, Objekt-Karten,
-nummerierte Objekt-Karten, Tabelle, Zitat, Schluss. Slides
+Cover, Agenda, Ziel-und-Agenda (Entscheidungs-Zweispalter),
+Kapiteltrenner (fünf Farbwelten), Hairline-Kolumnen (mit optionalem
+Resultat-Band), Content 2/3 + 1/3 mit Infografik, Content mit
+Device-Mockup, Zahlen (freie Stats), Principle-Zeilen,
+Gegenüberstellung, Objekt-Karten, nummerierte Objekt-Karten,
+Tabelle, Roadmap (Gantt mit Kategorien-Code), Zitat, Schluss. Slides
 duplizieren und umsortieren ist ausdrücklich okay — **neue Layouts
 erfinden ist verboten.** Fehlt ein Layout: CD fragen.
 
