@@ -1,36 +1,30 @@
 # Slides bauen mit Claude Code
 
 Diese Anleitung führt dich zu einer HTML-Slide-Präsentation im
-Bridgemaker-Look. Du brauchst nur Claude Code — das Handwerk steckt
-im Repo: ein Deck-Template mit den freigegebenen Layouts und ein
-Skill, der Claude durch die Regeln und die Qualitätskontrolle führt.
+Bridgemaker-Look. Du brauchst nur Claude Code — Layouts, Markenregeln
+und Qualitätskontrolle bringt das Brandbook mit.
 
-## Schritt 1: Repo klonen
+## Schritt 1: Brandbook auf deinen Rechner holen
+
+Öffne das Terminal und kopiere diese zwei Zeilen hinein:
 
 ```bash
 git clone https://github.com/BMNils/bridgemaker-brandbook.git
 cd bridgemaker-brandbook
 ```
 
-Schon geklont? Dann reicht `git pull` — Template und Regeln
-entwickeln sich weiter.
+Sie holen den Brandbook-Ordner auf deinen Rechner und wechseln
+hinein. Hast du den Ordner schon? Dann reicht `git pull` — die
+Regeln entwickeln sich weiter.
 
-Mehr brauchst du nicht: Auch die drei Handwerks-Skills für
-Story-Aufbau und Diagramme liegen im Repo und kommen beim Klonen
-automatisch mit. Die Rangordnung bleibt immer: **Skills liefern das
-WIE, das Brandbook liefert das Aussehen.** Das erzwingt der
-Repo-Skill automatisch.
-
-## Schritt 2: Claude Code im Repo-Ordner starten
+## Schritt 2: Claude Code im Brandbook-Ordner starten
 
 ```bash
 claude
 ```
 
-Der Ordner ist entscheidend: Nur hier lädt Claude automatisch die
-`CLAUDE.md` mit den Markenregeln und alle Skills — `bridgemaker-slides`
-mit Template-Pflicht und Qualitäts-Workflow plus die drei
-Handwerks-Skills.
+Der Ordner ist entscheidend: Nur hier kennt Claude die
+Bridgemaker-Regeln und den kompletten Ablauf.
 
 ## Schritt 3: Start-Prompt
 
@@ -46,9 +40,8 @@ Richte zuerst alles ein. Wenn du bereit bist, frag mich nach den
 Inhalten — ich liefere sie dann als Nachricht oder als Datei.
 ```
 
-Mehr steht da nicht, mit Absicht: Der komplette Prozess (Template,
-Grafiken bauen, Voice-Redigat, Sehpflicht-Checkliste) steckt im
-Skill und veraltet damit nie im Prompt.
+Mehr steht da nicht, mit Absicht: Den kompletten Ablauf — Layout,
+Texte, Grafiken, Qualitätskontrolle — kennt Claude schon.
 
 ## Schritt 4: Inhalte liefern — als letzte Aktion
 
@@ -61,18 +54,17 @@ Jetzt lieferst du — auf einem von zwei Wegen:
 - **Als Datei:** Inhaltsdokument (z. B. `inhalts-master.md`) in den
   Projektordner legen und Claude den Pfad nennen.
 
-Die Sprache erkennt Claude aus deinen Inhalten. Danach läuft die
-Pipeline: Argumentstruktur pro Slide, Texte im Bridgemaker-Ton
-(deine Aussagen bleiben, die Sprache wird Marke), Grafiken werden
-wirklich gebaut (erster Draft, ihr iteriert gemeinsam), am Ende die
-Sehpflicht mit Checkliste — Claude sagt dir explizit, wenn der
-Durchgang ohne Befund war.
+Die Sprache erkennt Claude aus deinen Inhalten. Dann baut Claude
+das Deck: jede Slide mit einer klaren Aussage, deine Inhalte im
+Bridgemaker-Ton, Grafiken als ersten Entwurf, den ihr gemeinsam
+verfeinert. Zum Schluss prüft Claude jede Seite gegen die
+Qualitäts-Checkliste und sagt dir, wenn alles sauber ist.
 
 ## Ergebnis anschauen und weitergeben
 
-- **Anschauen:** HTML-Datei im Browser öffnen (Doppelklick, Datei muss
-  im Projekt-Kit bzw. Repo liegen), Navigation per Pfeiltasten. Oder
-  direkt das PDF.
+- **Anschauen:** HTML-Datei im Browser öffnen (Doppelklick; die
+  Datei bleibt dafür in ihrem Projektordner), Navigation per
+  Pfeiltasten. Oder direkt das PDF.
 - **Weitergeben:** Sag Claude „Mach das Deck versandfertig" — du
   bekommst beides: das PDF (eine Seite pro Slide) und eine einzelne
   Versand-HTML, in der alles steckt, auch die Schriften. Die kannst
@@ -82,14 +74,13 @@ Durchgang ohne Befund war.
   Kopf- und Fußzeilen aus und Skalierung auf Standard, und nie in
   Safari oder Firefox (die zerschneiden die Slides auf
   Papierformate). Die rohe Deck-HTML bleibt tabu zum Verschicken.
-- **Wichtig — Kundenarbeit nie im Brandbook-Repo:** Das Repo ist
-  öffentlich und projektübergreifend. Für jedes Kundenprojekt legt
-  Claude einen Projektordner außerhalb an und kopiert das Kit hinein
-  (tokens, deck-stage.js, Logos — macht der Skill automatisch);
-  Deck und Inhaltsdokumente leben nur dort.
+- **Wichtig — Kundenarbeit gehört nie in den Brandbook-Ordner:**
+  Claude legt für jedes Kundenprojekt automatisch einen eigenen
+  Ordner an und kopiert alles Nötige hinein. Deck und
+  Inhaltsdokumente legst du nur dort ab.
 
 ## Änderungen danach
 
-Einfach normal weiterschreiben („Slide 3: andere Headline"). Bei
-allem, was das Aussehen betrifft, gilt der Kurzbefehl:
-**„Brandbook schlägt Skill — nur Werte aus tokens.css."**
+Einfach normal weiterschreiben („Slide 3: andere Headline"). Wirkt
+etwas plötzlich nicht mehr nach Bridgemaker, reicht ein Satz:
+**„Halt dich ans Brandbook."**
