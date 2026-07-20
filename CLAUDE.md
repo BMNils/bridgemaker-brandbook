@@ -23,7 +23,12 @@
    Chart-Achsen, Folios) läuft IMMER in Inter. In Next.js via
    `next/font`; statische Artefakte (Decks) laden die lokal
    gehosteten Fonts aus `assets/fonts/` — kein Google-Fonts-Aufruf
-   (Compliance). Keine
+   in allem, was Dritte öffnen (DSGVO: der Aufruf überträgt die IP
+   des Betrachters an Google; LG München 2022). Ausnahme *(Nils,
+   2026-07-20)*: rein interne Entwürfe in Firmen-Tools ohne
+   Dateizugriff (z. B. Langdock-Canvas) dürfen Inter per
+   Google-Fonts-Link laden — Weitergabe trotzdem nur als PDF oder
+   Versand-HTML mit eingebetteten Fonts. Keine
    anderen Fonts ohne Freigabe. Einzige Ausnahme: Print-Display-Grade
    laufen in **Inter Display** (Override im Print-Layer, s. Punkt
    „Print" in Abschnitt 7).

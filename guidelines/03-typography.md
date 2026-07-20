@@ -24,12 +24,22 @@
 - Keine anderen Schriftfamilien ohne ausdrückliche Freigabe.
 
 Laden: In Next.js-Projekten via `next/font/google` (so macht es die
-Website — self-hosted, kein Layout-Shift). Nur für statische Artefakte
-(Decks, Einzel-HTML) der Google-Fonts-Link:
+Website — self-hosted, kein Layout-Shift). Statische Artefakte
+(Decks, Einzel-HTML), die Dritte öffnen, laden die lokal gehosteten
+Fonts aus `assets/fonts/`:
 
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
 ```
+
+Der Google-Fonts-Link ist dort tabu, weil der Aufruf die IP des
+Betrachters an Google überträgt (DSGVO, LG München 2022; Beschluss
+*2026-07-17* — ersetzt die frühere Link-Empfehlung an dieser
+Stelle). Einzige Ausnahme *(Nils, 2026-07-20)*: rein interne
+Entwürfe in Firmen-Tools ohne Dateizugriff (z. B. Langdock-Canvas)
+dürfen Inter per Google-Fonts-Link laden; vor jeder Weitergabe
+gilt wieder die lokale bzw. eingebettete Variante (PDF oder
+Versand-HTML).
 
 ## 3.2 Die fluide Skala — nur `type-*`-Klassen
 

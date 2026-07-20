@@ -181,7 +181,10 @@ ignorieren die `@page`-Größe und zwängen die Stage auf
 Papierformate). **Fonts lokal:** Decks laden Inter,
 JetBrains Mono und Material Symbols aus `assets/fonts/`
 (Compliance — der Google-Fonts-Link ist in Decks tabu,
-*2026-07-17*). Keine Animationen, kein kasane-drift, keine
+*2026-07-17*; Ausnahme *2026-07-20*: rein interne Entwürfe in
+Firmen-Tools ohne Dateizugriff, z. B. Langdock-Canvas, dürfen
+Inter per Google-Link laden — Weitergabe nur als PDF oder
+Versand-HTML). Keine Animationen, kein kasane-drift, keine
 Hover-Effekte. (Stage-Neufassung 16.07.2026 — ersetzt die frühere
 1920×1080-/24px-Regel.)
 
