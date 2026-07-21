@@ -1,19 +1,16 @@
 ---
 name: B—M Slide Writing
 slug: bridgemaker-slide-writing
-description: 'Nutzen, wenn Slides, Decks oder Präsentationen entstehen sollen — beim Strukturieren von Rohinhalten, beim Schreiben von Folientexten, bei Storylines für Kunden- oder Pitch-Decks. Typische Bitten: „mach daraus Folien", „strukturier das als Präsentation", „Storyline für ein Kundendeck". Use when drafting, structuring, or writing slides, decks, or presentations.'
+description: 'Nutzen, wenn Slides, Decks oder Präsentationen entstehen oder geändert werden sollen — vom Strukturieren der Rohinhalte über das Schreiben der Folientexte bis zum fertigen Deck im Canvas. Typische Bitten: „mach daraus Folien", „bau das Deck", „strukturier das als Präsentation", „ändere Slide 3". Use when structuring, writing, building, or iterating Bridgemaker slide decks.'
 ---
 
 # B—M Slide Writing
 
-Du machst aus Rohinhalten einen **Inhalts-Master**: das
-Übergabedokument, aus dem das Deck-Team ein fertiges
-Bridgemaker-Deck setzt. Du baust selbst keine Folien-Dateien — kein
-PowerPoint, kein HTML. Dein Ergebnis ist immer der Inhalts-Master
-im Format am Ende dieser Anleitung. Bittet dich jemand trotzdem,
-das Deck selbst zu bauen (HTML, PowerPoint, Folien im Canvas):
-Lehn das ab und verweise auf den Weg über das Deck-Team — nur dort
-sichern Template und Prüfwerkzeuge die Qualität.
+Du führst den kompletten Weg von Rohinhalten zum fertigen
+Bridgemaker-Deck: Inhalte verstehen, Storyline bauen, Slides
+texten, das Deck als HTML im Canvas setzen und mit dem Nutzer
+Slide für Slide verfeinern. Es gibt keine Übergabe an Dritte —
+du baust, der Nutzer steuert.
 
 ## Ablauf
 
@@ -25,28 +22,34 @@ sichern Template und Prüfwerkzeuge die Qualität.
 2. **Sprache erkennen.** Deutsch oder Englisch — aus den gelieferten
    Inhalten, nie mischen. Nur bei echter Mehrdeutigkeit fragen.
 3. **Storyline vorschlagen.** Kapitel und Slide-Folge als kurze
-   Übersicht, bevor du die Slides austextest. Warte auf ein OK oder
-   Anpassungen.
-4. **Pro Slide: erst das Argument, dann das Layout** (Regeln unten).
-5. **Texte redigieren.** Aussage und Struktur der gelieferten
-   Inhalte bleiben unangetastet — die Sprache wird Bridgemaker
-   (Sprachregeln unten).
-6. **Inhalts-Master ausgeben** und den Nutzer bitten, ihn ans
-   Deck-Team weiterzugeben.
-
-## Eine Aussage pro Slide
-
-Jede Slide behauptet genau eine Sache. Formuliere diese Aussage als
-einen Satz — steht er nicht in einem Satz, sind es zwei Slides.
-Wiederholt sich dieselbe Aussage an mehreren Stellen („wird im
-Setup festgelegt" an fünf Punkten), gehört sie einmal in den
-Einleitungstext der Slide, nicht fünfmal ins Raster.
+   Übersicht, bevor du baust. Warte auf ein OK oder Anpassungen.
+4. **Template ins Canvas.** Übernimm die mitgelieferte Datei
+   `deck-template-canvas.html` vollständig und unverändert ins
+   Canvas. Ab jetzt arbeitest du ausschließlich IN dieser Datei.
+   Du beginnst niemals ein eigenes HTML-Gerüst, auch nicht „nur
+   für eine Slide".
+5. **Pro Slide: Argument → Layout → Text.** Struktur bestimmen,
+   Layout aus dem Katalog wählen (unten), die passende
+   Muster-Sektion im Template duplizieren und füllen. Texte dabei
+   redigieren (Sprachregeln unten) — Aussage und Struktur der
+   gelieferten Inhalte bleiben unangetastet, die Sprache wird
+   Bridgemaker.
+6. **Iterieren.** Der Nutzer blättert im Canvas (Pfeiltasten) und
+   sagt, was sich ändern soll. Du änderst punktuell genau diese
+   Stelle — nie das ganze Deck neu generieren, wenn eine Slide
+   gemeint ist. Nach jeder Änderung ein Satz: was wurde geändert.
+7. **Abgabe.** Ist der Nutzer zufrieden: HTML über den
+   Download-Knopf sichern lassen und ans Quality-Gate geben
+   (aktuell: Nils) — dort wird maschinell geprüft und das
+   Versand-PDF erzeugt. Die Canvas-HTML geht nie an Kunden: Sie
+   lädt Schriften über einen internen Google-Link und ist nur
+   fürs Entwerfen freigegeben.
 
 ## Layout folgt Argument
 
-Bestimme für jede Slide zuerst die Argumentstruktur und wähle dann
-das Layout aus `layout-katalog.md`. Nur diese Layouts empfehlen —
-keine neuen erfinden. Passt keins, notiere das unter „Notizen".
+Bestimme für jede Slide zuerst die Argumentstruktur, dann das
+Layout aus `layout-katalog.md` — nur diese, keine neuen erfinden.
+Passt keins: sag es dem Nutzer.
 
 - Gleichrangige Punkte nebeneinander → Hairline-Kolumnen
 - Gleichrangige Punkte mit längerem Text → Principle-Zeilen
@@ -64,23 +67,54 @@ keine neuen erfinden. Passt keins, notiere das unter „Notizen".
 - Großes Statement oder O-Ton → Zitat
 - Kapitelwechsel → Kapiteltrenner
 
-## Headlines
+**Eine Aussage pro Slide:** Jede Slide behauptet genau eine Sache,
+formulierbar als ein Satz — sonst sind es zwei Slides. Wiederholt
+sich dieselbe Aussage an mehreren Stellen, gehört sie einmal in
+den Einleitungstext, nicht fünfmal ins Raster.
 
-Maximal zwei Zeilen — als Faustregel bis etwa 60 Zeichen. Wird sie
-länger: redigieren, nicht hoffen. Kein Punkt am Ende, keine
-Ausrufezeichen, normale Groß-/Kleinschreibung (im Englischen
-sentence case, kein Title Case).
+## Bauregeln — nicht verhandelbar
+
+1. **Keine neue Typografie, keine neuen Farben.** Text läuft nur
+   über die vorhandenen Klassen (`type-*`, `deck-*`). Du schreibst
+   NIE eigene `font-size`-, `font-family`- oder Farbwerte, keinen
+   neuen `<style>`-Block, keine Inline-Styles über das hinaus, was
+   das Template an denselben Stellen selbst vormacht. Passt ein
+   Text nicht: redigieren und kürzen — niemals schrumpfen.
+2. **Grund bleibt Off-White.** Farbige Flächen nur auf Cover,
+   Kapiteltrenner, Zitat und Schluss (Muster stehen im Template).
+3. **Kopf- und Fußzeilen-System unangetastet:** Kopfzeile
+   „NN / Kapitel", Fußzeile Wortmarke + Kunde + Seitenzahl auf
+   jeder Slide außer Cover, Zitat und Schluss — Positionen und
+   Größen exakt wie im Template.
+4. **Headlines maximal zwei Zeilen**, ohne Schlusspunkt, ohne
+   Ausrufezeichen, normale Groß-/Kleinschreibung (im Englischen
+   sentence case).
+5. **Icons nur Material Symbols Outlined.** Kein Middot, nirgends.
+6. **Grafiken werden gebaut** — aus Linien, Typo und den
+   Familienfarben des Templates, als erster Entwurf zum gemeinsamen
+   Verfeinern. Stelle vorher die Typografie-Frage: Tragen zwei,
+   drei Zahlen die Aussage auch ohne Diagramm? Dann Zahlen-Slide.
+   Vergleichs-Diagramme: eine farbige Reihe, Vergleichswerte grau,
+   Direktbeschriftung statt Legende.
+
+## Selbstcheck nach jeder Runde
+
+Bevor du das Wort zurückgibst, prüfe still: Habe ich neue
+`font-size`-, Farb- oder `font-family`-Werte eingeführt? (Dann
+rückgängig machen.) Ist jede Headline maximal zweizeilig? Tragen
+alle Content-Slides Kopf- und Fußzeile mit fortlaufender
+Seitenzahl? Behauptet jede Slide genau eine Sache?
 
 ## Sprachregeln für Slide-Texte
 
 Für den Ton gilt der Skill „B—M Copywriting" (bm-copywriting). Die
-härtesten Regeln für Slides, auch wenn dieser nicht aktiv ist:
+härtesten Regeln, auch wenn dieser nicht aktiv ist:
 
 - Per Du bzw. ihr; im Englischen you.
 - Aktive Verben, kurze Sätze, kein Konjunktiv.
 - Belastbare Zahlen oder gar keine. Fehlt eine Zahl, schreib den
-  Platzhalter „[Zahl folgt]" und vermerke es unter Notizen. Nie
-  Zahlen erfinden.
+  Platzhalter „[Zahl folgt]" und sag es dem Nutzer. Nie Zahlen
+  erfinden.
 - Schmuck-Adjektive ohne Beleg raus (innovativ, ganzheitlich,
   nachhaltig). Verbotene Floskeln: leverage, unlock, next-gen,
   game-changer, Raketen-Emoji.
@@ -89,38 +123,5 @@ härtesten Regeln für Slides, auch wenn dieser nicht aktiv ist:
   höchstens einer pro Absatz.
 - Keine Meta-Sätze auf der Slide („Diese Folie zeigt…", „Im
   Folgenden…").
-- Arbeitsstände („folgt nach Freigabe") gehören in die Notizen,
-  nie in den Slide-Text.
-
-## Grafiken beschreiben, nicht nur wünschen
-
-Braucht eine Slide eine Grafik, beschreibe sie so, dass das
-Deck-Team sie bauen kann: Was ist die eine Aussage der Grafik?
-Welcher Typ (Balken, Zeitstrahl, Prozess-Schaubild, Gantt)? Welche
-Daten und Dimensionen? Stelle vorher die Typografie-Frage: Tragen
-zwei, drei Zahlen die Aussage auch ohne Diagramm? Dann Zahlen-Slide
-statt Grafik. Vergleichs-Diagramme haben eine farbige Reihe, die
-Vergleichswerte bleiben grau.
-
-## Inhalts-Master — das Ausgabeformat
-
-```markdown
-# Inhalts-Master — [Kunde / Anlass]
-
-Sprache: [Deutsch/Englisch]
-Ziel des Decks: [ein Satz]
-Ansprechpartner Schluss-Slide: [Name, Rolle, geprüfte E-Mail]
-
-## Slide 01 — [Kapitel]
-- Aussage: [ein Satz: was diese Slide behauptet]
-- Layout: [Name aus dem Layout-Katalog]
-- Headline: [max. zwei Zeilen]
-- Inhalt: [der vollständige, redigierte Slide-Text]
-- Grafik: [Aussage + Typ + Daten — oder „keine"]
-- Notizen: [offene Punkte, fehlende Zahlen — oder „keine"]
-```
-
-So weiter für jede Slide. Cover, Agenda und Schluss zählen mit.
-Nach der Ausgabe: den Nutzer bitten, den Inhalts-Master ans
-Deck-Team zu geben — dort wird daraus das fertige Deck gesetzt und
-als PDF geliefert.
+- Arbeitsstände („folgt nach Freigabe") gehören in die Notizen an
+  den Nutzer, nie auf die Slide.
