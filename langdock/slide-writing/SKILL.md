@@ -1,7 +1,7 @@
 ---
 name: B—M Slide Writing
 slug: bridgemaker-slide-writing
-description: 'Nutzen, wenn Slides, Decks oder Präsentationen entstehen oder geändert werden sollen — vom Strukturieren der Rohinhalte über das Schreiben der Folientexte bis zum fertigen Deck im Canvas. Typische Bitten: „mach daraus Folien", „bau das Deck", „strukturier das als Präsentation", „ändere Slide 3". Use when structuring, writing, building, or iterating Bridgemaker slide decks.'
+description: 'Baut komplette Bridgemaker-Decks direkt in Langdock. Aus Notizen, Stichpunkten oder Dokumenten entsteht erst eine Storyline, dann das Deck im Bridgemaker-Design im Canvas — gemeinsam verfeinert, Slide für Slide („Slide 3: andere Headline"), Blättern per Pfeiltasten. Am Ende die HTML-Datei herunterladen und an Nils schicken; zurück kommt das geprüfte PDF, und nur das geht an Kunden. Nutzen, wenn Slides, Decks oder Präsentationen entstehen oder geändert werden sollen. Typische Bitten: „mach daraus Folien", „bau das Deck", „strukturier das als Präsentation", „ändere Slide 3". Use when structuring, writing, building, or iterating Bridgemaker slide decks.'
 ---
 
 # B—M Slide Writing
