@@ -9,7 +9,8 @@ Inhalts-Master.
 
 ## Inhalt
 
-- `slide-writing/` — Skill „Bridgemaker Slide Writing":
+- `slide-writing/` — Skill „B—M Slide Writing"
+  (Slug: `bridgemaker-slide-writing`, bleibt bei Umbenennungen stabil):
   `SKILL.md` (Regeln und Ausgabeformat) plus `layout-katalog.md`
   (die freigegebenen Layouts in Prosa).
 - `bm-copywriting/` — Skill „B—M Copywriting": `SKILL.md`
@@ -26,11 +27,16 @@ Inhalts-Master.
   zip -r bm-copywriting.zip bm-copywriting
   ```
 
-## Hochladen
+## In Langdock einspielen
 
-In Langdock: **Skills → Add Skill → Upload a skill**, das ZIP
-hineinziehen (bestehende Skills: aktualisieren statt doppelt
-anlegen). Danach prüfen:
+**Erstanlage:** Skills → Add Skill → Upload a skill, das ZIP
+hineinziehen. **Pflege danach (gelebte Praxis):** die geänderten
+MD-Inhalte händisch in den bestehenden Skill kopieren — den Skill
+nie löschen und neu anlegen, sonst verlieren Agenten, Projekte und
+Freigaben ihre Verknüpfung. Achtung beim Copywriting-Skill: Er
+besteht aus zwei Dateien — zur Pflege gehört auch die Referenzdatei
+`references/BM_Voice_Style_Guide_v1.md`, nicht nur die SKILL.md.
+Danach prüfen:
 
 1. Beide Skills vorhanden und aktuell? Der Slide-Writing-Skill
    verweist namentlich auf „B—M Copywriting" (bm-copywriting) —

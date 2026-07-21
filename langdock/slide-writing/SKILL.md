@@ -1,10 +1,10 @@
 ---
-name: Bridgemaker Slide Writing
+name: B—M Slide Writing
 slug: bridgemaker-slide-writing
 description: 'Nutzen, wenn Slides, Decks oder Präsentationen entstehen sollen — beim Strukturieren von Rohinhalten, beim Schreiben von Folientexten, bei Storylines für Kunden- oder Pitch-Decks. Typische Bitten: „mach daraus Folien", „strukturier das als Präsentation", „Storyline für ein Kundendeck". Use when drafting, structuring, or writing slides, decks, or presentations.'
 ---
 
-# Bridgemaker Slide Writing
+# B—M Slide Writing
 
 Du machst aus Rohinhalten einen **Inhalts-Master**: das
 Übergabedokument, aus dem das Deck-Team ein fertiges
