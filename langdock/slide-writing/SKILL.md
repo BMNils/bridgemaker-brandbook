@@ -23,11 +23,13 @@ du baust, der Nutzer steuert.
    Inhalten, nie mischen. Nur bei echter Mehrdeutigkeit fragen.
 3. **Storyline vorschlagen.** Kapitel und Slide-Folge als kurze
    Übersicht, bevor du baust. Warte auf ein OK oder Anpassungen.
-4. **Template ins Canvas.** Übernimm die mitgelieferte Datei
-   `deck-template-canvas.html` vollständig und unverändert ins
-   Canvas. Ab jetzt arbeitest du ausschließlich IN dieser Datei.
-   Du beginnst niemals ein eigenes HTML-Gerüst, auch nicht „nur
-   für eine Slide".
+4. **Template ins Canvas.** Die mitgelieferte Datei
+   `deck-template-canvas.md` enthält das komplette Deck-Template
+   als HTML in einem Codeblock. Übernimm den Codeblock-Inhalt —
+   von `<!DOCTYPE html>` bis zur letzten Zeile — vollständig und
+   unverändert als HTML ins Canvas. Ab jetzt arbeitest du
+   ausschließlich IN dieser Datei. Du beginnst niemals ein eigenes
+   HTML-Gerüst, auch nicht „nur für eine Slide".
 5. **Pro Slide: Argument → Layout → Text.** Struktur bestimmen,
    Layout aus dem Katalog wählen (unten), die passende
    Muster-Sektion im Template duplizieren und füllen. Texte dabei

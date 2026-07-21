@@ -15,7 +15,7 @@ Versand-PDF erzeugt — die Canvas-HTML selbst geht nie an Kunden.
   (Slug: `bridgemaker-slide-writing`, bleibt bei Umbenennungen
   stabil): der komplette Deck-Skill. `SKILL.md` (Ablauf, Bau- und
   Sprachregeln), `layout-katalog.md` (die freigegebenen Layouts in
-  Prosa) und `deck-template-canvas.html` — das Deck-Template als
+  Prosa) und `deck-template-canvas.md` — das Deck-Template als
   Canvas-Einzeldatei, generiert via `build-canvas-template.js` aus
   Template + tokens + Stage-Skript (Wortmarken als Daten-URIs;
   Fonts per Google-Link, gedeckt durch die interne Canvas-Ausnahme
@@ -32,7 +32,7 @@ Versand-PDF erzeugt — die Canvas-HTML selbst geht nie an Kunden.
 
   ```bash
   node langdock/slide-writing/build-canvas-template.js
-  cd langdock/slide-writing && zip -j ../bridgemaker-slide-writing.zip SKILL.md layout-katalog.md deck-template-canvas.html && cd ..
+  cd langdock/slide-writing && zip -j ../bridgemaker-slide-writing.zip SKILL.md layout-katalog.md deck-template-canvas.md && cd ..
   zip -r bm-copywriting.zip bm-copywriting
   ```
 
@@ -46,9 +46,21 @@ Freigaben ihre Verknüpfung. Beide Skills bestehen aus MEHREREN
 Dateien: Beim Copywriting-Skill gehört die Referenzdatei
 `references/BM_Voice_Style_Guide_v1.md` zur Pflege dazu, beim
 Slide-Writing-Skill `layout-katalog.md` und
-`deck-template-canvas.html`. Kommt eine Datei neu hinzu oder ist
-sie zu groß zum Einfügen: das ZIP als Update auf den BESTEHENDEN
-Skill hochladen, nicht neu anlegen.
+`deck-template-canvas.md`. Kommt eine Datei neu hinzu oder ist
+sie zu groß zum Einfügen: Die Oberfläche kennt KEIN ZIP-Update —
+der saubere Weg ist der API-Import mit `mode=upsert` (ersetzt
+alle Dateien des Skills, Matching über den Slug; API-Key mit
+SKILL_API-Scope nötig):
+
+```bash
+curl -X POST https://api.langdock.com/skills/v1/import \
+  -H "Authorization: Bearer $LANGDOCK_API_KEY" \
+  -F "file=@langdock/<skill>.zip" -F "fileType=zip" -F "mode=upsert"
+```
+
+Löschen und neu anlegen ist der letzte Ausweg — dann gehen
+Freigaben, Workspace-Status und Installationen verloren und
+müssen neu gesetzt werden.
 Danach prüfen:
 
 1. Beide Skills vorhanden und aktuell? Der Slide-Writing-Skill

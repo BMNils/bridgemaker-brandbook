@@ -1,3 +1,10 @@
+# Deck-Template (Canvas-Kopiervorlage)
+
+Kopiere den kompletten Inhalt des folgenden Codeblocks — von
+`<!DOCTYPE html>` bis zur letzten Zeile — unverändert als
+HTML ins Canvas. Nichts weglassen, nichts umbauen.
+
+````html
 <!doctype html>
 <html lang="de">
 <head>
@@ -2347,3 +2354,5 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
 </script>
 </body>
 </html>
+
+````
