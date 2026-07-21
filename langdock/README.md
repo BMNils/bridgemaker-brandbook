@@ -19,12 +19,22 @@ Inhalts-Master.
   des Guides aus `guidelines/08-voice.md` (inkl. Anhang
   Copy-Mikroregeln). Ändert sich der Tone of Voice, wird die Kopie
   neu extrahiert, nie von Hand editiert.
-- Die beiden ZIPs sind die Upload-Bundles. Nach jeder Änderung neu
+- `deck-builder-test/` — Skill „B—M Deck Builder (Test)"
+  (Slug: `bm-deck-builder-test`): der Versuch, die Setz-Hälfte
+  nach Langdock zu holen — der Agent baut das Deck im Canvas auf
+  Basis von `deck-template-canvas.html` (Einzeldatei, generiert
+  via `build-canvas-template.js` aus Template + tokens +
+  Stage-Skript; Fonts per Google-Link, gedeckt durch die interne
+  Canvas-Ausnahme vom 20.07.2026). **Status: TEST** — Ablauf und
+  Bestehens-Kriterien in `TESTPROTOKOLL.md`; erst nach bestandenem
+  Test teilen.
+- Die ZIPs sind die Upload-Bundles. Nach jeder Änderung neu
   packen:
 
   ```bash
   cd langdock/slide-writing && zip -j ../bridgemaker-slide-writing.zip SKILL.md layout-katalog.md && cd ..
   zip -r bm-copywriting.zip bm-copywriting
+  node deck-builder-test/build-canvas-template.js && cd deck-builder-test && zip -j ../bm-deck-builder-test.zip SKILL.md deck-template-canvas.html ../slide-writing/layout-katalog.md && cd ..
   ```
 
 ## In Langdock einspielen
