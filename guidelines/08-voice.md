@@ -1,15 +1,15 @@
-# 08 — Voice & Style
+# 08 — Tone of Voice
 
-> Dieses Kapitel trägt den freigegebenen **Bridgemaker Voice & Style Guide
-> v1.1** wortgleich (inhaltliche Änderungen verlangen Leadership-Review;
+> Dieses Kapitel trägt den freigegebenen **Bridgemaker Tone of Voice
+> v1.2** wortgleich (inhaltliche Änderungen verlangen Leadership-Review;
 > er ist auf Englisch verfasst und gilt für deutsche wie englische Texte),
 > gefolgt von den Copy-Mikroregeln im Anhang. Vor JEDER Textarbeit lesen.
 
 ---
 
-# Bridgemaker Voice & Style Guide
+# Bridgemaker Tone of Voice
 
-**Version:** 1.1 — July 14, 2026
+**Version:** 1.2 — July 21, 2026
 **Scope:** All Bridgemaker external and internal text — website, decks, sales material, newsletters, blog, social, job postings. Both German and English.
 **Status:** Approved. Living document — updates require leadership review.
 
@@ -419,6 +419,8 @@ Six questions every text must pass:
 **v1.0 — May 7, 2026** — First approved version. Consolidates §11 of the brand styleguide with `style_menschlich.md` and findings from the partner survey of April 2026. Replaces both source documents.
 
 **v1.1 — July 14, 2026** — Added 3.1.12 (enumerations flow as sentences: no middot chains anywhere, em dashes rationed) plus the matching copy micro-rules. Middots purged from all canon documents. Approved by Nils Sanders.
+
+**v1.2 — July 21, 2026** — Renamed: the guide is now titled "Bridgemaker Tone of Voice" (previously "Bridgemaker Voice & Style Guide"). No content changes. Approved by Nils Sanders.
 
 ---
 

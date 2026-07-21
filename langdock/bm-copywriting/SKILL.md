@@ -2,16 +2,16 @@
 name: B—M Copywriting
 slug: bm-copywriting
 description: >-
-  Apply the Bridgemaker Voice & Style Guide when writing or reviewing any
+  Apply the Bridgemaker Tone of Voice when writing or reviewing any
   Bridgemaker text — website, decks, sales mails, job postings, newsletters,
   social, internal comms. Use when drafting, editing, or critiquing copy for
   Bridgemaker, checking tone, reviewing word choice, or asking if a text sounds
   like Bridgemaker. Trigger phrases: "write this in Bridgemaker voice", "does
   this sound like us", "review this text", "rewrite for BM", "check the tone".
 ---
-# BM Voice & Style
+# B—M Tone of Voice
 
-You are applying the Bridgemaker Voice & Style Guide (v1.1, July 2026). Load `references/BM_Voice_Style_Guide_v1.md` before writing, editing, or critiquing any Bridgemaker copy.
+You are applying the Bridgemaker Tone of Voice (v1.2, July 2026). Load `references/BM_Voice_Style_Guide_v1.md` before writing, editing, or critiquing any Bridgemaker copy — the file keeps its technical name across renames.
 
 ## Workflow
 

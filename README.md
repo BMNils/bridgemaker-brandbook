@@ -25,7 +25,7 @@ deiner Aufgabe passt. Die zwei häufigsten Abkürzungen:
 
 | Ordner | Inhalt |
 | --- | --- |
-| `guidelines/` | der Kanon in neun Kapiteln, inklusive Voice-Guide |
+| `guidelines/` | der Kanon in neun Kapiteln, inklusive Tone of Voice |
 | `tokens/` | alle Farben, Typo-Stufen und CSS-Rezepte (`tokens.css`) |
 | `templates/` | Deck-Template, Stage-Skript, Kontur-Generator und `deck-pack.js` |
 | `assets/` | Logos, lokal gehostete Fonts und Referenz-Screenshots |
@@ -39,7 +39,7 @@ Kundenarbeit lebt nie in diesem Repo, auch nicht lokal — für jedes
 Projekt entsteht ein eigener Ordner mit kopiertem Kit. Alle Werte
 kommen aus `tokens/tokens.css`, niemand definiert Farben oder
 Größen neu. Und vor jeder Textarbeit gilt der
-[Voice-Guide](guidelines/08-voice.md).
+[Tone of Voice](guidelines/08-voice.md).
 
 ---
 

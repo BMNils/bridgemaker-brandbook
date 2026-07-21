@@ -17,7 +17,7 @@ Inhalts-Master.
   (Workflow und harte Verbote) plus
   `references/BM_Voice_Style_Guide_v1.md` — eine wortgleiche Kopie
   des Guides aus `guidelines/08-voice.md` (inkl. Anhang
-  Copy-Mikroregeln). Ändert sich der Voice-Guide, wird die Kopie
+  Copy-Mikroregeln). Ändert sich der Tone of Voice, wird die Kopie
   neu extrahiert, nie von Hand editiert.
 - Die beiden ZIPs sind die Upload-Bundles. Nach jeder Änderung neu
   packen:

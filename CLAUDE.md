@@ -221,8 +221,8 @@
 
 ## 8. Texte
 
-Vor jeder Textarbeit `guidelines/08-voice.md` (Voice-Guide v1.1,
-verbindlich). Kurzfassung der härtesten Regeln: Per Du / „you";
+Vor jeder Textarbeit `guidelines/08-voice.md` (Bridgemaker Tone of
+Voice v1.2, verbindlich). Kurzfassung der härtesten Regeln: Per Du / „you";
 aktive Verben, kein Konjunktiv; konkret vor abstrakt; belastbare
 Zahlen oder keine; Schmuck-Adjektive raus; max. ein Reframe
 („nicht X, sondern Y") pro Text; ein Stilbruch pro Text; verbotene
@@ -254,7 +254,7 @@ Digitale Produkte bauen auf **MD3** mit Bridgemaker-Theming
 
 **Do:** tokens.css zuerst laden ✓ Flächenrhythmus nutzen ✓ Wortmarke im
 Header ✓ Pill-Buttons ✓ `type-*`-Klassen ✓ Karten sitzen lassen ✓
-Grain auf Glas/Gradient ✓ Voice-Guide vor Textarbeit ✓ Platzhalter
+Grain auf Glas/Gradient ✓ Tone of Voice vor Textarbeit ✓ Platzhalter
 statt erfundener Assets ✓ Negativraum atmen lassen ✓ Fragen, wenn unklar.
 
 **Don't:** ganze Seiten in sterilem Reinweiß ❌ Monogramm im Header ❌

@@ -26,7 +26,7 @@ installieren.
   Gradients, Components — als erlebbare Referenz.
 - **[Guidelines (Kanon)](guidelines/README.md):** das Regelwerk in neun
   Kapiteln. Bei Widerspruch gewinnt immer der Kanon.
-- **[Voice & Style Guide](guidelines/08-voice.md):** verbindlich für jede
+- **[Bridgemaker Tone of Voice](guidelines/08-voice.md):** verbindlich für jede
   Textarbeit — lies ihn, bevor du eine Zeile für Bridgemaker schreibst.
 
 ## Weg 2 — Mit KI gestalten (Claude Code, Langdock & Co.)
