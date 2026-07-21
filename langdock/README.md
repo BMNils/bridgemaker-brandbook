@@ -12,22 +12,31 @@ Inhalts-Master.
 - `slide-writing/` — Skill „Bridgemaker Slide Writing":
   `SKILL.md` (Regeln und Ausgabeformat) plus `layout-katalog.md`
   (die freigegebenen Layouts in Prosa).
-- `bridgemaker-slide-writing.zip` — das Upload-Bundle, generiert
-  aus `slide-writing/`. Nach jeder Änderung neu packen:
+- `bm-copywriting/` — Skill „B—M Copywriting": `SKILL.md`
+  (Workflow und harte Verbote) plus
+  `references/BM_Voice_Style_Guide_v1.md` — eine wortgleiche Kopie
+  des Guides aus `guidelines/08-voice.md` (inkl. Anhang
+  Copy-Mikroregeln). Ändert sich der Voice-Guide, wird die Kopie
+  neu extrahiert, nie von Hand editiert.
+- Die beiden ZIPs sind die Upload-Bundles. Nach jeder Änderung neu
+  packen:
 
   ```bash
-  cd langdock/slide-writing && zip -j ../bridgemaker-slide-writing.zip SKILL.md layout-katalog.md
+  cd langdock/slide-writing && zip -j ../bridgemaker-slide-writing.zip SKILL.md layout-katalog.md && cd ..
+  zip -r bm-copywriting.zip bm-copywriting
   ```
 
 ## Hochladen
 
 In Langdock: **Skills → Add Skill → Upload a skill**, das ZIP
-hineinziehen. Danach prüfen:
+hineinziehen (bestehende Skills: aktualisieren statt doppelt
+anlegen). Danach prüfen:
 
-1. Verweist die SKILL.md-Passage „Bridgemaker-Sprachstil (eigener
-   Skill)" sinngemäß auf den vorhandenen Sprach-Skill? Ggf. dessen
-   genauen Namen eintragen.
-2. Skill mit dem Team teilen (Workspace-Skill) oder an den
+1. Beide Skills vorhanden und aktuell? Der Slide-Writing-Skill
+   verweist namentlich auf „B—M Copywriting" (bm-copywriting) —
+   ändert sich dessen Name in Langdock, den Verweis in
+   `slide-writing/SKILL.md` nachziehen.
+2. Skills mit dem Team teilen (Workspace-Skill) oder an den
    Slides-Agenten bzw. ein Projekt anhängen.
 
 ## Pflege
