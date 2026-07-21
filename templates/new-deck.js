@@ -22,6 +22,9 @@
        assets/logos/wordmark-*.svg
        assets/fonts/…            (lokal, kein Google-Fonts-Aufruf)
        deck/<ordnername>.html    (Template-Kopie, Pfade angepasst)
+       CLAUDE.md                 (Regel-Destillat — bindet auch
+                                  Sessions, die nur diesen Ordner
+                                  sehen; Quelle: deck-kit-claude.md)
        README.md                 (die drei Befehle des Alltags)
 
    Das Skript verweigert Ziele INNERHALB des Brandbook-Repos —
@@ -69,7 +72,7 @@ const kit = [
 ];
 fs.readdirSync(path.join(repoRoot, 'assets/fonts')).forEach(f => kit.push('assets/fonts/' + f));
 
-const fehlt = kit.filter(f => !fs.existsSync(path.join(repoRoot, f)));
+const fehlt = kit.concat(['templates/deck-kit-claude.md']).filter(f => !fs.existsSync(path.join(repoRoot, f)));
 if (fehlt.length) {
   console.error('FEHLER — im Repo nicht gefunden: ' + fehlt.join(', '));
   console.error('Erst `git pull`, dann erneut versuchen.');
@@ -95,6 +98,11 @@ if (kunde) {
 }
 fs.mkdirSync(path.dirname(deckFile), { recursive: true });
 fs.writeFileSync(deckFile, html);
+
+/* Regel-Destillat: sorgt dafür, dass auch eine Claude-Session, die
+   NUR den Projektordner sieht (nicht das Brandbook-Repo), an die
+   Marken- und Deck-Regeln gebunden ist. */
+fs.copyFileSync(path.join(repoRoot, 'templates/deck-kit-claude.md'), path.join(dest, 'CLAUDE.md'));
 
 fs.writeFileSync(path.join(dest, 'README.md'), `# ${kunde || path.basename(dest)} — Deck
 

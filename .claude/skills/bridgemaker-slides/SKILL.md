@@ -32,7 +32,8 @@ Jedes Deck entsteht als Kopie von `templates/deck-template.html`.
 öffentlich und projektübergreifend; Kundendaten gehören auch lokal
 nicht hinein). Für jedes Kundenprojekt legt EIN Befehl den
 Projektordner außerhalb an — komplett mit Kit (tokens, Werkzeuge,
-Logos, Fonts), startklarer Template-Kopie in `deck/` und README:
+Logos, Fonts, Regel-Destillat als `CLAUDE.md` für spätere Sessions
+im Projektordner), startklarer Template-Kopie in `deck/` und README:
 
 ```bash
 node templates/new-deck.js <projektordner-außerhalb> --kunde "Name"

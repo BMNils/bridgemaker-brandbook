@@ -4,6 +4,13 @@ Diese Anleitung führt dich zu einer HTML-Slide-Präsentation im
 Bridgemaker-Look. Du brauchst nur Claude Code — Layouts, Markenregeln
 und Qualitätskontrolle bringt das Brandbook mit.
 
+> **Wichtig, bevor du loslegst:** Das Ganze funktioniert nur in
+> **Claude Code** — dem Programm, das du im Terminal startest — und
+> nur, wenn du es **im Brandbook-Ordner** startest (Schritt 1 und 2).
+> Claude auf der Website (claude.ai) oder in anderen Tools kennt
+> unsere Regeln nicht. Es baut dir trotzdem bereitwillig etwas — es
+> sieht dann nur aus wie Bridgemaker, ist es aber nicht.
+
 ## Schritt 1: Brandbook auf deinen Rechner holen
 
 Öffne das Terminal und kopiere diese zwei Zeilen hinein:
@@ -34,6 +41,11 @@ Inhalte kommen bewusst noch nicht mit:**
 ```text
 Baue mir ein Slide-Deck nach dem bridgemaker-slides-Skill.
 
+Prüfe zuerst dein Setup: Findest du das Skill bridgemaker-slides und
+die Datei templates/deck-template.html? Wenn eines von beidem fehlt,
+baue NICHTS und sag mir stattdessen, dass ich im falschen Ordner
+oder im falschen Programm bin.
+
 Ansprechpartner für die Schluss-Slide: Name, Rolle, geprüfte E-Mail.
 
 Richte zuerst alles ein. Wenn du bereit bist, frag mich nach den
@@ -41,7 +53,10 @@ Inhalten — ich liefere sie dann als Nachricht oder als Datei.
 ```
 
 Mehr steht da nicht, mit Absicht: Den kompletten Ablauf — Layout,
-Texte, Grafiken, Qualitätskontrolle — kennt Claude schon.
+Texte, Grafiken, Qualitätskontrolle — kennt Claude schon. Die
+Prüf-Zeile ist deine Sicherung: Antwortet Claude, dass etwas fehlt,
+bist du im falschen Ordner oder im falschen Programm — zurück zu
+Schritt 1 und 2, nicht weitermachen.
 
 ## Schritt 4: Inhalte liefern — als letzte Aktion
 
@@ -84,3 +99,10 @@ Qualitäts-Checkliste und sagt dir, wenn alles sauber ist.
 Einfach normal weiterschreiben („Slide 3: andere Headline"). Wirkt
 etwas plötzlich nicht mehr nach Bridgemaker, reicht ein Satz:
 **„Halt dich ans Brandbook."**
+
+Kommst du später oder an einem anderen Tag zurück: Starte Claude
+Code im **Projektordner des Kunden** — Terminal öffnen, mit
+`cd Pfad/zum/Projektordner` hineinwechseln, `claude` eintippen. Die
+Regeln liegen dort bei, Claude kennt sie also auch ohne den
+Brandbook-Ordner. Nur für ein **neues** Deck startest du wieder im
+Brandbook-Ordner bei Schritt 2.
