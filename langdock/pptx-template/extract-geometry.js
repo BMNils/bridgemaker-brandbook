@@ -27,7 +27,7 @@ window.addEventListener('load', () => setTimeout(() => {
   try {
   const out = { slides: [] };
   const ownText = el => [...el.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim();
-  document.querySelectorAll('deck-stage > section').forEach(sec => {
+  document.querySelectorAll('deck-stage > section').forEach((sec, si) => {
     const sr = sec.getBoundingClientRect();
     const k = 1440 / sr.width;                       // Stage-Skalierung normalisieren
     const rel = r => ({ x: +( (r.left - sr.left) * k ).toFixed(1), y: +((r.top - sr.top) * k).toFixed(1), w: +(r.width * k).toFixed(1), h: +(r.height * k).toFixed(1) });
@@ -38,17 +38,35 @@ window.addEventListener('load', () => setTimeout(() => {
       bg: getComputedStyle(sec).backgroundColor,
       texts: [], lines: [], images: [],
     };
+    /* Voll-Block-Erfassung: Ein Element, dessen Kinder nur Inline-
+       Tags sind („<strong>Lead.</strong> Resttext"), wird EINE Box
+       mit dem kompletten Text. Der reine own-Ansatz erzeugte hier
+       zwei Boxen an derselben X-Position (Container-Resttext +
+       Inline-Kind) — Text-über-Text schon im Master. */
+    const INLINE = new Set(['B', 'STRONG', 'EM', 'I', 'SPAN', 'BR', 'SUP', 'SUB', 'U', 'MARK', 'A']);
+    const fullCaptured = new Set();
     sec.querySelectorAll('*').forEach(el => {
       if (el.closest('svg, script, style')) return;
       const cs = getComputedStyle(el);
       if (cs.display === 'none') return;
       const r = el.getBoundingClientRect();
       if (!r.width && !r.height) return;
-      const txt = ownText(el);
+      let txt = ownText(el);
+      /* Icon-Glyphen (Material Symbols) sind Ligatur-Text — als
+         Klartext „arrow_forward" in der PPTX wären sie ein Fehler. */
+      if (/Material Symbols/i.test(cs.fontFamily)) txt = '';
       if (txt) {
+        let anc = el.parentElement, covered = false;
+        while (anc && anc !== sec) { if (fullCaptured.has(anc)) { covered = true; break; } anc = anc.parentElement; }
+        if (covered) txt = '';
+      }
+      if (txt) {
+        const full = [...el.children].every(c => INLINE.has(c.tagName));
+        if (full) fullCaptured.add(el);
         const clone = el.cloneNode(true);                  // br wird Zeilenumbruch, unabhängig von Sichtbarkeit
         clone.querySelectorAll('br').forEach(b => b.replaceWith('\\n'));
         s.texts.push({
+          full,
           text: clone.textContent.trim(),
           own: txt,
           ...rel(r),
@@ -63,6 +81,14 @@ window.addEventListener('load', () => setTimeout(() => {
           mono: /JetBrains/i.test(cs.fontFamily),
           caps: cs.textTransform === 'uppercase',
           leaf: [...el.children].every(c => c.tagName === 'BR'),
+          /* Rolle fürs Boxen-Sizing im Build: Meta-Zeilen (Kopf-,
+             Fußzeile, Eyebrows) sind einzeilig und brauchen
+             Designbreite statt Mustertext-Maß. */
+          role: el.closest('.slide-head') ? 'head'
+              : el.closest('.slide-foot') ? 'foot'
+              : el.closest('.cover-head') ? 'foot'
+              : el.closest('.type-eyebrow') ? 'eyebrow'
+              : null,
         });
       }
       /* Hairlines: flache/schmale gefüllte Divs ohne Text */
@@ -96,6 +122,28 @@ window.addEventListener('load', () => setTimeout(() => {
         if (wm) s.images.push({ kind: 'wordmark-' + wm, ...rel(r) });
       }
     });
+    /* Seitenzahl: der CSS-Counter (.pagenum::after) hat keinen
+       Textknoten und entgeht dem own-Ansatz — als eigene Textbox
+       nachmessen, Wert = Slide-Nummer wie decimal-leading-zero. */
+    const pn = sec.querySelector('.slide-foot .pagenum');
+    if (pn && getComputedStyle(pn).display !== 'none') {
+      const pcs = getComputedStyle(pn);
+      const num = String(si + 1).padStart(2, '0');
+      s.texts.push({
+        text: num, own: num,
+        ...rel(pn.getBoundingClientRect()),
+        fs: +parseFloat(pcs.fontSize).toFixed(1),
+        fw: pcs.fontWeight,
+        italic: false,
+        color: pcs.color,
+        ls: pcs.letterSpacing,
+        align: 'right',
+        mono: /JetBrains/i.test(pcs.fontFamily),
+        caps: false,
+        leaf: true,
+        role: 'pagenum',
+      });
+    }
     out.slides.push(s);
   });
   const div = document.createElement('div');
