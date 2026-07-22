@@ -113,6 +113,13 @@ den Einleitungstext, nicht fünfmal ins Raster.
    drei Zahlen die Aussage auch ohne Diagramm? Dann Zahlen-Slide.
    Vergleichs-Diagramme: eine farbige Reihe, Vergleichswerte grau,
    Direktbeschriftung statt Legende.
+7. **Linienbilder sind fertige Assets.** Die `<svg>`-Konturbilder
+   auf Cover, Kapiteltrennern und Schluss kopierst du beim
+   Duplizieren unverändert mit — du zeichnest sie NIEMALS selbst,
+   vereinfachst sie nicht und kürzt keine Pfaddaten („sieht ähnlich
+   aus" ist hier ein Fehler). Für weitere Kapitel nimmst du die
+   fünf mitgelieferten Trenner-Vorlagen (eine je Farbwelt); ein
+   Kapitel behält seine Farbwelt.
 
 ## Selbstcheck nach jeder Runde
 

@@ -42,15 +42,10 @@ if (!/^<!doctype html>/i.test(html)) {
 }
 html = html.replace(/^<!doctype html>/i, m => m + '\n' + MARKER);
 
-/* 2. Kapiteltrenner 02–05 entfernen (Muster-Diät) */
-for (const n of ['02', '03', '04', '05']) {
-  const re = new RegExp('<section[^>]*data-label="Kapiteltrenner ' + n + '"[\\s\\S]*?</section>\\s*');
-  if (!re.test(html)) {
-    console.error(`FEHLER — Sektion "Kapiteltrenner ${n}" nicht gefunden (Template geändert?).`);
-    process.exit(1);
-  }
-  html = html.replace(re, '');
-}
+/* 2. ALLE fünf Kapiteltrenner bleiben drin: Die Muster-Diät hatte
+   sie entfernt — Folge war, dass der Agent für weitere Kapitel
+   eigene, verarmte Linienbilder zeichnete (1–4 Pfade statt 15–23).
+   29 KB Kopiervorlagen sind billiger als jede Regel dagegen. */
 
 /* 3. tokens.css inline */
 html = html.replace(

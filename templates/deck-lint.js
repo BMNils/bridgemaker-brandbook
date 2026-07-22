@@ -173,6 +173,16 @@ function lintInPage() {
     if (!moment && getComputedStyle(s).backgroundColor !== OFF_WHITE) {
       err('Grund ist nicht Off-White — Farbfläche nur auf Cover, Trenner, Zitat und Schluss.');
     }
+
+    /* Linienbilder auf Moment-Slides sind fertige Assets (Generator
+       bzw. Template-Vorlagen, 8–26 Pfade). 1–5 Pfade = verarmte
+       Eigenzeichnung — sieht aus wie ein Fehler, nicht wie Topografie. */
+    if (moment) {
+      s.querySelectorAll('svg').forEach(svg => {
+        const n = svg.querySelectorAll('path').length;
+        if (n > 0 && n < 6) err(`Linienbild verarmt (${n} Konturpfad${n === 1 ? '' : 'e'}) — Original-SVG aus dem Template bzw. den Trenner-Vorlagen unverändert kopieren, nie selbst zeichnen.`);
+      });
+    }
     const overX = s.scrollWidth - s.clientWidth, overY = s.scrollHeight - s.clientHeight;
     if (overX > 2 || overY > 2) {
       err(`Inhalt läuft aus der Slide (${overX > 2 ? overX + 'px horizontal' : ''}${overX > 2 && overY > 2 ? ', ' : ''}${overY > 2 ? overY + 'px vertikal' : ''}) — kürzen oder Layout wechseln.`);
