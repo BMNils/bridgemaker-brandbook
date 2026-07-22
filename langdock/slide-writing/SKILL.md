@@ -1,16 +1,17 @@
 ---
 name: B—M Slide Writing
 slug: bridgemaker-slide-writing
-description: 'Baut komplette Bridgemaker-Decks direkt in Langdock. Aus Notizen, Stichpunkten oder Dokumenten entsteht erst eine Storyline, dann das Deck im Bridgemaker-Design im Canvas — gemeinsam verfeinert, Slide für Slide („Slide 3: andere Headline"), Blättern per Pfeiltasten. Am Ende die HTML-Datei herunterladen und an Nils schicken; zurück kommt das geprüfte PDF, und nur das geht an Kunden. Nutzen, wenn Slides, Decks oder Präsentationen entstehen oder geändert werden sollen. Typische Bitten: „mach daraus Folien", „bau das Deck", „strukturier das als Präsentation", „ändere Slide 3". Use when structuring, writing, building, or iterating Bridgemaker slide decks.'
+description: 'Baut komplette Bridgemaker-Decks direkt in Langdock — wahlweise im Slides-Modus mit dem B—M-Template aus der Galerie oder als pixelgenaues HTML im Canvas. Aus Notizen, Stichpunkten oder Dokumenten entsteht erst eine Storyline, dann das Deck, gemeinsam verfeinert Slide für Slide („Slide 3: andere Headline"). Kundendecks gehen am Ende durchs Quality-Gate; nur das geprüfte PDF geht an Kunden. Nutzen, wenn Slides, Decks oder Präsentationen entstehen oder geändert werden sollen. Typische Bitten: „mach daraus Folien", „bau das Deck", „strukturier das als Präsentation", „ändere Slide 3". Use when structuring, writing, building, or iterating Bridgemaker slide decks.'
 ---
 
 # B—M Slide Writing
 
 Du führst den kompletten Weg von Rohinhalten zum fertigen
 Bridgemaker-Deck: Inhalte verstehen, Storyline bauen, Slides
-texten, das Deck als HTML im Canvas setzen und mit dem Nutzer
-Slide für Slide verfeinern. Es gibt keine Übergabe an Dritte —
-du baust, der Nutzer steuert.
+texten, das Deck setzen und mit dem Nutzer Slide für Slide
+verfeinern. Es gibt keine Übergabe an Dritte — du baust, der
+Nutzer steuert. Für das Setzen gibt es **zwei Wege** (Schritt 4);
+das Denken davor ist auf beiden identisch.
 
 ## Ablauf
 
@@ -23,7 +24,43 @@ du baust, der Nutzer steuert.
    Inhalten, nie mischen. Nur bei echter Mehrdeutigkeit fragen.
 3. **Storyline vorschlagen.** Kapitel und Slide-Folge als kurze
    Übersicht, bevor du baust. Warte auf ein OK oder Anpassungen.
-4. **Template in die Arbeitsdatei — kopieren, nicht nachbauen.**
+4. **Produktionsweg wählen.** Zwei Wege, eine Voreinstellung:
+   **Kundendecks und alles, was das Haus verlässt → Weg B**
+   (HTML, pixelgenau, maschinell geprüft). **Interne Decks und
+   schnelle Entwürfe → Weg A** (Langdock-Slides mit dem
+   B—M-Template). Weg A ist außerdem deutlich sparsamer im
+   Verbrauch: Weg B bewegt bei jedem Bau- und Änderungsschritt
+   eine große HTML-Datei durchs Modell, Weg A nur die Inhalte —
+   auch deshalb ist er für alles Interne die erste Wahl. Arbeitet
+   der Nutzer bereits im Slides-Modus mit dem B—M-Template, ist
+   Weg A gewählt; ist der Weg nicht erkennbar, stell genau EINE
+   Frage („Geht das Deck an einen Kunden? Dann baue ich den
+   pixelgenauen Weg.").
+5. **Pro Slide: Argument → Layout → Text** (gilt auf beiden
+   Wegen). Struktur bestimmen, Layout aus dem Katalog wählen
+   (unten), dann setzen. Texte dabei redigieren (Sprachregeln
+   unten) — Aussage und Struktur der gelieferten Inhalte bleiben
+   unangetastet, die Sprache wird Bridgemaker.
+6. **Iterieren** (beide Wege). Der Nutzer sagt, was sich ändern
+   soll; du änderst punktuell genau diese Stelle — nie das ganze
+   Deck neu generieren, wenn eine Slide gemeint ist. Nach jeder
+   Änderung ein Satz: was wurde geändert.
+
+## Weg A — Langdock-Slides mit dem B—M-Template
+
+Der Nutzer startet den Slides-Modus und wählt das Template
+**„B—M Deck"** aus der Galerie (fehlt es ihm, sag ihm das). Du
+lieferst die Inhalte in der Logik von Schritt 5: pro Folie ein
+Layout-Typ aus dem Katalog, eine Aussage als Headline, Texte in
+Bridgemaker-Sprache. Die Gestaltung kommt aus dem Template — du
+erfindest keine eigenen Farben, Schriften oder Deko-Elemente
+dazu und forderst auch den Generator nicht dazu auf. Abgabe:
+Export aus Langdock; **Kundendecks gehen auch auf diesem Weg vor
+Versand ans Quality-Gate (aktuell: Nils).**
+
+## Weg B — HTML im Canvas (der pixelgenaue Weg)
+
+1. **Template in die Arbeitsdatei — kopieren, nicht nachbauen.**
    Die mitgelieferte Datei `deck-template-canvas.md` enthält das
    komplette Deck-Template als HTML in einem Codeblock. Lege die
    Arbeitsdatei an, indem du den Codeblock-Inhalt — von
@@ -36,25 +73,15 @@ du baust, der Nutzer steuert.
    freihändig weiter und beginnst niemals ein eigenes HTML-Gerüst,
    auch nicht „nur für eine Slide". Ab jetzt arbeitest du
    ausschließlich in dieser Datei.
-5. **Pro Slide: Argument → Layout → Text.** Struktur bestimmen,
-   Layout aus dem Katalog wählen (unten), die passende
-   Muster-Sektion im Template duplizieren und füllen. Texte dabei
-   redigieren (Sprachregeln unten) — Aussage und Struktur der
-   gelieferten Inhalte bleiben unangetastet, die Sprache wird
-   Bridgemaker.
-6. **Iterieren.** Der Nutzer blättert in der Vorschau (Pfeiltasten)
-   und sagt, was sich ändern soll. Du änderst punktuell genau diese
-   Stelle — nie das ganze Deck neu generieren, wenn eine Slide
-   gemeint ist. Nach jeder Änderung ein Satz: was wurde geändert.
-   Bleibt die Vorschau leer, sag dem Nutzer: Browser-Tab neu laden —
-   das ist eine bekannte Eigenheit der Vorschau, kein Fehler im
-   Deck. Baue deswegen NIE das Deck um.
-7. **Abgabe.** Ist der Nutzer zufrieden: HTML über den
-   Download-Knopf sichern lassen und ans Quality-Gate geben
-   (aktuell: Nils) — dort wird maschinell geprüft und das
-   Versand-PDF erzeugt. Die Canvas-HTML geht nie an Kunden: Sie
-   lädt Schriften über einen internen Google-Link und ist nur
-   fürs Entwerfen freigegeben.
+2. **Setzen:** die passende Muster-Sektion duplizieren und füllen
+   (Bauregeln unten). Der Nutzer blättert in der Vorschau
+   (Pfeiltasten). Bleibt sie leer: Browser-Tab neu laden — bekannte
+   Eigenheit, kein Fehler im Deck; baue deswegen NIE das Deck um.
+3. **Abgabe:** HTML über den Download-Knopf sichern lassen und ans
+   Quality-Gate geben (aktuell: Nils) — dort wird maschinell
+   geprüft und das Versand-PDF erzeugt. Die Canvas-HTML geht nie
+   an Kunden: Sie lädt Schriften über einen internen Google-Link
+   und ist nur fürs Entwerfen freigegeben.
 
 ## Layout folgt Argument
 
