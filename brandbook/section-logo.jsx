@@ -34,7 +34,7 @@ function BbLogoSection() {
       {/* Monogram */}
       <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", color: "#1C1C1E", margin: "0 0 8px" }}>Monogram — Signet</h3>
       <p style={{ font: "var(--text-small)", color: "#6B6B65", margin: "0 0 24px", maxWidth: 620 }}>
-        Für quadratische Anwendungen: App-Icon, Favicon, Social-Avatar, kleine Stempel auf Bildern. Niemals als Ersatz für das Wordmark im Hauptauftritt.
+        Für quadratische Anwendungen ab App-Icon-Größe (~120 px): Touch-Icon, Social-Avatar, kleine Stempel auf Bildern. Das Browser-Favicon ist es nicht — dort läuft nur der Gedankenstrich auf schwarzem Quadrat (favicon-dash.png), weil das volle B—M bei Tab-Größe unlesbar ist. Niemals als Ersatz für das Wordmark im Hauptauftritt.
       </p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 32 }}>
         <div style={{ background: "#F5F1EB", borderRadius: 20, border: "1px solid #C5C0B8", padding: 32, aspectRatio: "1/1", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -54,7 +54,7 @@ function BbLogoSection() {
         {[
           { l: "Open Black", u: "Standard für helle Flächen" },
           { l: "Open White", u: "Standard für dunkle Flächen" },
-          { l: "Blackbox", u: "App-Icon, Favicon, Garantie auf hellem Foto-Untergrund" },
+          { l: "Blackbox", u: "App-Icon, Garantie auf hellem Foto-Untergrund" },
           { l: "Whitebox", u: "Stempel auf dunklen Fotos, wo das Schwarz wegliefe" },
         ].map(c => (
           <div key={c.l}>
@@ -150,7 +150,7 @@ function BbLogoSection() {
           <div style={{ font: "500 12px/1.4 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "#4A5A3C" }}>Do</div>
           <ul style={{ font: "var(--text-small)", color: "#1C1C1E", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.8 }}>
             <li>Wordmark als primäre Anwendung — im Website-Header (64px) immer die Wordmark, 20px hoch</li>
-            <li>Monogram nur, wenn das Format ein Quadrat erzwingt (Favicon, App-Icon, Avatar, Foto-Stempel)</li>
+            <li>Monogram nur, wenn das Format ein Quadrat ab App-Icon-Größe erzwingt (Touch-Icon, Avatar, Foto-Stempel) — das Browser-Favicon führt nur den Strich</li>
             <li>Charcoal auf Off-White, Off-White auf Charcoal</li>
             <li>Schutzzone = Höhe des „B" rundherum</li>
             <li>Box-Variante des Monograms auf unruhigem Foto-Untergrund</li>

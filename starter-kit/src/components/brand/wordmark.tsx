@@ -31,7 +31,10 @@ export function Wordmark({
 }
 
 /**
- * B—M-Monogramm — NUR für Favicon, App-Icon, Avatar, Foto-Stempel.
+ * B—M-Monogramm — NUR für App-Icon, Avatar, Foto-Stempel (ab ~120 px).
+ * Das Browser-Favicon ist NICHT das Monogramm, sondern nur der
+ * Gedankenstrich auf schwarzem Quadrat — liegt fertig als
+ * src/app/icon.png (Next serviert es automatisch als Favicon).
  * Nie im Header, nie als Logo-Ersatz (guidelines/01).
  */
 export function Monogram({

@@ -144,3 +144,18 @@ bisherige Icon-Lücke dieses Mappings).
   Starter-Kit für Produkt-UIs. Icon-Namen: fonts.google.com/icons.
 - MD3-Komponenten-Slots (Dialoge, Menüs, Tabs …) verwenden dieselben
   Symbols — keine Library-eigenen Icon-Sets durchsickern lassen.
+
+## 9.9 Favicon & App-Icon
+
+Jedes Produkt-UI führt die fertigen Icons, keine selbst gebauten
+(Regel und Begründung: `guidelines/01 §1.2`):
+
+- **Browser-Favicon:** NUR der Gedankenstrich auf schwarzem Quadrat —
+  `assets/logos/favicon-dash.png` (72 px) bzw. `favicon.ico`. Das
+  volle B—M ist bei Tab-Größe unlesbar.
+- **App-/Touch-Icon (ab ~120 px):** B—M im Kreis,
+  `assets/logos/app-icon-bm-circle.png`.
+- Im Starter-Kit liegen beide fertig verdrahtet: `src/app/icon.png`,
+  `src/app/favicon.ico` und `src/app/apple-icon.png` — Next serviert
+  sie über die Datei-Konvention automatisch, kein `icons`-Metadata
+  nötig.

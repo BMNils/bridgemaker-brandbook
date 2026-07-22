@@ -30,13 +30,21 @@ hinter der Marke: die direkte, unkomplizierte Verbindung zweier Welten
 (Corporate ↔ Startup) — der direkteste Weg.
 
 **B—M ist das Monogramm (Signet), nicht das Logo.** Es existiert nur für
-quadratische Anwendungen: Favicon, App-Icon, Social-Avatar, kleine
-Foto-Stempel.
+quadratische Anwendungen ab App-Icon-Größe (~120 px): Touch-Icon,
+Social-Avatar, kleine Foto-Stempel.
+
+**Das Browser-Favicon ist nicht das Monogramm**, sondern nur der
+Gedankenstrich auf schwarzem Quadrat — bei Tab-Größe (16–72 px) ist das
+volle B—M unlesbar, der Strich allein trägt die Markenidee. Assets
+(Quelle: Website): `assets/logos/favicon-dash.png` (72 px),
+`assets/logos/favicon.ico` (16/32 px), fürs Touch-Icon
+`assets/logos/app-icon-bm-circle.png` (B—M im Kreis, 180 px).
 
 | Anwendung | Verwendung |
 |---|---|
 | Header, Footer, Slide-Cover, Visitenkarten, jede Haupt-Markenpräsenz | **Wortmarke** (im 64px-Header: 20px hoch; auf dunklen Sektionen weiße Variante) |
-| Favicon, App-Icon, Social-Avatar, Foto-Stempel | **Monogramm B—M** (Box-Variante auf unruhigen Hintergründen) |
+| Browser-Favicon (16–72 px) | **Nur der Gedankenstrich** auf schwarzem Quadrat (`favicon-dash.png`, `favicon.ico`) |
+| App-/Touch-Icon, Social-Avatar, Foto-Stempel (ab ~120 px) | **Monogramm B—M** (Touch-Icon/Avatar: Kreis-Variante; Box-Variante auf unruhigen Hintergründen) |
 
 Niemals das Monogramm anstelle der Wortmarke in einer Haupt-Markenpräsenz —
 der häufigste Fehler beim Generieren von Bridgemaker-Layouts.

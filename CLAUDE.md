@@ -35,8 +35,11 @@
 4. **Nur `type-*`-Klassen für Text.** Nie ad-hoc Größen/Gewichte/Tracking.
 5. **Pill-Buttons, immer** (`border-radius: 999px`).
 6. **Header-Logo = Wortmarke, immer** (20px hoch im 64px-Header; weiße
-   Variante auf Dunkel). Das B—M-Monogramm nur für Favicon/App-Icon/
-   Avatar/Foto-Stempel.
+   Variante auf Dunkel). Browser-Favicon = NUR der Gedankenstrich auf
+   schwarzem Quadrat (`assets/logos/favicon-dash.png` + `favicon.ico`
+   — das volle B—M ist bei Tab-Größe unlesbar); das B—M-Monogramm
+   erst ab App-Icon-Größe (Touch-Icon `app-icon-bm-circle.png`,
+   Avatar, Foto-Stempel).
 7. **8px-Raster** (4px halbe Stufe). Keine krummen Werte.
 8. **Textarbeit? Erst `guidelines/08-voice.md` lesen** (Tone-Level,
    Wortlisten, harte Schreibregeln).
