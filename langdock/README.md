@@ -76,3 +76,23 @@ Quelle der Wahrheit ist dieses Repo. Ändert sich der Kanon
 (Layouts, Voice-Regeln, Slide-Regeln), werden die Dateien hier
 nachgezogen und das ZIP neu hochgeladen — Langdock zieht nichts
 automatisch.
+
+## PPTX-Template (Langdock File Templates)
+
+Langdocks Template-Galerie (Dateien → Neu erstellen → Alle
+Templates) verlangt PPTX/POTX und liest die Folien-STRUKTUR —
+Bild-Folien sind für den Generator stumm. `pptx-template/` baut
+deshalb einen nativen Master aus dem Kanon: `extract-geometry.js`
+vermisst das gerenderte deck-template.html (Texte, Hairlines,
+Logos, Positionen), `build-pptx-template.py` erzeugt daraus die
+PowerPoint mit echten Textfeldern (Moment-Slides tragen die
+gerenderten Linien-/Kasane-Bilder als Hintergrund, Sprechernotiz =
+Layout-Name). Neu bauen nach Kanon-Änderungen:
+
+```bash
+node langdock/pptx-template/extract-geometry.js
+<python-mit-pptx-libs> langdock/pptx-template/build-pptx-template.py
+```
+
+Ergebnis liegt als Kopie hier (`bridgemaker-slides-template.pptx`)
+und in ~/Downloads für den Upload.
