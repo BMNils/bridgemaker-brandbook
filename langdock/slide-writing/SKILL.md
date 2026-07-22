@@ -96,10 +96,16 @@ den Einleitungstext, nicht fünfmal ins Raster.
 3. **Kopf- und Fußzeilen-System unangetastet:** Kopfzeile
    „NN / Kapitel", Fußzeile Wortmarke + Kunde + Seitenzahl auf
    jeder Slide außer Cover, Zitat und Schluss — Positionen und
-   Größen exakt wie im Template.
-4. **Headlines maximal zwei Zeilen**, ohne Schlusspunkt, ohne
-   Ausrufezeichen, normale Groß-/Kleinschreibung (im Englischen
-   sentence case).
+   Größen exakt wie im Template. Auf dem Cover gilt: Die
+   Logo-Brücke (Wortmarke, Linie, Kundenlogo) gehört auf
+   Kundendecks; bei internen Decks bekommt der Cover-Kopf-Container
+   zusätzlich die Klasse `cover-head-intern` — dann bleibt allein
+   die Wortmarke.
+4. **Headlines maximal zwei Zeilen** — Faustregel: bis etwa 60
+   Zeichen; ist sie länger, wird sie fast sicher dreizeilig und du
+   redigierst sie SOFORT (kürzen, nie die Schrift verkleinern).
+   Ohne Schlusspunkt, ohne Ausrufezeichen, ohne Gedankenstrich (—),
+   normale Groß-/Kleinschreibung (im Englischen sentence case).
 5. **Icons nur Material Symbols Outlined.** Kein Middot, nirgends.
 6. **Grafiken werden gebaut** — aus Linien, Typo und den
    Familienfarben des Templates, als erster Entwurf zum gemeinsamen
@@ -113,9 +119,10 @@ den Einleitungstext, nicht fünfmal ins Raster.
 Bevor du das Wort zurückgibst, prüfe still: Steht der Kommentar
 `BM-DECK-TEMPLATE v2` noch in Zeile 2? Habe ich neue `font-size`-,
 Farb- oder `font-family`-Werte eingeführt? (Dann rückgängig
-machen.) Ist jede Headline maximal zweizeilig? Tragen alle
-Content-Slides Kopf- und Fußzeile mit fortlaufender Seitenzahl?
-Behauptet jede Slide genau eine Sache?
+machen.) Ist jede Headline maximal zweizeilig (etwa 60 Zeichen)
+und frei von Gedankenstrichen? Tragen alle Content-Slides Kopf-
+und Fußzeile mit fortlaufender Seitenzahl? Behauptet jede Slide
+genau eine Sache?
 
 ## Sprachregeln für Slide-Texte
 

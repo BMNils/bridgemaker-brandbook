@@ -51,7 +51,9 @@ Device-Mockup, Zahlen (freie Stats), Principle-Zeilen,
 Gegenüberstellung, Objekt-Karten, nummerierte Objekt-Karten,
 Tabelle, Roadmap (Gantt mit Kategorien-Code), Zitat, Schluss. Slides
 duplizieren und umsortieren ist ausdrücklich okay — **neue Layouts
-erfinden ist verboten.** Fehlt ein Layout: CD fragen.
+erfinden ist verboten.** Fehlt ein Layout: CD fragen. Cover-Kopf
+nach Anlass: Kundendecks behalten die Logo-Brücke; interne Decks
+setzen `cover-head-intern` auf den Kopf-Container (nur Wortmarke).
 
 ## 3. Inhalte anfordern — als letzte Aktion des Setups
 
@@ -100,8 +102,9 @@ Gelieferte Inhalte werden aktiv in Bridgemaker-Sprache umgeschrieben
 (`guidelines/08-voice.md`). **Unantastbar sind Aussage und Struktur
 — Pflichtzone ist die Sprache:** Satzbau, Wording, Ton, Zeichen.
 Konkret: Du/ihr; aktive Verben; Headlines ohne Schlusspunkt; keine
-Meta-/Prozesssätze im Slide-Text; kein Middot; Gedankenstriche max.
-einer pro Absatz; kein „→" im Fließtext; verbotene Phrasen raus;
+Meta-/Prozesssätze im Slide-Text; kein Middot; keine
+Gedankenstriche im Slide-Text und nie in Headlines (Nils,
+2026-07-22); kein „→" im Fließtext; verbotene Phrasen raus;
 belastbare Zahlen oder Mono-Platzhalter („[ Zitat folgt ]").
 
 ## 6. Grafiken bauen — nicht ankündigen
@@ -153,9 +156,8 @@ jede Frage explizit beantworten** (abhaken, nicht überfliegen):
 **Pro Seite:**
 - [ ] Erklärt das Layout die Argumentstruktur — oder ist es nur ein
       gefülltes Raster?
-- [ ] Headline max. zwei Zeilen? (Sonst redigieren — nicht
-      schrumpfen; Umbruch nach Sinn per `<br />`, Gedankenstrich
-      nie am Zeilenanfang)
+- [ ] Headline max. zwei Zeilen und ohne Gedankenstrich? (Sonst
+      redigieren — nicht schrumpfen; Umbruch nach Sinn per `<br />`)
 - [ ] Max. drei Textgrößen — Headline, Content, Meta (12px)?
       Quellen als `.source-note` im Meta-Register?
 - [ ] Kopfzeile „NN / Kapitel" links, Fußzeile Wortmarke +

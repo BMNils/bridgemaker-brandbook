@@ -113,11 +113,13 @@ function lintInPage() {
       if (lines > 2) err(`Headline läuft über ${lines} Zeilen — redigieren, nicht schrumpfen (max. zwei).`);
       const t = title.textContent.trim();
       if (/[.!]$/.test(t)) err('Headline endet mit Schlusspunkt oder Ausrufezeichen — Headlines laufen ohne.');
+      if (/—/.test(t)) err('Gedankenstrich in der Headline — Headlines laufen ohne Geviertstrich (redigieren; Umbruch per <br />).');
     }
 
     /* Text-Census: Größen, Schriften, Zeichen. */
     const sizes = new Map();          // fontSize → Beispieltext
     let slideText = '';
+    let bodyText = '';                // ohne Headline und Eyebrows (Gedankenstrich-Check)
     s.querySelectorAll('*').forEach(el => {
       if (el.closest('svg, script, style')) return;
       const txt = ownText(el).trim();
@@ -128,6 +130,9 @@ function lintInPage() {
          trotzdem geprüft werden. */
       if (cs.display === 'none') return;
       slideText += ' ' + txt;
+      /* Kursive = wörtliche Zitate (O-Ton, unantastbar) — vom
+         Gedankenstrich-Check ausgenommen, wie Eyebrows/Headlines. */
+      if (!el.closest('.deck-title, .type-eyebrow, h1, h2') && cs.fontStyle !== 'italic') bodyText += ' ' + txt;
 
       /* Mono ist legitim für echten Code, Platzhalter-Captions und
          Klammer-Platzhalter wie „[ Zitat folgt ]" (08-voice.md). */
@@ -158,6 +163,7 @@ function lintInPage() {
     const emoji = (slideText.match(/\p{Extended_Pictographic}/gu) || []).filter(c => !'©®™'.includes(c));
     if (emoji.length) err(`Emoji im Text (${[...new Set(emoji)].join(' ')}) — Emoji sind tabu.`);
     if (/→/.test(slideText)) warn('„→" im Text — im Fließtext ausschreiben; Pfeile gehören in Grafiken.');
+    if (/—/.test(bodyText)) warn('Gedankenstrich im Slide-Text — in Decks vermeiden (§7.8): als Satz mit Komma formulieren.');
     const phrase = slideText.match(/\b(leverage|unlock|next-gen|game.?changer|state.of.the.art|seamless)\b/i);
     if (phrase) warn(`Verbotene Phrase „${phrase[0]}" — Wortliste in 08-voice.md.`);
     const status = slideText.match(/folgt nach (Freigabe|Abstimmung)|wird nachgereicht|\btbd\b|to be defined/i);

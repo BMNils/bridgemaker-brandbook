@@ -201,8 +201,10 @@
   Kopfzeile „NN / Kapitel" links, Fußzeile Wortmarke + Kunde +
   Seitenzahl (jede Slide außer Cover, Zitat und Schluss);
   Headlines max. zwei
-  Zeilen (redigieren statt schrumpfen); max. drei Textgrößen pro
-  Seite (Headline/Content/Meta). Layouts ausschließlich aus dem
+  Zeilen, ohne Gedankenstrich (redigieren statt schrumpfen); max.
+  drei Textgrößen pro Seite (Headline/Content/Meta). Cover-Kopf:
+  Logo-Brücke nur bei Kundendecks, interne Decks nur Wortmarke
+  (`.cover-head-intern`). Layouts ausschließlich aus dem
   Template; Regeln + Sehpflicht: `guidelines/07 §7.8` und Repo-Skill
   `bridgemaker-slides`. Vor der Sehpflicht die messbaren Regeln
   maschinell prüfen: `node ../templates/deck-lint.js <deck>.html`

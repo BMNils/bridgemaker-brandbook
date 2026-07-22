@@ -267,12 +267,17 @@ Hover-Effekte. (Stage-Neufassung 16.07.2026 — ersetzt die frühere
   `--deck-pad-b` hält die Mindestluft zwischen Inhalt und
   Fußzeilen-Typo. Auf dunklen Slides mit Fußzeile trägt sie die
   weiße Wortmarke.
-- **Headlines: max. zwei Zeilen.** Löst eine Headline die dritte
-  Zeile aus, wird redigiert — nicht geschrumpft und nicht mit
-  willkürlichen max-widths gequetscht. Umbruch nach Sinn per
-  `<br />` (dann `text-wrap: initial`); Gedankenstrich nie am
-  Zeilenanfang. Im Fließtext Gedankenstriche ganz vermeiden
-  (AI-Slop-Signal); in Headlines als Strukturmittel okay.
+- **Cover-Kopf nach Anlass:** Die Logo-Brücke (Wortmarke, Linie,
+  Kundenlogo) verbindet zwei Marken — sie gehört auf Kundendecks.
+  Interne Decks führen nur die Wortmarke: der Cover-Kopf-Container
+  bekommt zusätzlich `.cover-head-intern` *(Nils, 2026-07-22)*.
+- **Headlines: max. zwei Zeilen, ohne Geviertstrich.** Löst eine
+  Headline die dritte Zeile aus, wird redigiert — nicht geschrumpft
+  und nicht mit willkürlichen max-widths gequetscht. Umbruch nach
+  Sinn per `<br />` (dann `text-wrap: initial`). Gedankenstriche
+  sind in Decks tabu: im Fließtext (AI-Slop-Signal) wie in
+  Headlines *(Nils, 2026-07-22 — ersetzt die frühere Ausnahme
+  „in Headlines als Strukturmittel okay"; deck-lint prüft beides)*.
 - **Max. drei Textgrößen pro Seite:** Headline / Content / Meta
   (12px). Quellen und Fußnoten laufen im Meta-Register
   (`.source-note`: 12px, rechtsbündig, `--mid`; in Karten
