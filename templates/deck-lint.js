@@ -19,6 +19,8 @@
    - Zeichen & Voice-Basics: kein Middot/Bullet, keine Emoji,
      kein „→" im Fließtext, verbotene Phrasen, Arbeitsstände
    - Wortmarke auf Cover und Schluss
+   - Cover-Kopf: .cover-head-Zeile mit Wortmarke (kein Ad-hoc-
+     Aufbau); cover-head-intern nur auf dem .cover-head-Container
 
    Nutzung (im Deck-Ordner oder mit Pfad):
      node ../templates/deck-lint.js <deck>.html
@@ -192,6 +194,24 @@ function lintInPage() {
     if ((i === 0 || i === slides.length - 1) && !s.querySelector('img[src*="wordmark"], img[data-wm]')) {
       warn('Wortmarke fehlt — sie gehört auf Cover und Schluss.');
     }
+
+    /* Cover-Kopf ist fertige Struktur: die .cover-head-Zeile
+       verankert die Wortmarke oben links. Ad-hoc-Aufbauten
+       (Wortmarke frei in einer Flex-Spalte) sind Drift — genau
+       so entstehen mittige Logos. */
+    if (i === 0) {
+      const ch = s.querySelector('.cover-head');
+      if (!ch) {
+        err('Cover ohne .cover-head-Struktur — die Kopfzeile aus der Muster-Cover-Sektion unverändert übernehmen (Wortmarke links), nie neu bauen.');
+      } else if (!ch.querySelector('img[src*="wordmark"], img[data-wm]')) {
+        err('Wortmarke fehlt in der .cover-head-Zeile — sie steht dort links, nie frei auf der Slide.');
+      }
+    }
+    s.querySelectorAll('.cover-head-intern').forEach(el => {
+      if (!el.classList.contains('cover-head')) {
+        err('cover-head-intern sitzt auf dem falschen Element — die Klasse gehört auf den .cover-head-Container selbst, sonst ist sie wirkungslos.');
+      }
+    });
 
     report.slides.push({ n, label: s.dataset.label || 'Slide ' + n, findings });
   });

@@ -33,7 +33,8 @@ das Denken davor ist auf beiden identisch.
    die einen Weg an eine Zielgruppe bindet. Arbeitet der Nutzer
    bereits im Slides-Modus mit dem B—M-Template, ist Weg A
    gewählt; ist der Weg nicht erkennbar, stell genau EINE Frage:
-   „Sparsamer Slides-Weg oder pixelgenau gerendertes HTML?"
+   „Wie möchtest du weitermachen — A: mit dem Bridgemaker-Template
+   in Langdock oder B: HTML-Slides im Canvas bauen?"
 5. **Pro Slide: Argument → Layout → Text** (gilt auf beiden
    Wegen). Struktur bestimmen, Layout aus dem Katalog wählen
    (unten), dann setzen. Texte dabei redigieren (Sprachregeln
@@ -128,11 +129,16 @@ den Einleitungstext, nicht fünfmal ins Raster.
 3. **Kopf- und Fußzeilen-System unangetastet:** Kopfzeile
    „NN / Kapitel", Fußzeile Wortmarke + Kunde + Seitenzahl auf
    jeder Slide außer Cover, Zitat und Schluss — Positionen und
-   Größen exakt wie im Template. Auf dem Cover gilt: Die
-   Logo-Brücke (Wortmarke, Linie, Kundenlogo) gehört auf
-   Kundendecks; bei internen Decks bekommt der Cover-Kopf-Container
-   zusätzlich die Klasse `cover-head-intern` — dann bleibt allein
-   die Wortmarke.
+   Größen exakt wie im Template. Der Cover-Kopf ist fertige
+   Struktur: Du übernimmst die `cover-head`-Zeile aus der
+   Muster-Cover-Sektion unverändert — sie verankert die Wortmarke
+   oben links; du baust NIE einen eigenen Kopf (eine Wortmarke,
+   die frei in einer Flex-Spalte hängt, rutscht aus der Ecke —
+   genau so entstehen mittige Logos). Die Logo-Brücke (Wortmarke,
+   Linie, Kundenlogo) gehört auf Kundendecks; bei internen Decks
+   bekommt genau dieser `cover-head`-Container zusätzlich die
+   Klasse `cover-head-intern` — dann bleibt allein die Wortmarke.
+   Auf jedem anderen Element ist `cover-head-intern` wirkungslos.
 4. **Headlines maximal zwei Zeilen** — Faustregel: bis etwa 60
    Zeichen; ist sie länger, wird sie fast sicher dreizeilig und du
    redigierst sie SOFORT (kürzen, nie die Schrift verkleinern).
@@ -160,8 +166,9 @@ Bevor du das Wort zurückgibst, prüfe still: Steht der Kommentar
 Farb- oder `font-family`-Werte eingeführt? (Dann rückgängig
 machen.) Ist jede Headline maximal zweizeilig (etwa 60 Zeichen)
 und frei von Gedankenstrichen? Tragen alle Content-Slides Kopf-
-und Fußzeile mit fortlaufender Seitenzahl? Behauptet jede Slide
-genau eine Sache?
+und Fußzeile mit fortlaufender Seitenzahl? Steht die Wortmarke
+auf dem Cover in der unveränderten `cover-head`-Zeile oben links?
+Behauptet jede Slide genau eine Sache?
 
 ## Sprachregeln für Slide-Texte
 
