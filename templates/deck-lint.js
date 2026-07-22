@@ -97,7 +97,7 @@ function lintInPage() {
     }
     if (foot) {
       if (!foot.querySelector('.pagenum')) err('Seitenzahl fehlt in der Fußzeile (.pagenum, CSS-Counter).');
-      if (!foot.querySelector('img[src*="wordmark"]')) err('Wortmarke fehlt in der Fußzeile (.foot-brand).');
+      if (!foot.querySelector('img[src*="wordmark"], img[data-wm]')) err('Wortmarke fehlt in der Fußzeile (.foot-brand).');
       footBottoms.push({ n, v: round((rect.bottom - foot.getBoundingClientRect().bottom) / scale) });
     }
 
@@ -173,7 +173,7 @@ function lintInPage() {
     }
 
     /* Wortmarke auf Cover und Schluss. */
-    if ((i === 0 || i === slides.length - 1) && !s.querySelector('img[src*="wordmark"]')) {
+    if ((i === 0 || i === slides.length - 1) && !s.querySelector('img[src*="wordmark"], img[data-wm]')) {
       warn('Wortmarke fehlt — sie gehört auf Cover und Schluss.');
     }
 
