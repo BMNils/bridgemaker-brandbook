@@ -170,6 +170,15 @@ und Fußzeile mit fortlaufender Seitenzahl? Steht die Wortmarke
 auf dem Cover in der unveränderten `cover-head`-Zeile oben links?
 Behauptet jede Slide genau eine Sache?
 
+Danach der **Zeichen-Suchlauf** — kein Stilgefühl, ein Suchlauf:
+Durchsuche alle Texte, die du in dieser Runde geschrieben hast,
+nach „·", „•" und „—". Jeder Middot wird ein Komma. Jede Headline
+mit Gedankenstrich wird redigiert, ebenso jede mit Schlusspunkt
+oder Ausrufezeichen. Im Fließtext bleibt höchstens ein
+Gedankenstrich pro Absatz. Diese Zeichen sind der häufigste
+Befund am fertigen Deck — sie kosten eine Korrekturrunde, die
+dieser Suchlauf spart.
+
 ## Sprachregeln für Slide-Texte
 
 Für den Ton gilt der Skill „B—M Copywriting" (bm-copywriting). Die
@@ -183,9 +192,13 @@ härtesten Regeln, auch wenn dieser nicht aktiv ist:
 - Schmuck-Adjektive ohne Beleg raus (innovativ, ganzheitlich,
   nachhaltig). Verbotene Floskeln: leverage, unlock, next-gen,
   game-changer, Raketen-Emoji.
-- Aufzählungen als normale Sätze mit Komma und „und". Keine
-  Middot-Zeichen, keine Pfeile im Fließtext, Gedankenstriche
-  höchstens einer pro Absatz.
+- Das Middot-Zeichen (· oder •) kommt NIRGENDS vor — nicht in
+  Aufzählungen (die laufen als normaler Satz mit Komma und „und"),
+  nicht als Trenner in Meta-Zeilen: aus „Interview · Juli 2026"
+  wird „Interview, Juli 2026". Keine Pfeile im Fließtext.
+- Gedankenstriche (—) sind in Headlines verboten und im Fließtext
+  auf höchstens einen pro Absatz begrenzt — im Zweifel als Satz
+  mit Komma formulieren.
 - Keine Meta-Sätze auf der Slide („Diese Folie zeigt…", „Im
   Folgenden…").
 - Arbeitsstände („folgt nach Freigabe") gehören in die Notizen an
