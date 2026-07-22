@@ -33,6 +33,15 @@ deiner Aufgabe passt. Die zwei häufigsten Abkürzungen:
 | `howto/` | Schritt-für-Schritt-Anleitungen mit Start-Prompts |
 | `brandbook/` | das Regelwerk als erlebbare HTML-Referenz |
 
+## Das Repo in ein eigenes Projekt holen
+
+Als Ordner geklont bringt dieses Repo sein eigenes `.git` mit — wird
+dein Projekt später selbst ein Git-Repo, landet das Brandbook darin
+nur als kaputter Verweis (Gitlink). Deshalb: entweder sauber als
+Submodule registrieren (`git submodule add <repo-url>`) oder gar
+nicht einbetten — Deck-Projekte legt `templates/new-deck.js` ohnehin
+als eigenständiges Kit außerhalb des Repos an.
+
 ## Drei Regeln, die immer gelten
 
 Kundenarbeit lebt nie in diesem Repo, auch nicht lokal — für jedes
