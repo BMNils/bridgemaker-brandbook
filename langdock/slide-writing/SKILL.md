@@ -23,23 +23,32 @@ du baust, der Nutzer steuert.
    Inhalten, nie mischen. Nur bei echter Mehrdeutigkeit fragen.
 3. **Storyline vorschlagen.** Kapitel und Slide-Folge als kurze
    Übersicht, bevor du baust. Warte auf ein OK oder Anpassungen.
-4. **Template ins Canvas.** Die mitgelieferte Datei
-   `deck-template-canvas.md` enthält das komplette Deck-Template
-   als HTML in einem Codeblock. Übernimm den Codeblock-Inhalt —
-   von `<!DOCTYPE html>` bis zur letzten Zeile — vollständig und
-   unverändert als HTML ins Canvas. Ab jetzt arbeitest du
-   ausschließlich IN dieser Datei. Du beginnst niemals ein eigenes
-   HTML-Gerüst, auch nicht „nur für eine Slide".
+4. **Template in die Arbeitsdatei — kopieren, nicht nachbauen.**
+   Die mitgelieferte Datei `deck-template-canvas.md` enthält das
+   komplette Deck-Template als HTML in einem Codeblock. Lege die
+   Arbeitsdatei an, indem du den Codeblock-Inhalt — von
+   `<!doctype html>` bis zur letzten Zeile — übernimmst; wenn dir
+   Dateioperationen zur Verfügung stehen, kopiere die Datei, statt
+   sie abzuschreiben. **Prüfe danach, bevor du irgendetwas anderes
+   tust:** Steht der Kommentar `BM-DECK-TEMPLATE v2` in Zeile 2?
+   Ist `<deck-stage` enthalten? Fehlt eines von beidem, ist die
+   Übernahme fehlgeschlagen — wiederhole sie. Du baust NIEMALS
+   freihändig weiter und beginnst niemals ein eigenes HTML-Gerüst,
+   auch nicht „nur für eine Slide". Ab jetzt arbeitest du
+   ausschließlich in dieser Datei.
 5. **Pro Slide: Argument → Layout → Text.** Struktur bestimmen,
    Layout aus dem Katalog wählen (unten), die passende
    Muster-Sektion im Template duplizieren und füllen. Texte dabei
    redigieren (Sprachregeln unten) — Aussage und Struktur der
    gelieferten Inhalte bleiben unangetastet, die Sprache wird
    Bridgemaker.
-6. **Iterieren.** Der Nutzer blättert im Canvas (Pfeiltasten) und
-   sagt, was sich ändern soll. Du änderst punktuell genau diese
+6. **Iterieren.** Der Nutzer blättert in der Vorschau (Pfeiltasten)
+   und sagt, was sich ändern soll. Du änderst punktuell genau diese
    Stelle — nie das ganze Deck neu generieren, wenn eine Slide
    gemeint ist. Nach jeder Änderung ein Satz: was wurde geändert.
+   Bleibt die Vorschau leer, sag dem Nutzer: Browser-Tab neu laden —
+   das ist eine bekannte Eigenheit der Vorschau, kein Fehler im
+   Deck. Baue deswegen NIE das Deck um.
 7. **Abgabe.** Ist der Nutzer zufrieden: HTML über den
    Download-Knopf sichern lassen und ans Quality-Gate geben
    (aktuell: Nils) — dort wird maschinell geprüft und das
@@ -101,11 +110,12 @@ den Einleitungstext, nicht fünfmal ins Raster.
 
 ## Selbstcheck nach jeder Runde
 
-Bevor du das Wort zurückgibst, prüfe still: Habe ich neue
-`font-size`-, Farb- oder `font-family`-Werte eingeführt? (Dann
-rückgängig machen.) Ist jede Headline maximal zweizeilig? Tragen
-alle Content-Slides Kopf- und Fußzeile mit fortlaufender
-Seitenzahl? Behauptet jede Slide genau eine Sache?
+Bevor du das Wort zurückgibst, prüfe still: Steht der Kommentar
+`BM-DECK-TEMPLATE v2` noch in Zeile 2? Habe ich neue `font-size`-,
+Farb- oder `font-family`-Werte eingeführt? (Dann rückgängig
+machen.) Ist jede Headline maximal zweizeilig? Tragen alle
+Content-Slides Kopf- und Fußzeile mit fortlaufender Seitenzahl?
+Behauptet jede Slide genau eine Sache?
 
 ## Sprachregeln für Slide-Texte
 
