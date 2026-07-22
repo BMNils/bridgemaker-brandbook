@@ -1,7 +1,7 @@
 ---
 name: B—M Slide Writing
 slug: bridgemaker-slide-writing
-description: 'Baut komplette Bridgemaker-Decks direkt in Langdock — wahlweise im Slides-Modus mit dem B—M-Template aus der Galerie oder als pixelgenaues HTML im Canvas. Aus Notizen, Stichpunkten oder Dokumenten entsteht erst eine Storyline, dann das Deck, gemeinsam verfeinert Slide für Slide („Slide 3: andere Headline"). Kundendecks gehen am Ende durchs Quality-Gate; nur das geprüfte PDF geht an Kunden. Nutzen, wenn Slides, Decks oder Präsentationen entstehen oder geändert werden sollen. Typische Bitten: „mach daraus Folien", „bau das Deck", „strukturier das als Präsentation", „ändere Slide 3". Use when structuring, writing, building, or iterating Bridgemaker slide decks.'
+description: 'Baut komplette Bridgemaker-Decks direkt in Langdock — wahlweise als token-sparsame Langdock-Slides mit dem B—M-Template aus der Galerie oder als pixelgenau gerendertes HTML im Canvas. Aus Notizen, Stichpunkten oder Dokumenten entsteht erst eine Storyline, dann das Deck, gemeinsam verfeinert Slide für Slide („Slide 3: andere Headline"). Nutzen, wenn Slides, Decks oder Präsentationen entstehen oder geändert werden sollen. Typische Bitten: „mach daraus Folien", „bau das Deck", „strukturier das als Präsentation", „ändere Slide 3". Use when structuring, writing, building, or iterating Bridgemaker slide decks.'
 ---
 
 # B—M Slide Writing
@@ -24,18 +24,16 @@ das Denken davor ist auf beiden identisch.
    Inhalten, nie mischen. Nur bei echter Mehrdeutigkeit fragen.
 3. **Storyline vorschlagen.** Kapitel und Slide-Folge als kurze
    Übersicht, bevor du baust. Warte auf ein OK oder Anpassungen.
-4. **Produktionsweg wählen.** Zwei Wege, eine Voreinstellung:
-   **Kundendecks und alles, was das Haus verlässt → Weg B**
-   (HTML, pixelgenau, maschinell geprüft). **Interne Decks und
-   schnelle Entwürfe → Weg A** (Langdock-Slides mit dem
-   B—M-Template). Weg A ist außerdem deutlich sparsamer im
-   Verbrauch: Weg B bewegt bei jedem Bau- und Änderungsschritt
-   eine große HTML-Datei durchs Modell, Weg A nur die Inhalte —
-   auch deshalb ist er für alles Interne die erste Wahl. Arbeitet
-   der Nutzer bereits im Slides-Modus mit dem B—M-Template, ist
-   Weg A gewählt; ist der Weg nicht erkennbar, stell genau EINE
-   Frage („Geht das Deck an einen Kunden? Dann baue ich den
-   pixelgenauen Weg.").
+4. **Produktionsweg wählen — der Nutzer entscheidet.** Es gibt
+   zwei gleichberechtigte Wege: **Weg A, Langdock-Slides** mit dem
+   B—M-Template (deutlich weniger Token-Verbrauch: nur die Inhalte
+   laufen durchs Modell) und **Weg B, HTML im Canvas** (pixelgenau
+   gerendert, maschinell prüfbar). Welcher Weg wofür reicht, wird
+   derzeit in der Organisation getestet — es gibt KEINE Regel,
+   die einen Weg an eine Zielgruppe bindet. Arbeitet der Nutzer
+   bereits im Slides-Modus mit dem B—M-Template, ist Weg A
+   gewählt; ist der Weg nicht erkennbar, stell genau EINE Frage:
+   „Sparsamer Slides-Weg oder pixelgenau gerendertes HTML?"
 5. **Pro Slide: Argument → Layout → Text** (gilt auf beiden
    Wegen). Struktur bestimmen, Layout aus dem Katalog wählen
    (unten), dann setzen. Texte dabei redigieren (Sprachregeln
@@ -55,8 +53,7 @@ Layout-Typ aus dem Katalog, eine Aussage als Headline, Texte in
 Bridgemaker-Sprache. Die Gestaltung kommt aus dem Template — du
 erfindest keine eigenen Farben, Schriften oder Deko-Elemente
 dazu und forderst auch den Generator nicht dazu auf. Abgabe:
-Export aus Langdock; **Kundendecks gehen auch auf diesem Weg vor
-Versand ans Quality-Gate (aktuell: Nils).**
+Export direkt aus Langdock.
 
 ## Weg B — HTML im Canvas (der pixelgenaue Weg)
 
