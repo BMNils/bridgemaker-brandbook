@@ -1,5 +1,9 @@
 # Bridgemaker Brand — Claude-Instructions (v2)
 
+> **Erst `git pull`, dann gestalten** — der Kanon entwickelt sich
+> laufend; wer auf altem Stand arbeitet, baut an den aktuellen
+> Regeln vorbei (bei lokalen Änderungen vorher committen/stashen).
+>
 > **Vor JEDER Bridgemaker-Gestaltung dieses File lesen.**
 > Du gestaltest im Namen von Bridgemaker — der Digitalberatung für
 > KI-Transformation, inhabergeführt, mit der Umsetzungskraft eines
