@@ -2,30 +2,51 @@
 # ============================================================
 # NATIVER PPTX-MASTER — aus vermessener Deck-Geometrie
 #
-# Baut aus geometry.json (extract-geometry.js) und den
-# text-freien Hintergrund-Renderings eine echte PowerPoint-
-# Datei mit Textfeldern, Hairline-Shapes und Wortmarken:
-# Langdocks File-Template-Funktion liest die slideN.xml-
-# Struktur — Bild-Folien sind für sie stumm, echte Textfelder
-# nicht.
+# Baut aus geometry.json (extract-geometry.js), den text-freien
+# Hintergrund-Renderings (Moment-Slides) und den 2x-Screenshots
+# (assets/shots/, für Grafik-Ausschnitte) eine echte PowerPoint-
+# Datei: Flächen als abgerundete Rechtecke, SVG-/Gradient-
+# Grafiken als Bildausschnitte, Textfelder mit Zeilenabstand und
+# Laufweite, Hairline-Shapes, Wortmarken — und eingebetteten
+# Schriften (Inter, Inter Light, Inter SemiBold, JetBrains Mono
+# als TTF-Instanzen aus assets/fonts): PowerPoint substituiert
+# sonst auf Rechnern ohne Inter alles durch Calibri (Befund
+# Nils, 23.07.2026).
 #
 # Koordinaten: 1440x810 px = 13,333x7,5 Zoll -> 108 px/Zoll.
-# Schriftgrad: pt = px * 2/3.
+# Schriftgrad: pt = px * 2/3. Laufweite: a:spc in 1/100 pt.
 #
 # Nutzung:
 #   node langdock/pptx-template/extract-geometry.js
-#   <venv>/bin/python langdock/pptx-template/build-pptx-template.py
+#   python3 langdock/pptx-template/build-pptx-template.py
+#   (braucht: python-pptx, Pillow, fontTools, brotli)
 # ============================================================
 
-import json, os, re
+import json, os, re, zipfile
 from pptx import Presentation
 from pptx.util import Emu, Pt
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_AUTO_SIZE
+from pptx.enum.shapes import MSO_SHAPE
+from pptx.oxml.ns import qn
 from PIL import Image
 
+def flat(shp):
+    """Theme-Style vom Autoshape strippen: der Style-Verweis bringt
+    den Theme-Schatten mit (sichtbar u. a. im LibreOffice-Render) —
+    Flächen und Hairlines laufen flach."""
+    st = shp._element.find(qn('p:style'))
+    if st is not None:
+        shp._element.remove(st)
+    shp.fill.solid()
+    shp.line.fill.background()
+    shp.shadow.inherit = False
+    return shp
+
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.expanduser('~/Downloads/bridgemaker-slides-template.pptx')
+OUT = os.path.join(HERE, 'bridgemaker-slides-template.pptx')
+EMBED = os.path.join(HERE, 'assets/embed-fonts')
+SHOTS = os.path.join(HERE, 'assets/shots')
 PX = 914400 / 108                    # EMU pro Pixel
 
 def emu(v): return Emu(int(v * PX))
@@ -39,6 +60,72 @@ def crop_alpha(src, dst):
     box = img.getbbox()
     img.crop(box).save(dst)
     return dst
+
+# ---------- Schrift-Instanzen für die Einbettung ----------
+# PowerPoint bettet nur TTF ein; die vendorten Webfonts sind EIN
+# variabler Font — hier werden statische Schnitte instanziert.
+# Gewichts-Mapping der Textläufe: <=300 Inter Light, 500-699
+# Inter SemiBold (eigene Familien, PP kennt nur Regular/Bold),
+# >=700 Inter Bold, sonst Inter Regular.
+EMBED_FILES = [
+    ('Inter',          'Inter-Regular.ttf',        'Inter-Bold.ttf'),
+    ('Inter Light',    'Inter-Light.ttf',          None),
+    ('Inter SemiBold', 'Inter-SemiBold.ttf',       None),
+    ('JetBrains Mono', 'JetBrainsMono-Regular.ttf', None),
+]
+
+def ensure_embed_fonts():
+    if all(os.path.exists(os.path.join(EMBED, f)) for _, r, b in EMBED_FILES for f in [r] + ([b] if b else [])):
+        return
+    from fontTools.ttLib import TTFont
+    from fontTools.varLib.instancer import instantiateVariableFont
+    os.makedirs(EMBED, exist_ok=True)
+    src_fonts = os.path.join(HERE, '../../assets/fonts')
+
+    def set_names(font, family, sub, bold=False):
+        name = font['name']
+        ps = (family + '-' + sub).replace(' ', '')
+        for nid, val in [(1, family), (2, sub), (3, ps + ':BM-Embed'), (4, f'{family} {sub}'), (6, ps)]:
+            name.setName(val, nid, 3, 1, 0x409)
+        for nid in (16, 17):
+            name.removeNames(nameID=nid)
+        os2, head = font['OS/2'], font['head']
+        if bold:
+            os2.fsSelection = (os2.fsSelection & ~0x40) | 0x20
+            head.macStyle |= 0x01
+        else:
+            os2.fsSelection = (os2.fsSelection | 0x40) & ~0x21
+            head.macStyle &= ~0x03
+
+    def make_inter(weight, family, sub, outname, bold=False):
+        f = TTFont(os.path.join(src_fonts, 'Inter-400-latin.woff2'))
+        f.flavor = None
+        instantiateVariableFont(f, {'wght': weight}, inplace=True)
+        f['OS/2'].usWeightClass = weight
+        set_names(f, family, sub, bold)
+        f.save(os.path.join(EMBED, outname))
+
+    make_inter(400, 'Inter', 'Regular', 'Inter-Regular.ttf')
+    make_inter(700, 'Inter', 'Bold', 'Inter-Bold.ttf', bold=True)
+    make_inter(300, 'Inter Light', 'Regular', 'Inter-Light.ttf')
+    make_inter(600, 'Inter SemiBold', 'Regular', 'Inter-SemiBold.ttf')
+    jm = TTFont(os.path.join(src_fonts, 'JetBrainsMono-400-latin.woff2'))
+    jm.flavor = None
+    if 'fvar' in jm:
+        instantiateVariableFont(jm, {'wght': 400}, inplace=True)
+    set_names(jm, 'JetBrains Mono', 'Regular')
+    jm.save(os.path.join(EMBED, 'JetBrainsMono-Regular.ttf'))
+    print('Embed-Fonts instanziert →', EMBED)
+
+def family_for(fw, mono):
+    if mono: return 'JetBrains Mono'
+    w = int(fw) if str(fw).isdigit() else (700 if fw == 'bold' else 400)
+    if w <= 300: return 'Inter Light'
+    if 500 <= w < 700: return 'Inter SemiBold'
+    return 'Inter'
+
+def weight_of(fw):
+    return int(fw) if str(fw).isdigit() else (700 if fw == 'bold' else 400)
 
 geo = json.load(open(os.path.join(HERE, 'geometry.json')))
 wm = {v: crop_alpha(os.path.join(HERE, f'assets/wordmark-{v}.png'),
@@ -118,6 +205,8 @@ def merge_columns(texts):
             merged.append(g)
     return merged
 
+ensure_embed_fonts()
+
 for i, s in enumerate(geo['slides']):
     slide = prs.slides.add_slide(blank)
 
@@ -130,17 +219,39 @@ for i, s in enumerate(geo['slides']):
         slide.background.fill.solid()
         slide.background.fill.fore_color.rgb = rgb(s['bg'])
 
+    # Flächen (Karten, Bänder, Rahmen) und Grafik-Ausschnitte (SVGs,
+    # Gradients) in DOM-Reihenfolge — verschachtelte Elemente liegen
+    # so korrekt übereinander.
+    layers = sorted(
+        [{'t': 'rect', **r} for r in s.get('rects', [])]
+        + [{'t': 'pix', **p} for p in s.get('pix', [])],
+        key=lambda o: o.get('z', 0))
+    shot_img = None
+    for o in layers:
+        if o['w'] < 2 or o['h'] < 2: continue
+        if o['t'] == 'rect':
+            kind = MSO_SHAPE.ROUNDED_RECTANGLE if o.get('radius', 0) > 2 else MSO_SHAPE.RECTANGLE
+            shp = flat(slide.shapes.add_shape(kind, emu(o['x']), emu(o['y']), emu(o['w']), emu(o['h'])))
+            if kind == MSO_SHAPE.ROUNDED_RECTANGLE:
+                shp.adjustments[0] = max(0.0, min(0.5, o['radius'] / min(o['w'], o['h'])))
+            shp.fill.fore_color.rgb = rgb(o['color'])
+        else:
+            if shot_img is None:
+                shot_img = Image.open(os.path.join(SHOTS, f'slide-{i:02d}.png'))
+            box = (int(o['x'] * 2), int(o['y'] * 2), int((o['x'] + o['w']) * 2), int((o['y'] + o['h']) * 2))
+            cp = os.path.join(SHOTS, f'pix-{i:02d}-{o.get("z", 0)}.png')
+            shot_img.crop(box).save(cp)
+            slide.shapes.add_picture(cp, emu(o['x']), emu(o['y']), emu(o['w']), emu(o['h']))
+
     # Hairlines als flache Shapes (dedupliziert)
     seen = set()
     for ln in s['lines']:
         key = (round(ln['x']), round(ln['y']), round(ln['w']), round(ln['h']))
         if key in seen: continue
         seen.add(key)
-        from pptx.enum.shapes import MSO_SHAPE
-        shp = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, emu(ln['x']), emu(ln['y']),
-                                     emu(max(ln['w'], 1)), emu(max(ln['h'], 1)))
-        shp.fill.solid(); shp.fill.fore_color.rgb = rgb(ln['color'])
-        shp.line.fill.background(); shp.shadow.inherit = False
+        shp = flat(slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, emu(ln['x']), emu(ln['y']),
+                                          emu(max(ln['w'], 1)), emu(max(ln['h'], 1))))
+        shp.fill.fore_color.rgb = rgb(ln['color'])
 
     # Wortmarken
     for img in s['images']:
@@ -175,17 +286,72 @@ for i, s in enumerate(geo['slides']):
                 li += 1
                 p.text = line
                 if part['align'] in ALIGN: p.alignment = ALIGN[part['align']]
+                # Zeilenabstand = vermessene HTML-Zeilenhöhe; ohne sie
+                # rendert PowerPoint seinen Default und der Text sitzt
+                # in jeder mehrzeiligen Box falsch (Befund 23.07.).
+                if part.get('lh'):
+                    p.line_spacing = Pt(round(part['lh'] * 2 / 3, 1))
                 if pi == 0 and part['gap']:
                     p.space_before = Pt(round(part['gap'] * 2 / 3, 1))
                 f = p.runs[0].font
-                f.name = 'JetBrains Mono' if part['mono'] else 'Inter'
+                f.name = family_for(part['fw'], part['mono'])
                 f.size = Pt(round(part['fs'] * 2 / 3, 1))
-                f.bold = int(part['fw']) >= 600 if str(part['fw']).isdigit() else part['fw'] == 'bold'
+                f.bold = weight_of(part['fw']) >= 700
                 f.italic = part['italic']
                 f.color.rgb = rgb(part['color'])
+                # Laufweite (negatives Headline-Tracking, Eyebrow-
+                # Sperrung) als a:spc in 1/100 pt.
+                mls = re.match(r'(-?[\d.]+)px', part.get('ls') or '')
+                if mls:
+                    spc = int(round(float(mls.group(1)) * 2 / 3 * 100))
+                    if spc:
+                        p.runs[0]._r.get_or_add_rPr().set('spc', str(spc))
 
     # Sprechernotiz = Layout-Name (hilft Langdocks Klassifizierung)
     slide.notes_slide.notes_text_frame.text = f"Layout: {s['label']}"
 
 prs.save(OUT)
-print(f'OK — {len(geo["slides"])} Folien, {os.path.getsize(OUT) // 1024} KB -> {OUT}')
+
+# ---------- Schriften einbetten (Zip-Nachbearbeitung) ----------
+# python-pptx kann keine Fonts einbetten; die Teile werden direkt
+# ins OOXML-Paket geschrieben: fntdata-Parts, Content-Type,
+# Relationships, p:embeddedFontLst + embedTrueTypeFonts.
+FONT_REL = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/font'
+zin = zipfile.ZipFile(OUT)
+items = {n: zin.read(n) for n in zin.namelist()}
+zin.close()
+
+ct = items['[Content_Types].xml'].decode('utf-8')
+if 'fntdata' not in ct:
+    ct = ct.replace('</Types>', '<Default Extension="fntdata" ContentType="application/x-fontdata"/></Types>')
+items['[Content_Types].xml'] = ct.encode('utf-8')
+
+rel_add, embeds, fi = '', [], 1
+for fam, reg, bold in EMBED_FILES:
+    entry = f'<p:embeddedFont><p:font typeface="{fam}"/>'
+    for slot, fn in (('regular', reg), ('bold', bold)):
+        if not fn: continue
+        rid = f'rIdFont{fi}'
+        items[f'ppt/fonts/font{fi}.fntdata'] = open(os.path.join(EMBED, fn), 'rb').read()
+        rel_add += f'<Relationship Id="{rid}" Type="{FONT_REL}" Target="fonts/font{fi}.fntdata"/>'
+        entry += f'<p:{slot} r:id="{rid}"/>'
+        fi += 1
+    embeds.append(entry + '</p:embeddedFont>')
+
+rels = items['ppt/_rels/presentation.xml.rels'].decode('utf-8')
+items['ppt/_rels/presentation.xml.rels'] = rels.replace('</Relationships>', rel_add + '</Relationships>').encode('utf-8')
+
+pres = items['ppt/presentation.xml'].decode('utf-8')
+if 'embedTrueTypeFonts' not in pres:
+    pres = pres.replace('<p:presentation ', '<p:presentation embedTrueTypeFonts="1" ', 1)
+lst = '<p:embeddedFontLst>' + ''.join(embeds) + '</p:embeddedFontLst>'
+pres, n = re.subn(r'(<p:notesSz[^>]*/>)', r'\1' + lst, pres, count=1)
+if not n:
+    raise SystemExit('FEHLER — notesSz nicht gefunden, Font-Liste nicht eingefügt.')
+items['ppt/presentation.xml'] = pres.encode('utf-8')
+
+with zipfile.ZipFile(OUT, 'w', zipfile.ZIP_DEFLATED) as z:
+    for n, d in items.items():
+        z.writestr(n, d)
+
+print(f'OK — {len(geo["slides"])} Folien, {os.path.getsize(OUT) // 1024} KB (Fonts eingebettet) -> {OUT}')
