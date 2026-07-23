@@ -88,7 +88,14 @@ beantworten (kurz notieren, nicht nur denken):
   nummerierte Objekt-Karten: Display-Ziffer light im
   Familien-Deep-Ton, Surface-Farbcode eine je Identität.
   Musterpaar: Hairlines = Beobachtungen, nummerierte Karten =
-  zählbare Handlungsaufträge.
+  zählbare Handlungsaufträge. Karten aber nur, wenn die Punkte
+  eine Bühne verdienen — ruhige zählbare Punkte (offene Fragen,
+  Klärungen) laufen als nummerierte Hairline-Zeilen in
+  Agenda-Anatomie.
+- **Aufeinanderfolgende Phasen?** → horizontal, nie als vertikale
+  Tabelle: Hairline-Kolumnen in Ablaufrichtung (Phase 0, 1, 2 …,
+  Ergebnis-Zeile je Phase in Deep-Plum) oder Roadmap bei echten
+  Zeiträumen.
 - **Prozess/Zeit?** → Infografik bauen (§7.11) — Substanz erhalten
   (Parallelität, Dauer, Abhängigkeiten), nicht zur Punktlinie
   glätten.
@@ -182,6 +189,8 @@ jede Frage explizit beantworten** (abhaken, nicht überfliegen):
       Speaker Notes verschoben?
 - [ ] Kein Mono außer echtem Code/Platzhalter-Captions? Ziffern in
       Inter?
+- [ ] Icons einfarbig in der Textfarbe des Kontexts (hell:
+      Charcoal), keine Markenfarben-Icons? Titel links, Icon rechts?
 - [ ] Raum besetzt — unteres Drittel nicht ohne Absicht leer, rechte
       Hälfte nicht leer?
 - [ ] Text: Du/ihr, keine Meta-/Prozesssprache, kein Middot, max.

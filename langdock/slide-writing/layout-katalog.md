@@ -45,8 +45,13 @@ dem Deck-Team geklärt.
 16. **Schluss** — Statement plus dezente Kontaktzeilen des
     Ansprechpartners. Immer die letzte Slide.
 
-Zwei Merkregeln für die Wahl: **Beobachtungen laufen über Linien**
+Merkregeln für die Wahl: **Beobachtungen laufen über Linien**
 (Hairline-Kolumnen, Principle-Zeilen), **Handlungsaufträge über
-nummerierte Karten**. Und: Boxen sind die Ausnahme mit Bedeutung —
+nummerierte Karten** — Karten aber nur, wenn die Punkte eine Bühne
+verdienen; ruhige zählbare Punkte laufen als nummerierte
+Hairline-Zeilen. **Aufeinanderfolgende Phasen laufen horizontal**
+(Hairline-Kolumnen in Ablaufrichtung oder Roadmap), nie als
+vertikale Tabelle. Icons laufen einfarbig in der Textfarbe, nie in
+Markenfarben. Und: Boxen sind die Ausnahme mit Bedeutung —
 eine Bridgemaker-Slide ist Typografie auf ruhigem Grund, gegliedert
 durch Linien.

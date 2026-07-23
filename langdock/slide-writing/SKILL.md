@@ -101,6 +101,8 @@ Passt keins: sag es dem Nutzer.
   Resultat-Band
 - Kontrast, Vorher/Nachher, Option A gegen B → Gegenüberstellung
 - Kennzahlen mit Zielwerten → Tabelle
+- Aufeinanderfolgende Phasen → horizontal (Hairline-Kolumnen in
+  Ablaufrichtung oder Roadmap), nie als vertikale Tabelle
 - Zwei, drei tragende Zahlen → Zahlen-Slide (keine Diagramme, wenn
   die Zahlen selbst die Aussage tragen)
 - Benannte Dinge (Produkte, Cases, Angebote) → Objekt-Karten

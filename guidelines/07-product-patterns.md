@@ -200,10 +200,12 @@ Hover-Effekte. (Stage-Neufassung 16.07.2026 — ersetzt die frühere
   Resultat? Tabelle? Benannte Dinge? Das Layout bildet genau diese
   Struktur ab — gleichrangig heißt uniform behandelt (dieselbe
   Typo-Stufe, auch im 50/50-Zweispalter), ein Resultat wird anders
-  exponiert (Resultat-Band), ein Prozess läuft. Musterpaar:
-  Hairline-Kolumnen = Beobachtungen, nummerierte Objekt-Karten =
-  zählbare Handlungsaufträge. Ein gefülltes Raster ist noch keine
-  Slide.
+  exponiert (Resultat-Band), ein Prozess läuft. Aufeinanderfolgende
+  Phasen laufen HORIZONTAL — Hairline-Kolumnen in Ablaufrichtung
+  oder Roadmap, nie als vertikale Tabelle *(Nils, 2026-07-23)*.
+  Musterpaar: Hairline-Kolumnen = Beobachtungen, nummerierte
+  Objekt-Karten = zählbare Handlungsaufträge. Ein gefülltes Raster
+  ist noch keine Slide.
 - **Template-Pflicht:** Jedes Deck entsteht als Kopie von
   `templates/deck-template.html` — einen Ordner tief im Repo oder,
   bei Kundenarbeit, im Projekt-Kit außerhalb des Repos (Kit-Prinzip
@@ -293,7 +295,10 @@ Hover-Effekte. (Stage-Neufassung 16.07.2026 — ersetzt die frühere
   Anatomie sie per Inset-Haarlinie vom Grund trennt). Karten
   umschließen ihren Inhalt eng — Leerraum lebt auf Slide-Ebene,
   nicht in aufgeblasenen Boxen; Karten-Reihen mit gemeinsamer
-  Unterkante und gleicher Höhe (min-height im 8px-Raster).
+  Unterkante und gleicher Höhe (min-height im 8px-Raster); dasselbe
+  Register gilt für parallele Spalten aus Zeilen — gleiche
+  Zeilenhöhe, Typo vertikal zentriert, damit die Hairlines über
+  beide Spalten konstant laufen *(Nils, 2026-07-23)*.
   **Tönung braucht Bedeutung**
   *(ersetzt „nie zweimal dieselbe Surface", 2026-07-17)*: Dieselbe
   Surface darf sich frei wiederholen — Uniformität ist Ruhe.
@@ -320,7 +325,10 @@ Hover-Effekte. (Stage-Neufassung 16.07.2026 — ersetzt die frühere
   `font-weight: 300` — immer light. Nummerierte Objekt-Karten:
   Display-Ziffer im Familien-Deep-Ton der Kartenfarbe (Neutrals:
   Charcoal), Surface-Farbcode eine je Identität
-  (mauve/sage/sand/stone).
+  (mauve/sage/sand/stone). Nummerierte Karten nur, wenn die Punkte
+  eine Bühne verdienen — ruhige zählbare Punkte (offene Fragen,
+  Klärungen) laufen als nummerierte Hairline-Zeilen in
+  Agenda-Anatomie *(Nils, 2026-07-23)*.
 - **Arbeitsstände nie auf die Slide** („folgt nach Freigabe",
   „wird noch geklärt"): Sie gehören in die Speaker Notes
   (`script#speaker-notes`, liest `deck-stage.js`) — nie ins
@@ -336,8 +344,10 @@ Hover-Effekte. (Stage-Neufassung 16.07.2026 — ersetzt die frühere
   reicht, iteriert wird gemeinsam (Regeln: §7.11). Der gestreifte
   Platzhalter bleibt nur für Bild-Assets (Fotos, CD-pflichtige
   Bildwelt, fehlende Logos/Daten).
-- **Icons:** nur Material Symbols Outlined (s. `09 §9.8`), Farben aus
-  einer Familie, funktional statt dekorativ.
+- **Icons:** nur Material Symbols Outlined (s. `09 §9.8`), einfarbig
+  in der Textfarbe des Kontexts (hell: Charcoal, dunkel: Off-White),
+  nie in Markenfarben *(Nils, 2026-07-23)* — funktional statt
+  dekorativ.
 - **Wortmarke** auf Cover und Schluss (`assets/logos/`). Die
   Schluss-Slide ist ein Statement, keine Content-Seite: EIN Satz
   in direkter Anrede („ihr"), bold und fast leer; Ansprechpartner

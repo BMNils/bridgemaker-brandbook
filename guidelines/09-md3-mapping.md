@@ -135,8 +135,11 @@ bisherige Icon-Lücke dieses Mappings).
 - Stil ausschließlich **Outlined**, `FILL 0`; **Weight 300** (passt zur
   Inter-Strichstärke), `GRAD 0`, `opsz 48` — via
   `font-variation-settings`.
-- Farben aus **einer** Familie pro View; Default auf Hell ist
-  `--bm-deep-plum`. Nie mehrfarbige Icon-Reihen.
+- **Einfarbig in der Textfarbe des Kontexts** — auf Hell `--charcoal`,
+  auf Dunkel `--off-white` —, nie in Markenfarben und nie mehrfarbige
+  Icon-Reihen *(Nils, 2026-07-23 — ersetzt den Deep-Plum-Default und
+  „Farben aus einer Familie": ein einzelnes farbiges Icon in einer
+  neutralen Reihe liest sich als Bedeutung, wo keine ist)*.
 - **Funktional statt dekorativ:** Icons geben Orientierung (ein Icon
   pro Karte/Aspekt) — nie als Zeilenschmuck vor jedem Bullet, nie als
   Bildersatz.

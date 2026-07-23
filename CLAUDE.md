@@ -246,7 +246,8 @@ Digitale Produkte bauen auf **MD3** mit Bridgemaker-Theming
   bm-purple, surface = off-white, dark-primary = lavender-dark …).
 - Type-Scale auf `type-*` mappen; Inter, nie Roboto.
 - Icons: **Material Symbols Outlined** — einzige Icon-Quelle, auch in
-  Decks (Regeln: `guidelines/09 §9.8`).
+  Decks; einfarbig in der Textfarbe des Kontexts (hell: Charcoal),
+  nie in Markenfarben (Regeln: `guidelines/09 §9.8`).
 - Pill = MD3 full radius; Inputs `radius-md`.
 - Bridgemaker-Elevation statt MD3-Tonal-Elevation; Motion gedeckelt.
 - MD3 liefert Anatomie, States, A11y — Bridgemaker liefert Farbe, Typo,

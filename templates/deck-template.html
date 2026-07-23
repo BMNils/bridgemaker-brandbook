@@ -98,8 +98,9 @@
        Middot, Gedankenstriche sparsam, kein „→" im Fließtext.
      - Decks sind STATISCH (PDF-Artefakt): keine Animationen,
        kein kasane-drift, keine Hover-Effekte.
-     - Icons: NUR Material Symbols Outlined (.msym), Farben aus
-       einer Familie, funktional — nie als Zeilenschmuck.
+     - Icons: NUR Material Symbols Outlined (.msym), einfarbig in
+       der Textfarbe des Kontexts (hell: Charcoal), nie in
+       Markenfarben, funktional — nie als Zeilenschmuck.
      - Wortmarke auf Cover und Schluss (../assets/logos/).
      - SEHPFLICHT vor jeder Abgabe: PDF rendern, jede Seite gegen
        die Checkliste im Skill bridgemaker-slides prüfen,
@@ -312,13 +313,16 @@
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
   .split-23 { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-12); align-items: center; }
 
-  /* Agenda: Hairline-Zeilen, Inter-Ziffern (Mono existiert nicht mehr) */
+  /* Agenda: Hairline-Zeilen, Inter-Ziffern (Mono existiert nicht
+     mehr). Zeilen gleich hoch (min-height 96px) und vertikal
+     zentriert — bei parallelen Spalten laufen die Hairlines so
+     konstant über beide Spalten (Nils, 2026-07-23). */
   .agenda-grid {
     display: grid; grid-template-columns: 1fr 1fr;
     column-gap: var(--space-16); row-gap: 0;
     align-content: center;
   }
-  .agenda-row { display: flex; align-items: baseline; gap: var(--space-6); padding: var(--space-5) 0; border-top: var(--border-subtle); }
+  .agenda-row { display: flex; align-items: center; min-height: 96px; gap: var(--space-6); padding: var(--space-5) 0; border-top: var(--border-subtle); }
   .agenda-num { color: var(--charcoal); width: var(--space-10); flex-shrink: 0; } /* = Titelfarbe */
 
   .deck-table { width: 100%; border-collapse: collapse; }
@@ -780,7 +784,8 @@
   <!-- ========================================================
        LAYOUT „GEGENÜBERSTELLUNG" — Kontrast als zwei OFFENE
        Hairline-Spalten (keine Karten). Bedeutung darf ein Icon
-       tragen (z. B. Stärke/Engpass), nie die Flächenfarbe.
+       tragen (z. B. Stärke/Engpass) — übers Symbol, nicht über
+       Farbe: Icons laufen einfarbig Charcoal.
        ======================================================== -->
   <section class="dslide" data-label="Gegenüberstellung">
     <header class="slide-head"><span class="type-eyebrow">01 / Kapitel</span></header>
@@ -790,13 +795,13 @@
       <div class="deck-body">
         <div class="hl-cols hl-cols-2">
           <div class="hl-col">
-            <div class="hl-index"><span class="type-eyebrow" style="color: var(--mid);">Blickwinkel A</span><span class="msym" style="font-size: 20px; color: var(--bm-deep-teal, #2A7E78);">verified</span></div>
+            <div class="hl-index"><span class="type-eyebrow" style="color: var(--mid);">Blickwinkel A</span><span class="msym" style="font-size: 20px; color: var(--charcoal);">verified</span></div>
             <p class="type-body">Erster Punkt als ganzer Satz.</p>
             <p class="type-body">Zweiter Punkt als ganzer Satz.</p>
             <p class="type-body">Dritter Punkt als ganzer Satz.</p>
           </div>
           <div class="hl-col">
-            <div class="hl-index"><span class="type-eyebrow" style="color: var(--mid);">Blickwinkel B</span><span class="msym" style="font-size: 20px; color: var(--bm-deep-plum);">pending</span></div>
+            <div class="hl-index"><span class="type-eyebrow" style="color: var(--mid);">Blickwinkel B</span><span class="msym" style="font-size: 20px; color: var(--charcoal);">pending</span></div>
             <p class="type-body">Erster Punkt als ganzer Satz.</p>
             <p class="type-body">Zweiter Punkt als ganzer Satz.</p>
             <p class="type-body">Dritter Punkt als ganzer Satz.</p>
@@ -851,7 +856,10 @@
        Surface-Farbcode EINE je Identität (mauve/sage/sand/stone),
        Ziffer im Familien-Deep-Ton (Neutrals: Charcoal). Sand und
        Stone sind HIER erlaubt: die card-clean-Anatomie (Inset-
-       Haarlinie) trennt sie vom Off-White-Grund.
+       Haarlinie) trennt sie vom Off-White-Grund. Karten aber nur,
+       wenn die Punkte eine Bühne verdienen — ruhige zählbare
+       Punkte (offene Fragen, Klärungen) laufen als nummerierte
+       Hairline-Zeilen in Agenda-Anatomie (Nils, 2026-07-23).
        ======================================================== -->
   <section class="dslide" data-label="Nummerierte Objekt-Karten">
     <header class="slide-head"><span class="type-eyebrow">01 / Kapitel</span></header>
