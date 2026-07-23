@@ -981,9 +981,10 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
   .stat-cell p { color: var(--dark); margin: var(--space-3) 0 0; }
 
   /* ---------- PATTERN: Principle-Zeile ----------
-     Werte/Prinzipien/Aspekte mit Icon: Hairline oben, Icon links,
-     Titel RECHTSBÜNDIG auf derselben Zeile, Copy darunter
-     (Referenz: karriere-01-principle-zeilen.png). */
+     Werte/Prinzipien/Aspekte mit Icon: Hairline oben, Titel LINKS,
+     Icon rechtsbündig auf derselben Zeile, Copy darunter
+     (Nils, 2026-07-23 — ersetzt die frühere Website-Anordnung
+     Icon links/Titel rechts, Referenz karriere-01-principle-zeilen.png). */
   .principle-grid {
     display: grid; grid-template-columns: 1fr 1fr;
     column-gap: var(--space-16); row-gap: var(--space-12);
@@ -1465,7 +1466,7 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
 
   <!-- ========================================================
        LAYOUT „PRINCIPLE-ZEILEN" — Aspekte/Werte mit Icon:
-       Hairline oben, Icon links, Titel rechtsbündig auf der
+       Hairline oben, Titel links, Icon rechtsbündig auf der
        Zeile, Copy darunter. 2×2 oder 2×3. Ersetzt Icon-Karten.
        ======================================================== -->
   <section class="dslide" data-label="Principle-Zeilen">
@@ -1476,19 +1477,19 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
       <div class="deck-body">
         <div class="principle-grid">
           <div class="principle">
-            <div class="p-head"><span class="msym">insights</span><span class="type-h4">Erster Aspekt</span></div>
+            <div class="p-head"><span class="type-h4">Erster Aspekt</span><span class="msym">insights</span></div>
             <p class="type-body">Ein bis zwei Sätze, was das konkret heißt.</p>
           </div>
           <div class="principle">
-            <div class="p-head"><span class="msym">hub</span><span class="type-h4">Zweiter Aspekt</span></div>
+            <div class="p-head"><span class="type-h4">Zweiter Aspekt</span><span class="msym">hub</span></div>
             <p class="type-body">Ein bis zwei Sätze, was das konkret heißt.</p>
           </div>
           <div class="principle">
-            <div class="p-head"><span class="msym">query_stats</span><span class="type-h4">Dritter Aspekt</span></div>
+            <div class="p-head"><span class="type-h4">Dritter Aspekt</span><span class="msym">query_stats</span></div>
             <p class="type-body">Ein bis zwei Sätze, was das konkret heißt.</p>
           </div>
           <div class="principle">
-            <div class="p-head"><span class="msym">rocket_launch</span><span class="type-h4">Vierter Aspekt</span></div>
+            <div class="p-head"><span class="type-h4">Vierter Aspekt</span><span class="msym">rocket_launch</span></div>
             <p class="type-body">Ein bis zwei Sätze, was das konkret heißt.</p>
           </div>
         </div>
