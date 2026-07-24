@@ -130,6 +130,10 @@
   Deko-Rhythmus. Summen-/Resultat-/Basis-Elemente werden anders
   exponiert als die Reihe darüber (Rolle = Behandlung). **Farbige
   Akzent-Kanten (`border-left`-Callouts) sind verboten.**
+  Karten-Reihen: gleiche Höhe nur bei gleicher Rolle — trägt EINE
+  Karte mehr Inhalt, bricht sie als Bento aus (kompakte Karten
+  gestapelt neben der hohen Detail-Karte), statt dass sich die
+  Nachbarn leer aufblähen.
 
 **⚠ Handwerks-Fallen (hart erarbeitet):**
 1. Tailwind v4 strippt handgeschriebenes `backdrop-filter` in
@@ -172,7 +176,9 @@
   klicken"/„Absenden" nackt.
 - **Header:** fix, 64px, transparent → blur-solid beim Scrollen
   (`backdrop-blur-xl bg-white/30`), Dark-Inversion auf dunklen
-  Sektionen; Nav-CTA als Charcoal-Pill; Links `type-nav`.
+  Sektionen; Nav-CTA als Charcoal-Pill; Links `type-nav`. Haarlinie
+  unten beim Scrollen ist beziffert: `border-charcoal/10` (dunkel:
+  `border-white/10`) — nie volles Charcoal oder Schwarz.
 - **Badges — eine Bedeutung, eine Gestalt (dokumentweit):**
   1. Semantik-Badge („Quick-Win"): Tint-Hintergrund + Deep-Text
   (purple-tint+deep-plum etc.), Inter — dieselbe Aussage trägt immer
@@ -192,6 +198,8 @@
   Mittel, nie die Substanz (Details: `guidelines/07 §7.11`).
 - **Formulare:** Outline-Inputs (`radius-md`, nie Pill), Ruhezustand
   transparent — **weiß erst bei Fokus**; Labels über dem Feld.
+  Selects nur als `.bm-select` — das Chevron steckt im Rezept
+  (16px vom Rand), nie das native Browser-Chevron.
 - **Bildsprache: WORK IN PROGRESS.** Das alte Editorial-Foto-Konzept
   gilt nicht mehr; die Website arbeitet heute ohne Fotografie (feine
   topografische Linien auf Gradients, konstruierte Vektor-Icons). Bis

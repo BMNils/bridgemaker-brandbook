@@ -126,6 +126,34 @@ Innen-Padding). Lösung im Starter-Kit: Preflight-Kopie, die alle
 `md-*`-Tags per `:where(:not(…))` vom Universal-Reset ausnimmt
 (`starter-kit/src/app/preflight-md3.css`).
 
+## 9.10 Dashboard-Basics
+
+*(Neu 2026-07-24 — Befunde aus dem ersten Mitarbeiter-Dashboard,
+das mit dem Style Guide gebaut wurde. Drei Punkte, die dort
+schiefgingen, als Regeln:)*
+
+1. **Header-Haarlinie beziffert:** Beim Scrollen trennt
+   `border-charcoal/10` (`rgba(28,28,30,0.10)`; dunkle Sektionen
+   `border-white/10`), Ruhezustand transparent — nie volles
+   Charcoal oder Schwarz (Werte und Verhalten: `07 §7.5`,
+   Referenz-Code: `starter-kit/src/components/brand/site-nav.tsx`).
+2. **Selects nur als `.bm-select`:** Das Chevron steckt im Rezept
+   (tokens.css: `appearance: none` + SVG-Chevron 16px vom Rand).
+   Wer ein nacktes `<select>` stylt, bekommt das native
+   Browser-Dreieck an der Kante — darum immer die Klasse nutzen,
+   auch in MD3-Kontexten (Vorrang-Regel: Bridgemaker-Rezepte
+   schlagen MD3-Defaults).
+3. **KPI-Karten-Reihen — gleiche Höhe nur bei gleicher Rolle:**
+   Gleichrangige Stat-Karten laufen uniform (Weiß, `card-clean`,
+   gemeinsame Unterkante). Trägt EINE Karte mehr Inhalt (z. B.
+   eine Aufschlüsselung als Meta-Zeilen), bricht sie bewusst aus:
+   Bento-Split (kompakte Karten gestapelt neben der hohen
+   Detail-Karte) statt Nachbarn, die sich leer aufblähen — Karten
+   umschließen ihren Inhalt eng, Leerraum lebt auf Seitenebene.
+   Tönung bleibt an Bedeutung gebunden: KPIs gleicher Art nicht
+   einfärben; höchstens die Detail-Karte, wenn ihre Rolle das
+   trägt.
+
 ## 9.8 Icons
 
 **Material Symbols Outlined** ist die einzige freigegebene Icon-Quelle —

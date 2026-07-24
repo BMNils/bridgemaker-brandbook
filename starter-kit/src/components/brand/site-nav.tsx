@@ -25,7 +25,9 @@ export function SiteNav() {
       className={cn(
         "fixed inset-x-0 top-0 z-40 flex h-16 items-center transition-[background-color,border-color] duration-200",
         scrolled
-          ? "border-b border-border-hairline bg-white/30 backdrop-blur-xl backdrop-saturate-150"
+          ? /* Haarlinie beziffert wie die Website (Nav.tsx: border-charcoal/10) —
+               nie volles Charcoal/Schwarz (07 §7.5; Nils, 2026-07-24). */
+            "border-b border-charcoal/10 bg-white/30 backdrop-blur-xl backdrop-saturate-150"
           : "border-b border-transparent bg-transparent",
       )}
     >

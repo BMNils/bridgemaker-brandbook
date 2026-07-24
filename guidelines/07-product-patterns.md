@@ -73,13 +73,23 @@ der Flächenrhythmus gliedert die Seite, nicht Trennlinien allein.
 - Fokus: weiße Füllung + Purple-Rand + weicher Purple-Ring
   (`--border-strong` + Tint).
 - Labels über den Feldern, nie Placeholder-als-Label.
+- **Selects nur als `.bm-select`** *(Nils, 2026-07-24)*: Das Rezept
+  in tokens.css bringt das Chevron mit (`appearance: none` +
+  SVG-Chevron, 16px vom Rand — symmetrisch zum linken Padding).
+  Das native Browser-Chevron ist tabu: Es klebt an der rechten
+  Kante und sieht in jedem Browser anders aus.
 
 ## 7.5 Navigation & Links
 
 - **Header (Stand Website):** fix, `64px` hoch (`h-16`), startet
   transparent und wird beim Scrollen solide: `backdrop-blur-xl` +
   `bg-white/30` (auf dunklen Sektionen `bg-charcoal/25`), Haarlinie
-  unten. Wortmarke links, `20px` hoch; auf dunklen Sektionen
+  unten. **Die Haarlinie ist beziffert** *(Nils, 2026-07-24 — ein
+  Dashboard zeichnete volles Schwarz)*: `border-charcoal/10`
+  (`rgba(28,28,30,0.10)`), auf dunklen Sektionen `border-white/10`,
+  im Ruhezustand `border-transparent` (Quelle: `Nav.tsx` der
+  Website). Nie volles Charcoal oder Schwarz — die Linie trennt
+  leise, sie rahmt nicht. Wortmarke links, `20px` hoch; auf dunklen Sektionen
   (`data-nav-dark`) invertiert die Nav (weiße Wortmarke, helle Links).
 - Links in `type-nav`; aktiver Link = `--charcoal` (bzw. Off-White auf
   Dunkel), inaktive in `--mid` mit Farbwechsel-Hover. Der Nav-CTA ist

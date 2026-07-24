@@ -605,9 +605,24 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
               box-shadow var(--duration-fast) var(--ease-out);
 }
 .bm-textarea { height: auto; padding: 12px var(--space-4); min-height: 120px; }
+/* Select: eigenes Chevron, IM Rezept erzwungen (Nils, 2026-07-24 —
+   ein Mitarbeiter-Dashboard zeigte das native Browser-Chevron hart
+   an der rechten Kante): appearance: none schaltet das native
+   Dreieck ab, das SVG-Chevron (Charcoal, 12×8) sitzt 16px vom
+   Rand — symmetrisch zum linken Padding. */
+.bm-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 44px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%231C1C1E' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
 .bm-input:focus, .bm-textarea:focus, .bm-select:focus {
   outline: none;
-  background: var(--white); /* füllt erst bei Fokus */
+  /* background-color statt background-Shorthand — das Shorthand
+     würde das Chevron-background-image des Selects löschen. */
+  background-color: var(--white); /* füllt erst bei Fokus */
   border-color: var(--bm-purple);
   box-shadow: 0 0 0 3px rgba(107,74,148,0.12);
 }
