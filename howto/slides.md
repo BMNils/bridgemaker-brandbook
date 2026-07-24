@@ -75,6 +75,35 @@ Bridgemaker-Ton, Grafiken als ersten Entwurf, den ihr gemeinsam
 verfeinert. Zum Schluss prüft Claude jede Seite gegen die
 Qualitäts-Checkliste und sagt dir, wenn alles sauber ist.
 
+## Vom Konzept zum Deck — der stärkste Input
+
+Die besten Decks entstehen, wenn das Denken vor dem Setzen
+passiert: Du erarbeitest ein Thema erst als Konzept-Dokument —
+in so vielen Runden, wie es braucht — und gibst dann das fertige
+Konzept als Inhalt in die Slide-Produktion. Ein Konzept ist
+slide-reif, wenn es fünf Merkmale hat:
+
+- **Jede Abschnitts-Überschrift ist eine Aussage,** keine
+  Kategorie: „Die KI orchestriert, die Rechen-Engine rechnet"
+  statt „Architektur". Aus solchen Überschriften werden
+  Slide-Headlines — niemand muss sie erfinden.
+- **Zählbare Blöcke:** „die vier Vorteile", „die Journey in vier
+  Schritten". Was gezählt ist, bringt sein Slide-Layout schon mit.
+- **Zahlen tragen Quelle und Datum** — oder sie fehlen. Auf der
+  Slide steht nie mehr Gewissheit als im Konzept.
+- **Nicht-Ziele und offene Fragen stehen drin.** Das macht aus
+  dem Papier eine Entscheidungsvorlage — und liefert die
+  stärksten Schluss-Kapitel gleich mit.
+- **Der Adressat ist eingearbeitet** (etwa die
+  Investoren-Perspektive für einen Beteiligungs-Termin), nicht
+  erst fürs Deck draufgelegt.
+
+Zwei Dinge stehen nie im Konzept und gehören deshalb immer in
+deine Übergabe-Nachricht: der **Anlass** (was für ein Termin ist
+das?) und das **Publikum** (wer sitzt da?). Eine Erstvorstellung
+braucht ein anderes Deck als ein Entscheidungstermin — auch beim
+selben Konzept.
+
 ## Ergebnis anschauen und weitergeben
 
 - **Anschauen:** HTML-Datei im Browser öffnen (Doppelklick; die

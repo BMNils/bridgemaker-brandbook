@@ -19,7 +19,16 @@ das Denken davor ist auf beiden identisch.
    nach, wenn wirklich etwas fehlt: das Ziel des Decks (überzeugen,
    informieren, entscheiden lassen?), das Publikum, der
    Ansprechpartner für die Schluss-Slide (Name, Rolle, geprüfte
-   E-Mail).
+   E-Mail). Bekommst du ein ausgearbeitetes **Konzept-Dokument**
+   (These-Überschriften, Rechenmodelle, Nicht-Ziele, offene
+   Fragen), ist das der beste Fall: Die Abschnitts-Thesen sind
+   deine Slide-Kandidaten, die Konzept-Reihenfolge dein erster
+   Storyline-Vorschlag. Redigat bleibt trotzdem Pflicht
+   (Konzepttexte sind Denk-Texte, keine Slide-Texte), Zahlen
+   übernimmst du nur so belastbar, wie das Konzept sie ausweist
+   (Quelle und Datum mit auf die Slide, sonst Zahl weglassen).
+   Anlass und Publikum stehen nie im Konzept — erfrage beides,
+   bevor du die Storyline schneidest.
 2. **Sprache erkennen.** Deutsch oder Englisch — aus den gelieferten
    Inhalten, nie mischen. Nur bei echter Mehrdeutigkeit fragen.
 3. **Storyline vorschlagen.** Kapitel und Slide-Folge als kurze

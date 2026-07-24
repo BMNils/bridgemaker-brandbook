@@ -68,6 +68,20 @@ dieser Frage:
 Die Sprache des Decks erkennst du aus den Inhalten (Deutsch oder
 Englisch — nie mischen); nur bei echter Mehrdeutigkeit fragen.
 
+**Konzept-Dokument als Input** *(Workflow-Erfolg NSTR, Nils
+2026-07-24)*: Liefert der Nutzer ein ausgearbeitetes Konzept
+(Abschnitte mit These-Überschriften, Rechenmodelle, Nicht-Ziele,
+offene Fragen), ist das der beste Fall — behandle es so:
+Die Abschnitts-Thesen sind deine Slide-Kandidaten, die
+Konzept-Reihenfolge ist der erste Storyline-Vorschlag. Die
+Redigat-Pflicht bleibt voll bestehen — Konzepttexte sind
+Denk-Texte, keine Slide-Texte. Zahlen übernimmst du nur mit der
+Belastbarkeit, die das Konzept selbst ausweist (Quelle, Datum,
+„konservativ gerechnet" gehören mit auf die Slide oder die Zahl
+bleibt weg). Anlass und Publikum stehen nie im Konzept — erfrage
+beides, BEVOR du die Storyline schneidest: Eine Erstvorstellung
+braucht einen anderen Schnitt als ein Entscheidungstermin.
+
 ## 4. Slide Writing — Layout folgt Argument
 
 Für JEDE Slide, bevor du ein Layout wählst, die Strukturfrage
