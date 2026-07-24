@@ -26,7 +26,7 @@ import json, os, re, zipfile
 from pptx import Presentation
 from pptx.util import Emu, Pt
 from pptx.dml.color import RGBColor
-from pptx.enum.text import PP_ALIGN, MSO_AUTO_SIZE
+from pptx.enum.text import PP_ALIGN, MSO_AUTO_SIZE, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE
 from pptx.oxml.ns import qn
 from PIL import Image
@@ -152,28 +152,49 @@ def prep_content(t):
     return content.upper() if t['caps'] else content
 
 
-def widen_meta(g, groups):
-    """Meta-Box auf Designbreite weiten — aber nur bis zur nächsten
-    Box in derselben Zeile (Spalten-Labels und Tabellenköpfe stehen
-    nebeneinander und dürfen sich nicht überlagern)."""
-    min_w = META_MIN_W[g['role']]
-    if g['w'] >= min_w: return g['x'], g['w']
+def widen_box(g, groups, s):
+    """Textbox auf verfügbare Breite weiten. Die vermessene Box ist
+    exakt so breit wie der Mustertext — PowerPoint bricht mit eigener
+    Textmetrik minimal früher und macht aus zwei Zeilen drei (Befund
+    Nils 24.07.: Cover-Titel, Kapiteltitel in der Fußzeile, unnötige
+    Headline-Umbrüche). Meta-Boxen bekommen mindestens Designbreite,
+    Content-Boxen die volle verfügbare Breite. Grenzen: Nachbar-Texte
+    und Grafiken derselben Zeile, die eigene Karte (innen), sonst der
+    Content-Rand (Meta: Seitenrand)."""
+    role = g['role']
     y0, y1 = g['y'], g['y'] + g['h']
-    left_lim, right_lim = 24, 1416
-    for o in groups:
+    left_lim, right_lim = 24, (1416 if role else 1320)
+    for o in list(groups) + list(s.get('pix', [])):
         if o is g or not (o['y'] < y1 and o['y'] + o['h'] > y0): continue
         if o['x'] >= g['x'] + g['w']: right_lim = min(right_lim, o['x'] - 16)
         if o['x'] + o['w'] <= g['x']: left_lim = max(left_lim, o['x'] + o['w'] + 16)
+    for r in s.get('rects', []):
+        if (r['x'] - 8 <= g['x'] and g['x'] + g['w'] <= r['x'] + r['w'] + 8
+                and r['y'] - 8 <= y0 and y1 <= r['y'] + r['h'] + 8):
+            left_lim = max(left_lim, r['x'] + 20)
+            right_lim = min(right_lim, r['x'] + r['w'] - 20)
     align = g['parts'][0]['align']
+    if role:
+        min_w = META_MIN_W[role]
+        if g['w'] >= min_w: return g['x'], g['w']
+        if align in ('right', 'end'):
+            r = g['x'] + g['w']
+            x = max(left_lim, r - min_w)
+            return x, max(r - x, g['w'])
+        if align == 'center':
+            cx = g['x'] + g['w'] / 2
+            half = min(min_w / 2, cx - left_lim, right_lim - cx)
+            return cx - half, max(half * 2, g['w'])
+        return g['x'], max(min(min_w, right_lim - g['x']), g['w'])
     if align in ('right', 'end'):
         r = g['x'] + g['w']
-        x = max(left_lim, r - min_w)
-        return x, max(r - x, g['w'])
+        x = min(g['x'], left_lim)
+        return x, r - x
     if align == 'center':
         cx = g['x'] + g['w'] / 2
-        half = min(min_w / 2, cx - left_lim, right_lim - cx)
-        return cx - half, max(half * 2, g['w'])
-    return g['x'], max(min(min_w, right_lim - g['x']), g['w'])
+        half = min(cx - left_lim, right_lim - cx)
+        return (cx - half, half * 2) if half * 2 > g['w'] else (g['x'], g['w'])
+    return g['x'], max(g['w'], right_lim - g['x'])
 
 def merge_columns(texts):
     """Gestapelte Content-Boxen einer Spalte (Titel/Body/Caption) werden
@@ -211,10 +232,15 @@ for i, s in enumerate(geo['slides']):
     slide = prs.slides.add_slide(blank)
 
     # Grund: Moment-Slides tragen das gerenderte Linien-/Kasane-Bild,
-    # Content-Slides die Off-White-Fläche.
+    # Content-Slides die Off-White-Fläche. Die Hintergründe gehen als
+    # JPEG in die Datei: Der Grain-Layer ist Rauschen — als PNG wird
+    # jede Fläche 2-3 MB (14-MB-Template), als JPEG ~300 KB, ohne
+    # sichtbaren Unterschied auf der Vollfläche (kein Alpha nötig).
     if s['moment']:
-        slide.shapes.add_picture(os.path.join(HERE, f'assets/bg-{i:02d}.png'),
-                                 0, 0, prs.slide_width, prs.slide_height)
+        bg_png = os.path.join(HERE, f'assets/bg-{i:02d}.png')
+        bg_jpg = os.path.join(HERE, f'assets/bg-{i:02d}.jpg')
+        Image.open(bg_png).convert('RGB').save(bg_jpg, quality=90)
+        slide.shapes.add_picture(bg_jpg, 0, 0, prs.slide_width, prs.slide_height)
     else:
         slide.background.fill.solid()
         slide.background.fill.fore_color.rgb = rgb(s['bg'])
@@ -266,14 +292,18 @@ for i, s in enumerate(geo['slides']):
     for grp in groups:
         role = grp['role']
         x, y, w, h = grp['x'], grp['y'], grp['w'], grp['h']
-        if role in META_MIN_W:
-            x, w = widen_meta(grp, groups)
-        tb = slide.shapes.add_textbox(emu(x), emu(y - 2), emu(w + 4), emu(h + 4))
+        x, w = widen_box(grp, groups, s)
+        pad_y = 4 if role else 2
+        tb = slide.shapes.add_textbox(emu(x), emu(y - pad_y), emu(w + 4), emu(h + 2 * pad_y))
         tf = tb.text_frame
         tf.margin_left = tf.margin_right = tf.margin_top = tf.margin_bottom = 0
         if role:
             tf.word_wrap = False                          # Meta bleibt einzeilig
             tf.auto_size = MSO_AUTO_SIZE.NONE
+            # Mittig ankern: PowerPoints Zeilenbox weicht von Chromes
+            # engem Text-Rechteck ab — top-verankert hing „[ Kundenlogo ]"
+            # sichtbar über der Brückenlinie (Befund Nils 24.07.).
+            tf.vertical_anchor = MSO_ANCHOR.MIDDLE
         else:
             tf.word_wrap = True
             # normAutofit: läuft echter Text länger als das Muster,

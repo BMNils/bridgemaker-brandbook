@@ -40,7 +40,8 @@ dem Deck-Team geklärt.
     Zielwerten.
 14. **Roadmap** — Zeitplan als Balkenplan (Gantt) mit farbigem
     Kategorien-Code und Legende.
-15. **Zitat** — eine Aussage groß auf farbiger Fläche, mit
+15. **Zitat** — eine Aussage groß auf der dunklen Teal-Fläche
+    (so, wie sie im Template steht — nicht umfärben), mit
     Attribution. Moment-Slide, sparsam einsetzen.
 16. **Schluss** — Statement plus dezente Kontaktzeilen des
     Ansprechpartners. Immer die letzte Slide.

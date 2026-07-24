@@ -112,8 +112,14 @@ window.addEventListener('load', () => setTimeout(() => {
       }
       let txt = ownText(el);
       /* Icon-Glyphen (Material Symbols) sind Ligatur-Text — als
-         Klartext „arrow_forward" in der PPTX wären sie ein Fehler. */
-      if (/Material Symbols/i.test(cs.fontFamily)) txt = '';
+         Klartext „arrow_forward" in der PPTX wären sie ein Fehler.
+         Statt sie nur zu leeren (so fehlten sie in der PPTX komplett,
+         Befund Nils 24.07.), werden sie Grafik-Region: der Build
+         schneidet sie als Bildausschnitt aus dem Slide-Screenshot. */
+      if (/Material Symbols/i.test(cs.fontFamily)) {
+        if (!s.moment && rl.w >= 8 && rl.h >= 8) s.pix.push({ ...rl, kind: 'icon', z: zc++ });
+        txt = '';
+      }
       if (txt) {
         let anc = el.parentElement, covered = false;
         while (anc && anc !== sec) { if (fullCaptured.has(anc)) { covered = true; break; } anc = anc.parentElement; }
@@ -155,15 +161,20 @@ window.addEventListener('load', () => setTimeout(() => {
               : null,
         });
       }
-      /* Hairlines: flache/schmale gefüllte Divs ohne Text */
-      if (!txt && el.tagName === 'DIV') {
+      /* Hairlines: flache/schmale gefüllte Divs ohne Text.
+         NICHT auf Moment-Slides: dort trägt das Hintergrundbild
+         (bg-XX.png) alle Linien bereits — ein zusätzliches Shape
+         zeichnet dieselbe Linie minimal versetzt doppelt (Befund
+         Nils 24.07., Cover-Brücke/Kapiteltrenner-Fußzeile). */
+      if (!txt && !s.moment && el.tagName === 'DIV') {
         const bgc = cs.backgroundColor;
         const flach = r.height * k <= 4 && r.width * k >= 40;
         const schmal = r.width * k <= 4 && r.height * k >= 40;
         if ((flach || schmal) && bgc && bgc !== 'rgba(0, 0, 0, 0)') s.lines.push({ ...rl, color: bgc });
       }
-      /* Hairlines als Border (häufigster Fall im Template) */
-      for (const [side, wProp, cProp] of [
+      /* Hairlines als Border (häufigster Fall im Template) —
+         wie oben: auf Moment-Slides trägt sie das Hintergrundbild. */
+      if (!s.moment) for (const [side, wProp, cProp] of [
         ['top', 'borderTopWidth', 'borderTopColor'],
         ['bottom', 'borderBottomWidth', 'borderBottomColor'],
         ['left', 'borderLeftWidth', 'borderLeftColor'],
@@ -277,6 +288,40 @@ try {
       console.log(`  Screenshot: ${path.basename(png)} (${s.pix.length} Regionen)`);
     } finally {
       fs.rmSync(shotTmp, { force: true });
+    }
+  });
+
+  /* ---- Moment-Hintergründe (bg-XX.png) --------------------
+     Die Hintergründe der Moment-Slides (Cover, Trenner, Zitat,
+     Schluss) entstanden bis 22.07. ad hoc ohne Skript und
+     drifteten: Fußzeile/Seitenzahl eingebacken (Text-Doppelung
+     in PowerPoint), Grain-Layer fehlte (harte Gradient-Kanten
+     im Zitat), Template-Fixes vom 23./24.07. nicht drin (Befund
+     Nils 24.07.). Jetzt reproduzierbar: Sektion isoliert rendern,
+     ALLE Texte transparent + Wortmarken-IMGs ausgeblendet (beides
+     zeichnet der Build als Textboxen/Bilder wieder drauf); Linien,
+     Kasane, Grain und Topo-SVGs (explizite Stroke-Farben, kein
+     currentColor) bleiben im Bild. */
+  const bgDir = path.join(__dirname, 'assets');
+  data.slides.forEach((s, i) => {
+    if (!s.moment) return;
+    const bgHtml = headHtml
+      + '\n<style>body { margin: 0; } section.dslide { width: 1440px; height: 810px; overflow: hidden; position: relative; }'
+      + '\nsection.dslide, section.dslide * { color: transparent !important; }'
+      + '\nsection.dslide img { visibility: hidden !important; }</style>\n'
+      + sections[i] + '\n</body>\n</html>\n';
+    const bgTmp = path.join(path.dirname(src), `.bg-tmp-${Date.now()}-${i}.html`);
+    fs.writeFileSync(bgTmp, bgHtml);
+    const png = path.join(bgDir, `bg-${String(i).padStart(2, '0')}.png`);
+    try {
+      execFileSync(chrome, [
+        '--headless', '--disable-gpu', '--hide-scrollbars',
+        '--window-size=1440,810', '--force-device-scale-factor=1.5',
+        '--virtual-time-budget=6000', `--screenshot=${png}`, 'file://' + bgTmp,
+      ], { stdio: ['ignore', 'ignore', 'ignore'] });
+      console.log(`  Hintergrund: ${path.basename(png)}`);
+    } finally {
+      fs.rmSync(bgTmp, { force: true });
     }
   });
 } finally {

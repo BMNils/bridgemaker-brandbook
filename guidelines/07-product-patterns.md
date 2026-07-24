@@ -273,8 +273,12 @@ Hover-Effekte. (Stage-Neufassung 16.07.2026 — ersetzt die frühere
   Footer-Verlauf (Token `bg-contact-cta-static` — die vorgemischte
   statische Hälfte des contact-cta-Paars; das rohe `bg-contact-cta`
   bleibt tabu als Fläche, im Web gilt `.contact-cta-wash`)
-  + konzentrische Konturen um den Content. Topo-Linien sind
-  Blickführung um den Content, nie Deko-Gewusel; Generator:
+  + konzentrische Konturen um den Content. Zitat =
+  `bg-stimme-teal` (statisch, mit `grain-photo-screen`) *(Nils,
+  2026-07-24)*: Die Stimme des Kunden bekommt ihre eigene
+  Farbwelt — auf `bg-stimme-plum` erzählten Zitat und Schluss
+  fast dieselbe Purple-Fläche zweimal hintereinander. Topo-Linien
+  sind Blickführung um den Content, nie Deko-Gewusel; Generator:
   `templates/deck-topo-konturen.js` (cover/schluss). Dazu die
   Kapitelbänder `bg-kasane-band-*` mit hellgrauen Konturen. Bei
   mehreren Kapiteln variieren die Trenner: nächste Band-Farbwelt

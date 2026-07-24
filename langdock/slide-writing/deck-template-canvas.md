@@ -795,9 +795,24 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
               box-shadow var(--duration-fast) var(--ease-out);
 }
 .bm-textarea { height: auto; padding: 12px var(--space-4); min-height: 120px; }
+/* Select: eigenes Chevron, IM Rezept erzwungen (Nils, 2026-07-24 —
+   ein Mitarbeiter-Dashboard zeigte das native Browser-Chevron hart
+   an der rechten Kante): appearance: none schaltet das native
+   Dreieck ab, das SVG-Chevron (Charcoal, 12×8) sitzt 16px vom
+   Rand — symmetrisch zum linken Padding. */
+.bm-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 44px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%231C1C1E' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
 .bm-input:focus, .bm-textarea:focus, .bm-select:focus {
   outline: none;
-  background: var(--white); /* füllt erst bei Fokus */
+  /* background-color statt background-Shorthand — das Shorthand
+     würde das Chevron-background-image des Selects löschen. */
+  background-color: var(--white); /* füllt erst bei Fokus */
   border-color: var(--bm-purple);
   box-shadow: 0 0 0 3px rgba(107,74,148,0.12);
 }
@@ -1046,9 +1061,11 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
   .agenda-num { color: var(--charcoal); width: var(--space-10); flex-shrink: 0; } /* = Titelfarbe */
 
   /* table-layout: fixed — Spalten folgen exakt den th-Breiten und
-     stehen auf jeder Seite identisch; das Auto-Layout lässt
-     Serien-Tabellen beim Blättern springen (Nils, 2026-07-24).
-     EINE th-Breite offen lassen (Rest-Spalte). */
+     stehen auf jeder Seite identisch. Das Auto-Layout des Browsers
+     verteilt Spalten pro Slide nach Inhalt: Serien-Tabellen
+     springen dann beim Blättern (Nils, 2026-07-24). EINE th-Breite
+     offen lassen (Rest-Spalte); Breiten am breitesten Inhalt der
+     ganzen Serie bemessen. */
   .deck-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
   .deck-table th { text-align: left; padding: var(--space-3) var(--space-4) var(--space-3) 0; border-bottom: var(--border-subtle); color: var(--mid); }
   .deck-table td { padding: var(--space-4) var(--space-4) var(--space-4) 0; border-bottom: var(--border-subtle); vertical-align: top; }
@@ -1134,8 +1151,9 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
         <img class="wordmark" src="data:," data-wm="w" alt="Bridgemaker" style="flex-shrink: 0;" />
         <!-- Brücken-Container fest 24px hoch und zentriert wie die
              Wortmarke — NIE align-self: stretch: ein Kundenlogo
-             über 24px hebt sonst die Linie vom Wortmarken-Strich
-             ab (Nils, 2026-07-24). -->
+             über 24px streckt den Container sonst mit und hebt die
+             Linie vom Wortmarken-Strich ab (Nils, 2026-07-24;
+             deck-lint prüft Naht und Höhe). -->
         <div class="cover-bridge" style="flex: 1; align-self: center; height: 24px; position: relative;">
           <div style="position: absolute; left: -2px; right: 0; top: 10.96px; height: 2.58px; background: #fff;"></div>
         </div>
@@ -1629,6 +1647,13 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
        Offene Hairline-Zeilen, kein Rahmen, keine Zebra-Streifen.
        Zielwerte in Deep-Plum (Werte-Spalte statt Chips).
        Max. 8 Zeilen pro Slide — sonst auf zwei Slides teilen.
+       SERIE über mehrere Slides (Nils, 2026-07-24): EINE
+       konstante, einzeilige Headline auf jeder Seite der Serie
+       (kein „Fortsetzung"-Wechsel), identische th-Breiten auf
+       allen Seiten (bemessen am breitesten Inhalt der Serie)
+       und der .deck-body auf justify-content: flex-start —
+       beim Blättern stehen Headline, Tabellen-Oberkante und
+       Spaltenraster. deck-lint prüft alle drei.
        ======================================================== -->
   <section class="dslide" data-label="Tabelle">
     <header class="slide-head"><span class="type-eyebrow">02 / KPIs</span></header>
@@ -1639,10 +1664,12 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
         <table class="deck-table type-body">
           <thead>
             <tr>
-              <th class="type-eyebrow">Dimension</th>
+              <!-- Feste Breiten (table-layout: fixed): die letzte
+                   Spalte ohne width nimmt den Rest. -->
+              <th class="type-eyebrow" style="width: 200px;">Dimension</th>
               <th class="type-eyebrow">Messgröße</th>
-              <th class="type-eyebrow">Heute</th>
-              <th class="type-eyebrow">Ziel</th>
+              <th class="type-eyebrow" style="width: 180px;">Heute</th>
+              <th class="type-eyebrow" style="width: 180px;">Ziel</th>
             </tr>
           </thead>
           <tbody>
@@ -1714,12 +1741,16 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
   </section>
   <!-- ========================================================
        ROLLE „ZITAT" — die eine erlaubte Moment-Slide.
-       Dunkle Stimmen-Fläche (statisch), großes kursives Zitat,
-       Attribution im Eyebrow-Stil. Ein Zitat pro Slide.
+       Dunkle Stimmen-Fläche bg-stimme-teal (statisch) — Teal,
+       damit die Stimme des Kunden ihre eigene Farbwelt hat und
+       nicht dieselbe Purple-Geschichte erzählt wie der
+       Schluss-CTA (Beschluss Nils, 2026-07-24; vorher
+       bg-stimme-plum). Großes kursives Zitat, Attribution im
+       Eyebrow-Stil. Ein Zitat pro Slide.
        Wie Cover und Schluss: KEINE Kopf- und Fußzeile.
        ======================================================== -->
   <section class="dslide dslide-dark dslide-moment" data-label="Zitat">
-    <div class="kasane-layer bg-stimme-plum"></div>
+    <div class="kasane-layer bg-stimme-teal"></div>
     <div class="grain-layer grain-photo-screen"></div>
     <div class="dslide-content" style="max-width: 1080px;">
       <p class="type-display" style="margin: 0; color: var(--off-white); font-style: italic; font-weight: 500;">„Ein Satz aus einem echten Gespräch, der die Slide trägt — wörtlich, nicht geglättet."</p>
@@ -1742,7 +1773,7 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
        eine eigene Content-Slide davor.
        ======================================================== -->
   <section class="dslide dslide-dark dslide-moment" data-label="Schluss" style="align-items: center; text-align: center; justify-content: center;">
-    <div class="kasane-layer bg-contact-cta-static"></div>></div>
+    <div class="kasane-layer bg-contact-cta-static"></div>
     <svg class="kasane-layer" viewBox="0 0 1440 810" preserveAspectRatio="xMidYMid slice" style="z-index: 1; width: 100%; height: 100%;" aria-hidden="true"><g fill="none" stroke="#F5F1EB" stroke-width="1" opacity="0.12"><path d="M1294,405 L1292,420 L1289,434 L1283,449 L1275,463 L1265,476 L1255,489 L1243,502 L1231,514 L1219,527 L1208,539 L1197,551 L1187,563 L1177,576 L1166,589 L1156,602 L1144,614 L1132,627 L1118,639 L1103,651 L1088,663 L1070,674 L1052,684 L1032,693 L1011,702 L989,709 L967,716 L943,722 L919,727 L895,731 L870,735 L845,737 L820,739 L795,741 L770,742 L745,742 L720,742 L695,742 L670,741 L645,740 L620,738 L595,736 L571,733 L546,730 L522,725 L498,721 L474,715 L452,708 L430,700 L411,691 L392,680 L375,669 L359,658 L344,646 L330,635 L315,623 L301,612 L287,600 L274,589 L261,577 L248,565 L237,553 L226,540 L216,528 L206,515 L197,502 L189,489 L182,475 L176,461 L172,447 L168,433 L166,419 L166,405 L166,391 L166,376 L166,362 L167,348 L169,333 L171,319 L175,304 L181,290 L188,275 L197,262 L208,248 L221,236 L236,224 L253,213 L271,202 L289,192 L308,183 L328,174 L348,166 L368,158 L388,150 L408,143 L428,136 L449,129 L470,123 L491,116 L512,110 L534,104 L555,98 L577,92 L600,87 L623,82 L647,78 L671,76 L695,74 L720,73 L745,74 L769,76 L793,79 L817,83 L840,87 L862,92 L884,98 L906,104 L927,110 L949,117 L970,123 L991,129 L1011,136 L1032,143 L1052,151 L1071,159 L1091,167 L1110,176 L1128,185 L1146,195 L1162,205 L1178,216 L1193,228 L1207,240 L1219,252 L1231,265 L1241,278 L1251,291 L1261,305 L1269,318 L1277,332 L1283,347 L1287,361 L1291,376 L1293,390 L1294,405 Z" /><path d="M1462,405 L1462,424 L1460,443 L1457,462 L1452,481 L1445,500 L1437,518 L1428,536 L1418,554 L1407,572 L1396,590 L1383,608 L1369,625 L1354,643 L1337,659 L1318,675 L1296,690 L1273,703 L1248,716 L1221,727 L1194,737 L1165,746 L1136,754 L1107,762 L1078,770 L1049,777 L1021,784 L992,791 L963,798 L934,805 L905,811 L875,816 L845,821 L814,825 L783,828 L752,830 L720,831 L688,831 L657,829 L626,827 L595,822 L565,817 L535,811 L506,804 L478,796 L450,788 L423,780 L396,771 L369,762 L342,754 L315,745 L288,736 L261,727 L234,717 L208,706 L183,695 L159,682 L137,668 L117,653 L100,638 L85,621 L72,603 L61,586 L52,568 L44,550 L36,532 L29,514 L22,496 L16,478 L11,460 L8,442 L7,423 L7,405 L8,387 L10,368 L14,350 L19,332 L25,314 L31,296 L39,279 L47,261 L57,243 L67,226 L79,209 L93,192 L108,176 L125,160 L144,145 L164,131 L185,117 L208,104 L231,91 L254,78 L278,66 L302,54 L327,42 L353,31 L381,21 L409,12 L438,4 L467,-3 L498,-10 L528,-16 L560,-20 L591,-24 L623,-27 L655,-29 L688,-30 L720,-31 L752,-30 L784,-28 L816,-25 L848,-22 L879,-17 L910,-12 L940,-6 L971,0 L1000,7 L1029,15 L1058,24 L1084,34 L1110,45 L1134,57 L1157,70 L1179,83 L1200,97 L1220,111 L1239,125 L1258,140 L1277,154 L1296,168 L1317,181 L1338,195 L1359,209 L1380,224 L1398,240 L1415,256 L1429,274 L1440,292 L1447,310 L1453,329 L1456,348 L1459,367 L1461,386 L1462,405 Z" /><path d="M1695,405 L1695,430 L1692,455 L1686,480 L1678,504 L1668,529 L1657,553 L1643,576 L1629,600 L1613,623 L1597,645 L1579,668 L1560,690 L1539,712 L1515,733 L1489,752 L1460,770 L1431,788 L1400,805 L1368,821 L1335,836 L1302,851 L1268,866 L1234,879 L1198,892 L1162,904 L1125,915 L1087,926 L1048,934 L1008,943 L968,950 L928,957 L887,963 L846,968 L804,972 L762,975 L720,977 L678,977 L635,976 L593,974 L551,970 L508,967 L466,962 L424,956 L383,950 L342,942 L302,932 L263,921 L226,908 L191,894 L157,878 L125,861 L95,843 L65,825 L36,807 L8,789 L-20,770 L-48,751 L-75,732 L-101,713 L-126,692 L-149,671 L-167,648 L-181,625 L-191,600 L-197,575 L-199,550 L-200,525 L-200,500 L-199,476 L-199,452 L-200,429 L-202,405 L-202,381 L-202,358 L-200,334 L-197,310 L-192,286 L-185,262 L-177,239 L-166,215 L-152,192 L-137,170 L-122,147 L-106,125 L-88,102 L-68,81 L-45,60 L-20,40 L8,21 L38,4 L69,-13 L103,-28 L137,-42 L171,-56 L206,-69 L242,-82 L278,-95 L314,-107 L352,-118 L390,-128 L429,-137 L469,-145 L510,-152 L552,-157 L593,-161 L635,-163 L678,-164 L720,-162 L762,-158 L803,-153 L843,-146 L883,-138 L921,-129 L959,-119 L995,-109 L1032,-99 L1068,-89 L1104,-79 L1139,-69 L1174,-58 L1209,-46 L1243,-34 L1276,-22 L1310,-8 L1342,6 L1374,20 L1406,35 L1436,52 L1465,69 L1493,87 L1519,106 L1543,125 L1564,146 L1583,168 L1599,191 L1614,214 L1629,236 L1643,260 L1656,283 L1667,307 L1678,331 L1686,355 L1692,380 L1695,405 Z" /><path d="M1958,405 L1947,437 L1933,467 L1918,498 L1901,527 L1884,557 L1866,586 L1850,615 L1835,644 L1821,673 L1808,703 L1794,734 L1778,764 L1761,795 L1741,825 L1717,855 L1690,884 L1659,911 L1623,936 L1584,959 L1541,980 L1495,999 L1447,1016 L1398,1031 L1348,1044 L1297,1057 L1245,1068 L1194,1077 L1142,1086 L1090,1095 L1037,1102 L985,1107 L932,1111 L879,1114 L826,1115 L773,1116 L720,1115 L667,1113 L615,1110 L563,1107 L511,1103 L459,1098 L407,1093 L354,1087 L302,1080 L250,1072 L199,1062 L148,1051 L98,1038 L50,1024 L3,1007 L-42,989 L-85,969 L-127,948 L-166,926 L-203,903 L-238,878 L-272,853 L-304,827 L-336,801 L-366,774 L-394,746 L-421,718 L-447,689 L-470,660 L-490,629 L-507,598 L-521,567 L-531,535 L-537,502 L-541,470 L-542,437 L-540,405 L-536,373 L-531,341 L-524,309 L-515,277 L-502,246 L-487,215 L-468,185 L-448,155 L-426,126 L-403,97 L-378,69 L-352,41 L-325,13 L-296,-14 L-266,-40 L-233,-65 L-197,-89 L-158,-111 L-116,-132 L-73,-151 L-28,-168 L18,-185 L65,-200 L113,-214 L161,-226 L210,-238 L260,-248 L310,-258 L360,-266 L411,-273 L462,-279 L513,-284 L565,-289 L616,-293 L668,-299 L720,-303 L773,-308 L827,-311 L881,-313 L935,-312 L989,-309 L1043,-304 L1095,-295 L1147,-285 L1198,-273 L1248,-262 L1299,-249 L1348,-235 L1397,-220 L1445,-204 L1493,-187 L1539,-169 L1583,-149 L1626,-128 L1666,-105 L1703,-80 L1737,-54 L1768,-27 L1796,2 L1822,31 L1846,60 L1868,90 L1888,120 L1906,151 L1922,182 L1937,213 L1949,245 L1959,276 L1966,309 L1968,341 L1965,373 L1958,405 Z" /><path d="M2281,405 L2276,445 L2270,485 L2263,524 L2254,564 L2243,604 L2229,643 L2212,682 L2191,720 L2166,757 L2137,794 L2104,829 L2066,862 L2026,895 L1984,926 L1941,956 L1897,986 L1853,1016 L1808,1045 L1763,1075 L1716,1103 L1667,1131 L1616,1158 L1562,1182 L1505,1205 L1445,1225 L1384,1243 L1321,1259 L1257,1273 L1192,1286 L1126,1296 L1060,1306 L993,1315 L925,1322 L857,1328 L789,1333 L720,1336 L651,1337 L582,1336 L512,1333 L443,1328 L375,1320 L308,1309 L242,1296 L178,1281 L116,1263 L55,1244 L-4,1224 L-62,1202 L-118,1179 L-173,1155 L-226,1130 L-279,1105 L-331,1080 L-381,1053 L-428,1024 L-473,994 L-513,962 L-551,929 L-587,895 L-620,860 L-652,825 L-682,790 L-709,753 L-734,716 L-755,679 L-774,640 L-790,602 L-802,563 L-812,524 L-819,484 L-825,445 L-831,405 L-837,365 L-841,325 L-842,284 L-839,243 L-832,203 L-819,162 L-801,123 L-777,85 L-748,47 L-717,11 L-684,-25 L-650,-60 L-616,-95 L-580,-131 L-545,-166 L-508,-201 L-468,-235 L-426,-269 L-379,-301 L-329,-330 L-273,-356 L-212,-378 L-148,-397 L-82,-412 L-15,-425 L53,-436 L121,-446 L188,-455 L255,-463 L321,-471 L387,-478 L453,-487 L519,-495 L585,-503 L652,-510 L720,-516 L789,-521 L858,-523 L928,-524 L998,-521 L1067,-516 L1135,-507 L1203,-496 L1270,-485 L1337,-471 L1403,-456 L1467,-439 L1530,-420 L1591,-400 L1651,-377 L1709,-353 L1765,-327 L1817,-299 L1867,-270 L1912,-238 L1954,-204 L1993,-170 L2029,-134 L2064,-99 L2098,-63 L2130,-27 L2161,10 L2190,47 L2216,85 L2237,124 L2254,163 L2267,203 L2276,244 L2282,284 L2284,325 L2284,365 L2281,405 Z" /><path d="M2857,405 L2851,460 L2839,514 L2823,568 L2803,621 L2778,673 L2750,725 L2718,776 L2684,825 L2645,874 L2601,921 L2553,966 L2502,1010 L2451,1054 L2399,1097 L2347,1139 L2294,1182 L2239,1224 L2182,1265 L2120,1304 L2054,1340 L1985,1375 L1914,1408 L1842,1441 L1767,1472 L1690,1501 L1610,1528 L1527,1551 L1442,1571 L1354,1588 L1265,1602 L1175,1613 L1085,1622 L994,1629 L903,1635 L812,1639 L720,1642 L628,1642 L536,1640 L445,1635 L354,1626 L264,1614 L176,1600 L89,1582 L3,1563 L-81,1542 L-164,1521 L-247,1498 L-330,1475 L-411,1450 L-491,1423 L-568,1393 L-641,1359 L-710,1323 L-774,1284 L-833,1242 L-889,1199 L-942,1155 L-992,1110 L-1038,1064 L-1082,1017 L-1123,969 L-1162,921 L-1199,873 L-1235,824 L-1270,774 L-1302,724 L-1330,672 L-1355,620 L-1375,567 L-1391,514 L-1402,459 L-1408,405 L-1409,350 L-1405,296 L-1394,241 L-1373,188 L-1344,136 L-1307,85 L-1265,37 L-1219,-10 L-1171,-56 L-1121,-100 L-1071,-143 L-1021,-186 L-973,-230 L-926,-273 L-875,-315 L-820,-355 L-762,-394 L-699,-430 L-635,-465 L-570,-499 L-505,-534 L-439,-569 L-372,-604 L-304,-639 L-234,-673 L-161,-706 L-84,-737 L-4,-765 L80,-789 L168,-808 L258,-821 L349,-832 L441,-841 L534,-848 L627,-852 L720,-854 L813,-854 L907,-851 L1000,-845 L1092,-837 L1184,-827 L1275,-813 L1363,-795 L1450,-775 L1534,-751 L1616,-726 L1696,-698 L1773,-668 L1847,-636 L1919,-602 L1989,-568 L2057,-532 L2122,-495 L2184,-456 L2241,-415 L2295,-372 L2345,-328 L2392,-284 L2437,-238 L2481,-193 L2526,-148 L2571,-103 L2617,-57 L2663,-11 L2707,36 L2749,85 L2787,135 L2818,187 L2841,241 L2853,295 L2858,350 L2857,405 Z" /><path d="M3331,405 L3333,472 L3329,539 L3320,606 L3304,673 L3283,739 L3255,805 L3222,869 L3183,932 L3139,994 L3090,1055 L3036,1114 L2978,1172 L2917,1228 L2853,1284 L2788,1339 L2723,1394 L2657,1449 L2590,1505 L2520,1561 L2447,1615 L2368,1668 L2283,1718 L2193,1765 L2097,1808 L1997,1848 L1892,1883 L1783,1915 L1671,1942 L1556,1965 L1440,1985 L1322,2001 L1203,2015 L1083,2026 L962,2033 L841,2035 L720,2032 L600,2026 L480,2016 L362,2003 L245,1988 L130,1971 L15,1952 L-98,1931 L-209,1907 L-317,1877 L-421,1844 L-522,1808 L-620,1771 L-718,1732 L-814,1694 L-910,1654 L-1005,1614 L-1100,1573 L-1192,1530 L-1281,1484 L-1364,1434 L-1441,1381 L-1512,1324 L-1579,1267 L-1644,1208 L-1707,1148 L-1767,1087 L-1824,1025 L-1878,961 L-1927,896 L-1970,829 L-2007,761 L-2036,691 L-2055,620 L-2062,548 L-2058,476 L-2044,405 L-2023,335 L-1994,265 L-1962,197 L-1926,131 L-1890,65 L-1853,-1 L-1817,-66 L-1781,-130 L-1742,-195 L-1700,-259 L-1653,-322 L-1601,-383 L-1544,-444 L-1483,-502 L-1416,-559 L-1345,-614 L-1269,-667 L-1187,-717 L-1099,-762 L-1005,-804 L-908,-843 L-808,-879 L-706,-912 L-602,-942 L-497,-971 L-392,-997 L-285,-1022 L-178,-1047 L-71,-1070 L38,-1092 L149,-1111 L261,-1127 L374,-1140 L489,-1149 L604,-1155 L720,-1158 L836,-1157 L952,-1153 L1067,-1145 L1181,-1134 L1296,-1122 L1410,-1109 L1524,-1096 L1639,-1080 L1754,-1063 L1869,-1044 L1983,-1022 L2096,-997 L2206,-967 L2312,-932 L2412,-892 L2505,-846 L2591,-796 L2670,-742 L2745,-686 L2813,-628 L2877,-568 L2934,-507 L2987,-444 L3034,-381 L3076,-316 L3114,-252 L3148,-187 L3179,-121 L3207,-56 L3233,9 L3257,74 L3279,140 L3298,205 L3313,272 L3325,338 L3331,405 Z" /><path d="M4410,405 L4398,499 L4374,593 L4341,685 L4300,776 L4253,866 L4201,954 L4145,1040 L4088,1126 L4028,1211 L3967,1296 L3898,1378 L3821,1458 L3736,1535 L3642,1608 L3538,1677 L3427,1741 L3308,1800 L3184,1855 L3057,1905 L2927,1952 L2798,1998 L2670,2043 L2544,2090 L2421,2138 L2298,2188 L2173,2238 L2045,2287 L1915,2336 L1780,2382 L1640,2425 L1495,2462 L1346,2493 L1192,2515 L1036,2527 L878,2529 L720,2522 L564,2508 L410,2488 L259,2463 L112,2435 L-33,2404 L-176,2372 L-317,2340 L-458,2308 L-597,2276 L-735,2240 L-869,2201 L-1001,2158 L-1129,2112 L-1253,2063 L-1373,2010 L-1489,1953 L-1599,1894 L-1705,1831 L-1805,1766 L-1900,1698 L-1989,1628 L-2074,1556 L-2156,1483 L-2237,1409 L-2315,1334 L-2390,1258 L-2461,1180 L-2531,1101 L-2596,1020 L-2657,937 L-2709,852 L-2754,765 L-2789,677 L-2815,587 L-2832,496 L-2840,405 L-2839,314 L-2825,223 L-2797,133 L-2755,45 L-2702,-41 L-2641,-125 L-2573,-206 L-2501,-285 L-2427,-362 L-2351,-437 L-2275,-512 L-2201,-587 L-2126,-661 L-2049,-735 L-1968,-808 L-1885,-881 L-1800,-953 L-1710,-1025 L-1616,-1095 L-1516,-1162 L-1410,-1228 L-1297,-1289 L-1178,-1348 L-1053,-1402 L-923,-1451 L-787,-1496 L-647,-1536 L-502,-1570 L-354,-1598 L-203,-1621 L-51,-1639 L103,-1653 L257,-1662 L412,-1668 L566,-1669 L720,-1668 L873,-1663 L1026,-1655 L1179,-1646 L1332,-1637 L1486,-1629 L1642,-1618 L1798,-1606 L1954,-1589 L2109,-1567 L2260,-1538 L2408,-1502 L2548,-1458 L2681,-1406 L2805,-1347 L2922,-1283 L3032,-1215 L3134,-1145 L3231,-1072 L3321,-997 L3406,-921 L3486,-844 L3563,-766 L3639,-689 L3715,-612 L3792,-536 L3871,-459 L3952,-382 L4032,-304 L4112,-224 L4187,-141 L4256,-56 L4316,32 L4363,123 L4396,216 L4411,310 L4410,405 Z" /></g></svg>
     <div class="grain-layer grain-screen"></div>
     <div class="dslide-content" style="display: flex; flex-direction: column; align-items: center; gap: var(--space-16);">
