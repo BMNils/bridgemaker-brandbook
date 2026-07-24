@@ -201,8 +201,14 @@ jede Frage explizit beantworten** (abhaken, nicht überfliegen):
 
 **Übers ganze Deck (Blätter-Test):**
 - [ ] Alle Seiten schnell durchschalten — springt die Headline, die
-      Kopfzeile, die Fußzeile oder die Seitenzahl? (Muss stehen wie
-      angenagelt)
+      Kopfzeile, die Fußzeile, die Seitenzahl ODER ein
+      wiederkehrendes Element (Tabellenkopf, Spaltenraster,
+      Serien-Headline)? (Muss stehen wie angenagelt)
+- [ ] Serien-Slides (ein Inhalt über mehrere Seiten): EINE
+      konstante einzeilige Headline ohne „Fortsetzung"-Wechsel,
+      Tabellen-Oberkante und Spaltenbreiten identisch
+      (`table-layout: fixed`, deck-body auf flex-start)? Kein
+      Content in der 72px-Fußzeilen-Schutzzone?
 - [ ] Kopf- UND Fußzeile auf jeder Slide außer Cover, Zitat und
       Schluss, an derselben Position?
 - [ ] Eine Farbwelt pro Kapitel, Trenner kündigt sie an? Mehrere

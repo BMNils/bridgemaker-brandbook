@@ -223,7 +223,24 @@ Hover-Effekte. (Stage-Neufassung 16.07.2026 — ersetzt die frühere
   Headline beginnen auf jeder Content-Slide an exakt derselben
   Position (`--deck-title-y` im Template); der Inhalt füllt den
   Raum darunter (`.deck-body`), nie umgekehrt. Blätter-Test in der
-  Sehpflicht: Beim Durchschalten darf nichts springen.
+  Sehpflicht: Beim Durchschalten darf nichts springen — neben
+  Kopfzeile, Headline, Fußzeile und Seitenzahl gilt das für JEDES
+  wiederkehrende Element (Tabellenkopf, Spaltenraster,
+  Serien-Headline) *(Nils, 2026-07-24)*.
+- **Serien-Slides — ein Inhalt über mehrere Seiten** *(Nils,
+  2026-07-24)*: Läuft dieselbe Struktur über mehrere Slides (z. B.
+  ein Tabellen-Inventar), steht beim Blättern alles: EINE
+  konstante, einzeilige Headline auf jeder Seite der Serie (kein
+  „Fortsetzung"-Zusatz, kein Wechsel der Zeilenzahl — die
+  Seitenzahl trägt die Fortsetzung), identische Spaltenbreiten
+  (`table-layout: fixed` + feste th-Breiten, bemessen am
+  breitesten Inhalt der GANZEN Serie) und der `.deck-body` auf
+  `justify-content: flex-start`, damit die Oberkante nicht mit
+  der Inhaltshöhe wandert. Hintergrund: Das Auto-Layout des
+  Browsers verteilt Tabellenspalten pro Seite nach Inhalt, und
+  das zentrierende `deck-body`-Default optimiert die Einzelseite —
+  beides sabotiert Serien. deck-lint prüft Headline, Oberkante
+  und Raster jeder Serie (Erkennung über identische Spaltenköpfe).
 - **Eine Linien-Ebene pro Fläche:** Die Hairline hat pro Slide
   genau einen Job — Spalten eröffnen ODER Zeilen trennen, nie
   beides ineinander. Sie bindet sich durch Nähe an ihren Inhalt;
@@ -268,11 +285,21 @@ Hover-Effekte. (Stage-Neufassung 16.07.2026 — ersetzt die frühere
   an exakt derselben Position (`--deck-head-y`, `--deck-foot-y`);
   `--deck-pad-b` hält die Mindestluft zwischen Inhalt und
   Fußzeilen-Typo. Auf dunklen Slides mit Fußzeile trägt sie die
-  weiße Wortmarke.
+  weiße Wortmarke. **Die Reserve ist Sperrzone** *(Nils,
+  2026-07-24)*: Kein Content-Element unterschreitet die
+  `--deck-pad-b`-Mindestluft — auch wenn es „noch auf die Seite
+  passt". Wer hineinläuft, kürzt oder teilt die Slide; deck-lint
+  misst die Zone (nicht erst die Seitenkante).
 - **Cover-Kopf nach Anlass:** Die Logo-Brücke (Wortmarke, Linie,
   Kundenlogo) verbindet zwei Marken — sie gehört auf Kundendecks.
   Interne Decks führen nur die Wortmarke: der Cover-Kopf-Container
   bekommt zusätzlich `.cover-head-intern` *(Nils, 2026-07-22)*.
+  Die Brückenlinie richtet sich an der 24px-Wortmarke aus — der
+  `.cover-bridge`-Container läuft fest 24px hoch und zentriert
+  (`align-self: center`), NIE `stretch`: Ein Kundenlogo über 24px
+  streckt den Container sonst mit und hebt die Linie vom
+  Wortmarken-Strich ab. deck-lint prüft Naht und Höhe *(Nils,
+  2026-07-24)*.
 - **Headlines: max. zwei Zeilen, ohne Geviertstrich.** Löst eine
   Headline die dritte Zeile aus, wird redigiert — nicht geschrumpft
   und nicht mit willkürlichen max-widths gequetscht. Umbruch nach

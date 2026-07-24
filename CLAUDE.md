@@ -209,7 +209,15 @@
   Seitenzahl (jede Slide außer Cover, Zitat und Schluss);
   Headlines max. zwei
   Zeilen, ohne Gedankenstrich (redigieren statt schrumpfen); max.
-  drei Textgrößen pro Seite (Headline/Content/Meta). Cover-Kopf:
+  drei Textgrößen pro Seite (Headline/Content/Meta).
+  **Serien-Slides** (ein Inhalt über mehrere Seiten, z. B. ein
+  Tabellen-Inventar): EINE konstante einzeilige Headline (kein
+  „Fortsetzung"-Wechsel), festes Spaltenraster (`table-layout:
+  fixed` + th-Breiten, identisch auf allen Seiten), `.deck-body`
+  auf `flex-start` — beim Blättern steht ALLES. Die 72px-Reserve
+  über der Fußzeile (`--deck-pad-b`) ist Sperrzone für Content;
+  deck-lint misst Serie, Sperrzone und Cover-Brücken-Naht
+  *(Nils, 2026-07-24)*. Cover-Kopf:
   Logo-Brücke nur bei Kundendecks, interne Decks nur Wortmarke
   (`.cover-head-intern`). Layouts ausschließlich aus dem
   Template; Regeln + Sehpflicht: `guidelines/07 §7.8` und Repo-Skill

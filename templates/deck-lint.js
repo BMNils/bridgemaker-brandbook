@@ -21,6 +21,14 @@
    - Wortmarke auf Cover und Schluss
    - Cover-Kopf: .cover-head-Zeile mit Wortmarke (kein Ad-hoc-
      Aufbau); cover-head-intern nur auf dem .cover-head-Container
+   - Logo-Brücke: die Linie setzt nahtlos und auf Strichhöhe an
+     der Wortmarke an (Nils-Review 24.07. — ein Kundenlogo über
+     24px hob die ge-stretch-te Linie ab)
+   - Fußzeilen-Schutzzone: kein Content-Element dringt in die
+     --deck-pad-b-Reserve ein — nicht erst die Seitenkante zählt
+   - Serien-Register: läuft dieselbe Tabelle über mehrere Slides,
+     stehen Headline, Tabellen-Oberkante und Spaltenraster beim
+     Blättern (identische th-Signatur = eine Serie)
 
    Nutzung (im Deck-Ordner oder mit Pfad):
      node ../templates/deck-lint.js <deck>.html
@@ -71,7 +79,7 @@ function lintInPage() {
   const ownText = el => [...el.childNodes]
     .filter(n => n.nodeType === 3).map(n => n.textContent).join('');
 
-  const titleTops = [], footBottoms = [];
+  const titleTops = [], footBottoms = [], tables = [];
 
   slides.forEach((s, i) => {
     const n = i + 1;
@@ -190,6 +198,26 @@ function lintInPage() {
       err(`Inhalt läuft aus der Slide (${overX > 2 ? overX + 'px horizontal' : ''}${overX > 2 && overY > 2 ? ', ' : ''}${overY > 2 ? overY + 'px vertikal' : ''}) — kürzen oder Layout wechseln.`);
     }
 
+    /* Fußzeilen-Schutzzone: --deck-pad-b (Slide-padding-bottom)
+       ist Sperrzone. Inhalt, der „noch auf die Seite passt", aber
+       in die Reserve läuft, kollidiert optisch mit der Fußzeile —
+       der Überlauf-Check oben sieht das nicht (Nils, 24.07.). */
+    if (!moment) {
+      const padB = parseFloat(getComputedStyle(s).paddingBottom) || 0;
+      const limitY = rect.bottom - padB * scale;
+      let lowest = 0;
+      s.querySelectorAll('.dslide-content, .dslide-content *').forEach(el => {
+        if (el.closest('svg') && el.tagName.toLowerCase() !== 'svg') return;
+        if (getComputedStyle(el).display === 'none') return;
+        const r = el.getBoundingClientRect();
+        if (r.height || r.width) lowest = Math.max(lowest, r.bottom);
+      });
+      const intrude = round((lowest - limitY) / scale);
+      if (intrude > 1) {
+        err(`Inhalt dringt ${intrude}px in die Fußzeilen-Schutzzone ein (Mindestluft ${round(padB)}px, --deck-pad-b) — kürzen oder auf zwei Slides teilen.`);
+      }
+    }
+
     /* Wortmarke auf Cover und Schluss. */
     if ((i === 0 || i === slides.length - 1) && !s.querySelector('img[src*="wordmark"], img[data-wm]')) {
       warn('Wortmarke fehlt — sie gehört auf Cover und Schluss.');
@@ -206,12 +234,44 @@ function lintInPage() {
       } else if (!ch.querySelector('img[src*="wordmark"], img[data-wm]')) {
         err('Wortmarke fehlt in der .cover-head-Zeile — sie steht dort links, nie frei auf der Slide.');
       }
+      /* Logo-Brücke: die Linie setzt nahtlos am Wortmarken-Strich
+         an — gleiche Höhe und keine Lücke. Die Strichmitte der
+         Wortmarken-SVG liegt bei 24.5/48 ihrer Höhe (Strich y
+         21.92–27.08 von 48). Historische Bruchstelle: ein
+         Kundenlogo über 24px hebt einen ge-stretch-ten
+         .cover-bridge-Container samt Linie an (Nils, 24.07.). */
+      const bridgeLine = ch && ch.querySelector('.cover-bridge > div');
+      const wmImg = ch && ch.querySelector('img[src*="wordmark"], img[data-wm]');
+      /* Interne Decks blenden die Brücke aus (cover-head-intern) —
+         eine unsichtbare Linie (width 0) wird nicht geprüft. */
+      if (bridgeLine && wmImg && bridgeLine.getBoundingClientRect().width > 1) {
+        const wr = wmImg.getBoundingClientRect(), lr = bridgeLine.getBoundingClientRect();
+        const dy = round(Math.abs((lr.top + lr.height / 2) - (wr.top + wr.height * (24.5 / 48))) / scale);
+        if (dy > 1) err(`Brückenlinie sitzt ${dy}px neben dem Wortmarken-Strich — den .cover-bridge-Container fest 24px hoch und zentriert halten (align-self: center, nie stretch), Linie bei top 10.96px.`);
+        const gap = round((lr.left - wr.right) / scale);
+        if (gap > 1) err(`Lücke von ${gap}px zwischen Wortmarke und Brückenlinie — die Linie setzt nahtlos an (left: -2px im .cover-bridge).`);
+      }
     }
     s.querySelectorAll('.cover-head-intern').forEach(el => {
       if (!el.classList.contains('cover-head')) {
         err('cover-head-intern sitzt auf dem falschen Element — die Klasse gehört auf den .cover-head-Container selbst, sonst ist sie wirkungslos.');
       }
     });
+
+    /* Serien-Signatur: Tabellen-Slides mit identischen
+       Spaltenköpfen bilden eine Serie (Blätter-Test unten). */
+    const tbl = !moment && s.querySelector('.deck-table');
+    if (tbl && title) {
+      const ths = [...tbl.querySelectorAll('thead th')];
+      tables.push({
+        n,
+        sig: ths.map(th => th.textContent.trim()).join('|'),
+        colX: ths.map(th => round((th.getBoundingClientRect().left - rect.left) / scale)),
+        top: relTop(tbl.getBoundingClientRect()),
+        title: title.textContent.trim(),
+        titleLines: lineCount(title),
+      });
+    }
 
     report.slides.push({ n, label: s.dataset.label || 'Slide ' + n, findings });
   });
@@ -235,6 +295,30 @@ function lintInPage() {
   };
   jitter(titleTops, 'Die Headline');
   jitter(footBottoms, 'Die Fußzeile');
+
+  /* Serien-Register: aufeinanderfolgende Slides mit derselben
+     Tabellen-Signatur sind EINE Serie — beim Blättern stehen
+     Headline (Text UND Zeilenzahl), Tabellen-Oberkante und
+     Spaltenraster wie angenagelt (Nils, 24.07.). */
+  for (let k = 1; k < tables.length; k++) {
+    const a = tables[k - 1], b = tables[k];
+    if (b.n !== a.n + 1 || a.sig !== b.sig) continue;
+    const pair = `Slide ${a.n} → ${b.n}`;
+    const derr = msg => report.deck.push({ level: 'error', msg });
+    if (Math.abs(a.top - b.top) > 1) {
+      derr(`Die Tabellen-Oberkante springt beim Blättern (${pair}: ${a.top}px → ${b.top}px) — deck-body der Serie auf justify-content: flex-start.`);
+    }
+    const drift = a.colX.length === b.colX.length
+      ? a.colX.findIndex((x, idx) => Math.abs(x - b.colX[idx]) > 1) : -2;
+    if (drift !== -1) {
+      derr(`Das Spaltenraster springt beim Blättern (${pair}${drift >= 0 ? ', ab Spalte ' + (drift + 1) : ', Spaltenzahl wechselt'}) — table-layout: fixed mit festen th-Breiten, identisch auf allen Serien-Slides.`);
+    }
+    if (a.title !== b.title) {
+      derr(`Die Serien-Headline wechselt (${pair}: „${a.title.slice(0, 40)}…" zu „${b.title.slice(0, 40)}…") — eine Serie trägt EINE konstante Headline, ohne Fortsetzungs-Varianten.`);
+    } else if (a.titleLines !== b.titleLines) {
+      derr(`Die Serien-Headline wechselt die Zeilenzahl (${pair}) — konstant halten, notfalls kürzen.`);
+    }
+  }
 
   return report;
 }

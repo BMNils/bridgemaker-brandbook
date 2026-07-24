@@ -1045,7 +1045,11 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
   .agenda-row { display: flex; align-items: center; min-height: 96px; gap: var(--space-6); padding: var(--space-5) 0; border-top: var(--border-subtle); }
   .agenda-num { color: var(--charcoal); width: var(--space-10); flex-shrink: 0; } /* = Titelfarbe */
 
-  .deck-table { width: 100%; border-collapse: collapse; }
+  /* table-layout: fixed — Spalten folgen exakt den th-Breiten und
+     stehen auf jeder Seite identisch; das Auto-Layout lässt
+     Serien-Tabellen beim Blättern springen (Nils, 2026-07-24).
+     EINE th-Breite offen lassen (Rest-Spalte). */
+  .deck-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
   .deck-table th { text-align: left; padding: var(--space-3) var(--space-4) var(--space-3) 0; border-bottom: var(--border-subtle); color: var(--mid); }
   .deck-table td { padding: var(--space-4) var(--space-4) var(--space-4) 0; border-bottom: var(--border-subtle); vertical-align: top; }
   .deck-table .value { color: var(--bm-deep-plum); }
@@ -1128,8 +1132,12 @@ a:not([class]):hover, a.bm-link:hover { text-decoration: underline; text-underli
            Wortmarke (Nils, 2026-07-22). -->
       <div class="cover-head" style="display: flex; align-items: center; width: 100%;">
         <img class="wordmark" src="data:," data-wm="w" alt="Bridgemaker" style="flex-shrink: 0;" />
-        <div class="cover-bridge" style="flex: 1; align-self: stretch; position: relative;">
-          <div style="position: absolute; left: -1px; right: 0; top: 10.96px; height: 2.58px; background: #fff;"></div>
+        <!-- Brücken-Container fest 24px hoch und zentriert wie die
+             Wortmarke — NIE align-self: stretch: ein Kundenlogo
+             über 24px hebt sonst die Linie vom Wortmarken-Strich
+             ab (Nils, 2026-07-24). -->
+        <div class="cover-bridge" style="flex: 1; align-self: center; height: 24px; position: relative;">
+          <div style="position: absolute; left: -2px; right: 0; top: 10.96px; height: 2.58px; background: #fff;"></div>
         </div>
         <span class="cover-client" style="flex-shrink: 0; margin-left: var(--space-6); font: 500 14px/1 var(--font-mono); color: var(--soft);">[ Kundenlogo ]</span>
       </div>
