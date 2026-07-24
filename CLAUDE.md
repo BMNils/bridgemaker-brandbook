@@ -275,6 +275,12 @@ Digitale Produkte bauen auf **MD3** mit Bridgemaker-Theming
 - **Vorrang-Regel:** Bridgemaker-Rezepte (type-*, bm-btn, bm-input,
   Karten, Badges) gelten auch in Produkt-UIs — MD3 füllt NUR die
   Lücken (Dialoge, Menüs, Tabs, Loader, Slider, Switches …).
+- **Produkt-Projekte entstehen NIE in diesem Repo:**
+  `node templates/new-app.js <ordner> --projekt "Name"` legt den
+  Projektordner außerhalb an — Brandbook live als `brand/`
+  (Clone statt Kopie, Kopien driften), Session-Start-Hook pullt
+  den Kanon und meldet neue Regel-Commits als Vorschlag
+  *(Workflow Nils, 2026-07-24; Howto: `howto/produkt-projekte.md`)*.
 
 ## 10. Do's & Don'ts
 
