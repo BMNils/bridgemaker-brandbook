@@ -131,7 +131,7 @@ brandbook-repo/
   **höchstens ein Motion-Moment pro Sektion**, `prefers-reduced-motion`
   als Pflicht, kein Scroll-Jacking.
 - **06-layout** *(neu)* — 8px-Raster verbindlich (4px als halbe Stufe,
-  keine krummen Werte), 1200px-Rahmen, Section-Headlines `max-w-xl`,
+  keine krummen Werte), 1200px-Rahmen, Section-Headlines und
   Lead-Lines `max-w-2xl`, „Farbe rationiert".
 - **07-product-patterns** *(neu — die Anleitungs-Lücke)* —
   Verallgemeinerte Regeln für digitale Produkte: Sektions-Anatomie

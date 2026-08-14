@@ -19,9 +19,10 @@ eigenen Pixelwert tippt, sollte sich fragen, warum.
 
 ## 6.3 Maß — Textbreiten
 
-- **Sektions-Headlines:** `max-w-xl`. Eine Headline über die vollen
-  1200px liest sich wie ein Banner, nicht wie ein Statement.
-- **Lead-Lines / Intro-Copy:** `max-w-2xl`.
+- **Sektions-Headlines und Lead-Lines / Intro-Copy:** `max-w-2xl`.
+  Eine Headline über die vollen 1200px liest sich wie ein Banner,
+  nicht wie ein Statement — die 2xl-Kappung hält das Maß und lässt
+  lange Headlines trotzdem einzeilig laufen.
 - Fließtext-Spalten lesbar halten — Fließtext nie über die volle
   Containerbreite laufen lassen.
 

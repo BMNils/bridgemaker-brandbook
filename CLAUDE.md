@@ -164,7 +164,7 @@
 
 - Container max **1200px**, Padding 16px mobil / 32px ab md.
 - Sektionen **`py-24`** (96px). Grid-Gutter 24px.
-- **Headlines `max-w-xl`, Leads `max-w-2xl`** — nie volle Breite.
+- **Headlines und Leads `max-w-2xl`** — nie volle Breite.
 - Negativraum ist ein Marken-Asset. Im Zweifel: mehr.
 
 ## 7. Komponenten & Patterns

@@ -35,7 +35,7 @@ const bbTypeScale = [
   { name: "H4", cls: "type-h4", size: "20px", weight: 500, tracking: "-0.3px", lh: "1.40", usage: "Karten-Titel" },
   { name: "H3", cls: "type-h3", size: "24px", weight: 500, tracking: "-0.5px", lh: "1.30", usage: "Zwischenüberschriften" },
   { name: "Stat", cls: "type-stat", size: "clamp(28px, 3vw, 36px)", weight: 500, tracking: "-0.025em", lh: "1.10", usage: "Kennzahlen", fluid: true },
-  { name: "H2", cls: "type-h2", size: "clamp(26px, 3vw, 32px)", weight: 600, tracking: "-0.025em", lh: "1.25", usage: "Sektions-Headlines, max-w-xl", fluid: true },
+  { name: "H2", cls: "type-h2", size: "clamp(26px, 3vw, 32px)", weight: 600, tracking: "-0.025em", lh: "1.25", usage: "Sektions-Headlines, max-w-2xl", fluid: true },
   { name: "H1", cls: "type-h1", size: "clamp(32px, 4.2vw, 48px)", weight: 600, tracking: "-0.025em", lh: "1.15", usage: "Seitentitel", fluid: true },
 ];
 

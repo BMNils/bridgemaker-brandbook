@@ -138,7 +138,7 @@ function BbSection({ title, id, children, desc, num }) {
       paddingBottom: 120,
       position: "relative",
     }}>
-      {/* Headline, Lead drunter — Headlines max-w-xl, Leads max-w-2xl (Kanon §6) */}
+      {/* Headline, Lead drunter — Headlines und Leads max-w-2xl (Kanon §6) */}
       <div style={{ marginBottom: 72 }}>
         <h2 style={{
           font: "600 44px/1.05 Inter, sans-serif", letterSpacing: "-1.2px",

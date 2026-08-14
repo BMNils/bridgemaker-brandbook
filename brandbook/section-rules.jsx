@@ -194,7 +194,7 @@ function BbLayoutSection() {
   const scale = [["1",4],["2",8],["3",12],["4",16],["5",20],["6",24],["8",32],["10",40],["12",48],["16",64],["20",80],["24",96],["30",120]];
   return (
     <BbSection id="layout" num="07" title="Layout & Motion"
-      desc="8px-Raster (4px als halbe Stufe) — verbindlich. Container 1200px, Padding 16/32px. Sektionen py-24 (96px). Headlines max-w-xl, Leads max-w-2xl. Höchstens EIN Motion-Moment pro Sektion.">
+      desc="8px-Raster (4px als halbe Stufe) — verbindlich. Container 1200px, Padding 16/32px. Sektionen py-24 (96px). Headlines und Leads max-w-2xl. Höchstens EIN Motion-Moment pro Sektion.">
       <h3 style={{ font: "500 17px/1.3 Inter, sans-serif", margin: "0 0 20px" }}>Spacing — 8px-Raster</h3>
       <div style={{ display: "grid", gap: 8, marginBottom: 48 }}>
         {scale.map(([k, v]) => (
@@ -212,7 +212,7 @@ function BbLayoutSection() {
           <ul style={{ font: "var(--text-small)", color: "#3D3D3A", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.8 }}>
             <li>Container max <strong>1200px</strong>, Padding 16px mobil / 32px ab md</li>
             <li>Sektionen <code>py-24</code> (96px), Grid-Gutter 24px</li>
-            <li>Headlines <code>max-w-xl</code>, Leads <code>max-w-2xl</code> — nie volle Breite</li>
+            <li>Headlines und Leads <code>max-w-2xl</code> — nie volle Breite</li>
             <li>Negativraum ist ein Marken-Asset — im Zweifel: mehr</li>
           </ul>
         </div>

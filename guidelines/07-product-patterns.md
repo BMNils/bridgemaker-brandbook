@@ -15,7 +15,7 @@ Jede Content-Sektion folgt demselben Skelett, von oben nach unten:
 
 1. **Eyebrow** — `type-eyebrow` in `--light` (oder eine Familienfarbe,
    Disziplin: eine dominante Farbe pro Sektion)
-2. **Headline** — `type-h2` (Seitenebene: `type-h1`), `max-w-xl`
+2. **Headline** — `type-h2` (Seitenebene: `type-h1`), `max-w-2xl`
 3. **Lead** — `type-body-l` in `--mid`, `max-w-2xl`
 4. **Inhalt** — Karten, Medien oder redaktionelle Spalten auf dem
    8er-Raster

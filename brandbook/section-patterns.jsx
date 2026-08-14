@@ -55,7 +55,7 @@ function BbLandingSection() {
   ];
   return (
     <BbSection id="landing" num="11" title="Seitenrhythmus"
-      desc="Der Bridgemaker-Rhythmus (verallgemeinert von der Website). Sektionen wechseln die Fläche — Weiß ↔ Off-White ↔ Surface/Farbband. Jede Sektion folgt der Anatomie: Eyebrow → Headline (max-w-xl) → Lead (max-w-2xl) → Inhalt → optional EIN CTA.">
+      desc="Der Bridgemaker-Rhythmus (verallgemeinert von der Website). Sektionen wechseln die Fläche — Weiß ↔ Off-White ↔ Surface/Farbband. Jede Sektion folgt der Anatomie: Eyebrow → Headline (max-w-2xl) → Lead (max-w-2xl) → Inhalt → optional EIN CTA.">
       <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12 }}>
         {sections.map(s => (
           <div key={s.n} className="card-clean" style={{
