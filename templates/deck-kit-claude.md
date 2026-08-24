@@ -4,7 +4,7 @@
 > Das Deck lebt in `deck/*.html`. Dieses File ist das Destillat für
 > Sessions, die nur den Projektordner sehen — die vollständigen
 > Regeln (Guidelines, Skill `bridgemaker-slides`) liegen im
-> Brandbook-Repo: `github.com/BMNils/bridgemaker-brandbook`.
+> Brandbook-Repo: `github.com/bridgemaker/bridgemaker-brandbook`.
 
 ## Nicht verhandelbar
 

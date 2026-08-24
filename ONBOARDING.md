@@ -33,7 +33,7 @@ installieren.
 
 1. Repo klonen:
    ```bash
-   git clone https://github.com/BMNils/bridgemaker-brandbook.git
+   git clone https://github.com/bridgemaker/bridgemaker-brandbook.git
    ```
 2. Claude Code im Repo-Ordner starten. Die `CLAUDE.md` lädt automatisch —
    sie trägt die Start-Checkliste, die harten Regeln und alle
@@ -50,7 +50,7 @@ Produkt-UIs laufen auf Material Design 3 mit Bridgemaker-Theming.
 Das Starter-Kit bringt alles fertig verdrahtet mit:
 
 ```bash
-git clone https://github.com/BMNils/bridgemaker-brandbook.git
+git clone https://github.com/bridgemaker/bridgemaker-brandbook.git
 cd bridgemaker-brandbook/starter-kit
 npm install
 npm run dev        # → http://localhost:3000

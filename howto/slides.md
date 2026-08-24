@@ -16,7 +16,7 @@ und Qualitätskontrolle bringt das Brandbook mit.
 Öffne das Terminal und kopiere diese zwei Zeilen hinein:
 
 ```bash
-git clone https://github.com/BMNils/bridgemaker-brandbook.git
+git clone https://github.com/bridgemaker/bridgemaker-brandbook.git
 cd bridgemaker-brandbook
 ```
 
