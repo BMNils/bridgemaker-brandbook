@@ -58,7 +58,7 @@ if (!deckPath || !fs.existsSync(deckPath)) {
    Base64-JSON in den DOM, den --dump-dom dann ausgibt.
    ------------------------------------------------------------ */
 function lintInPage() {
-  const OFF_WHITE = 'rgb(245, 241, 235)';
+  const OFF_WHITE = 'rgb(245, 244, 241)';
   const RAW_PURPLE = 'rgb(107, 74, 148)';
   const report = { slides: [], deck: [], meta: {} };
 

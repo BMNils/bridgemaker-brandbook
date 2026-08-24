@@ -87,7 +87,7 @@ function BbSurfacesSection() {
         <div style={{ font: "500 11px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.1em", color: "#AF94D2", marginBottom: 16 }}>
           ⚠ Handwerks-Fallen — hart erarbeitet, nicht neu lernen
         </div>
-        <ol style={{ margin: 0, paddingLeft: 20, font: "400 15px/1.9 Inter, sans-serif", color: "#F5F1EB" }}>
+        <ol style={{ margin: 0, paddingLeft: 20, font: "400 15px/1.9 Inter, sans-serif", color: "#F5F4F1" }}>
           <li>Tailwind v4 strippt handgeschriebenes <code style={{ color: "#AF94D2" }}>backdrop-filter</code> in @layer-Blöcken — Frost dort über Utilities am Element (<code style={{ color: "#AF94D2" }}>backdrop-blur-xl backdrop-saturate-150</code>).</li>
           <li>Glas-Karten dürfen selbst keinen <code style={{ color: "#AF94D2" }}>filter</code> tragen — isoliert sie vom Backdrop-Sampling.</li>
           <li>Inhalte unter Glasscheiben: kein <code style={{ color: "#AF94D2" }}>filter</code>, kein <code style={{ color: "#AF94D2" }}>blend-mode</code> — darum komponiert <code style={{ color: "#AF94D2" }}>.grain-photo</code> normal.</li>

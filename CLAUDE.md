@@ -19,7 +19,7 @@
 
 1. **Tokens zuerst laden** (`tokens/tokens.css`, Daten: `tokens.json`).
    Farben, Größen, Radien, Abstände NIE inline neu definieren.
-2. **Grundton `--off-white` (#F5F1EB).** Reines Weiß ist Sektionsfläche
+2. **Grundton `--off-white` (#F5F4F1).** Reines Weiß ist Sektionsfläche
    im Wechsel (Weiß ↔ Off-White ↔ Surfaces), nie der Ganzseiten-Grund.
 3. **Inter für alles — Mono nur für echten Code.** JetBrains Mono ist
    ausschließlich für Code-Darstellung und Platzhalter-Captions erlaubt;

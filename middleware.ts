@@ -74,7 +74,7 @@ function loginPage(fehler: boolean): Response {
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    background: #F5F1EB; color: #1C1C1E; padding: 16px;
+    background: #F5F4F1; color: #1C1C1E; padding: 16px;
     font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
   .card {
@@ -94,7 +94,7 @@ function loginPage(fehler: boolean): Response {
   input:focus { border: 1.5px solid #6B4A94; background: #fff; padding: 11.5px 13.5px; }
   button {
     width: 100%; padding: 13px 24px; font-size: 15px; font-weight: 500; font-family: inherit;
-    border: none; border-radius: 999px; background: #1C1C1E; color: #F5F1EB; cursor: pointer;
+    border: none; border-radius: 999px; background: #1C1C1E; color: #F5F4F1; cursor: pointer;
     transition: background 240ms ease-out;
   }
   button:hover { background: #4A3268; }

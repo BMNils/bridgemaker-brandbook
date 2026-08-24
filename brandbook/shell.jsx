@@ -24,7 +24,7 @@ function BbNav({ sections, active, onJump }) {
   return (
     <header style={{
       position: "sticky", top: 0, zIndex: 100,
-      background: "rgba(245,241,235,0.72)", backdropFilter: "blur(16px)",
+      background: "rgba(245,244,241,0.72)", backdropFilter: "blur(16px)",
       WebkitBackdropFilter: "blur(16px)",
       borderBottom: "1px solid rgba(0,0,0,0.04)",
       padding: "0 var(--space-16, 64px)",
@@ -77,14 +77,14 @@ function BbNav({ sections, active, onJump }) {
                   onClick={() => { onJump(n.id); setOpen(false); }}
                   style={{
                     display: "block", width: "100%", textAlign: "left",
-                    background: active === n.id ? "#F5F1EB" : "transparent",
+                    background: active === n.id ? "#F5F4F1" : "transparent",
                     color: active === n.id ? "#1C1C1E" : "#3D3D3A",
                     border: "none", borderRadius: 10,
                     padding: "10px 14px",
                     font: active === n.id ? "600 13px/1 Inter, sans-serif" : "500 13px/1 Inter, sans-serif",
                     cursor: "pointer",
                   }}
-                  onMouseEnter={(e) => { if (active !== n.id) e.currentTarget.style.background = "#F5F1EB"; }}
+                  onMouseEnter={(e) => { if (active !== n.id) e.currentTarget.style.background = "#F5F4F1"; }}
                   onMouseLeave={(e) => { if (active !== n.id) e.currentTarget.style.background = "transparent"; }}
                 >
                   {n.label}

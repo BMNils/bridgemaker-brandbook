@@ -7,7 +7,7 @@ function BbMd3Section() {
     ["primary-container", "--bm-purple-tint", "#EDE3F5"],
     ["secondary", "--bm-teal", "#3A9E97"],
     ["tertiary", "--bm-berry", "#B84A6F"],
-    ["surface", "--off-white", "#F5F1EB"],
+    ["surface", "--off-white", "#F5F4F1"],
     ["surface-container", "surface-stone → sand → mauve", "#E8E5DF"],
     ["on-surface", "--charcoal", "#1C1C1E"],
     ["outline", "--surface-mid-stone", "#C5C0B8"],

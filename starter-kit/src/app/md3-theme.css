@@ -117,8 +117,8 @@ md-outlined-select:focus-within {
   --md-sys-color-on-surface: var(--off-white);
   --md-sys-color-on-surface-variant: var(--soft);
 
-  --md-sys-color-outline: rgba(245, 241, 235, 0.28);
-  --md-sys-color-outline-variant: rgba(245, 241, 235, 0.12);
+  --md-sys-color-outline: rgba(245, 244, 241, 0.28);
+  --md-sys-color-outline-variant: rgba(245, 244, 241, 0.12);
 
   --md-sys-color-inverse-surface: var(--off-white);
   --md-sys-color-inverse-on-surface: var(--charcoal);

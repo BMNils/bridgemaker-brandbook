@@ -37,7 +37,7 @@ Familie nutzen statt Zwischentöne zu erfinden.
 - **Sekundärtext:** `--mid` (`#6B6B65`)
 - **Fließtext auf Dunkel:** `--soft` (`#A8A69E`)
 - **Eyebrow-Text:** `--light` (`#918F87`)
-- **Hintergrund:** `--off-white` (`#F5F1EB`)
+- **Hintergrund:** `--off-white` (`#F5F4F1`)
 
 **Off-White ist der Grundton der Seite (body), reines Weiß ist eine
 Sektionsfläche.** Der Flächenrhythmus lebt von der Mischung: Weiß-Sektionen

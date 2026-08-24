@@ -3,7 +3,7 @@
 
 function BbKasaneSection() {
   const heroes = [
-    { key: "Light — bg-kasane-hero", cls: "bg-kasane-hero", base: "#F5F1EB",
+    { key: "Light — bg-kasane-hero", cls: "bg-kasane-hero", base: "#F5F4F1",
       headline: "Seiten-Hero auf Off-White", textColor: "#1C1C1E", eyebrowColor: "rgba(28,28,30,0.4)", border: true },
     { key: "Dark — bg-contact-cta", cls: "bg-contact-cta", base: "#4A2D6B",
       headline: "Abschluss-CTA: Triade auf Deep-Plum", textColor: "#fff", eyebrowColor: "rgba(255,255,255,0.5)" },

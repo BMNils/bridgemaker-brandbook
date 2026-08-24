@@ -18,7 +18,7 @@ function BbLogoSection() {
       <p style={{ font: "var(--text-small)", color: "#6B6B65", margin: "0 0 24px" }}>Default für Header, Footer, Visitenkarten, Slide-Cover, Pitch-Decks.</p>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 56 }}>
         <div style={{
-          background: "#F5F1EB", borderRadius: 20, border: "1px solid #C5C0B8",
+          background: "#F5F4F1", borderRadius: 20, border: "1px solid #C5C0B8",
           padding: 56, display: "flex", alignItems: "center", justifyContent: "center", minHeight: 200,
         }}>
           <img src={_wm} alt="Bridgemaker" style={{ width: "70%", maxWidth: 360 }} />
@@ -37,13 +37,13 @@ function BbLogoSection() {
         Für quadratische Anwendungen ab App-Icon-Größe (~120 px): Touch-Icon, Social-Avatar, kleine Stempel auf Bildern. Das Browser-Favicon ist es nicht — dort läuft nur der Gedankenstrich auf schwarzem Quadrat (favicon-dash.png), weil das volle B—M bei Tab-Größe unlesbar ist. Niemals als Ersatz für das Wordmark im Hauptauftritt.
       </p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 32 }}>
-        <div style={{ background: "#F5F1EB", borderRadius: 20, border: "1px solid #C5C0B8", padding: 32, aspectRatio: "1/1", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ background: "#F5F4F1", borderRadius: 20, border: "1px solid #C5C0B8", padding: 32, aspectRatio: "1/1", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <img src={_mg} alt="B—M" style={{ width: "70%" }} />
         </div>
         <div style={{ background: "#1C1C1E", borderRadius: 20, padding: 32, aspectRatio: "1/1", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <img src={_mgW} alt="B—M" style={{ width: "70%" }} />
         </div>
-        <div style={{ background: "#F5F1EB", borderRadius: 20, border: "1px solid #C5C0B8", padding: 24, aspectRatio: "1/1", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ background: "#F5F4F1", borderRadius: 20, border: "1px solid #C5C0B8", padding: 24, aspectRatio: "1/1", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <img src={_mgBox} alt="B—M Blackbox" style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }} />
         </div>
         <div style={{ background: "#1C1C1E", borderRadius: 20, padding: 24, aspectRatio: "1/1", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -140,7 +140,7 @@ function BbLogoSection() {
       <div style={{ background: "#fff", borderRadius: 20, padding: 32, marginBottom: 32 }}>
         <div style={{ font: "500 12px/1.4 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "#918F87" }}>Farbregeln</div>
         <p style={{ font: "var(--text-small)", color: "#3D3D3A", margin: "12px 0 0", maxWidth: 720 }}>
-          Charcoal (#1C1C1E) auf hellem Grund, Off-White (#F5F1EB) auf dunklem. Niemals in Brand-Farben (Purple, Berry, Teal, Sage) eingefärbt — auch nicht als „Highlight". Das Logo bleibt monochrom; Farbe lebt drumherum.
+          Charcoal (#1C1C1E) auf hellem Grund, Off-White (#F5F4F1) auf dunklem. Niemals in Brand-Farben (Purple, Berry, Teal, Sage) eingefärbt — auch nicht als „Highlight". Das Logo bleibt monochrom; Farbe lebt drumherum.
         </p>
       </div>
 
@@ -172,7 +172,7 @@ function BbLogoSection() {
       <div style={{ marginTop: 32, padding: 24, background: "#1C1C1E", borderRadius: 16, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
         <div>
           <div style={{ font: "500 11px/1.4 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "#AF94D2" }}>Downloads</div>
-          <div style={{ font: "500 15px/1.3 Inter, sans-serif", color: "#F5F1EB", marginTop: 4 }}>Alle Logo-Dateien als SVG</div>
+          <div style={{ font: "500 15px/1.3 Inter, sans-serif", color: "#F5F4F1", marginTop: 4 }}>Alle Logo-Dateien als SVG</div>
         </div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           {[
@@ -181,7 +181,7 @@ function BbLogoSection() {
             ["Blackbox", _mgBox], ["Whitebox", _mgWBox],
           ].map(([l, h]) => (
             <a key={l} href={h} download style={{
-              font: "500 12px/1 Inter, sans-serif", color: "#F5F1EB",
+              font: "500 12px/1 Inter, sans-serif", color: "#F5F4F1",
               textDecoration: "none", border: "1px solid rgba(255,255,255,0.2)",
               padding: "8px 14px", borderRadius: 999,
             }}>{l} ↓</a>

@@ -8,7 +8,7 @@ const bbColors = {
     { name: "Mid", hex: "#6B6B65", light: false, token: "--mid" },
     { name: "Light", hex: "#918F87", light: true, token: "--light" },
     { name: "Soft", hex: "#A8A69E", light: true, token: "--soft" },
-    { name: "Off-White", hex: "#F5F1EB", light: true, token: "--off-white" },
+    { name: "Off-White", hex: "#F5F4F1", light: true, token: "--off-white" },
     { name: "White", hex: "#FFFFFF", light: true, token: "--white" },
   ],
   surfaces: [

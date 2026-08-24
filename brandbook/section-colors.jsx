@@ -92,8 +92,8 @@ function BbColorsSection() {
         </div>
         <div className="bm-on-dark" style={{ background: "#1C1C1E", borderRadius: 16, padding: 28 }}>
           <div style={{ font: "500 12px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", color: "#AF94D2" }}>Auf dunklem Grund</div>
-          <ul style={{ font: "var(--text-small)", color: "#F5F1EB", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.8 }}>
-            <li>Headlines <span style={{ color: "#F5F1EB" }}>Off-White</span>, Fließtext <span style={{ color: "#A8A69E" }}>Soft</span></li>
+          <ul style={{ font: "var(--text-small)", color: "#F5F4F1", margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.8 }}>
+            <li>Headlines <span style={{ color: "#F5F4F1" }}>Off-White</span>, Fließtext <span style={{ color: "#A8A69E" }}>Soft</span></li>
             <li>Links & CTAs <span style={{ color: "#AF94D2" }}>Lavender Dark</span> — nie rohes Purple</li>
             <li>Primär-CTA wird Weiß-auf-Charcoal</li>
           </ul>

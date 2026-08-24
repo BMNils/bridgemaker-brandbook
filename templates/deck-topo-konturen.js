@@ -35,7 +35,7 @@
 
 const MODE = process.argv[2] || 'cover';
 const SEED = parseInt(process.argv[3], 10) || 20260717;
-const STROKE = process.argv[4] || '#F5F1EB';
+const STROKE = process.argv[4] || '#F5F4F1';
 const OPACITY = process.argv[5] || (MODE === 'schluss' ? '0.12' : '0.10');
 const W = 1440, H = 810;
 

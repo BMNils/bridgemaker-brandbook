@@ -46,14 +46,14 @@ mappen:
 | MD3-Rolle | Bridgemaker-Token | Wert |
 |---|---|---|
 | `primary` | `--bm-purple` | `#6B4A94` |
-| `on-primary` | `--off-white` | `#F5F1EB` |
+| `on-primary` | `--off-white` | `#F5F4F1` |
 | `primary-container` | `--bm-purple-tint` | `#EDE3F5` |
 | `on-primary-container` | `--bm-deep-plum` | `#4A2D6B` |
 | `secondary` | `--bm-teal` | `#3A9E97` |
 | `secondary-container` | `--bm-teal-tint` | `#E0F2F0` |
 | `tertiary` | `--bm-berry` | `#B84A6F` |
 | `tertiary-container` | `--bm-rose-tint` | `#F5E0E8` |
-| `surface` | `--off-white` | `#F5F1EB` |
+| `surface` | `--off-white` | `#F5F4F1` |
 | `surface-container` (low→high) | `surface-stone` → `surface-sand` → `surface-mauve` | `#E8E5DF` / `#E5E0D8` / `#E3E0E8` |
 | `on-surface` | `--charcoal` | `#1C1C1E` |
 | `on-surface-variant` | `--mid` | `#6B6B65` |

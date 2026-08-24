@@ -17,7 +17,7 @@ function BbStorySection() {
       {/* Positionierung */}
       <div className="bm-on-dark" style={{ background: "#1C1C1E", borderRadius: 20, padding: 48, marginBottom: 16 }}>
         <div style={{ font: "500 11px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.1em", color: "#AF94D2" }}>Positionierung</div>
-        <div style={{ font: "600 34px/1.2 Inter, sans-serif", letterSpacing: "-0.8px", marginTop: 20, color: "#F5F1EB", maxWidth: 900 }}>
+        <div style={{ font: "600 34px/1.2 Inter, sans-serif", letterSpacing: "-0.8px", marginTop: 20, color: "#F5F4F1", maxWidth: 900 }}>
           Die Digitalberatung für KI-Transformation — inhabergeführt, mit der Umsetzungskraft eines Venture Builders.
         </div>
         <p style={{ font: "400 16px/1.6 Inter, sans-serif", color: "#A8A69E", marginTop: 16, marginBottom: 0 }}>
@@ -61,7 +61,7 @@ function BbStorySection() {
       </div>
 
       {/* Bindestrich narrative */}
-      <div style={{ background: "#F5F1EB", borderRadius: 20, padding: 48, border: "1px solid #E8E5DF" }}>
+      <div style={{ background: "#F5F4F1", borderRadius: 20, padding: 48, border: "1px solid #E8E5DF" }}>
         <div style={{ font: "500 11px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.1em", color: "#918F87", marginBottom: 16 }}>
           Das Logo als Idee
         </div>
@@ -268,7 +268,7 @@ function BbTokensSection() {
     { sp: 18 },
     { k: "/* Farben — Familien */", c: "#6B6B65" },
     ["--charcoal", "#1C1C1E"],
-    ["--off-white", "#F5F1EB"],
+    ["--off-white", "#F5F4F1"],
     ["--bm-purple", "#6B4A94"],
     ["--bm-berry", "#B84A6F"],
     ["--bm-teal", "#3A9E97"],
@@ -306,9 +306,9 @@ function BbClaudeSection() {
   return (
     <BbSection id="claude" num="16" title="Claude Instructions"
       desc="Die CLAUDE.md (v2) macht dieses Brandbook maschinenlesbar — das Destillat aus den Guidelines. Claude lädt sie bei jedem Projekt.">
-      <div style={{ background: "#1C1C1E", color: "#F5F1EB", borderRadius: 20, padding: 48 }}>
+      <div style={{ background: "#1C1C1E", color: "#F5F4F1", borderRadius: 20, padding: 48 }}>
         <div style={{ font: "500 11px/1 Inter, sans-serif", textTransform: "uppercase", letterSpacing: "0.1em", color: "#AF94D2", marginBottom: 16 }}>Hard Rules (v2)</div>
-        <ul style={{ margin: 0, paddingLeft: 20, font: "400 15px/1.8 Inter, sans-serif", color: "#F5F1EB" }}>
+        <ul style={{ margin: 0, paddingLeft: 20, font: "400 15px/1.8 Inter, sans-serif", color: "#F5F4F1" }}>
           <li><code style={{ color: "#AF94D2" }}>tokens/tokens.css</code> zuerst laden. Farben und Größen nie hardcoden.</li>
           <li>Grundton <code style={{ color: "#AF94D2" }}>--off-white</code>; reines Weiß ist Sektionsfläche im Flächenrhythmus.</li>
           <li>Header-Logo: <strong>Wortmarke, 20px im 64px-Header</strong>. Das Monogramm nie im Header.</li>
@@ -323,7 +323,7 @@ function BbClaudeSection() {
           <li>Wenn etwas unklar ist — <strong>fragen</strong>, nicht improvisieren.</li>
         </ul>
         <div style={{ display: "flex", gap: 12, marginTop: 32, flexWrap: "wrap" }}>
-          <a href="../md.html?file=CLAUDE.md" className="bm-btn" style={{ textDecoration: "none", background: "#F5F1EB", color: "#1C1C1E" }}>CLAUDE.md öffnen</a>
+          <a href="../md.html?file=CLAUDE.md" className="bm-btn" style={{ textDecoration: "none", background: "#F5F4F1", color: "#1C1C1E" }}>CLAUDE.md öffnen</a>
           <a href="../md.html?file=guidelines%2FREADME.md" className="bm-btn bm-btn-secondary" style={{ textDecoration: "none", color: "#AF94D2", boxShadow: "inset 0 0 0 1.5px #AF94D2" }}>Guidelines (Kanon) →</a>
         </div>
       </div>
